@@ -1,0 +1,17 @@
+{
+  "version": "1.00",
+  "app": {
+    "name": "agent-ai",
+    "env": "development",
+    "log_level": "INFO"
+  },
+  "markitdown": {
+    "enable_llm_descriptions": false,
+    "supported_extensions": [".pdf", ".docx", ".pptx", ".xlsx", ".html", ".txt", ".md"]
+  },
+  "agent": {
+    "model": "claude-sonnet-4-6",
+    "max_tokens": 4096,
+    "temperature": 0.0
+  }
+}
