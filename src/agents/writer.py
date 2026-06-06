@@ -2,23 +2,19 @@
 
 from crewai import Agent
 
-from agent_ai.shared.config import PROJECT_TOPIC
+from utils.figure_tools import generate_architecture_diagram, generate_performance_graph
+from utils.skill_loader import load_skill
 
 
 def build_writer(llm=None) -> Agent:
-    """Create the Writer agent."""
+    """Create the Writer agent from skills/writer/SKILL.md."""
+    skill = load_skill("writer")
     return Agent(
-        role="Writer Agent",
-        goal=(
-            "Write a coherent long-form academic article draft using the Researcher "
-            f"Agent output as context for {PROJECT_TOPIC}."
-        ),
-        backstory=(
-            "You are an academic technical writer. You transform structured research notes "
-            "into clear sections with citations, artifact placeholders, and publication-ready "
-            "organization."
-        ),
+        role=skill.role,
+        goal=skill.description,
+        backstory=skill.body,
         llm=llm,
+        tools=[generate_architecture_diagram, generate_performance_graph],
         allow_delegation=False,
         verbose=True,
     )

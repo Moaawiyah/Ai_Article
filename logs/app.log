@@ -1,0 +1,303 @@
+2026-06-06 15:52:33  INFO      [article_pipeline]  Logger ready — writing to /Users/moaawiyahhaj/Desktop/agent_ai_HW2/logs/app.log
+2026-06-06 15:52:33  INFO      [article_pipeline]  Test log entry
+2026-06-06 15:52:33  INFO      [article_pipeline]  Pipeline config loaded
+2026-06-06 15:52:33  INFO      [article_pipeline]    topic    : Multi-Agent Collaboration Systems: Designing Teams of AI Agents
+2026-06-06 15:52:33  INFO      [article_pipeline]    author   : [Author Name]
+2026-06-06 15:52:33  INFO      [article_pipeline]    course   : [Course Name]
+2026-06-06 15:52:33  INFO      [article_pipeline]    lecturer : [Lecturer Name]
+2026-06-06 15:52:33  INFO      [article_pipeline]    llm      : ollama"/qwen3:14b
+2026-06-06 15:52:33  INFO      [article_pipeline]    outputs  : outputs
+2026-06-06 15:52:33  INFO      [article_pipeline]  Crew assembled — 5 agents, 5 tasks, sequential process
+2026-06-06 15:53:02  INFO      [article_pipeline]  Logger ready — writing to /Users/moaawiyahhaj/Desktop/agent_ai_HW2/logs/app.log
+2026-06-06 15:53:02  INFO      [article_pipeline]  Pipeline config loaded
+2026-06-06 15:53:02  INFO      [article_pipeline]    topic    : Multi-Agent Collaboration Systems: Designing Teams of AI Agents
+2026-06-06 15:53:02  INFO      [article_pipeline]    author   : [Author Name]
+2026-06-06 15:53:02  INFO      [article_pipeline]    course   : [Course Name]
+2026-06-06 15:53:02  INFO      [article_pipeline]    lecturer : [Lecturer Name]
+2026-06-06 15:53:02  INFO      [article_pipeline]    llm      : ollama/qwen3:14b
+2026-06-06 15:53:02  INFO      [article_pipeline]    outputs  : outputs
+2026-06-06 15:53:02  INFO      [article_pipeline]  Crew assembled — 5 agents, 5 tasks, sequential process
+2026-06-06 15:54:45  INFO      [article_pipeline]  Logger ready — writing to /Users/moaawiyahhaj/Desktop/agent_ai_HW2/logs/app.log
+2026-06-06 15:54:45  INFO      [article_pipeline]  Pipeline config loaded
+2026-06-06 15:54:45  INFO      [article_pipeline]    topic    : Multi-Agent Collaboration Systems: Designing Teams of AI Agents
+2026-06-06 15:54:45  INFO      [article_pipeline]    author   : [Author Name]
+2026-06-06 15:54:45  INFO      [article_pipeline]    course   : [Course Name]
+2026-06-06 15:54:45  INFO      [article_pipeline]    lecturer : [Lecturer Name]
+2026-06-06 15:54:45  INFO      [article_pipeline]    llm      : ollama/qwen3:14b
+2026-06-06 15:54:45  INFO      [article_pipeline]    outputs  : outputs
+2026-06-06 15:54:45  INFO      [article_pipeline]  Crew assembled — 5 agents, 5 tasks, sequential process
+2026-06-06 16:02:09  INFO      [article_pipeline]  Logger ready — writing to /Users/moaawiyahhaj/Desktop/agent_ai_HW2/logs/app.log
+2026-06-06 16:02:09  INFO      [article_pipeline]  Pipeline config loaded
+2026-06-06 16:02:09  INFO      [article_pipeline]    topic    : Multi-Agent Collaboration Systems: Designing Teams of AI Agents
+2026-06-06 16:02:09  INFO      [article_pipeline]    author   : [Author Name]
+2026-06-06 16:02:09  INFO      [article_pipeline]    course   : [Course Name]
+2026-06-06 16:02:09  INFO      [article_pipeline]    lecturer : [Lecturer Name]
+2026-06-06 16:02:09  INFO      [article_pipeline]    llm      : ollama/qwen3:14b
+2026-06-06 16:02:09  INFO      [article_pipeline]    outputs  : outputs
+2026-06-06 16:02:09  INFO      [article_pipeline]  Crew assembled — 5 agents, 5 tasks, sequential process
+2026-06-06 16:12:55  INFO      [article_pipeline]  Logger ready — writing to /Users/moaawiyahhaj/Desktop/agent_ai_HW2/logs/app.log
+2026-06-06 16:12:55  INFO      [article_pipeline]  Pipeline config loaded
+2026-06-06 16:12:55  INFO      [article_pipeline]    topic    : Multi-Agent Collaboration Systems: Designing Teams of AI Agents
+2026-06-06 16:12:55  INFO      [article_pipeline]    author   : [Author Name]
+2026-06-06 16:12:55  INFO      [article_pipeline]    course   : [Course Name]
+2026-06-06 16:12:55  INFO      [article_pipeline]    lecturer : [Lecturer Name]
+2026-06-06 16:12:55  INFO      [article_pipeline]    llm      : ollama/qwen3:8b
+2026-06-06 16:12:55  INFO      [article_pipeline]    outputs  : outputs
+2026-06-06 16:12:55  INFO      [article_pipeline]  Crew assembled — 5 agents, 5 tasks, sequential process
+2026-06-06 16:12:55  INFO      [article_pipeline.main]  ============================================================
+2026-06-06 16:12:55  INFO      [article_pipeline.main]  PIPELINE START  — Multi-Agent Collaboration Systems: Designing Teams of AI Agents
+2026-06-06 16:12:55  INFO      [article_pipeline.main]  ============================================================
+2026-06-06 16:12:55  INFO      [article_pipeline.main]  Stages in order:
+2026-06-06 16:12:55  INFO      [article_pipeline.main]    1. [Researcher] → outputs/research/research_brief.md
+2026-06-06 16:12:55  INFO      [article_pipeline.main]    2. [Writer] → outputs/drafts/draft.md
+2026-06-06 16:12:55  INFO      [article_pipeline.main]    3. [Reviewer] → outputs/reviewed/reviewed.md
+2026-06-06 16:12:55  INFO      [article_pipeline.main]    4. [LaTeX Formatter] → outputs/latex/article.tex
+2026-06-06 16:12:55  INFO      [article_pipeline.main]    5. [PDF Validator] → outputs/pdf/agent_validation.md
+2026-06-06 16:12:55  INFO      [article_pipeline.main]  ▶ STAGE START  — Agent pipeline (all 5 stages)
+2026-06-06 16:12:55  ERROR     [article_pipeline.main]  ✗ STAGE ERROR  — Agent pipeline (all 5 stages)  (0.01s)  ValueError: Missing required template variable 'Template variable 'article' not found in inputs dictionary' in description
+2026-06-06 16:12:55  ERROR     [article_pipeline.main]  Agent pipeline failed: Missing required template variable 'Template variable 'article' not found in inputs dictionary' in description
+2026-06-06 16:15:44  INFO      [article_pipeline]  Logger ready — writing to /Users/moaawiyahhaj/Desktop/agent_ai_HW2/logs/app.log
+2026-06-06 16:15:44  INFO      [article_pipeline]  Pipeline config loaded
+2026-06-06 16:15:44  INFO      [article_pipeline]    topic    : Multi-Agent Collaboration Systems: Designing Teams of AI Agents
+2026-06-06 16:15:44  INFO      [article_pipeline]    author   : [Author Name]
+2026-06-06 16:15:44  INFO      [article_pipeline]    course   : [Course Name]
+2026-06-06 16:15:44  INFO      [article_pipeline]    lecturer : [Lecturer Name]
+2026-06-06 16:15:44  INFO      [article_pipeline]    llm      : ollama/qwen3:8b
+2026-06-06 16:15:44  INFO      [article_pipeline]    outputs  : outputs
+2026-06-06 16:15:44  INFO      [article_pipeline]  Crew assembled — 5 agents, 5 tasks, sequential process
+2026-06-06 16:15:44  INFO      [article_pipeline.main]  ============================================================
+2026-06-06 16:15:44  INFO      [article_pipeline.main]  PIPELINE START  — Multi-Agent Collaboration Systems: Designing Teams of AI Agents
+2026-06-06 16:15:44  INFO      [article_pipeline.main]  ============================================================
+2026-06-06 16:15:44  INFO      [article_pipeline.main]  Stages in order:
+2026-06-06 16:15:44  INFO      [article_pipeline.main]    1. [Researcher] → outputs/research/research_brief.md
+2026-06-06 16:15:44  INFO      [article_pipeline.main]    2. [Writer] → outputs/drafts/draft.md
+2026-06-06 16:15:44  INFO      [article_pipeline.main]    3. [Reviewer] → outputs/reviewed/reviewed.md
+2026-06-06 16:15:44  INFO      [article_pipeline.main]    4. [LaTeX Formatter] → outputs/latex/article.tex
+2026-06-06 16:15:44  INFO      [article_pipeline.main]    5. [PDF Validator] → outputs/pdf/agent_validation.md
+2026-06-06 16:15:44  INFO      [article_pipeline.main]  ▶ STAGE START  — Agent pipeline (all 5 stages)
+2026-06-06 16:15:44  ERROR     [article_pipeline.main]  ✗ STAGE ERROR  — Agent pipeline (all 5 stages)  (0.01s)  KeyError: "Template variable 'Heading' not found in inputs dictionary"
+2026-06-06 16:15:44  ERROR     [article_pipeline.main]  Agent pipeline failed: "Template variable 'Heading' not found in inputs dictionary"
+2026-06-06 16:16:06  INFO      [article_pipeline]  Logger ready — writing to /Users/moaawiyahhaj/Desktop/agent_ai_HW2/logs/app.log
+2026-06-06 16:16:06  INFO      [article_pipeline]  Pipeline config loaded
+2026-06-06 16:16:06  INFO      [article_pipeline]    topic    : Multi-Agent Collaboration Systems: Designing Teams of AI Agents
+2026-06-06 16:16:06  INFO      [article_pipeline]    author   : [Author Name]
+2026-06-06 16:16:06  INFO      [article_pipeline]    course   : [Course Name]
+2026-06-06 16:16:06  INFO      [article_pipeline]    lecturer : [Lecturer Name]
+2026-06-06 16:16:06  INFO      [article_pipeline]    llm      : ollama/qwen3:8b
+2026-06-06 16:16:06  INFO      [article_pipeline]    outputs  : outputs
+2026-06-06 16:16:06  INFO      [article_pipeline]  Crew assembled — 5 agents, 5 tasks, sequential process
+2026-06-06 16:16:06  INFO      [article_pipeline.main]  ============================================================
+2026-06-06 16:16:06  INFO      [article_pipeline.main]  PIPELINE START  — Multi-Agent Collaboration Systems: Designing Teams of AI Agents
+2026-06-06 16:16:06  INFO      [article_pipeline.main]  ============================================================
+2026-06-06 16:16:06  INFO      [article_pipeline.main]  Stages in order:
+2026-06-06 16:16:06  INFO      [article_pipeline.main]    1. [Researcher] → outputs/research/research_brief.md
+2026-06-06 16:16:06  INFO      [article_pipeline.main]    2. [Writer] → outputs/drafts/draft.md
+2026-06-06 16:16:06  INFO      [article_pipeline.main]    3. [Reviewer] → outputs/reviewed/reviewed.md
+2026-06-06 16:16:06  INFO      [article_pipeline.main]    4. [LaTeX Formatter] → outputs/latex/article.tex
+2026-06-06 16:16:06  INFO      [article_pipeline.main]    5. [PDF Validator] → outputs/pdf/agent_validation.md
+2026-06-06 16:16:06  INFO      [article_pipeline.main]  ▶ STAGE START  — Agent pipeline (all 5 stages)
+2026-06-06 16:17:02  INFO      [article_pipeline]  Logger ready — writing to /Users/moaawiyahhaj/Desktop/agent_ai_HW2/logs/app.log
+2026-06-06 16:17:02  INFO      [article_pipeline]  Pipeline config loaded
+2026-06-06 16:17:02  INFO      [article_pipeline]    topic    : Multi-Agent Collaboration Systems: Designing Teams of AI Agents
+2026-06-06 16:17:02  INFO      [article_pipeline]    author   : [Author Name]
+2026-06-06 16:17:02  INFO      [article_pipeline]    course   : [Course Name]
+2026-06-06 16:17:02  INFO      [article_pipeline]    lecturer : [Lecturer Name]
+2026-06-06 16:17:02  INFO      [article_pipeline]    llm      : ollama/qwen3:8b
+2026-06-06 16:17:02  INFO      [article_pipeline]    outputs  : outputs
+2026-06-06 16:17:02  INFO      [article_pipeline]  Crew assembled — 5 agents, 5 tasks, sequential process
+2026-06-06 16:17:02  INFO      [article_pipeline.main]  ============================================================
+2026-06-06 16:17:02  INFO      [article_pipeline.main]  PIPELINE START  — Multi-Agent Collaboration Systems: Designing Teams of AI Agents
+2026-06-06 16:17:02  INFO      [article_pipeline.main]  ============================================================
+2026-06-06 16:17:02  INFO      [article_pipeline.main]  Stages in order:
+2026-06-06 16:17:02  INFO      [article_pipeline.main]    1. [Researcher] → outputs/research/research_brief.md
+2026-06-06 16:17:02  INFO      [article_pipeline.main]    2. [Writer] → outputs/drafts/draft.md
+2026-06-06 16:17:02  INFO      [article_pipeline.main]    3. [Reviewer] → outputs/reviewed/reviewed.md
+2026-06-06 16:17:02  INFO      [article_pipeline.main]    4. [LaTeX Formatter] → outputs/latex/article.tex
+2026-06-06 16:17:02  INFO      [article_pipeline.main]    5. [PDF Validator] → outputs/pdf/agent_validation.md
+2026-06-06 16:17:02  INFO      [article_pipeline.main]  ▶ STAGE START  — Agent pipeline (all 5 stages)
+2026-06-06 16:30:15  INFO      [article_pipeline.main]  ■ STAGE END    — Agent pipeline (all 5 stages)  (793.44s)
+2026-06-06 16:30:15  INFO      [article_pipeline.main]  ────────────────────────────────────────────────────────────
+2026-06-06 16:30:15  INFO      [article_pipeline.main]  PDF COMPILATION  — LuaLaTeX
+2026-06-06 16:30:15  INFO      [article_pipeline.main]    input  : outputs/latex/article.tex
+2026-06-06 16:30:15  INFO      [article_pipeline.main]    output : outputs/pdf/article.pdf
+2026-06-06 16:30:15  INFO      [article_pipeline.main]    passes : 2  (for TOC and cross-references)
+2026-06-06 16:30:15  INFO      [article_pipeline.main]  ▶ STAGE START  — LuaLaTeX compilation
+2026-06-06 16:30:16  INFO      [article_pipeline.main]  ■ STAGE END    — LuaLaTeX compilation  (0.36s)
+2026-06-06 16:30:16  INFO      [article_pipeline.main]    → file: outputs/pdf/article.pdf
+2026-06-06 16:30:16  ERROR     [article_pipeline.main]  ✗ PDF compilation failed
+2026-06-06 16:30:16  ERROR     [article_pipeline.main]    error     : ! LaTeX Error: File `a.cls' not found.
+2026-06-06 16:30:16  ERROR     [article_pipeline.main]    log file  : /Users/moaawiyahhaj/Desktop/agent_ai_HW2/logs/latex_compile.log
+2026-06-06 16:30:16  ERROR     [article_pipeline.main]    .tex file : /Users/moaawiyahhaj/Desktop/agent_ai_HW2/outputs/latex/article.tex
+2026-06-06 16:30:16  INFO      [article_pipeline.main]  ────────────────────────────────────────────────────────────
+2026-06-06 16:30:16  INFO      [article_pipeline.main]  VALIDATION  — 13-item assignment checklist
+2026-06-06 16:30:16  INFO      [article_pipeline.main]    tex      : outputs/latex/article.tex
+2026-06-06 16:30:16  INFO      [article_pipeline.main]    pdf      : outputs/pdf/article.pdf
+2026-06-06 16:30:16  INFO      [article_pipeline.main]    report   : outputs/pdf/validation_report.md
+2026-06-06 16:30:16  INFO      [article_pipeline.main]  ▶ STAGE START  — Programmatic validation
+2026-06-06 16:30:16  INFO      [article_pipeline.main]  ■ STAGE END    — Programmatic validation  (0.00s)
+2026-06-06 16:30:16  INFO      [article_pipeline.main]    → file: outputs/pdf/validation_report.md
+2026-06-06 16:30:16  INFO      [article_pipeline.main]  Result: 9/13 passed, 4 failed
+2026-06-06 16:30:16  INFO      [article_pipeline.main]    ✓ 1. article.tex exists
+2026-06-06 16:30:16  INFO      [article_pipeline.main]    ✗ 2. article.pdf exists
+2026-06-06 16:30:16  INFO      [article_pipeline.main]    ✓ 3. Title page
+2026-06-06 16:30:16  INFO      [article_pipeline.main]    ✓ 4. Table of contents
+2026-06-06 16:30:16  INFO      [article_pipeline.main]    ✓ 5. Headers/footers
+2026-06-06 16:30:16  INFO      [article_pipeline.main]    ✓ 6. Sections/chapters
+2026-06-06 16:30:16  INFO      [article_pipeline.main]    ✓ 7. Table
+2026-06-06 16:30:16  INFO      [article_pipeline.main]    ✗ 8. Mathematical formula
+2026-06-06 16:30:16  INFO      [article_pipeline.main]    ✓ 9. Image placeholder
+2026-06-06 16:30:16  INFO      [article_pipeline.main]    ✗ 10. Graph placeholder
+2026-06-06 16:30:16  INFO      [article_pipeline.main]    ✓ 11. Hebrew–English BiDi section
+2026-06-06 16:30:16  INFO      [article_pipeline.main]    ✓ 12. Bibliography
+2026-06-06 16:30:16  INFO      [article_pipeline.main]    ✗ 13. LaTeX compilation
+2026-06-06 16:30:16  WARNING   [article_pipeline.main]  ❌ 4 requirement(s) failed — see outputs/pdf/validation_report.md
+2026-06-06 16:30:16  INFO      [article_pipeline.main]  ============================================================
+2026-06-06 16:30:16  INFO      [article_pipeline.main]  PIPELINE COMPLETE  (793.83s)
+2026-06-06 16:30:16  INFO      [article_pipeline.main]  Output files:
+2026-06-06 16:30:16  INFO      [article_pipeline.main]    [Researcher] outputs/research/research_brief.md
+2026-06-06 16:30:16  INFO      [article_pipeline.main]    [Writer] outputs/drafts/draft.md
+2026-06-06 16:30:16  INFO      [article_pipeline.main]    [Reviewer] outputs/reviewed/reviewed.md
+2026-06-06 16:30:16  INFO      [article_pipeline.main]    [LaTeX Formatter] outputs/latex/article.tex
+2026-06-06 16:30:16  INFO      [article_pipeline.main]    [PDF Validator] outputs/pdf/agent_validation.md
+2026-06-06 16:30:16  INFO      [article_pipeline.main]    [PDF]        outputs/pdf/article.pdf
+2026-06-06 16:30:16  INFO      [article_pipeline.main]    [Validation] outputs/pdf/validation_report.md
+2026-06-06 16:30:16  INFO      [article_pipeline.main]  ============================================================
+2026-06-06 16:36:05  INFO      [article_pipeline]  Logger ready — writing to /Users/moaawiyahhaj/Desktop/agent_ai_HW2/logs/app.log
+2026-06-06 16:36:29  INFO      [article_pipeline]  Logger ready — writing to /Users/moaawiyahhaj/Desktop/agent_ai_HW2/logs/app.log
+2026-06-06 16:37:29  INFO      [article_pipeline]  Logger ready — writing to /Users/moaawiyahhaj/Desktop/agent_ai_HW2/logs/app.log
+2026-06-06 16:37:39  INFO      [article_pipeline]  Logger ready — writing to /Users/moaawiyahhaj/Desktop/agent_ai_HW2/logs/app.log
+2026-06-06 16:44:20  INFO      [article_pipeline]  Logger ready — writing to /Users/moaawiyahhaj/Desktop/agent_ai_HW2/logs/app.log
+2026-06-06 16:44:20  INFO      [article_pipeline]  Pipeline config loaded
+2026-06-06 16:44:20  INFO      [article_pipeline]    topic    : Multi-Agent Collaboration Systems: Designing Teams of AI Agents
+2026-06-06 16:44:20  INFO      [article_pipeline]    author   : [Author Name]
+2026-06-06 16:44:20  INFO      [article_pipeline]    course   : [Course Name]
+2026-06-06 16:44:20  INFO      [article_pipeline]    lecturer : [Lecturer Name]
+2026-06-06 16:44:20  INFO      [article_pipeline]    llm      : ollama/qwen3:8b
+2026-06-06 16:44:20  INFO      [article_pipeline]    outputs  : outputs
+2026-06-06 16:44:20  INFO      [article_pipeline]  Crew assembled — 5 agents, 5 tasks, sequential process
+2026-06-06 16:44:20  INFO      [article_pipeline.main]  ============================================================
+2026-06-06 16:44:20  INFO      [article_pipeline.main]  PIPELINE START  — Multi-Agent Collaboration Systems: Designing Teams of AI Agents
+2026-06-06 16:44:20  INFO      [article_pipeline.main]  ============================================================
+2026-06-06 16:44:20  INFO      [article_pipeline.main]  Stages in order:
+2026-06-06 16:44:20  INFO      [article_pipeline.main]    1. [Researcher] → outputs/research/research_brief.md
+2026-06-06 16:44:20  INFO      [article_pipeline.main]    2. [Writer] → outputs/drafts/draft.md
+2026-06-06 16:44:20  INFO      [article_pipeline.main]    3. [Reviewer] → outputs/reviewed/reviewed.md
+2026-06-06 16:44:20  INFO      [article_pipeline.main]    4. [LaTeX Formatter] → outputs/latex/article.tex
+2026-06-06 16:44:20  INFO      [article_pipeline.main]    5. [PDF Validator] → outputs/pdf/agent_validation.md
+2026-06-06 16:44:20  INFO      [article_pipeline.main]  ▶ STAGE START  — Agent pipeline (all 5 stages)
+2026-06-06 17:01:06  INFO      [article_pipeline.main]  ■ STAGE END    — Agent pipeline (all 5 stages)  (1005.57s)
+2026-06-06 17:01:06  INFO      [article_pipeline.main]  ────────────────────────────────────────────────────────────
+2026-06-06 17:01:06  INFO      [article_pipeline.main]  PDF COMPILATION  — LuaLaTeX
+2026-06-06 17:01:06  INFO      [article_pipeline.main]    input  : outputs/latex/article.tex
+2026-06-06 17:01:06  INFO      [article_pipeline.main]    output : outputs/pdf/article.pdf
+2026-06-06 17:01:06  INFO      [article_pipeline.main]    passes : 2  (for TOC and cross-references)
+2026-06-06 17:01:06  INFO      [article_pipeline.main]  ▶ STAGE START  — LuaLaTeX compilation
+2026-06-06 17:01:06  INFO      [article_pipeline.main]  ■ STAGE END    — LuaLaTeX compilation  (0.44s)
+2026-06-06 17:01:06  INFO      [article_pipeline.main]    → file: outputs/pdf/article.pdf
+2026-06-06 17:01:06  ERROR     [article_pipeline.main]  ✗ PDF compilation failed
+2026-06-06 17:01:06  ERROR     [article_pipeline.main]    error     : ! LaTeX Error: Missing \begin{document}.
+2026-06-06 17:01:06  ERROR     [article_pipeline.main]    log file  : /Users/moaawiyahhaj/Desktop/agent_ai_HW2/logs/latex_compile.log
+2026-06-06 17:01:06  ERROR     [article_pipeline.main]    .tex file : /Users/moaawiyahhaj/Desktop/agent_ai_HW2/outputs/latex/article.tex
+2026-06-06 17:01:06  INFO      [article_pipeline.main]  ────────────────────────────────────────────────────────────
+2026-06-06 17:01:06  INFO      [article_pipeline.main]  VALIDATION  — 13-item assignment checklist
+2026-06-06 17:01:06  INFO      [article_pipeline.main]    tex      : outputs/latex/article.tex
+2026-06-06 17:01:06  INFO      [article_pipeline.main]    pdf      : outputs/pdf/article.pdf
+2026-06-06 17:01:06  INFO      [article_pipeline.main]    report   : outputs/pdf/validation_report.md
+2026-06-06 17:01:06  INFO      [article_pipeline.main]  ▶ STAGE START  — Programmatic validation
+2026-06-06 17:01:06  INFO      [article_pipeline.main]  ■ STAGE END    — Programmatic validation  (0.01s)
+2026-06-06 17:01:06  INFO      [article_pipeline.main]    → file: outputs/pdf/validation_report.md
+2026-06-06 17:01:06  INFO      [article_pipeline.main]  Result: 13/13 passed, 0 failed
+2026-06-06 17:01:06  INFO      [article_pipeline.main]    ✓ 1. article.tex exists
+2026-06-06 17:01:06  INFO      [article_pipeline.main]    ✓ 2. article.pdf exists
+2026-06-06 17:01:06  INFO      [article_pipeline.main]    ✓ 3. Title page
+2026-06-06 17:01:06  INFO      [article_pipeline.main]    ✓ 4. Table of contents
+2026-06-06 17:01:06  INFO      [article_pipeline.main]    ✓ 5. Headers/footers
+2026-06-06 17:01:06  INFO      [article_pipeline.main]    ✓ 6. Sections/chapters
+2026-06-06 17:01:06  INFO      [article_pipeline.main]    ✓ 7. Table
+2026-06-06 17:01:06  INFO      [article_pipeline.main]    ✓ 8. Mathematical formula
+2026-06-06 17:01:06  INFO      [article_pipeline.main]    ✓ 9. Image placeholder
+2026-06-06 17:01:06  INFO      [article_pipeline.main]    ✓ 10. Graph placeholder
+2026-06-06 17:01:06  INFO      [article_pipeline.main]    ✓ 11. Hebrew–English BiDi section
+2026-06-06 17:01:06  INFO      [article_pipeline.main]    ✓ 12. Bibliography
+2026-06-06 17:01:06  INFO      [article_pipeline.main]    ✓ 13. LaTeX compilation
+2026-06-06 17:01:06  INFO      [article_pipeline.main]  ✅ All 13 requirements satisfied
+2026-06-06 17:01:06  INFO      [article_pipeline.main]  ============================================================
+2026-06-06 17:01:06  INFO      [article_pipeline.main]  PIPELINE COMPLETE  (1006.07s)
+2026-06-06 17:01:06  INFO      [article_pipeline.main]  Output files:
+2026-06-06 17:01:06  INFO      [article_pipeline.main]    [Researcher] outputs/research/research_brief.md
+2026-06-06 17:01:06  INFO      [article_pipeline.main]    [Writer] outputs/drafts/draft.md
+2026-06-06 17:01:06  INFO      [article_pipeline.main]    [Reviewer] outputs/reviewed/reviewed.md
+2026-06-06 17:01:06  INFO      [article_pipeline.main]    [LaTeX Formatter] outputs/latex/article.tex
+2026-06-06 17:01:06  INFO      [article_pipeline.main]    [PDF Validator] outputs/pdf/agent_validation.md
+2026-06-06 17:01:06  INFO      [article_pipeline.main]    [PDF]        outputs/pdf/article.pdf
+2026-06-06 17:01:06  INFO      [article_pipeline.main]    [Validation] outputs/pdf/validation_report.md
+2026-06-06 17:01:06  INFO      [article_pipeline.main]  ============================================================
+2026-06-06 17:15:42  INFO      [article_pipeline]  Logger ready — writing to /Users/moaawiyahhaj/Desktop/agent_ai_HW2/logs/app.log
+2026-06-06 17:15:42  INFO      [article_pipeline]  Pipeline config loaded
+2026-06-06 17:15:42  INFO      [article_pipeline]    topic    : Multi-Agent Collaboration Systems: Designing Teams of AI Agents
+2026-06-06 17:15:42  INFO      [article_pipeline]    author   : [Author Name]
+2026-06-06 17:15:42  INFO      [article_pipeline]    course   : [Course Name]
+2026-06-06 17:15:42  INFO      [article_pipeline]    lecturer : [Lecturer Name]
+2026-06-06 17:15:42  INFO      [article_pipeline]    llm      : ollama/qwen3:8b
+2026-06-06 17:15:42  INFO      [article_pipeline]    outputs  : outputs
+2026-06-06 17:15:42  INFO      [article_pipeline]  Crew assembled — 5 agents, 5 tasks, sequential process
+2026-06-06 17:15:42  INFO      [article_pipeline.main]  ============================================================
+2026-06-06 17:15:42  INFO      [article_pipeline.main]  PIPELINE START  — Multi-Agent Collaboration Systems: Designing Teams of AI Agents
+2026-06-06 17:15:42  INFO      [article_pipeline.main]  ============================================================
+2026-06-06 17:15:42  INFO      [article_pipeline.main]  Stages in order:
+2026-06-06 17:15:42  INFO      [article_pipeline.main]    1. [Researcher] → outputs/research/research_brief.md
+2026-06-06 17:15:42  INFO      [article_pipeline.main]    2. [Writer] → outputs/drafts/draft.md
+2026-06-06 17:15:42  INFO      [article_pipeline.main]    3. [Reviewer] → outputs/reviewed/reviewed.md
+2026-06-06 17:15:42  INFO      [article_pipeline.main]    4. [LaTeX Formatter] → outputs/latex/article.tex
+2026-06-06 17:15:42  INFO      [article_pipeline.main]    5. [PDF Validator] → outputs/pdf/agent_validation.md
+2026-06-06 17:15:42  INFO      [article_pipeline.main]  ▶ STAGE START  — Agent pipeline (all 5 stages)
+2026-06-06 17:39:26  INFO      [article_pipeline.main]  ■ STAGE END    — Agent pipeline (all 5 stages)  (1424.14s)
+2026-06-06 17:39:26  INFO      [article_pipeline.main]  ────────────────────────────────────────────────────────────
+2026-06-06 17:39:26  INFO      [article_pipeline.main]  PDF COMPILATION  — LuaLaTeX
+2026-06-06 17:39:26  INFO      [article_pipeline.main]    input  : outputs/latex/article.tex
+2026-06-06 17:39:26  INFO      [article_pipeline.main]    output : outputs/pdf/article.pdf
+2026-06-06 17:39:26  INFO      [article_pipeline.main]    passes : 2  (for TOC and cross-references)
+2026-06-06 17:39:26  INFO      [article_pipeline.main]  ▶ STAGE START  — LuaLaTeX compilation
+2026-06-06 17:39:28  INFO      [article_pipeline.main]  ■ STAGE END    — LuaLaTeX compilation  (1.38s)
+2026-06-06 17:39:28  INFO      [article_pipeline.main]    → file: outputs/pdf/article.pdf
+2026-06-06 17:39:28  ERROR     [article_pipeline.main]  ✗ PDF compilation failed
+2026-06-06 17:39:28  ERROR     [article_pipeline.main]    error     : ! Missing number, treated as zero.
+2026-06-06 17:39:28  ERROR     [article_pipeline.main]    log file  : /Users/moaawiyahhaj/Desktop/agent_ai_HW2/logs/latex_compile.log
+2026-06-06 17:39:28  ERROR     [article_pipeline.main]    .tex file : /Users/moaawiyahhaj/Desktop/agent_ai_HW2/outputs/latex/article.tex
+2026-06-06 17:39:28  INFO      [article_pipeline.main]  ────────────────────────────────────────────────────────────
+2026-06-06 17:39:28  INFO      [article_pipeline.main]  VALIDATION  — 13-item assignment checklist
+2026-06-06 17:39:28  INFO      [article_pipeline.main]    tex      : outputs/latex/article.tex
+2026-06-06 17:39:28  INFO      [article_pipeline.main]    pdf      : outputs/pdf/article.pdf
+2026-06-06 17:39:28  INFO      [article_pipeline.main]    report   : outputs/pdf/validation_report.md
+2026-06-06 17:39:28  INFO      [article_pipeline.main]  ▶ STAGE START  — Programmatic validation
+2026-06-06 17:39:28  INFO      [article_pipeline.main]  ■ STAGE END    — Programmatic validation  (0.01s)
+2026-06-06 17:39:28  INFO      [article_pipeline.main]    → file: outputs/pdf/validation_report.md
+2026-06-06 17:39:28  INFO      [article_pipeline.main]  Result: 10/13 passed, 3 failed
+2026-06-06 17:39:28  INFO      [article_pipeline.main]    ✓ 1. article.tex exists
+2026-06-06 17:39:28  INFO      [article_pipeline.main]    ✓ 2. article.pdf exists
+2026-06-06 17:39:28  INFO      [article_pipeline.main]    ✓ 3. Title page
+2026-06-06 17:39:28  INFO      [article_pipeline.main]    ✓ 4. Table of contents
+2026-06-06 17:39:28  INFO      [article_pipeline.main]    ✓ 5. Headers/footers
+2026-06-06 17:39:28  INFO      [article_pipeline.main]    ✓ 6. Sections/chapters
+2026-06-06 17:39:28  INFO      [article_pipeline.main]    ✗ 7. Table
+2026-06-06 17:39:28  INFO      [article_pipeline.main]    ✓ 8. Mathematical formula
+2026-06-06 17:39:28  INFO      [article_pipeline.main]    ✗ 9. Image placeholder
+2026-06-06 17:39:28  INFO      [article_pipeline.main]    ✗ 10. Graph placeholder
+2026-06-06 17:39:28  INFO      [article_pipeline.main]    ✓ 11. Hebrew–English BiDi section
+2026-06-06 17:39:28  INFO      [article_pipeline.main]    ✓ 12. Bibliography
+2026-06-06 17:39:28  INFO      [article_pipeline.main]    ✓ 13. LaTeX compilation
+2026-06-06 17:39:28  WARNING   [article_pipeline.main]  ❌ 3 requirement(s) failed — see outputs/pdf/validation_report.md
+2026-06-06 17:39:28  INFO      [article_pipeline.main]  ============================================================
+2026-06-06 17:39:28  INFO      [article_pipeline.main]  PIPELINE COMPLETE  (1425.56s)
+2026-06-06 17:39:28  INFO      [article_pipeline.main]  Output files:
+2026-06-06 17:39:28  INFO      [article_pipeline.main]    [Researcher] outputs/research/research_brief.md
+2026-06-06 17:39:28  INFO      [article_pipeline.main]    [Writer] outputs/drafts/draft.md
+2026-06-06 17:39:28  INFO      [article_pipeline.main]    [Reviewer] outputs/reviewed/reviewed.md
+2026-06-06 17:39:28  INFO      [article_pipeline.main]    [LaTeX Formatter] outputs/latex/article.tex
+2026-06-06 17:39:28  INFO      [article_pipeline.main]    [PDF Validator] outputs/pdf/agent_validation.md
+2026-06-06 17:39:28  INFO      [article_pipeline.main]    [PDF]        outputs/pdf/article.pdf
+2026-06-06 17:39:28  INFO      [article_pipeline.main]    [Validation] outputs/pdf/validation_report.md
+2026-06-06 17:39:28  INFO      [article_pipeline.main]  ============================================================
+2026-06-06 17:42:18  INFO      [article_pipeline]  Logger ready — writing to /Users/moaawiyahhaj/Desktop/agent_ai_HW2/logs/app.log
+2026-06-06 17:44:14  INFO      [article_pipeline]  Logger ready — writing to /Users/moaawiyahhaj/Desktop/agent_ai_HW2/logs/app.log
+2026-06-06 17:46:28  INFO      [article_pipeline]  Logger ready — writing to /Users/moaawiyahhaj/Desktop/agent_ai_HW2/logs/app.log

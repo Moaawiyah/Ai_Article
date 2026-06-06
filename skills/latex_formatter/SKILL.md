@@ -1,73 +1,142 @@
 ---
 name: latex_formatter
-description: Publication-formatting skill for a CrewAI article generator that maps reviewed article content into a LaTeX structure suitable for compiling a polished academic PDF.
-version: 1.0.0
+description: Converts a reviewed Markdown article into a complete, valid LuaLaTeX source file ready for compilation into a professional academic PDF.
+version: 2.1.0
 ---
 
 # LaTeX Formatter
 
 ## Purpose
 
-Use this skill when an agent must prepare article content for LaTeX-based PDF production. This skill focuses on document structure, artifact placement, citation readiness, and bilingual typesetting awareness.
+Use this skill when an agent must transform a reviewed Markdown article into a
+production-ready LuaLaTeX `.tex` file. The output must be syntactically correct,
+fully structured, and include all required academic document elements.
 
-## Instructions
+This skill does NOT compile the PDF. It produces only the `.tex` source.
 
-1. Start from the reviewed article draft, not from raw notes.
-2. Convert the document into a LaTeX-friendly structure with clean section hierarchy.
-3. Ensure the article layout supports the expected deliverables:
-   - title and cover information
-   - table of contents
-   - section hierarchy
-   - bibliography references
-   - image placement
-   - graph placement
-   - table placement
-   - formula placement
-   - Hebrew-English bidirectional section support
-4. Normalize headings, lists, captions, references, and cross-references.
-5. Mark ambiguous content that may break typesetting, especially around mixed Hebrew-English text.
-6. Preserve semantic intent so the PDF validator can inspect the output against the assignment.
+---
 
-## Input Expectations
+## Input
 
-Expected inputs may include:
+- File: `outputs/reviewed/reviewed.md`
+- Format: Markdown with headings, tables, display math, image syntax,
+  RTL BiDi markers, citation markers, and a Bibliography section.
 
-- A reviewed Markdown or text draft
-- Citation placeholders or bibliography entries
-- References to figures, graphs, tables, and formulas
-- Constraints for LaTeX engine behavior or bilingual formatting
+---
 
-Inputs should be sufficiently mature that formatting can focus on structure rather than major content invention.
+## Output
 
-## Output Expectations
+- File: `outputs/latex/article.tex`
+- Format: Complete, valid LuaLaTeX source. No Markdown. No fenced code blocks.
 
-Produce a formatting-ready LaTeX representation or formatting plan.
+---
 
-Outputs should include:
+## Required document structure
 
-- A clean document structure with ordered sections
-- Explicit placement points for image, graph, table, and formula
-- Citation and bibliography mapping guidance
-- Notes for handling Hebrew-English BiDi content safely
-- Warnings about content that may fail or degrade in LaTeX/PDF form
+Produce the output in this exact order:
 
-The output should be easy for a compilation stage to consume.
+1. **Preamble** — packages listed below, in order
+2. `\begin` document
+3. Title page: `\maketitle`, `\thispagestyle` empty, `\newpage`
+4. `\tableofcontents` + `\newpage`
+5. All sections (converted from Markdown headings)
+6. `\printbibliography`
+7. `\end` document — this MUST be the last line
 
-## Rules And Constraints
+---
 
-- Do not invent missing article content to patch structural gaps.
-- Do not drop citations, captions, or section semantics during conversion.
-- Preserve meaning when normalizing markup.
-- Keep the skill reusable across article topics that require LaTeX PDF output.
-- Treat BiDi handling as a first-class concern, especially for Hebrew mixed with English and formulas.
-- Anticipate long-form academic layout needs rather than single-page formatting.
-- Focus on formatting intent and structure, not on executing compilation.
+## Required packages (do not omit or reorder)
 
-## Quality Checklist
+| Package | Purpose |
+|---|---|
+| `fontspec` | Unicode font selection (LuaLaTeX) |
+| `polyglossia` | Hebrew + English bilingual support |
+| `geometry` | Page margins (a4paper, 2.5 cm) |
+| `fancyhdr` | Headers and footers |
+| `amsmath`, `amssymb` | Mathematical environments |
+| `graphicx` | Image inclusion |
+| `booktabs` | Professional tables |
+| `caption`, `float` | Figure/table captions and H placement |
+| `hyperref` | Clickable cross-references (hidelinks) |
+| `biblatex` (biber) | Bibliography (ieee style) |
+| `microtype` | Typographic refinement |
+| `setspace` | Line spacing (onehalfspacing) |
 
-- Section hierarchy is complete and coherent.
-- Required article artifacts have explicit placement.
-- Citation flow is preserved for bibliography generation.
-- The document is suitable for a polished academic PDF.
-- BiDi-sensitive content has handling notes or safeguards.
-- The structure supports a full ~15-page article cleanly.
+---
+
+## Conversion rules
+
+### Headings
+
+Use `\section` command with the heading text for `##` level headings.
+Use `\subsection` for `###` level. Use `\subsubsection` for `####` level.
+Always use proper LaTeX brace syntax: `\section` followed by the heading in braces.
+
+### Tables
+
+Convert every Markdown pipe table to a booktabs table environment with
+H placement, `\toprule`, `\midrule`, `\bottomrule`, and a `\caption`.
+
+### Mathematical formulas
+
+Convert display math (double-dollar delimited) to an equation environment.
+Leave inline single-dollar math unchanged.
+
+### Images and graph placeholders
+
+Convert Markdown image syntax to a figure environment with H placement,
+`\includegraphics` at 0.85 textwidth, and a `\caption`. Preserve filenames exactly.
+Add comment: `% ASSET PLACEHOLDER: replace with actual file before compiling`
+
+### Hebrew-English BiDi section
+
+Convert RTL marker blocks to a polyglossia hebrew environment:
+Open with `\begin` hebrew and `\setRL`, include the Hebrew text,
+then close with `\end` hebrew.
+English text before and after stays in the default language.
+
+### Inline citations
+
+Convert `[N]` citation markers to `\cite` commands with `refN` as the key.
+Add this comment above the first cite in each section:
+`% FUTURE CITATION AUTOMATION: replace refN with actual BibTeX keys`
+
+### Bibliography section
+
+Replace the Bibliography heading and its entries with:
+`% FUTURE CITATION AUTOMATION: parse entries above and generate references.bib`
+followed by `\printbibliography`
+
+### Inline formatting
+
+Convert `**text**` to `\textbf` with text in braces.
+Convert `*text*` to `\textit` with text in braces.
+Convert backtick code to `\texttt` with text in braces.
+
+---
+
+## Rules and constraints
+
+- Do NOT invent content. Convert only what is in the input file.
+- The output must be syntactically valid LuaLaTeX with no unclosed environments.
+- Do not include Markdown syntax or fenced code blocks anywhere in the output.
+- Every section command must be on its own line with a blank line above.
+- Do not compile or run the LaTeX compiler. Output `.tex` only.
+- Preserve all placeholder comments (ASSET PLACEHOLDER, FUTURE CITATION AUTOMATION).
+- The BiDi section is a first-class requirement — never skip or simplify it.
+
+---
+
+## Quality checklist
+
+- [ ] Preamble includes all required packages in the correct order
+- [ ] Title page, TOC, and newpage separators are present
+- [ ] All Markdown headings converted to section / subsection commands
+- [ ] All tables converted to booktabs environments
+- [ ] All display math blocks converted to equation environments
+- [ ] Both image and graph placeholders converted to figure environments
+- [ ] BiDi section wrapped in hebrew environment
+- [ ] All citation markers converted to cite commands
+- [ ] `\printbibliography` present at end
+- [ ] No Markdown syntax remaining in the output
+- [ ] No unclosed begin / end pairs

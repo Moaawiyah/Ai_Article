@@ -1,0 +1,29 @@
+# ──────────────────────────────────────────────────────────────────────────────
+# Article pipeline configuration
+# All runtime values are loaded from here. Do not hardcode values in source.
+# ──────────────────────────────────────────────────────────────────────────────
+
+article:
+  topic: "Multi-Agent Collaboration Systems: Designing Teams of AI Agents"
+  author_name: "[Author Name]"
+  course_name: "[Course Name]"
+  lecturer_name: "[Lecturer Name]"
+
+llm:
+  provider: "ollama"          # ollama | anthropic | openai
+  model: "qwen3:8b"
+  base_url: "http://localhost:11434"
+
+logging:
+  level: "INFO"               # DEBUG | INFO | WARNING | ERROR
+  log_dir: "logs"
+  log_file: "app.log"
+
+outputs:
+  root: "outputs"
+  research: "outputs/research"
+  drafts: "outputs/drafts"
+  reviewed: "outputs/reviewed"
+  latex: "outputs/latex"
+  pdf: "outputs/pdf"
+  assets: "outputs/assets"

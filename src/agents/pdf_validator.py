@@ -2,17 +2,16 @@
 
 from crewai import Agent
 
+from utils.skill_loader import load_skill
+
 
 def build_pdf_validator(llm=None) -> Agent:
-    """Create the PDF Validator agent."""
+    """Create the PDF Validator agent from skills/pdf_validator/SKILL.md."""
+    skill = load_skill("pdf_validator")
     return Agent(
-        role="PDF Validator Agent",
-        goal="Validate the LaTeX/PDF deliverable against the assignment checklist.",
-        backstory=(
-            "You are a final submission validator. You inspect whether the generated "
-            "document includes every required academic and formatting element before the "
-            "student submits it."
-        ),
+        role=skill.role,
+        goal=skill.description,
+        backstory=skill.body,
         llm=llm,
         allow_delegation=False,
         verbose=True,

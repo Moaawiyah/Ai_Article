@@ -2,17 +2,16 @@
 
 from crewai import Agent
 
+from utils.skill_loader import load_skill
+
 
 def build_reviewer(llm=None) -> Agent:
-    """Create the Reviewer agent."""
+    """Create the Reviewer agent from skills/reviewer/SKILL.md."""
+    skill = load_skill("reviewer")
     return Agent(
-        role="Reviewer Agent",
-        goal="Review the article draft for correctness, completeness, and assignment fit.",
-        backstory=(
-            "You are a strict but constructive academic reviewer. You check structure, "
-            "citation readiness, required artifacts, and whether the article can become a "
-            "credible 15-page submission."
-        ),
+        role=skill.role,
+        goal=skill.description,
+        backstory=skill.body,
         llm=llm,
         allow_delegation=False,
         verbose=True,
