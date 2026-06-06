@@ -43,18 +43,21 @@ Students and researchers who need automated document Q&A as part of an AI-agents
 - `agent-ai <file> <question>` prints the answer to stdout.
 
 ### F-05 — CrewAI Article Generation
-- A three-agent CrewAI crew (Researcher → Writer → Reviewer) generates a ~15-page bilingual academic article on "Mass Production of AI Agents: From PoC to Production".
-- Agents run sequentially via `Process.sequential`.
-- Output: a complete Markdown document saved to `results/article/article.md`.
+- A five-agent CrewAI crew generates a ~15-page bilingual academic article on "Multi-Agent Collaboration Systems: Designing Teams of AI Agents".
+- Agents run sequentially via `Process.sequential`: Researcher → Writer → Reviewer → LaTeX Formatter → PDF Validator.
+- RAG is deferred for now; do not create `rag/indexer.py` or `rag/retriever.py` yet.
+- The Researcher gathers and summarizes information directly.
+- The Writer uses the Researcher output as context.
+- Output artifacts are written under `outputs/`.
 
-### F-06 — Graph Generation
-- A `GraphGenerator` produces a matplotlib bar chart (AI framework adoption 2022–2025) saved as `results/article/agents_growth.png`.
-- Chart is embedded in the final article.
+### F-06 — Graph Placeholder
+- The article draft and LaTeX output reserve a placeholder for a Python-generated graph.
+- Actual graph generation is deferred until the visual generation layer is implemented.
 
-### F-07 — LaTeX Compilation
-- A `MarkdownToLatexBuilder` converts the reviewed Markdown into `article.tex`, `body.tex`, and `article.bib`.
-- A `LatexCompiler` runs 4 compilation passes (lualatex × 3 + biber × 1) to produce `results/article/article.pdf`.
-- The PDF must include: cover sheet, table of contents, headers/footers, ≥1 image, ≥1 Python graph, ≥1 table, ≥1 mathematical formula, English-Hebrew bidirectional text, bibliography.
+### F-07 — LaTeX Formatting and PDF Validation
+- The LaTeX Formatter converts reviewed content into LuaLaTeX-compatible `outputs/latex/article.tex`.
+- The PDF Validator checks assignment readiness and writes `outputs/pdf/validation_report.md`.
+- The deliverable must include: cover page, table of contents, chapters/sections, headers/footers, ≥1 image placeholder, ≥1 Python graph placeholder, ≥1 table, ≥1 mathematical formula, Hebrew-English bidirectional text, bibliography.
 
 ### F-08 — Ollama Local LLM
 - The CrewAI pipeline uses a local Ollama model (`qwen3:14b`) via `crewai.LLM`.
@@ -95,6 +98,6 @@ Students and researchers who need automated document Q&A as part of an AI-agents
 | 1 | Core SDK scaffold (existing) | ✅ |
 | 2 | Services implementation | ⬜ |
 | 3 | Visuals + LaTeX layer | ⬜ |
-| 4 | CrewAI pipeline | ⬜ |
+| 4 | CrewAI pipeline without RAG | ⬜ |
 | 5 | Tests ≥ 85 % coverage + ruff 0 violations | ⬜ |
-| 6 | Full end-to-end PDF generation | ⬜ |
+| 6 | Full end-to-end LaTeX/PDF validation | ⬜ |

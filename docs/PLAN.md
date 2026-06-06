@@ -1,148 +1,91 @@
 # Architecture & Planning Document — agent_ai_HW2
 
-## 1. Architecture Overview (C4 — Container Level)
+## 1. Current Architecture
+
+The project now has two surfaces:
+
+- Top-level `src/sdk.py` keeps the existing document conversion and Claude Q&A SDK.
+- Top-level `src/main.py` runs the CrewAI article generator for "Multi-Agent Collaboration Systems: Designing Teams of AI Agents".
+
+The article pipeline intentionally works without RAG for now.
+
+## 2. Article Pipeline
 
 ```
-External Consumer (CLI / third-party)
-          │
-          ▼
-  ┌─────────────┐       ┌─────────────────────┐
-  │  AgentAISDK │       │    CrewPipeline      │  ← Article generation entry point
-  └──────┬──────┘       └──────────┬──────────┘
-         │                         │
-    ┌────┴────┐            ┌───────┴────────┐
-    │ Services│            │   crew/        │  ← Researcher, Writer, Reviewer agents
-    └────┬────┘            └───────┬────────┘
-         │                         │
-  ┌──────┴──────────────────────────────────────┐
-  │ Infrastructure Layer                         │
-  │  ApiGatekeeper      ← Rate limiting, retry  │
-  │  ConfigManager      ← JSON config loader    │
-  │  markitdown (ext)   ← Document conversion  │
-  │  anthropic SDK(ext) ← Document Q&A LLM     │
-  │  Ollama (local)     ← Article generation   │
-  │  crewai (ext)       ← Agent orchestration  │
-  └──────────────────────────────────────────────┘
-         │
-  ┌──────┴──────────────────────┐
-  │ Output Layer                │
-  │  visuals/GraphGenerator     │  ← matplotlib PNG
-  │  latex/MarkdownToLatexBuilder│ ← .tex + .bib
-  │  latex/LatexCompiler        │  ← PDF via lualatex
-  └──────────────────────────────┘
+Researcher Agent
+  -> outputs/research/research_brief.md
+Writer Agent
+  -> outputs/drafts/article_draft.md
+Reviewer Agent
+  -> outputs/reviewed/reviewed_article.md
+LaTeX Formatter Agent
+  -> outputs/latex/article.tex
+PDF Validator Agent
+  -> outputs/pdf/validation_report.md
 ```
 
-## 2. Key Architectural Decisions (ADRs)
+The crew runs with `Process.sequential`, so each task receives the previous task output as context.
 
-### ADR-001 — SDK as single entry point
-**Decision:** All business logic is exposed exclusively via `AgentAISDK`.  
-**Rationale:** Prevents leakage of internal modules to consumers; enables future swap of LLM provider without breaking callers.  
-**Trade-offs:** Slightly more boilerplate in the SDK class.
+## 3. RAG Status
 
-### ADR-002 — ApiGatekeeper for all external API calls
-**Decision:** Every `anthropic` call is wrapped in `ApiGatekeeper.execute()`.  
-**Rationale:** Centralised rate-limit enforcement; retries and logging in one place.  
-**Trade-offs:** Adds latency on first call (lock acquisition).
+RAG is not part of the current implementation plan.
 
-### ADR-003 — uv as sole package manager
-**Decision:** `uv` replaces `pip`/`venv`.  
-**Rationale:** Required by course guidelines; reproducible lock files.
+- Do not create `rag/indexer.py` yet.
+- Do not create `rag/retriever.py` yet.
+- The Researcher gathers and summarizes information directly.
+- The Writer uses the Researcher output as context.
+- A future RAG stage can be inserted between Researcher and Writer.
 
-### ADR-004 — Ollama local LLM for CrewAI pipeline
-**Decision:** CrewAI agents use `qwen3:14b` via local Ollama (`http://localhost:11434`), not the Anthropic cloud API.  
-**Rationale:** User preference; no API cost; privacy; works offline.  
-**Trade-offs:** Requires local GPU/CPU resources; slower than cloud API; no billing meter needed.
+## 4. Local LLM
 
-### ADR-005 — Three-agent sequential CrewAI crew
-**Decision:** Researcher → Writer → Reviewer with `Process.sequential`.  
-**Rationale:** Clear data dependency chain; each agent's output is the next agent's context; simple to debug.  
-**Trade-offs:** No parallelism; total latency is sum of all three agents.
+CrewAI uses local Ollama when configured:
 
-## 3. Data Flow
+- Default model: `qwen3:14b`
+- Default base URL: `http://localhost:11434`
+- Environment overrides: `OLLAMA_MODEL`, `OLLAMA_BASE_URL`, `USE_OLLAMA`
+
+## 5. Directory Layout
 
 ```
-file_path ──▶ process_document() ──▶ markitdown ──▶ markdown_text
-                                                          │
-question ──────────────────────────────────────────────▶ query_document()
-                                                          │
-                                              ApiGatekeeper.execute()
-                                                          │
-                                              anthropic.messages.create()
-                                                          │
-                                                        answer
+src/
+  main.py
+  config.py
+  agents/
+    researcher.py
+    writer.py
+    reviewer.py
+    latex_formatter.py
+    pdf_validator.py
+  tasks/
+    research_task.py
+    writing_task.py
+    review_task.py
+    latex_task.py
+    validation_task.py
+  utils/
+    logger.py
+    file_utils.py
+
+outputs/
+  research/
+  drafts/
+  reviewed/
+  latex/
+  pdf/
+  assets/
 ```
 
-## 4. Directory Layout
+## 6. Validation Requirements
 
-```
-agent_ai_HW2/
-├── src/agent_ai/
-│   ├── __init__.py
-│   ├── constants.py
-│   ├── sdk/sdk.py              # Public SDK (document Q&A)
-│   ├── services/
-│   │   ├── document_service.py # DocumentService
-│   │   └── query_service.py    # QueryService
-│   ├── crew/
-│   │   ├── _llm.py             # Ollama LLM factory (qwen3:14b)
-│   │   ├── agents.py           # Researcher, Writer, Reviewer
-│   │   ├── tasks.py            # Research, Write, Review tasks
-│   │   ├── pipeline.py         # CrewPipeline orchestrator
-│   │   └── run.py              # CLI entry point
-│   ├── latex/
-│   │   ├── builder.py          # Markdown → .tex + .bib
-│   │   ├── compiler.py         # lualatex × 3 + biber × 1 → PDF
-│   │   └── templates/
-│   │       └── article.tex.j2  # Jinja2 LaTeX template (Hebrew/English)
-│   ├── visuals/
-│   │   └── graph.py            # GraphGenerator → agents_growth.png
-│   └── shared/
-│       ├── config.py           # ConfigManager
-│       ├── gatekeeper.py       # ApiGatekeeper
-│       └── version.py          # Version tracking
-├── tests/
-│   ├── conftest.py
-│   ├── unit/                   # per-module unit tests
-│   └── integration/            # end-to-end mocked tests
-├── docs/                       # PRD, PLAN, TODO
-├── config/
-│   ├── setup.json
-│   ├── rate_limits.json
-│   ├── logging_config.json
-│   └── article.json            # article metadata
-├── .sixth/skills/              # project-level Claude Code skills
-├── data/                       # Input documents
-├── results/article/            # generated .md, .tex, .bib, .pdf
-├── notebooks/
-└── assets/                     # images for article
-```
+The PDF Validator checks for:
 
-## 5. API Contracts
-
-### `AgentAISDK.process_document(file_path)`
-- **Input:** `str | Path` — path to supported document
-- **Output:** `str` — Markdown content
-- **Raises:** `FileNotFoundError`
-
-### `AgentAISDK.query_document(markdown_text, question)`
-- **Input:** `str`, `str`
-- **Output:** `str` — Claude's answer
-- **Raises:** `RuntimeError` after max retries exhausted
-
-### `CrewPipeline.run(output_dir)`
-- **Input:** `Path` (default `results/article`)
-- **Output:** `Path` — path to the reviewed `article.md`
-- **Side effects:** writes `article.md`, `agents_growth.png`, `article.tex`, `body.tex`, `article.bib`, `article.pdf` under `output_dir`
-
-### `GraphGenerator.generate(output_dir)`
-- **Input:** `Path`
-- **Output:** `Path` — path to `agents_growth.png`
-
-### `MarkdownToLatexBuilder.build(markdown_path, metadata, assets_dir, output_dir)`
-- **Input:** `Path`, `dict`, `Path`, `Path`
-- **Output:** `tuple[Path, Path]` — `(article.tex, article.bib)`
-
-### `LatexCompiler.compile(tex_path)`
-- **Input:** `Path` — path to main `.tex` file
-- **Output:** `Path` — path to compiled `.pdf`
-- **Raises:** `RuntimeError` if any lualatex/biber pass fails
+- cover page
+- table of contents
+- chapters/sections
+- headers/footers
+- at least one image placeholder
+- at least one Python-generated graph placeholder
+- at least one table
+- at least one mathematical formula
+- Hebrew-English BiDi section
+- bibliography

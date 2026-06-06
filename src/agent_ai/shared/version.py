@@ -1,4 +1,4 @@
-"""Version tracking for the agent_ai package."""
+"""Version tracking for the project."""
 
 VERSION = "1.00"
 CODE_VERSION = "1.00"

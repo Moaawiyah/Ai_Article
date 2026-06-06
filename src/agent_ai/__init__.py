@@ -1,6 +1,6 @@
-"""agent_ai — document processing pipeline with markitdown and Claude agents."""
+"""agent_ai — AI Agents HW2 package."""
 
+from agent_ai.sdk.sdk import AgentAISDK
 from agent_ai.shared.version import VERSION
 
-__version__ = VERSION
-__all__ = ["__version__"]
+__all__ = ["AgentAISDK", "VERSION"]

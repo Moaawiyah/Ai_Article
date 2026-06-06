@@ -11,7 +11,7 @@ from agent_ai.sdk.sdk import AgentAISDK
 def sdk(config_dir, monkeypatch):
     """AgentAISDK with mocked Anthropic client and valid config."""
     monkeypatch.setenv("ANTHROPIC_API_KEY", "test-key")
-    with patch("agent_ai.sdk.sdk.anthropic.Anthropic") as mock_anthropic:
+    with patch("sdk.anthropic.Anthropic") as mock_anthropic:
         mock_client = MagicMock()
         mock_anthropic.return_value = mock_client
         instance = AgentAISDK(config_dir=config_dir)
