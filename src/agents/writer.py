@@ -2,7 +2,6 @@
 
 from crewai import Agent
 
-from utils.figure_tools import generate_architecture_diagram, generate_performance_graph
 from utils.skill_loader import load_skill
 
 
@@ -14,7 +13,6 @@ def build_writer(llm=None) -> Agent:
         goal=skill.description,
         backstory=skill.body,
         llm=llm,
-        tools=[generate_architecture_diagram, generate_performance_graph],
         allow_delegation=False,
         verbose=True,
     )

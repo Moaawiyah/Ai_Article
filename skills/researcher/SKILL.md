@@ -1,84 +1,87 @@
 ---
 name: researcher
-description: Direct research and summarization skill for a CrewAI article generator that produces a citation-ready knowledge base for a long-form article on multi-agent collaboration systems.
-version: 1.0.0
+description: Generic academic research skill — researches any topic, proposes article structure, and produces citation-ready notes for downstream writing agents.
+version: 3.0.0
 ---
 
 # Researcher
 
 ## Purpose
 
-Use this skill when an agent must gather, organize, and prioritize source material for an article about multi-agent collaboration systems, especially when the downstream crew includes writing, review, LaTeX formatting, and PDF validation stages.
+Given a topic title and a list of required artifact types, research the topic thoroughly
+and propose a logical article structure. The section titles and order are your decision —
+choose what makes academic sense for this specific topic.
 
-This skill is responsible for building a trustworthy research foundation for a ~15-page article on "Multi-Agent Collaboration Systems: Designing Teams of AI Agents".
+This skill does NOT write the article. It produces structured research notes
+and a section proposal that the Writer Agent will use.
 
-## Instructions
+---
 
-1. Start from the article objective, target length, and required deliverables.
-2. Break the topic into research themes that support a coherent academic structure.
-3. Prioritize themes that are necessary for the assignment:
-   - CrewAI team design and sequential workflows
-   - Multi-agent collaboration patterns and responsibilities
-   - direct research summaries for the Writer Agent
-   - LaTeX/PDF publication requirements
-   - Citations and bibliography readiness
-   - Visual assets: image, graph, and table
-   - Mathematical formulation or formal notation
-   - Hebrew-English bidirectional section requirements
-4. Collect high-signal evidence, definitions, terminology, and contrasting viewpoints.
-5. Distinguish clearly between facts, interpretations, open questions, and missing evidence.
-6. Organize findings into reusable notes for downstream agents, grouped by section or claim.
-7. Surface research gaps early so the Writer Agent can compensate intentionally.
+## Your Output Must Contain
 
-## Input Expectations
+### 1. Proposed Article Structure
 
-Expected inputs may include:
+A numbered list of sections you decide are appropriate for this topic. For each:
+- Section number and title
+- 1–2 sentence description of what that section should cover
+- Approximate minimum word target (typically 300–500 words per section)
 
-- Article title or topic
-- Assignment requirements and deliverables
-- Desired section outline or proposed thesis
-- Available source notes, documents, URLs, or citations
-- Constraints on article length, tone, or publication format
+Example format:
+```
+1. Abstract (150 words) — one-paragraph summary of motivation, approach, and results
+2. Introduction (450 words) — context, problem statement, paper outline
+3. ...
+```
 
-Inputs should be sufficient to determine what must be proven, illustrated, cited, and formatted in the final article.
+### 2. Research Notes per Section
 
-## Output Expectations
+For each proposed section, provide:
+- Key claims and definitions, bullet-pointed
+- Inline citation markers: `[CITE: N]` referencing your bibliography list
+- Mark uncertain or unverified claims with `[UNCERTAIN]`
 
-Produce structured research notes that are ready for downstream use.
+### 3. Bibliography Candidates
 
-Outputs should include:
+Numbered list of real, verifiable references. Use this format:
+```
+[1] Author(s), "Title," Venue/Journal, Year.
+[2] ...
+```
+Provide at least 8 entries. Do not invent references — only list papers or books
+you are confident actually exist.
 
-- A proposed topic breakdown or section map
-- Key claims supported by evidence summaries
-- Citation candidates tied to specific claims or sections
-- Identified gaps, ambiguities, or weakly supported areas
-- Suggested opportunities for:
-  - one image
-  - one graph
-  - one table
-  - one formula
-  - one Hebrew-English BiDi subsection
+### 4. Artifact Map
 
-The output should be concise, source-aware, and easy for the Writer Agent to reuse without reinterpreting the research intent.
+For each required artifact type specified in the task, state:
+- **In which section** the artifact belongs
+- **What specifically** it should show or express
 
-## Rules And Constraints
+Example:
+```
+TikZ figure → Section 3 (Architecture): show the system topology with data flow arrows
+Display formula → Section 5 (Analysis): the core mathematical update rule
+Markdown table → Section 6 (Evaluation): comparison of related approaches on key metrics
+Bibliography → Section N (References): numbered entries [1]...[N] from list above
+```
 
-- Do not draft the full article body.
-- Do not invent citations, statistics, or source authority.
-- Prefer primary, technical, or academically credible sources when available.
-- Keep notes reusable across topics; avoid hard-coding a single article structure unless the assignment requires it.
-- Separate evidence from speculation.
-- Favor traceable claims that can survive reviewer scrutiny.
-- When evidence is weak, say so explicitly instead of smoothing it over.
-- Research should support a 15-page article, not a short blog post.
-- Ensure the research plan leaves room for CrewAI process explanation and publication-quality artifacts.
+---
+
+## Rules
+
+- Do NOT draft full article prose — research notes only.
+- Do NOT invent citations, statistics, or empirical results.
+- Mark every uncertain claim with `[UNCERTAIN]` rather than stating it as fact.
+- Choose sections based on what this specific topic requires — do not copy a fixed template.
+- The bibliography must contain only real works you are confident about.
+- Output entirely in English. No Hebrew, no other languages.
+
+---
 
 ## Quality Checklist
 
-- The research covers all assignment-mandated components.
-- Major claims have source candidates or explicit evidence gaps.
-- Notes are organized for downstream writing and review.
-- The material supports academic tone rather than marketing language.
-- The article can plausibly reach 15 pages without filler.
-- Visual and formula opportunities are identified intentionally.
-- The BiDi section is accounted for rather than added as an afterthought.
+- [ ] Proposed structure has at least 8 sections with clear descriptions
+- [ ] Every section has research notes with `[CITE: N]` markers
+- [ ] Bibliography has ≥8 real references in correct format
+- [ ] Artifact map accounts for every artifact type listed in the task
+- [ ] No article prose — only structured notes
+- [ ] No invented citations or statistics

@@ -6,95 +6,62 @@ from agent_ai.shared.config import AppConfig, PipelineConfig
 
 _DESCRIPTION = """
 You are the final validator for the article pipeline. The LaTeX Formatter has
-produced article.tex (its content is in your context). Review it and produce
-a structured validation report.
+produced article.tex. Review its content (provided in context) and produce
+a structured PASS/FAIL validation report covering all 13 requirements.
+
+For EACH requirement write one block in exactly this format:
+  ### N. Requirement name
+  **Status:** PASS or FAIL
+  **Evidence:** what you found, or what is missing
+  **Fix:** concrete fix (only when FAIL)
 
 ---
 
-## Your job: check all 13 requirements
+The 13 requirements:
 
-For EACH item below, write one block using this exact format:
+1. article.tex exists — confirm you received non-empty LaTeX content with a documentclass command.
 
-### <N>. <Requirement name>
-**Status:** PASS  or  FAIL
-**Evidence:** <what you found in the tex content, or what is missing>
-**Fix:** <concrete fix, only when status is FAIL>
+2. Compilation readiness — check for unclosed environments and a missing end-document at the last line.
 
----
+3. Title page — look for title, author, date, and maketitle commands.
 
-## The 13 requirements to check:
+4. Table of contents — look for tableofcontents command.
 
-**1. article.tex exists**
-Confirm you received non-empty LaTeX content in context.
-Evidence: note approximate length and presence of the documentclass command.
+5. Headers and footers — look for usepackage fancyhdr, pagestyle fancy, fancyhead, fancyfoot.
 
-**2. article.pdf (compilation)**
-Check whether the .tex is free of obvious LaTeX errors that would block compilation:
-- unclosed \\begin without matching \\end
-- undefined commands used without \\newcommand
-- missing \\end document at the end
-Evidence: report any structural issues found, or state "no obvious blockers".
+6. Sections — count section commands; PASS requires at least 5.
 
-**3. Title page**
-Look for \\title command, \\author command, \\date command, and \\maketitle.
-Evidence: quote the title text if found.
+7. Table — look for a begin-tabular environment.
 
-**4. Table of contents**
-Look for \\tableofcontents.
+8. Mathematical formula — look for begin-equation, begin-align, or inline dollar-sign math.
 
-**5. Headers and footers**
-Look for \\usepackage fancyhdr, \\pagestyle fancy, \\fancyhead, \\fancyfoot.
+9. TikZ figure — look for a begin-tikzpicture environment inside a figure. FAIL if absent.
 
-**6. Sections/chapters**
-Count \\section occurrences. List the first 4 section titles.
-PASS requires at least 5 sections.
+10. Inline citations — look for cite commands throughout the body. PASS requires at least 3.
 
-**7. Table**
-Look for \\begin tabular. Count occurrences.
+11. English only — confirm no begin-hebrew, no setRL, no polyglossia, no Hebrew Unicode characters.
+    PASS if none of these are found.
 
-**8. Mathematical formula**
-Look for \\begin equation, \\begin align, or inline math delimited by dollar signs.
+12. Bibliography — look for begin-thebibliography with 8 or more bibitem entries.
 
-**9. Image placeholder**
-Look for \\includegraphics pointing to an architecture or diagram image.
-Evidence: quote the filename.
-
-**10. Python-generated graph placeholder**
-Look for \\includegraphics pointing to a graph or chart image such as task_completion_graph.png.
-Evidence: quote the filename.
-
-**11. Hebrew-English BiDi section**
-Look for \\begin hebrew, \\setRL, or Hebrew Unicode characters (Unicode range U+0590 to U+05FF).
-Evidence: quote the first Hebrew line if found.
-
-**12. Bibliography**
-Look for \\printbibliography, \\bibliography command, or \\addbibresource command.
-
-**13. LaTeX compilation readiness**
-Scan for common fatal errors:
-- unmatched \\begin and \\end pairs
-- \\end document present at the very end
-- no obvious undefined commands
-Evidence: state "structurally valid" or list specific issues.
+13. LaTeX compilation readiness — check for unmatched begin/end pairs and end-document as the last line.
 
 ---
 
-## Summary section (write this at the end)
-
-After all 13 blocks, write:
+After all 13 blocks write:
 
 ---
 ## Summary
 **Passed:** X/13
 **Failed:** Y/13
-**Blocking issues:** (list any FAILs that prevent compilation or submission)
-**Ready for submission:** YES  or  NO
+**Blocking issues:** list any FAILs that prevent compilation or submission
+**Ready for submission:** YES or NO
 """.strip()
 
 _EXPECTED_OUTPUT = (
     "A Markdown validation report with 13 numbered PASS/FAIL blocks (each with evidence "
-    "and a fix when failed), followed by a summary section showing pass count, failed count, "
-    "blocking issues, and a final YES/NO submission readiness verdict."
+    "and a fix when failed), followed by a Summary section with pass count, fail count, "
+    "blocking issues, and a YES/NO submission readiness verdict."
 )
 
 

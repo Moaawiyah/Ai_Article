@@ -1,79 +1,104 @@
 ---
 name: writer
-description: Long-form academic writing skill for a CrewAI article generator that transforms researcher output into a structured 15-page article draft with citations and required assignment artifacts.
-version: 1.0.0
+description: Generic long-form academic writing skill — writes any article following the structure proposed by the Researcher Agent, embedding required artifacts in their designated sections.
+version: 3.0.0
 ---
 
 # Writer
 
 ## Purpose
 
-Use this skill when an agent must draft or revise article sections using the Researcher Agent output as context. The goal is a coherent, citation-ready academic article on multi-agent collaboration systems designed for final LaTeX and PDF production.
+Write the complete academic article by expanding the section structure proposed by the
+Researcher Agent into full academic prose. The section titles, order, and content grounding
+all come from the Researcher output — do not impose a different structure.
 
-## Instructions
+---
 
-1. Start from the article thesis, outline, and current section objective.
-2. Use the Researcher Agent output as grounding, not as loose inspiration.
-3. Write with a consistent academic voice suitable for a course submission.
-4. Build sections that progress logically from motivation to architecture, workflow, evidence, and implications.
-5. Ensure the draft supports the assignment requirements:
-   - CrewAI-based multi-agent framing
-   - clear explanation of CrewAI team collaboration
-   - enough substance for ~15 pages
-   - citations throughout
-   - one image reference
-   - one graph reference
-   - one table reference
-   - one formula or mathematical expression
-   - one Hebrew-English bidirectional section
-6. Mark places where citations, figures, tables, or formulas belong if they are not yet embedded.
-7. Preserve clarity across section boundaries so the reviewer can inspect claims efficiently.
+## Process Rules
 
-## Input Expectations
+1. Read the Researcher output fully before writing any section.
+2. Write sections in the order the Researcher proposed.
+3. Each section must reach its minimum word target before moving on.
+   If a section is short, add a subsection exploring implications, limitations, or a worked example.
+4. Each section must have 2–3 `###` subsections with their own developed paragraphs.
+5. Use the Researcher's research notes as grounding — expand claims into full explanations
+   with definitions, mechanisms, examples, and trade-offs.
+6. Every major claim must carry an inline citation marker `[N]` matching the Researcher's bibliography.
+7. Do not fabricate statistics or empirical results — mark uncertain values `[UNCERTAIN]`.
 
-Expected inputs may include:
+---
 
-- Article topic and thesis
-- Section outline or subsection target
-- Research notes from the researcher skill
-- Researcher Agent output
-- Reviewer revision requests
-- Formatting expectations for later LaTeX conversion
+## Document Structure
 
-Inputs should clearly state whether the task is drafting from scratch, expanding a section, or revising an existing draft.
+Produce the article in this order:
 
-## Output Expectations
+1. **Title block** — title, author placeholder, course placeholder, date placeholder
+2. **Abstract** — one paragraph, 150–200 words, summarising motivation and key results
+3. **Table of Contents** — list all section numbers and titles
+4. **Main sections** — all sections from the Researcher's proposed structure, in order
+5. **References / Bibliography** — numbered `[1]...[N]` list from the Researcher's bibliography
 
-Produce article prose that is ready for review and later formatting.
+---
 
-Outputs should include:
+## Artifact Format Rules
 
-- Section text or full draft text
-- Clear section headings and logical transitions
-- Citation placeholders or citation-ready references tied to claims
-- Explicit placeholders for image, graph, table, and formula when needed
-- A clearly marked Hebrew-English BiDi subsection when requested
-- Notes on weak areas that need stronger evidence or review
+The task specifies required artifacts and which sections they belong to (from the Researcher's
+artifact map). Use exactly these formats:
 
-The output should be substantial enough to contribute meaningfully toward a 15-page final article.
+### TikZ Figure
+Write this exact comment syntax in the designated section:
+```
+<!-- TIKZ: <description of what the figure should show> -->
+```
+The description should be taken from the Researcher's artifact map.
+Do NOT generate image files. Do NOT use Markdown image syntax. Use only this marker.
 
-## Rules And Constraints
+### Display Formula
+Write the mathematical formula using `$$` delimiters:
+```
+$$<LaTeX expression>$$
+```
+Follow the formula with a sentence explaining each variable.
+The formula content comes from the Researcher's artifact map.
 
-- Do not fabricate citations, quotations, or empirical findings.
-- Do not overstate certainty when the evidence is mixed.
-- Do not optimize for stylistic flourish over precision.
-- Avoid repetitive filler used only to reach page count.
-- Keep sections reusable and modular so they can be revised independently.
-- Write with downstream LaTeX conversion in mind; avoid structures that are hard to typeset cleanly.
-- Ensure the BiDi section is intentional and readable, not a token inclusion.
-- When evidence is missing, leave a visible gap marker instead of guessing.
+### Markdown Table
+Write a pipe-formatted table in the designated section:
+```
+| Column A | Column B | Column C |
+|----------|----------|----------|
+| value    | value    | value    |
+```
+The table caption and data come from the Researcher's artifact map.
+
+### Bibliography
+End the article with a `## References` section listing every entry from
+the Researcher's bibliography in numbered format:
+```
+[1] Author(s), "Title," *Venue*, Year.
+```
+Use these same numbers as inline citation markers `[N]` throughout the article.
+
+---
 
 ## Quality Checklist
 
-- The draft advances the article thesis clearly.
-- Section flow is coherent and suitable for academic reading.
-- Claims are grounded in provided research or marked for citation.
-- The required artifacts are integrated or explicitly staged.
-- The prose can scale to a full 15-page article without padding.
-- The writing is compatible with later review and LaTeX formatting.
-- The BiDi section is clearly planned and contextually justified.
+Before finishing, verify:
+- [ ] All sections from the Researcher's proposed structure are present
+- [ ] Total word count (body only, excluding title block and references) meets the task target
+- [ ] Each section has ≥2 subsections (`###`) with substantive prose
+- [ ] `<!-- TIKZ: ... -->` marker is present in the designated section
+- [ ] `$$...$$` formula is present in the designated section
+- [ ] Markdown pipe table is present in the designated section
+- [ ] References section present with ≥8 numbered entries
+- [ ] Inline citations `[N]` appear throughout — every major claim is cited
+- [ ] Academic English throughout — no filler, no padding, no informal language
+- [ ] No Hebrew, no BiDi markers, no external image syntax
+
+---
+
+## Rules
+
+- Follow the Researcher's section structure exactly — do not add, remove, or reorder sections.
+- Do not call any tools. Do not generate images. Do not include Hebrew.
+- Do not repeat content across sections; each section adds new information.
+- Prefer depth over length: definitions, mechanisms, examples, and trade-offs in every section.

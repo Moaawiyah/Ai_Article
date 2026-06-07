@@ -44,10 +44,10 @@ A Markdown validation report with:
 | 6 | Sections/chapters | 5 or more `\section` commands |
 | 7 | Table | `\begin` tabular environment |
 | 8 | Mathematical formula | `\begin` equation or align environment, or inline math |
-| 9 | Image placeholder | `\includegraphics` for an architecture/diagram image |
-| 10 | Graph placeholder | `\includegraphics` for a graph/chart image |
-| 11 | Hebrew-English BiDi | `\begin` hebrew environment, `\setRL`, or Hebrew Unicode chars |
-| 12 | Bibliography | `\printbibliography`, `\bibliography`, or `\addbibresource` commands |
+| 9 | TikZ figure | `\begin{tikzpicture}` environment present inside a figure |
+| 10 | Inline citations | `\cite{refN}` commands appear throughout the article |
+| 11 | English only | No `\begin{hebrew}`, no `\setRL`, no polyglossia, no Hebrew Unicode (U+0590–U+05FF) |
+| 12 | Bibliography | `\begin{thebibliography}` with ≥8 `\bibitem` entries |
 | 13 | LaTeX compilation | No fatal structural errors, `\end` document present |
 
 ---

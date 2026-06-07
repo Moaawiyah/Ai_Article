@@ -4,15 +4,22 @@
 # ──────────────────────────────────────────────────────────────────────────────
 
 article:
-  topic: "Multi-Agent Collaboration Systems: Designing Teams of AI Agents"
+  topic: "HULA: Scalable Load Balancing Using Programmable Data Planes"
   author_name: "[Author Name]"
   course_name: "[Course Name]"
   lecturer_name: "[Lecturer Name]"
 
+assignment:
+  min_pages: 15
+  min_words: 4500
+  max_words: 5000
+  language: "english"
+  artifacts: "tikz_figure,markdown_table,display_formula,bibliography_8"
+
 llm:
-  provider: "ollama"          # ollama | anthropic | openai
-  model: "qwen3:8b"
-  base_url: "http://localhost:11434"
+  provider: "zhipuai"          # ollama | zhipuai | anthropic | openai
+  model: "glm-4.7-flashx"
+  base_url: "https://api.z.ai/api/paas/v4/"
 
 logging:
   level: "INFO"               # DEBUG | INFO | WARNING | ERROR

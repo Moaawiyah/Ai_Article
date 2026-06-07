@@ -16,11 +16,10 @@ Use this skill when an agent must review a draft critically before LaTeX formatt
 2. Check structure, argument quality, and factual grounding section by section.
 3. Inspect whether claims are properly supported or still need citations.
 4. Verify the presence or planned placement of:
-   - image
-   - graph
-   - table
-   - formula
-   - Hebrew-English BiDi section
+   - `<!-- TIKZ: ... -->` figure marker in the designated section
+   - Markdown pipe table comparing related approaches
+   - Display math formula inside `$$...$$` delimiters
+   - `## References` section with ≥8 numbered entries
 5. Evaluate whether the article has enough substance and balance for a ~15-page submission.
 6. Identify weak transitions, redundancy, unsupported claims, and missing explanations.
 7. Return actionable revision feedback that the writer can apply directly.
@@ -59,7 +58,7 @@ The output should help the crew improve the draft efficiently instead of merely 
 - Keep feedback actionable, specific, and section-aware.
 - Preserve reusability: review criteria should apply to similar academic article tasks, not only this one prompt.
 - Flag if the article is unlikely to fill 15 pages with depth.
-- Treat the BiDi section as a functional requirement, not decoration.
+- English only: flag any non-English text or BiDi markers — they must not appear.
 - Consider downstream LaTeX and PDF implications when identifying structural issues.
 
 ## Quality Checklist

@@ -1,7 +1,12 @@
 """Loads agent skills from skills/<name>/SKILL.md files."""
 
+import re
 from dataclasses import dataclass
 from pathlib import Path
+
+# CrewAI interpolates {identifier} in backstories — replace with [identifier]
+# so LaTeX examples like \begin{document} don't crash interpolate_only.
+_CREWAI_VAR = re.compile(r'\{([A-Za-z_][A-Za-z0-9_\-]*)\}')
 
 _SKILLS_ROOT = Path(__file__).resolve().parents[2] / "skills"
 
@@ -48,12 +53,13 @@ def load_skill(name: str) -> Skill:
     frontmatter, body = _split_frontmatter(text)
 
     raw_name = frontmatter.get("name", name)
+    safe_body = _CREWAI_VAR.sub(r'<<\1>>', body.strip())
     return Skill(
         name=raw_name,
         role=frontmatter.get("role", skill_name_to_role(raw_name)),
         description=frontmatter.get("description", ""),
         version=frontmatter.get("version", "0.0.0"),
-        body=body.strip(),
+        body=safe_body,
     )
 
 
