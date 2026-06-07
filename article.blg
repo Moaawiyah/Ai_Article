@@ -1,0 +1,5 @@
+[0] Config.pm:328> INFO - This is Biber 2.21
+[0] Config.pm:331> INFO - Logfile is 'article.blg'
+[28] biber-darwin:342> INFO - === Sun Jun  7, 2026, 13:52:56
+[34] Utils.pm:479> ERROR - outputs/pdf/article.bcf is malformed, last biblatex run probably failed. Deleted article.bbl
+[34] Biber.pm:137> INFO - ERRORS: 1

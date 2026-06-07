@@ -33,7 +33,7 @@
 | 5 | shared/version.py (v1.00) | High | ✅ Done | moaawiyahhaj |
 | 6 | shared/config.py (ConfigManager) | High | ✅ Done | moaawiyahhaj |
 | 7 | shared/gatekeeper.py (ApiGatekeeper) | High | ✅ Done | moaawiyahhaj |
-| 8 | sdk/sdk.py (AgentAISDK) | High | ✅ Done | moaawiyahhaj |
+| 8 | src/sdk.py (AgentAISDK) | High | ✅ Done | moaawiyahhaj |
 | 9 | constants.py | Medium | ✅ Done | moaawiyahhaj |
 | 10 | .env-example | High | ✅ Done | moaawiyahhaj |
 | 11 | .gitignore | High | ✅ Done | moaawiyahhaj |
@@ -62,17 +62,17 @@
 | 24 | latex/compiler.py (LatexCompiler) | High | ⬜ Not started | - |
 | 25 | tests/unit/test_compiler.py | High | ⬜ Not started | - |
 
-## Phase 5 — CrewAI Pipeline ⬜
+## Phase 5 — CrewAI Pipeline Without RAG ⬜
 
 | # | Task | Priority | Status | Owner |
 |---|------|----------|--------|-------|
-| 26 | pyproject.toml — add crewai, matplotlib, jinja2 | High | ⬜ Not started | - |
-| 27 | crew/_llm.py (Ollama qwen3:14b adapter) | High | ⬜ Not started | - |
-| 28 | crew/agents.py (Researcher, Writer, Reviewer) | High | ⬜ Not started | - |
-| 29 | crew/tasks.py (Research, Write, Review tasks) | High | ⬜ Not started | - |
-| 30 | crew/pipeline.py (CrewPipeline) | High | ⬜ Not started | - |
-| 31 | crew/__init__.py | Low | ⬜ Not started | - |
-| 32 | crew/run.py (CLI entry) | High | ⬜ Not started | - |
+| 26 | pyproject.toml — add crewai | High | ✅ Done | Codex |
+| 27 | src/config.py (Ollama qwen3:14b adapter) | High | ✅ Done | Codex |
+| 28 | src/agents/* five-agent factories | High | ✅ Done | Codex |
+| 29 | src/tasks/* five sequential tasks | High | ✅ Done | Codex |
+| 30 | src/main.py CrewAI orchestrator | High | ✅ Done | Codex |
+| 31 | outputs/* scaffold | Low | ✅ Done | Codex |
+| 32 | Reserve TODO for future RAG insertion point | Medium | ✅ Done | Codex |
 | 33 | tests/unit/test_agents.py | High | ⬜ Not started | - |
 | 34 | tests/unit/test_tasks.py | High | ⬜ Not started | - |
 | 35 | tests/integration/test_pipeline.py | High | ⬜ Not started | - |
@@ -93,11 +93,11 @@
 | # | Task | Priority | Status | Owner |
 |---|------|----------|--------|-------|
 | 42 | ollama pull qwen3:14b | High | ⬜ Not started | - |
-| 43 | Run full pipeline: uv run python -m agent_ai.crew.run | High | ⬜ Not started | - |
-| 44 | Verify article.md has all 8 required elements | High | ⬜ Not started | - |
-| 45 | Verify agents_growth.png renders correctly | High | ⬜ Not started | - |
-| 46 | Compile article.tex → article.pdf (4 passes) | High | ⬜ Not started | - |
-| 47 | Verify PDF: cover, ToC, Hebrew, formula, table, chart, bib | High | ⬜ Not started | - |
+| 43 | Run full pipeline: uv run python src/main.py | High | ⬜ Not started | - |
+| 44 | Verify draft has required article elements | High | ⬜ Not started | - |
+| 45 | Verify graph placeholder is present | High | ⬜ Not started | - |
+| 46 | Generate LuaLaTeX-compatible article.tex | High | ⬜ Not started | - |
+| 47 | Verify validation report: cover, ToC, Hebrew, formula, table, graph, bib | High | ⬜ Not started | - |
 
 ## Phase 8 — Final Submission ⬜
 
@@ -111,5 +111,5 @@
 - Coverage ≥ 85 % (`fail_under = 85` in pyproject.toml)
 - Zero Ruff violations (`uv run ruff check src tests`)
 - No secrets or hard-coded config values in source code
-- `results/article/article.pdf` exists and passes manual checklist
+- `outputs/pdf/validation_report.md` passes the assignment checklist
 - README updated with usage examples

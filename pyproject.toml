@@ -12,6 +12,7 @@ license = { text = "MIT" }
 authors = [{ name = "moaawiyahhaj", email = "moaawiyah.haj@gmail.com" }]
 dependencies = [
     "anthropic>=0.40.0",
+    "crewai>=0.100.0",
     "markitdown[pdf]>=0.1.0",
     "python-dotenv>=1.0.0",
 ]
@@ -27,7 +28,8 @@ dev = [
 agent-ai = "agent_ai.sdk.sdk:main"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/agent_ai"]
+only-include = ["src"]
+sources = ["src"]
 
 [tool.ruff]
 line-length = 100

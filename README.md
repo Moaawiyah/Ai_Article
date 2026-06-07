@@ -34,7 +34,7 @@ uv run agent-ai path/to/document.pdf "What are the main conclusions?"
 ### Python API
 
 ```python
-from agent_ai.sdk.sdk import AgentAISDK
+from sdk import AgentAISDK
 
 sdk = AgentAISDK()
 markdown = sdk.process_document("report.pdf")
@@ -68,14 +68,15 @@ Coverage threshold is set to **85 %** in `pyproject.toml`.
 
 ```
 agent_ai_HW2/
-├── src/agent_ai/
-│   ├── sdk/sdk.py          # Public entry point (AgentAISDK)
-│   ├── services/           # Business-logic services
-│   ├── shared/
-│   │   ├── config.py       # ConfigManager
-│   │   ├── gatekeeper.py   # ApiGatekeeper (rate limiting)
-│   │   └── version.py      # Version tracking (v1.00)
-│   └── constants.py
+├── src/
+│   ├── sdk.py              # Public document Q&A entry point (AgentAISDK)
+│   ├── config.py           # ConfigManager + article pipeline config
+│   ├── gatekeeper.py       # ApiGatekeeper (rate limiting)
+│   ├── version.py          # Version tracking (v1.00)
+│   ├── constants.py
+│   ├── agents/             # CrewAI article agents
+│   ├── tasks/              # CrewAI article tasks
+│   └── utils/              # Shared article pipeline helpers
 ├── tests/
 │   ├── unit/               # Unit tests (mirrors src/)
 │   └── integration/        # Integration tests
