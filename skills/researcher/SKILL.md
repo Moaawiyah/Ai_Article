@@ -40,7 +40,32 @@ For each proposed section, provide:
 - Inline citation markers: `[CITE: N]` referencing your bibliography list
 - Mark uncertain or unverified claims with `[UNCERTAIN]`
 
-### 3. Bibliography Candidates
+### 3. Comparative Architecture Analysis
+
+Identify **exactly 2 related architectures or systems** that are meaningfully comparable to
+the main topic. For each one provide:
+- Full name and the original paper/source
+- Core mechanism (1–3 sentences)
+- Key strengths and weaknesses vs. the main topic
+- At least one concrete metric or design decision where they differ (e.g. convergence time,
+  memory footprint, control-plane involvement, scalability ceiling)
+
+Label these clearly so the Writer can build a side-by-side comparison:
+```
+Comparative Architecture A: <Name>
+  - Mechanism: ...
+  - Strengths: ...
+  - Weaknesses: ...
+  - Key difference from main topic: ...
+
+Comparative Architecture B: <Name>
+  - Mechanism: ...
+  - Strengths: ...
+  - Weaknesses: ...
+  - Key difference from main topic: ...
+```
+
+### 4. Bibliography Candidates
 
 Numbered list of real, verifiable references. Use this format:
 ```
@@ -50,7 +75,7 @@ Numbered list of real, verifiable references. Use this format:
 Provide at least 8 entries. Do not invent references — only list papers or books
 you are confident actually exist.
 
-### 4. Artifact Map
+### 5. Artifact Map
 
 For each required artifact type specified in the task, state:
 - **In which section** the artifact belongs
@@ -82,6 +107,7 @@ Bibliography → Section N (References): numbered entries [1]...[N] from list ab
 - [ ] Proposed structure has at least 8 sections with clear descriptions
 - [ ] Every section has research notes with `[CITE: N]` markers
 - [ ] Bibliography has ≥8 real references in correct format
+- [ ] Comparative Architecture Analysis contains exactly 2 named architectures with mechanism, strengths, weaknesses, and key difference
 - [ ] Artifact map accounts for every artifact type listed in the task
 - [ ] No article prose — only structured notes
 - [ ] No invented citations or statistics

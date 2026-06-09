@@ -1,12 +1,12 @@
-Compilation of: /Users/moaawiyahhaj/Desktop/agent_ai_HW2/outputs/latex/article.tex
-Command: /Library/TeX/texbin/lualatex --interaction=nonstopmode --halt-on-error --output-directory=/Users/moaawiyahhaj/Desktop/agent_ai_HW2/outputs/pdf /Users/moaawiyahhaj/Desktop/agent_ai_HW2/outputs/latex/article.tex
+Compilation of: /Users/moaawiyahhaj/Desktop/ai_artcle/outputs/latex/article.tex
+Command: /Library/TeX/texbin/lualatex --interaction=nonstopmode --halt-on-error --output-directory=/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf /Users/moaawiyahhaj/Desktop/ai_artcle/outputs/latex/article.tex
 
 ============================================================
 Pass 1/2
 ============================================================
 This is LuaHBTeX, Version 1.24.0 (TeX Live 2026) 
  restricted system commands enabled.
-(/Users/moaawiyahhaj/Desktop/agent_ai_HW2/outputs/latex/article.tex
+(/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/latex/article.tex
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  (/usr/local/texlive/2026/texmf-dist/tex/latex/base/article.cls
@@ -238,7 +238,19 @@ s/tikzlibraryplotmarks.code.tex
 (/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/libraries/pgflibraryplotmar
 ks.code.tex)))
 (/usr/local/texlive/2026/texmf-dist/tex/latex/booktabs/booktabs.sty)
-(/usr/local/texlive/2026/texmf-dist/tex/latex/caption/caption.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/adjustbox/adjustbox.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(/usr/local/texlive/2026/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/local/texlive/2026/texmf-dist/tex/generic/xkeyval/xkvutils.tex)))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/adjustbox/adjcalc.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/adjustbox/trimclip.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/collectbox/collectbox.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/adjustbox/tc-luatex.def
+(/usr/local/texlive/2026/texmf-dist/tex/latex/adjustbox/tc-pdftex.def)))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/varwidth/varwidth.sty)
+==> First Aid for varwidth.sty applied!
+) (/usr/local/texlive/2026/texmf-dist/tex/latex/caption/caption.sty
 (/usr/local/texlive/2026/texmf-dist/tex/latex/caption/caption3.sty))
 (/usr/local/texlive/2026/texmf-dist/tex/latex/float/float.sty)
 (/usr/local/texlive/2026/texmf-dist/tex/latex/hyperref/hyperref.sty
@@ -269,7 +281,7 @@ ty (/usr/local/texlive/2026/texmf-dist/tex/latex/kvoptions/kvoptions.sty)))
 (/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/microtype-luatex.def)
 (/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/microtype.cfg))
 (/usr/local/texlive/2026/texmf-dist/tex/latex/setspace/setspace.sty)
-(/Users/moaawiyahhaj/Desktop/agent_ai_HW2/outputs/pdf/article.aux)
+(/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.aux)
 *geometry* driver: auto-detecting
 *geometry* detected driver: luatex
 (/usr/local/texlive/2026/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -279,10 +291,10 @@ ty (/usr/local/texlive/2026/texmf-dist/tex/latex/kvoptions/kvoptions.sty)))
 Package pgfplots notification 'compat/show suggested version=true': document ha
 s been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
 
-(/Users/moaawiyahhaj/Desktop/agent_ai_HW2/outputs/pdf/article.out)
-(/Users/moaawiyahhaj/Desktop/agent_ai_HW2/outputs/pdf/article.out)
+(/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.out)
+(/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.out)
 
-Package microtype Warning: Unable to apply patch `footnote' on input line 25.
+Package microtype Warning: Unable to apply patch `footnote' on input line 28.
 
 
 (/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-LatinModernRoman.cfg
@@ -292,89 +304,119 @@ Package microtype Warning: Unable to apply patch `footnote' on input line 25.
 (/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-msb.cfg)
 (/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-cmr.cfg) [1{/usr/loc
 al/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-(/Users/moaawiyahhaj/Desktop/agent_ai_HW2/outputs/pdf/article.toc)
+(/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.toc)
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
+Package fancyhdr Warning: \headheight is too small (14.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
 
 [2]
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
+Package fancyhdr Warning: \headheight is too small (14.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
 
 [3]
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
+Package fancyhdr Warning: \headheight is too small (14.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
 
 [4]
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
+Package fancyhdr Warning: \headheight is too small (14.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
 
 [5]
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
+Package fancyhdr Warning: \headheight is too small (14.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
 
 [6]
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
+Package fancyhdr Warning: \headheight is too small (14.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
 
 [7]
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
+Package fancyhdr Warning: \headheight is too small (14.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
 
 [8]
-Overfull \hbox (29.32948pt too wide) in paragraph at lines 162--171
- [][] 
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
+Package fancyhdr Warning: \headheight is too small (14.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
 
 [9]
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
+Package fancyhdr Warning: \headheight is too small (14.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
 
 [10]
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
+Package fancyhdr Warning: \headheight is too small (14.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
 
-[11] (/Users/moaawiyahhaj/Desktop/agent_ai_HW2/outputs/pdf/article.aux)
+[11<./benchmark.png>]
+
+Package fancyhdr Warning: \headheight is too small (14.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
+
+[12]
+
+Package fancyhdr Warning: \headheight is too small (14.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
+
+[13]
+
+Package fancyhdr Warning: \headheight is too small (14.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
+
+[14]
+
+Package fancyhdr Warning: \headheight is too small (14.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
+
+[15] (/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.aux)
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
@@ -384,33 +426,17 @@ Package rerunfilecheck Warning: File `article.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
 )
-(see the transcript file for additional information)
- 577 words of node memory still in use:
+ 590 words of node memory still in use:
    7 hlist, 2 vlist, 2 rule, 1 local_par, 4 glue, 4 kern, 1 penalty, 1 margin_k
-ern, 3 glyph, 11 attribute, 56 glue_spec, 11 attribute_list, 2 write nodes
-   avail lists: 1:1,2:910,3:480,4:84,5:449,6:71,7:8385,8:32,9:365,10:11,11:732
+ern, 3 glyph, 13 attribute, 57 glue_spec, 13 attribute_list, 2 write nodes
+   avail lists: 1:1,2:774,3:395,4:101,5:418,6:107,7:7238,8:39,9:551,10:16,11:61
+5
+
+warning  (pdf backend): unreferenced destination with name 'subsection.7.4'
+
+warning  (pdf backend): unreferenced destination with name 'subsection.7.3'
 
 warning  (pdf backend): unreferenced destination with name 'subsection.6.4'
-
-warning  (pdf backend): unreferenced destination with name 'subsection.6.3'
-
-warning  (pdf backend): unreferenced destination with name 'subsection.6.2'
-
-warning  (pdf backend): unreferenced destination with name 'subsection.6.1'
-
-warning  (pdf backend): unreferenced destination with name 'subsection.5.2'
-
-warning  (pdf backend): unreferenced destination with name 'subsection.5.1'
-
-warning  (pdf backend): unreferenced destination with name 'subsection.4.3'
-
-warning  (pdf backend): unreferenced destination with name 'subsection.4.2'
-
-warning  (pdf backend): unreferenced destination with name 'subsection.4.1'
-
-warning  (pdf backend): unreferenced destination with name 'subsection.3.2'
-
-warning  (pdf backend): unreferenced destination with name 'subsection.3.1'
 </usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/lmroman12-italic.o
 tf></usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/lmroman6-regula
 r.otf></usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/lmroman8-reg
@@ -419,10 +445,13 @@ ular.otf></usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/lmroman12
 2-regular.otf></usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/lmro
 man10-regular.otf></usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/
 lmroman17-regular.otf></usr/local/texlive/2026/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmmi12.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmr12.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmsy10.pfb>
-Output written on article.pdf (11 pages, 98437 bytes).
+sfonts/cm/cmex10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmmi12.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmmi8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmr12.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmr8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmsy10.pfb>
+Output written on article.pdf (15 pages, 239036 bytes).
 Transcript written on article.log.
 
 ============================================================
@@ -430,7 +459,7 @@ Pass 2/2
 ============================================================
 This is LuaHBTeX, Version 1.24.0 (TeX Live 2026) 
  restricted system commands enabled.
-(/Users/moaawiyahhaj/Desktop/agent_ai_HW2/outputs/latex/article.tex
+(/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/latex/article.tex
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  (/usr/local/texlive/2026/texmf-dist/tex/latex/base/article.cls
@@ -662,7 +691,19 @@ s/tikzlibraryplotmarks.code.tex
 (/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/libraries/pgflibraryplotmar
 ks.code.tex)))
 (/usr/local/texlive/2026/texmf-dist/tex/latex/booktabs/booktabs.sty)
-(/usr/local/texlive/2026/texmf-dist/tex/latex/caption/caption.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/adjustbox/adjustbox.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(/usr/local/texlive/2026/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/local/texlive/2026/texmf-dist/tex/generic/xkeyval/xkvutils.tex)))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/adjustbox/adjcalc.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/adjustbox/trimclip.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/collectbox/collectbox.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/adjustbox/tc-luatex.def
+(/usr/local/texlive/2026/texmf-dist/tex/latex/adjustbox/tc-pdftex.def)))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/varwidth/varwidth.sty)
+==> First Aid for varwidth.sty applied!
+) (/usr/local/texlive/2026/texmf-dist/tex/latex/caption/caption.sty
 (/usr/local/texlive/2026/texmf-dist/tex/latex/caption/caption3.sty))
 (/usr/local/texlive/2026/texmf-dist/tex/latex/float/float.sty)
 (/usr/local/texlive/2026/texmf-dist/tex/latex/hyperref/hyperref.sty
@@ -693,7 +734,7 @@ ty (/usr/local/texlive/2026/texmf-dist/tex/latex/kvoptions/kvoptions.sty)))
 (/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/microtype-luatex.def)
 (/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/microtype.cfg))
 (/usr/local/texlive/2026/texmf-dist/tex/latex/setspace/setspace.sty)
-(/Users/moaawiyahhaj/Desktop/agent_ai_HW2/outputs/pdf/article.aux)
+(/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.aux)
 *geometry* driver: auto-detecting
 *geometry* detected driver: luatex
 (/usr/local/texlive/2026/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -703,10 +744,10 @@ ty (/usr/local/texlive/2026/texmf-dist/tex/latex/kvoptions/kvoptions.sty)))
 Package pgfplots notification 'compat/show suggested version=true': document ha
 s been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
 
-(/Users/moaawiyahhaj/Desktop/agent_ai_HW2/outputs/pdf/article.out)
-(/Users/moaawiyahhaj/Desktop/agent_ai_HW2/outputs/pdf/article.out)
+(/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.out)
+(/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.out)
 
-Package microtype Warning: Unable to apply patch `footnote' on input line 25.
+Package microtype Warning: Unable to apply patch `footnote' on input line 28.
 
 
 (/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-LatinModernRoman.cfg
@@ -716,94 +757,136 @@ Package microtype Warning: Unable to apply patch `footnote' on input line 25.
 (/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-msb.cfg)
 (/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-cmr.cfg) [1{/usr/loc
 al/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-(/Users/moaawiyahhaj/Desktop/agent_ai_HW2/outputs/pdf/article.toc)
+(/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.toc
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
+Package fancyhdr Warning: \headheight is too small (14.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
 
-[2]
+[2])
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
+Package fancyhdr Warning: \headheight is too small (14.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
 
 [3]
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
+Package fancyhdr Warning: \headheight is too small (14.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
 
 [4]
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
+Package fancyhdr Warning: \headheight is too small (14.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
 
 [5]
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
+Package fancyhdr Warning: \headheight is too small (14.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
 
 [6]
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
+Package fancyhdr Warning: \headheight is too small (14.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
 
 [7]
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
+Package fancyhdr Warning: \headheight is too small (14.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
 
 [8]
-Overfull \hbox (29.32948pt too wide) in paragraph at lines 162--171
- [][] 
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
+Package fancyhdr Warning: \headheight is too small (14.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
 
 [9]
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
+Package fancyhdr Warning: \headheight is too small (14.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
 
 [10]
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
+Package fancyhdr Warning: \headheight is too small (14.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
 
-[11] (/Users/moaawiyahhaj/Desktop/agent_ai_HW2/outputs/pdf/article.aux))
-(see the transcript file for additional information)
- 577 words of node memory still in use:
+[11]
+
+Package fancyhdr Warning: \headheight is too small (14.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
+
+[12<./benchmark.png>]
+
+Package fancyhdr Warning: \headheight is too small (14.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
+
+[13]
+
+Package fancyhdr Warning: \headheight is too small (14.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
+
+[14]
+
+Package fancyhdr Warning: \headheight is too small (14.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
+
+[15]
+
+Package fancyhdr Warning: \headheight is too small (14.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
+
+[16] (/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+)
+ 590 words of node memory still in use:
    7 hlist, 2 vlist, 2 rule, 1 local_par, 4 glue, 4 kern, 1 penalty, 1 margin_k
-ern, 3 glyph, 11 attribute, 56 glue_spec, 11 attribute_list, 2 write nodes
-   avail lists: 1:1,2:912,3:480,4:84,5:449,6:38,7:8385,8:32,9:329,10:11,11:732
+ern, 3 glyph, 13 attribute, 57 glue_spec, 13 attribute_list, 2 write nodes
+   avail lists: 1:2,2:820,3:395,4:105,5:419,6:111,7:7236,8:39,9:563,10:16,11:61
+5
 </usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/lmroman12-italic.o
 tf></usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/lmroman6-regula
 r.otf></usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/lmroman8-reg
@@ -812,8 +895,11 @@ ular.otf></usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/lmroman12
 2-regular.otf></usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/lmro
 man10-regular.otf></usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/
 lmroman17-regular.otf></usr/local/texlive/2026/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmmi12.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmr12.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmsy10.pfb>
-Output written on article.pdf (11 pages, 95784 bytes).
+sfonts/cm/cmex10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmmi12.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmmi8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmr12.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmr8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmsy10.pfb>
+Output written on article.pdf (16 pages, 240278 bytes).
 Transcript written on article.log.

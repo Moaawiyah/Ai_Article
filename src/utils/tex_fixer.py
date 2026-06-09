@@ -39,6 +39,22 @@ def strip_tex_fences(tex_path: Path) -> None:
     cleaned = re.sub(r"\n?\\thispagestyle\{[^}]*\}", "", cleaned)
     cleaned = re.sub(r"(\\\\)\s+\[", r"\1 {[}", cleaned)
     cleaned = fix_bracket_syntax(cleaned)
+    cleaned = fix_tikz_reserved_styles(cleaned)
+    cleaned = fix_text_mode_math(cleaned)
+    cleaned = fix_tables(cleaned)
+
+    # Ensure bibliography starts on a new page
+    if r'\begin{thebibliography}' in cleaned:
+        cleaned = re.sub(r'(?:\\newpage\s*\n*)+(?=\\begin\{thebibliography\})', '', cleaned)
+        cleaned = cleaned.replace(r'\begin{thebibliography}', '\\newpage\n\\begin{thebibliography}', 1)
+
+    # Ensure \headheight is large enough for fancyhdr (avoids repeated warnings)
+    if r'\usepackage{fancyhdr}' in cleaned and r'\setlength{\headheight}' not in cleaned:
+        cleaned = cleaned.replace(
+            r'\usepackage{fancyhdr}',
+            '\\usepackage{fancyhdr}\n\\setlength{\\headheight}{14pt}',
+            1,
+        )
 
     # Inject minimal fancyhdr setup if the LLM omitted it entirely
     if r"\fancyhead" not in cleaned and r"\begin{document}" in cleaned:
@@ -86,3 +102,92 @@ def fix_bracket_syntax(tex: str) -> str:
     tex = re.sub(r"\\end\{thebibliography\s*\n", r"\\end{thebibliography}\n", tex)
 
     return tex
+
+
+# Regions whose contents are already valid LaTeX and must never be touched:
+# math, TikZ, tabular, verbatim, and the bibliography block.
+_PROTECTED = re.compile(
+    r"\$\$.*?\$\$"                                              # display math $$...$$
+    r"|\$[^$]*?\$"                                              # inline math $...$
+    r"|\\\[.*?\\\]"                                             # \[ ... \]
+    r"|\\\(.*?\\\)"                                             # \( ... \)
+    r"|\\begin\{(equation|align|aligned|tikzpicture|tabular|"
+    r"verbatim|lstlisting|thebibliography)\*?\}.*?"
+    r"\\end\{\1\*?\}",                                          # named environments
+    re.DOTALL,
+)
+
+
+# TikZ keys that collide with built-in pgf keys when used as user style names.
+_TIKZ_RESERVED = {
+    "id", "name", "node", "at", "to", "every", "scale", "shift",
+    "label", "text", "draw", "fill", "color", "shape",
+    "above", "below", "left", "right", "anchor",
+}
+
+
+def fix_tikz_reserved_styles(tex: str) -> str:
+    """Rename user-defined TikZ styles whose names collide with reserved pgf keys.
+
+    E.g. ``id/.style={...}`` + ``\\node[id]`` crashes with
+    "The key '/tikz/id' requires a value"; both the definition and every usage
+    are renamed to ``idnode`` within each tikzpicture.
+    """
+    def _fix_pic(m: re.Match) -> str:
+        block   = m.group(0)
+        defined = set(re.findall(r"([A-Za-z]\w*)/\.style", block))
+        for name in sorted(defined & _TIKZ_RESERVED):
+            new = f"{name}node"
+            block = re.sub(rf"(?<![\w])({re.escape(name)})(?=/\.style)", new, block)
+            block = re.sub(rf"(?<![\w/.])({re.escape(name)})(?![\w])", new, block)
+        return block
+
+    return re.sub(
+        r"\\begin\{tikzpicture\}.*?\\end\{tikzpicture\}",
+        _fix_pic, tex, flags=re.DOTALL,
+    )
+
+
+def fix_tables(tex: str) -> str:
+    """Wrap every tabular in a table float with adjustbox to prevent page-width overflow."""
+    def _wrap(m: re.Match) -> str:
+        block = m.group(0)
+        if r'\adjustbox' in block or r'\resizebox' in block:
+            return block
+        block = re.sub(
+            r'(\\begin\{tabular\})',
+            r'  \\adjustbox{max width=\\textwidth}{\n  \1',
+            block, count=1,
+        )
+        block = re.sub(r'(\\end\{tabular\})', r'\1\n  }', block, count=1)
+        return block
+
+    return re.sub(r'\\begin\{table\}.*?\\end\{table\}', _wrap, tex, flags=re.DOTALL)
+
+
+def _fix_free_segment(seg: str) -> str:
+    """Repair bare math/special characters in a text-mode (non-protected) segment."""
+    # Superscripts written as prose: 2^{32} or 2^32 → $2^{32}$
+    seg = re.sub(r"(\w+)\^\{([^}]*)\}", r"$\1^{\2}$", seg)
+    seg = re.sub(r"(\w+)\^(\w+)",       r"$\1^{\2}$", seg)
+    # Stray specials that crash text mode (skip already-escaped ones)
+    seg = re.sub(r"(?<!\\)_", r"\\_", seg)
+    seg = re.sub(r"(?<!\\)&", r"\\&", seg)
+    seg = re.sub(r"(?<!\\)#", r"\\#", seg)
+    return seg
+
+
+def fix_text_mode_math(tex: str) -> str:
+    """Wrap bare superscripts and escape stray specials in text mode.
+
+    Math, TikZ, tabular, verbatim, and bibliography regions are left untouched so
+    that legitimate `^`, `_`, and `&` inside them keep their meaning.
+    """
+    out: list[str] = []
+    last = 0
+    for m in _PROTECTED.finditer(tex):
+        out.append(_fix_free_segment(tex[last:m.start()]))
+        out.append(m.group(0))
+        last = m.end()
+    out.append(_fix_free_segment(tex[last:]))
+    return "".join(out)

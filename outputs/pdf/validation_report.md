@@ -14,11 +14,11 @@
 
 ### 1. article.tex exists
 **Status:** ✅ PASS
-**Evidence:** Found at `outputs/latex/article.tex` (26,328 bytes)
+**Evidence:** Found at `outputs/latex/article.tex` (32,710 bytes)
 
 ### 2. article.pdf exists
 **Status:** ✅ PASS
-**Evidence:** Found at `outputs/pdf/article.pdf` (95,784 bytes)
+**Evidence:** Found at `outputs/pdf/article.pdf` (240,278 bytes)
 
 ### 3. Title page
 **Status:** ✅ PASS
@@ -34,7 +34,7 @@
 
 ### 6. Sections/chapters
 **Status:** ✅ PASS
-**Evidence:** 8 section(s): "Introduction", "Background and Related Work", "Motivation and Challenges", "System Architecture"…
+**Evidence:** 10 section(s): "Introduction", "Background and Challenges", "HULA Architecture Overview", "Data Plane Implementation"…
 
 ### 7. Table
 **Status:** ✅ PASS
@@ -42,7 +42,7 @@
 
 ### 8. Mathematical formula
 **Status:** ✅ PASS
-**Evidence:** 1 `equation` + 0 `align` environment(s)
+**Evidence:** 2 `equation` + 0 `align` environment(s)
 
 ### 9. TikZ figure
 **Status:** ✅ PASS
@@ -50,7 +50,7 @@
 
 ### 10. Inline citations
 **Status:** ✅ PASS
-**Evidence:** 13 `\cite{}` commands — e.g. `\cite{ref1}`, `\cite{ref5}`
+**Evidence:** 15 `\cite{}` commands — e.g. `\cite{ref1}`, `\cite{ref2}`
 
 ### 11. English only
 **Status:** ✅ PASS

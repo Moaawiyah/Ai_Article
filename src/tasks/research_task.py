@@ -22,6 +22,11 @@ def build_research_task(agent: Agent, config: AppConfig | PipelineConfig) -> Tas
         "4. Collect bibliography candidates — real, verifiable references only.\n"
         "5. Identify where these required artifacts naturally fit in your proposed structure:\n"
         f"{artifacts}\n\n"
+        "6. Identify exactly 2 related architectures or systems that are directly comparable\n"
+        "   to the main topic. Research each in depth: core mechanism, strengths, weaknesses,\n"
+        "   and at least one concrete metric or design decision where they differ from the\n"
+        "   main topic. Label them 'Comparative Architecture A' and 'Comparative Architecture B'.\n"
+        "   These will be used by the Writer for a dedicated side-by-side comparison.\n\n"
         "Follow your skill for output format and quality rules.\n"
         "Do not draft full article prose — notes only."
     )

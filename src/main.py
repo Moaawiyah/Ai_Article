@@ -9,6 +9,87 @@ from utils.pdf_compiler import compile_pdf
 from utils.tex_fixer import strip_tex_fences
 from utils.tex_validator import validate
 
+_PRICE_INPUT    = 0.07   # $ per 1M prompt tokens
+_PRICE_CACHED   = 0.01   # $ per 1M cached-input tokens
+_PRICE_OUTPUT   = 0.40   # $ per 1M completion tokens
+
+
+def _print_token_usage(result, log) -> None:
+    usage = getattr(result, "token_usage", None)
+    if usage is None:
+        log.warning("Token usage not available from provider")
+        return
+    prompt  = getattr(usage, "prompt_tokens",        0) or 0
+    cached  = getattr(usage, "cached_prompt_tokens",  0) or 0
+    output  = getattr(usage, "completion_tokens",     0) or 0
+    total   = getattr(usage, "total_tokens",           0) or 0
+    cost    = (prompt * _PRICE_INPUT + cached * _PRICE_CACHED + output * _PRICE_OUTPUT) / 1_000_000
+    log.info("─" * 60)
+    log.info("TOKEN USAGE & COST")
+    log.info("  prompt tokens   : %d  ($%.6f)", prompt, prompt  * _PRICE_INPUT  / 1_000_000)
+    log.info("  cached tokens   : %d  ($%.6f)", cached, cached  * _PRICE_CACHED / 1_000_000)
+    log.info("  output tokens   : %d  ($%.6f)", output, output  * _PRICE_OUTPUT / 1_000_000)
+    log.info("  total tokens    : %d", total)
+    log.info("  estimated cost  : $%.4f", cost)
+    print(f"\nToken usage — prompt:{prompt}  cached:{cached}  output:{output}  "
+          f"total:{total}  cost:${cost:.6f}")
+
+
+def _graph_step(cfg: PipelineConfig, log) -> None:
+    import re as _re
+    from utils.graph_spec import generate_graph_spec
+    from utils.graph_generator import generate_performance_graph
+
+    log.info("─" * 60)
+    log.info("GRAPH GENERATION  — LLM spec + matplotlib")
+    spec = generate_graph_spec(
+        brief_path=cfg.output_research / "research_brief.md",
+        cfg=cfg,
+        spec_out=cfg.output_assets / "graph_spec.json",
+    )
+    filename = generate_performance_graph(cfg.topic, cfg.output_latex, spec=spec)
+    if filename is None:
+        return
+    tex_path = cfg.output_latex / "article.tex"
+    name_a = spec["arch_a"]["name"]
+    name_b = spec["arch_b"]["name"]
+    caption = (
+        f"Left: CDF of bottleneck queue length. "
+        f"Right: average FCT vs.\\ network load. "
+        f"Comparison of {spec['main']['name']} vs.\\ {name_a} vs.\\ {name_b} (illustrative)."
+    )
+    figure_block = (
+        "\n\\begin{figure}[H]\n"
+        "  \\centering\n"
+        f"  \\includegraphics[width=\\textwidth]{{{filename}}}\n"
+        f"  \\caption{{{caption}}}\n"
+        "  \\label{fig:perf}\n"
+        "\\end{figure}\n"
+    )
+    source = tex_path.read_text(encoding="utf-8")
+
+    # Inject at end of Evaluation section (before the next \section{})
+    eval_m = _re.search(r'\\section\{[^}]*[Ee]valuation[^}]*\}', source)
+    if eval_m:
+        rest = source[eval_m.end():]
+        next_m = _re.search(r'\n\\section\{', rest)
+        if next_m:
+            pos = eval_m.end() + next_m.start()
+            source = source[:pos] + "\n" + figure_block + source[pos:]
+        else:
+            bib = source.find("\\begin{thebibliography}")
+            pos = bib if bib != -1 else source.rfind("\\end{document}")
+            source = source[:pos] + figure_block + "\n" + source[pos:]
+    else:
+        bib = source.find("\\begin{thebibliography}")
+        if bib != -1:
+            source = source[:bib] + figure_block + "\n" + source[bib:]
+        else:
+            source = source.replace("\\end{document}", figure_block + "\\end{document}")
+
+    tex_path.write_text(source, encoding="utf-8")
+    log.info("Graph injected into Evaluation section → %s", cfg.output_latex / filename)
+
 
 def _compile_step(cfg: PipelineConfig, log) -> bool:
     tex_path = cfg.output_latex / "article.tex"
@@ -82,11 +163,13 @@ def main() -> None:
 
     try:
         with timed_stage(log, "Agent pipeline (all 5 stages)"):
-            crew.kickoff(inputs={"topic": cfg.topic})
+            result = crew.kickoff(inputs={"topic": cfg.topic})
     except Exception as exc:
         log.error("Agent pipeline failed: %s", exc)
         raise
 
+    _print_token_usage(result, log)
+    _graph_step(cfg, log)
     _compile_step(cfg, log)
     _validate_step(cfg, log)
 
