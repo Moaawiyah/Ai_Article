@@ -1,23 +1,23 @@
 {
   "main": {
-    "name": "HULA (P4)",
-    "median_queue": 4,
+    "name": "HULA (DPDK)",
+    "median_queue": 3,
     "p95_queue": 12,
-    "base_fct_ms": 0.45,
-    "fct_slope": 0.008
+    "base_fct_ms": 0.8,
+    "fct_slope": 0.02
   },
   "arch_a": {
-    "name": "Software LB",
-    "median_queue": 18,
-    "p95_queue": 65,
-    "base_fct_ms": 1.2,
-    "fct_slope": 0.12
+    "name": "Nginx (SW)",
+    "median_queue": 45,
+    "p95_queue": 180,
+    "base_fct_ms": 4.5,
+    "fct_slope": 0.25
   },
   "arch_b": {
-    "name": "ECMP (Legacy)",
-    "median_queue": 28,
-    "p95_queue": 110,
-    "base_fct_ms": 0.9,
-    "fct_slope": 0.05
+    "name": "F5 (HW)",
+    "median_queue": 80,
+    "p95_queue": 250,
+    "base_fct_ms": 2.0,
+    "fct_slope": 0.1
   }
 }

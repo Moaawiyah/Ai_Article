@@ -46,7 +46,15 @@ Produce the article in this order:
 2. **Abstract** — one paragraph, 150–200 words, summarising motivation and key results
 3. **Table of Contents** — list all section numbers and titles
 4. **Main sections** — all sections from the Researcher's proposed structure, in order
-5. **References / Bibliography** — numbered `[1]...[N]` list from the Researcher's bibliography
+5. **Bilingual section (in the body)** — one section that mixes English and Hebrew, placed
+   somewhere in the **middle** of the article (e.g. right after the Background/Motivation
+   section — never the first or last section). Its `##` heading is **English**
+   (e.g. `## Bilingual Summary`). Structure it as: one English paragraph introducing it, then one
+   Hebrew paragraph (~120 words) summarising the topic in academic Hebrew, then one short English
+   paragraph. Keep English technical terms (P4, SDN, ECMP, HULA) inside the Hebrew sentences, and
+   end each Hebrew sentence with a Hebrew word. This demonstrates the required Hebrew↔English
+   (RTL↔LTR) transition.
+6. **References / Bibliography** — numbered `[1]...[N]` list from the Researcher's bibliography
 
 ---
 
@@ -102,13 +110,16 @@ Before finishing, verify:
 - [ ] References section present with ≥8 numbered entries
 - [ ] Inline citations `[N]` appear throughout — every major claim is cited
 - [ ] Academic English throughout — no filler, no padding, no informal language
-- [ ] No Hebrew, no BiDi markers, no external image syntax
+- [ ] One bilingual section (English heading) with a Hebrew paragraph present in the middle of the article
+- [ ] No external image syntax
 
 ---
 
 ## Rules
 
 - Follow the Researcher's section structure exactly — do not add, remove, or reorder sections.
-- Do not call any tools. Do not generate images. Do not include Hebrew.
+- Do not call any tools. Do not generate images.
+- The bilingual section (English heading, Hebrew paragraph, mid-article) is mandatory; all
+  section headings stay English.
 - Do not repeat content across sections; each section adds new information.
 - Prefer depth over length: definitions, mechanisms, examples, and trade-offs in every section.

@@ -23,15 +23,17 @@ def build_review_task(agent: Agent, config: AppConfig | PipelineConfig, writing_
             "- Verify every multi-topic section has ≥2 ### subsections; if any section "
             "lacks them, split its prose into named subsections (e.g. ### Setup, ### Results).\n"
             "- Fix any broken Markdown formatting.\n"
-            "- English only: remove any Hebrew text, BiDi markers, or <!-- RTL --> blocks.\n\n"
+            "- Preserve the bilingual section (English ## heading with a Hebrew paragraph) intact "
+            "in the middle of the article — keep the Hebrew text, do not move, remove, or "
+            "translate it. All section headings must stay English (no Hebrew in any heading).\n\n"
             "Output the complete revised article in Markdown. Do not output review notes, "
             "checklists, or a summary of changes — only the article itself."
         ),
         expected_output=(
             "The complete revised Markdown article with all sections, required artifacts "
             "(<!-- TIKZ: ... --> marker, Markdown table, display formula, bibliography ≥8 refs), "
-            "inline citations [N], and a minimum of 4,500 words in the body. "
-            "English only — no Hebrew, no BiDi markers."
+            "inline citations [N], a minimum of 4,500 words in the body, "
+            "and one bilingual section (English heading, Hebrew paragraph) preserved in the middle."
         ),
         agent=agent,
         context=[writing_task],

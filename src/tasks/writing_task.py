@@ -23,7 +23,14 @@ def build_writing_task(agent: Agent, config: AppConfig | PipelineConfig, researc
         "REQUIRED ARTIFACTS — embed all of the following in the sections the Researcher designated:\n"
         f"{artifacts}\n\n"
         "Follow your skill for process rules, artifact format syntax, and quality checklist.\n"
-        "No tools. No external images. No Hebrew. Academic English only."
+        "No tools. No external images.\n"
+        "BIDI REQUIREMENT: Add ONE bilingual section placed in the MIDDLE of the article "
+        "(e.g. right after the Background section — never first or last). Its ## heading is "
+        "ENGLISH (e.g. ## Bilingual Summary) — all section headings stay English so the table of "
+        "contents is all English. Structure it as: an English intro paragraph, then a Hebrew "
+        "paragraph (~120 words) summarising the topic, then a short English paragraph. Keep "
+        "English technical terms (P4, SDN, ECMP, HULA) inside the Hebrew sentences and end each "
+        "Hebrew sentence with a Hebrew word. The rest of the article is academic English."
     )
 
     return Task(
@@ -32,7 +39,8 @@ def build_writing_task(agent: Agent, config: AppConfig | PipelineConfig, researc
             "A single Markdown document with: title block, table of contents, all sections "
             f"from the Researcher's proposed structure ({min_w}+ words total body), all required "
             "artifacts embedded (TikZ marker, display formula, Markdown table, bibliography ≥8 refs), "
-            "inline citations [N] throughout."
+            "inline citations [N] throughout, and one bilingual section (English heading, "
+            "Hebrew paragraph) placed in the middle of the article."
         ),
         agent=agent,
         context=[research_task],

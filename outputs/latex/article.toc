@@ -1,0 +1,34 @@
+\xpg@aux {}{english}
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
+\contentsline {section}{\numberline {2}Background \& Motivation}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Stateless vs. Stateful Load Balancing}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}The Software Bottleneck}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}The Promise of Programmable Data Planes}{4}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Bilingual Summary}{5}{section.3}%
+\contentsline {section}{\numberline {4}HULA System Architecture}{5}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Hierarchical Topology}{5}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Data-Plane Forwarding}{6}{subsection.4.2}%
+\contentsline {section}{\numberline {5}Data Plane Implementation}{6}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Parser and Header Extraction}{6}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Hash Computation}{7}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Output Port Selection}{7}{subsection.5.3}%
+\contentsline {section}{\numberline {6}Control Plane Management}{7}{section.6}%
+\contentsline {subsection}{\numberline {6.1}State Synchronization}{8}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Dynamic Reconfiguration}{8}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Memory Constraints}{8}{subsection.6.3}%
+\contentsline {section}{\numberline {7}Evaluation Methodology}{8}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Experimental Setup}{9}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Convergence Time}{9}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Throughput Analysis}{9}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Load Fairness}{9}{subsection.7.4}%
+\contentsline {subsection}{\numberline {7.5}Control Plane Overhead}{9}{subsection.7.5}%
+\contentsline {section}{\numberline {8}Performance Evaluation}{10}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Throughput Analysis}{10}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Latency}{10}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}CPU Utilization}{10}{subsection.8.3}%
+\contentsline {section}{\numberline {9}Related Work \& Discussion}{10}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Traditional Load Balancing}{11}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}SDN-Based Approaches}{11}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.3}Programmable Data Planes}{11}{subsection.9.3}%
+\contentsline {subsection}{\numberline {9.4}Comparative Architecture Analysis}{11}{subsection.9.4}%
+\contentsline {section}{\numberline {10}Conclusion}{12}{section.10}%

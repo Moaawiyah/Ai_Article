@@ -155,6 +155,27 @@ For the fat-tree topology marker, generate a TikZ figure like this (adapt as nee
 \end{figure}
 ```
 
+### Bilingual section (Hebrew + English)
+
+**All section headings are English** — including the bilingual section. Never put Hebrew in a
+`\section{...}` heading, so the Table of Contents and page headers stay entirely English.
+
+The document's main language is English (LTR). When a paragraph contains Hebrew text, wrap each
+Hebrew sentence/run in `\texthebrew{...}` so it renders right-to-left as an island inside the
+English text:
+
+```latex
+\section{Bilingual Summary}
+This paragraph is in English. \texthebrew{המערכת משתמשת ב-P4 כדי לשפר את פיזור העומס מול ECMP.}
+Then the text continues in English.
+```
+
+Rules:
+- Keep English technical terms (P4, SDN, ECMP, HULA) **inside** the `\texthebrew{...}` run when they
+  belong to the Hebrew sentence — polyglossia/luabidi reorders them left-to-right automatically.
+- End each Hebrew sentence with a Hebrew word (not a trailing English term) so the RTL island is clean.
+- Do not add manual `\setRL`, `\textdir`, or a `\begin{hebrew}` environment — use inline `\texthebrew{...}`.
+
 ### Inline citations
 
 Convert every `[N]` citation marker to `\cite{refN}` — no exceptions, no placeholders.
@@ -194,6 +215,10 @@ Use this exact preamble structure (fill in the title/author/date from the articl
 \documentclass[12pt,a4paper]{article}
 \usepackage{fontspec}
 \setmainfont{Times New Roman}
+\usepackage{polyglossia}
+\setmainlanguage{english}
+\setotherlanguage{hebrew}
+\newfontfamily\hebrewfont{Times New Roman}[Script=Hebrew]
 \usepackage[a4paper, margin=2.5cm]{geometry}
 \usepackage{fancyhdr}
 \setlength{\headheight}{14pt}
@@ -220,6 +245,15 @@ Use this exact preamble structure (fill in the title/author/date from the articl
 ```
 
 Place all `\pagestyle{fancy}` and `\fancyhdr` setup lines **after** `\begin{document}`.
+Use exactly this header/footer layout — the article title on the header left, and the **page
+number centred in the footer** (never a course/author placeholder in the footer):
+
+```latex
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small <article title>}
+\fancyfoot[C]{\thepage}
+```
 
 ---
 
@@ -230,7 +264,7 @@ Place all `\pagestyle{fancy}` and `\fancyhdr` setup lines **after** `\begin{docu
 - Do not include any Markdown syntax or fenced code blocks in the output.
 - Every section command must be on its own line with a blank line above.
 - Do not compile or run the LaTeX compiler. Output `.tex` source only.
-- No Hebrew, no `polyglossia`, no BiDi content of any kind.
+- Hebrew content is allowed **only** inside `\begin{hebrew}...\end{hebrew}` blocks generated from `## תקציר` sections.
 - The TikZ figure is a first-class requirement — never skip or simplify it.
 
 ---
@@ -248,4 +282,6 @@ Place all `\pagestyle{fancy}` and `\fancyhdr` setup lines **after** `\begin{docu
 - [ ] `\begin{thebibliography}` present at end before `\end{document}` with ≥8 `\bibitem` entries
 - [ ] No Markdown syntax remaining in the output
 - [ ] No unclosed `\begin` / `\end` pairs
-- [ ] No `polyglossia` or Hebrew environments anywhere
+- [ ] `\usepackage{polyglossia}` present with `\setmainlanguage{english}` and `\setotherlanguage{hebrew}`
+- [ ] All `\section{...}` headings are English (no Hebrew in headings or TOC)
+- [ ] Hebrew sentences in the bilingual section wrapped inline in `\texthebrew{...}`

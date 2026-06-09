@@ -6,7 +6,7 @@ import re
 from pathlib import Path
 
 
-def strip_tex_fences(tex_path: Path) -> None:
+def strip_tex_fences(tex_path: Path, topic: str = "Article") -> None:
     """Remove markdown fences and fix common LLM LaTeX mistakes in article.tex."""
     text = tex_path.read_text(encoding="utf-8")
 
@@ -22,6 +22,14 @@ def strip_tex_fences(tex_path: Path) -> None:
         r"\\fancyfoot\1{\2}", cleaned,
     )
     cleaned = re.sub(r"\\fancyhead\[([LR])[EO]\]", r"\\fancyhead[\1]", cleaned)
+
+    # Force the left header to the article topic (LLM tends to hardcode "Article")
+    _topic_tex = topic.replace("\\", "").replace("&", r"\&").replace("#", r"\#").replace("_", r"\_")
+    cleaned = re.sub(
+        r"\\fancyhead\[L\]\{[^}]*\}",
+        lambda _m: "\\fancyhead[L]{\\small " + _topic_tex + "}",
+        cleaned,
+    )
 
     # Move fancyhdr setup lines from preamble to after \begin{document}
     _fhdr = re.compile(
@@ -41,8 +49,11 @@ def strip_tex_fences(tex_path: Path) -> None:
     cleaned = fix_bracket_syntax(cleaned)
     cleaned = fix_tikz_reserved_styles(cleaned)
     cleaned = fix_text_mode_math(cleaned)
+    cleaned = fix_tabular_colspec(cleaned)
     cleaned = fix_tables(cleaned)
     cleaned = fix_inline_citations(cleaned)
+    cleaned = fix_hebrew_ltr(cleaned)
+    cleaned = fix_hebrew_runs(cleaned)
 
     # Ensure bibliography starts on a new page
     if r'\begin{thebibliography}' in cleaned:
@@ -57,14 +68,43 @@ def strip_tex_fences(tex_path: Path) -> None:
             1,
         )
 
+    # Inject polyglossia BiDi setup if Hebrew content is present but polyglossia is missing
+    if _HEBREW_CHAR.search(cleaned) and r'\setotherlanguage{hebrew}' not in cleaned:
+        poly = (
+            '\\usepackage{polyglossia}\n'
+            '\\setmainlanguage{english}\n'
+            '\\setotherlanguage{hebrew}\n'
+            '\\newfontfamily\\hebrewfont{Times New Roman}[Script=Hebrew]\n'
+        )
+        if r'\setmainfont{Times New Roman}' in cleaned:
+            cleaned = cleaned.replace(
+                '\\setmainfont{Times New Roman}',
+                '\\setmainfont{Times New Roman}\n' + poly, 1,
+            )
+        elif r'\usepackage{fontspec}' in cleaned:
+            cleaned = cleaned.replace(
+                r'\usepackage{fontspec}', r'\usepackage{fontspec}' + '\n' + poly, 1,
+            )
+
     # Inject minimal fancyhdr setup if the LLM omitted it entirely
     if r"\fancyhead" not in cleaned and r"\begin{document}" in cleaned:
         fhdr = (
             "\n\\pagestyle{fancy}\n\\fancyhead{}\n"
-            "\\fancyhead[L]{Article}\n\\fancyhead[R]{\\thepage}\n"
-            "\\fancyfoot{}\\fancyfoot[C]{}\n"
+            "\\fancyhead[L]{\\small " + _topic_tex + "}\n\\fancyhead[R]{\\thepage}\n"
+            "\\fancyfoot{}\\fancyfoot[C]{\\thepage}\n"
         )
         cleaned = cleaned.replace(r"\begin{document}", r"\begin{document}" + fhdr, 1)
+
+    # Page number belongs in the centre footer, not the header. Strip any placeholder
+    # footer text (the LLM tends to drop a course placeholder there) and clear the header page no.
+    if r"\pagestyle{fancy}" in cleaned:
+        cleaned = re.sub(r"(\\fancyhead\[R\])\{[^}]*\}", r"\1{}", cleaned)
+        if r"\fancyfoot[C]" in cleaned:
+            cleaned = re.sub(r"(\\fancyfoot\[C\])\{[^}]*\}", r"\1{\\thepage}", cleaned)
+        else:
+            cleaned = cleaned.replace(
+                r"\pagestyle{fancy}", "\\pagestyle{fancy}\n\\fancyfoot[C]{\\thepage}", 1,
+            )
 
     tex_path.write_text(cleaned + "\n", encoding="utf-8")
 
@@ -113,10 +153,21 @@ _PROTECTED = re.compile(
     r"|\\\[.*?\\\]"                                             # \[ ... \]
     r"|\\\(.*?\\\)"                                             # \( ... \)
     r"|\\begin\{(equation|align|aligned|tikzpicture|tabular|"
-    r"verbatim|lstlisting|thebibliography)\*?\}.*?"
+    r"verbatim|lstlisting|thebibliography|hebrew)\*?\}.*?"
     r"\\end\{\1\*?\}",                                          # named environments
     re.DOTALL,
 )
+
+
+# Any Hebrew codepoint — used to decide whether polyglossia setup is needed.
+_HEBREW_CHAR = re.compile(r"[֐-׿]")
+
+# A run of Hebrew text on one line: from the first Hebrew char to the last Hebrew
+# char on that line, keeping any English terms/digits in between (luabidi reorders them).
+_HEBREW_RUN = re.compile(r"[֐-׿](?:[^\n]*[֐-׿])?")
+
+# Protected regions PLUS already-wrapped Hebrew, so fix_hebrew_runs is idempotent.
+_PROTECTED_HEB = re.compile(_PROTECTED.pattern + r"|\\texthebrew\{[^{}]*\}", re.DOTALL)
 
 
 # TikZ keys that collide with built-in pgf keys when used as user style names.
@@ -160,6 +211,88 @@ def fix_inline_citations(tex: str) -> str:
         last = m.end()
     out.append(re.sub(r'\[(\d{1,2})\]', lambda mm: f'\\\\cite{{ref{mm.group(1)}}}', tex[last:]))
     return ''.join(out)
+
+
+# Inside a Hebrew (RTL) block, match either a LaTeX command (+ optional brace arg) to leave
+# untouched, or a run of Latin text to wrap in \textenglish{} for correct LTR rendering.
+_CMD_OR_LATIN = re.compile(
+    r"(\\[a-zA-Z@]+\*?(?:\{[^{}]*\})?)"                          # group 1: LaTeX command+arg
+    r"|([A-Za-z][A-Za-z0-9./+\-]*(?:\s+[A-Za-z0-9./+\-]+)*)",    # group 2: English run
+)
+
+
+def fix_hebrew_ltr(tex: str) -> str:
+    """Wrap English runs inside Hebrew RTL blocks with \\textenglish{} for correct LTR direction.
+
+    LaTeX commands (e.g. ``\\section*{...}``, ``\\cite{refN}``, already-present
+    ``\\textenglish{...}``) are matched first and left untouched; only bare Latin runs are wrapped.
+    Hebrew characters and standalone digits are left as-is.
+    """
+    def _wrap_run(m: re.Match) -> str:
+        if m.group(1) is not None:          # a LaTeX command — keep verbatim
+            return m.group(1)
+        return f"\\textenglish{{{m.group(2)}}}"
+
+    def _fix_block(m: re.Match) -> str:
+        return _CMD_OR_LATIN.sub(_wrap_run, m.group(0))
+
+    return re.sub(
+        r"\\begin\{hebrew\}.*?\\end\{hebrew\}",
+        _fix_block, tex, flags=re.DOTALL,
+    )
+
+
+def fix_hebrew_runs(tex: str) -> str:
+    """Wrap inline Hebrew runs in \\texthebrew{...} so they render RTL inside the LTR document.
+
+    The document's main language is English (LTR). Bare Hebrew sentences in the body are wrapped
+    as RTL islands. Protected regions (math, TikZ, tables, bibliography, ``\\begin{hebrew}`` blocks)
+    and already-wrapped ``\\texthebrew{...}`` runs are skipped, so the pass is idempotent.
+    """
+    def _wrap(seg: str) -> str:
+        return _HEBREW_RUN.sub(lambda r: f"\\texthebrew{{{r.group(0)}}}", seg)
+
+    out: list[str] = []
+    last = 0
+    for m in _PROTECTED_HEB.finditer(tex):
+        out.append(_wrap(tex[last:m.start()]))
+        out.append(m.group(0))
+        last = m.end()
+    out.append(_wrap(tex[last:]))
+    return "".join(out)
+
+
+def fix_tabular_colspec(tex: str) -> str:
+    """Repair tabular column specs with a bare ``p``/``m``/``b`` (these require a width arg).
+
+    The LLM sometimes emits e.g. ``\\begin{tabular}{llccp}`` — a paragraph column with no width,
+    which crashes with "Missing p-arg in array arg". Bare ``p``/``m``/``b`` (not followed by a
+    ``{width}``) are converted to ``l``; adjustbox already keeps the table within the page width.
+    """
+    def _fix(m: re.Match) -> str:
+        spec = m.group(1)
+        out: list[str] = []
+        i = 0
+        while i < len(spec):
+            ch = spec[i]
+            if ch == "{":                              # skip a {…} group (e.g. p{3cm}, >{…})
+                j = spec.find("}", i)
+                if j == -1:
+                    out.append(spec[i:]); break
+                out.append(spec[i:j + 1]); i = j + 1
+            elif ch in "pmb":                          # p/m/b need a {width}; bare ones → l
+                nxt = spec[i + 1] if i + 1 < len(spec) else ""
+                out.append(ch if nxt in ("{", "[") else "l")
+                i += 1
+            else:
+                out.append(ch); i += 1
+        return "\\begin{tabular}{" + "".join(out) + "}"
+
+    # Match the column-spec braces allowing one level of nested {…} (e.g. p{3cm}).
+    return re.sub(
+        r"\\begin\{tabular\}\{((?:[^{}]|\{[^{}]*\})*)\}",
+        _fix, tex,
+    )
 
 
 def fix_tables(tex: str) -> str:
