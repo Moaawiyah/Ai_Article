@@ -14,11 +14,11 @@
 
 ### 1. article.tex exists
 **Status:** ✅ PASS
-**Evidence:** Found at `outputs/latex/article.tex` (28,105 bytes)
+**Evidence:** Found at `outputs/latex/article.tex` (29,047 bytes)
 
 ### 2. article.pdf exists
 **Status:** ✅ PASS
-**Evidence:** Found at `outputs/pdf/article.pdf` (129,035 bytes)
+**Evidence:** Found at `outputs/pdf/article.pdf` (277,067 bytes)
 
 ### 3. Title page
 **Status:** ✅ PASS
@@ -34,7 +34,7 @@
 
 ### 6. Sections/chapters
 **Status:** ✅ PASS
-**Evidence:** 7 section(s): "Introduction", "HULA Architecture Design", "P4 Implementation Details", "Evaluation"…
+**Evidence:** 8 section(s): "Introduction", "Background and Motivation", "System Architecture", "Algorithm Design"…
 
 ### 7. Table
 **Status:** ✅ PASS
@@ -46,11 +46,11 @@
 
 ### 9. TikZ figure
 **Status:** ✅ PASS
-**Evidence:** `\begin{tikzpicture}[node distance=2cm, auto, >=stealth]`
+**Evidence:** `\begin{tikzpicture}[`
 
 ### 10. Inline citations
 **Status:** ✅ PASS
-**Evidence:** 5 `\cite{}` commands — e.g. `\cite{ref2}`, `\cite{ref6}`
+**Evidence:** 9 `\cite{}` commands — e.g. `\cite{ref1}`, `\cite{ref2}`
 
 ### 11. English only
 **Status:** ✅ PASS
@@ -58,7 +58,7 @@
 
 ### 12. Bibliography
 **Status:** ✅ PASS
-**Evidence:** `\begin{thebibliography}` with 8 `\bibitem` entries
+**Evidence:** `\begin{thebibliography}` with 10 `\bibitem` entries
 
 ### 13. LaTeX compilation
 **Status:** ✅ PASS

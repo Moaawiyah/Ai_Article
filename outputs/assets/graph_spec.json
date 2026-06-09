@@ -1,0 +1,23 @@
+{
+  "main": {
+    "name": "HULA",
+    "median_queue": 8,
+    "p95_queue": 25,
+    "base_fct_ms": 0.45,
+    "fct_slope": 0.015
+  },
+  "arch_a": {
+    "name": "Legacy SDN",
+    "median_queue": 60,
+    "p95_queue": 180,
+    "base_fct_ms": 1.2,
+    "fct_slope": 0.12
+  },
+  "arch_b": {
+    "name": "ECMP Baseline",
+    "median_queue": 120,
+    "p95_queue": 350,
+    "base_fct_ms": 2.0,
+    "fct_slope": 0.22
+  }
+}

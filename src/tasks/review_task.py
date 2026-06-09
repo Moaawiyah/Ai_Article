@@ -20,6 +20,8 @@ def build_review_task(agent: Agent, config: AppConfig | PipelineConfig, writing_
             "  * At least one Markdown pipe table (| col | ... |)\n"
             "  * At least one display math formula inside $$...$$ delimiters\n"
             "  * ## References section at the end with ≥8 numbered entries\n"
+            "- Verify every multi-topic section has ≥2 ### subsections; if any section "
+            "lacks them, split its prose into named subsections (e.g. ### Setup, ### Results).\n"
             "- Fix any broken Markdown formatting.\n"
             "- English only: remove any Hebrew text, BiDi markers, or <!-- RTL --> blocks.\n\n"
             "Output the complete revised article in Markdown. Do not output review notes, "

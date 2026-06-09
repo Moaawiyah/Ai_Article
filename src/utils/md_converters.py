@@ -101,7 +101,7 @@ def convert_citations(text: str) -> str:
 
 def convert_bibliography(text: str) -> str:
     return re.compile(r"^## (?:Bibliography|References)\b.*$", re.MULTILINE | re.IGNORECASE).sub(
-        lambda _: "\\begin{thebibliography}{99}", text, count=1
+        lambda _: "\\newpage\n\\begin{thebibliography}{99}", text, count=1
     )
 
 
