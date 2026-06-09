@@ -42,6 +42,7 @@ def strip_tex_fences(tex_path: Path) -> None:
     cleaned = fix_tikz_reserved_styles(cleaned)
     cleaned = fix_text_mode_math(cleaned)
     cleaned = fix_tables(cleaned)
+    cleaned = fix_inline_citations(cleaned)
 
     # Ensure bibliography starts on a new page
     if r'\begin{thebibliography}' in cleaned:
@@ -146,6 +147,19 @@ def fix_tikz_reserved_styles(tex: str) -> str:
         r"\\begin\{tikzpicture\}.*?\\end\{tikzpicture\}",
         _fix_pic, tex, flags=re.DOTALL,
     )
+
+
+def fix_inline_citations(tex: str) -> str:
+    """Convert leftover [N] citation markers to \\cite{refN} outside protected regions."""
+    out: list[str] = []
+    last = 0
+    for m in _PROTECTED.finditer(tex):
+        seg = re.sub(r'\[(\d{1,2})\]', lambda mm: f'\\\\cite{{ref{mm.group(1)}}}', tex[last:m.start()])
+        out.append(seg)
+        out.append(m.group(0))
+        last = m.end()
+    out.append(re.sub(r'\[(\d{1,2})\]', lambda mm: f'\\\\cite{{ref{mm.group(1)}}}', tex[last:]))
+    return ''.join(out)
 
 
 def fix_tables(tex: str) -> str:

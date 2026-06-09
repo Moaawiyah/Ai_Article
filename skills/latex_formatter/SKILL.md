@@ -157,9 +157,8 @@ For the fat-tree topology marker, generate a TikZ figure like this (adapt as nee
 
 ### Inline citations
 
-Convert `[N]` citation markers to `\cite{refN}`.
-Add above the first cite in each section:
-`% FUTURE CITATION AUTOMATION: replace refN with actual BibTeX keys`
+Convert every `[N]` citation marker to `\cite{refN}` — no exceptions, no placeholders.
+Do not add any comment about "future automation". Every `[N]` in the body must become `\cite{refN}` in the output.
 
 ### Bibliography section
 

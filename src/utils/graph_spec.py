@@ -130,7 +130,7 @@ def generate_graph_spec(brief_path: Path, cfg, spec_out: Path | None = None) -> 
         response = litellm.completion(
             **params,
             messages=[{"role": "user", "content": prompt}],
-            max_tokens=350,
+            max_tokens=2000,
             temperature=0.1,
         )
         raw = response.choices[0].message.content.strip()
