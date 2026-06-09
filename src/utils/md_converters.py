@@ -89,7 +89,8 @@ def convert_tables(text: str) -> str:
             lines.append("  }")
         else:
             lines.extend(inner)
-        lines += [f"  \\caption{{}}", f"  \\label{{{label}}}", "\\end{table}"]
+        cap = " & ".join(escape(h.strip()) for h in header)
+        lines += [f"  \\caption{{{cap}}}", f"  \\label{{{label}}}", "\\end{table}"]
         return "\n".join(lines)
 
     return re.compile(r"((?:\|.+\|\n)+)", re.MULTILINE).sub(_to_table, text)

@@ -9,9 +9,9 @@ from utils.pdf_compiler import compile_pdf
 from utils.tex_fixer import strip_tex_fences
 from utils.tex_validator import validate
 
-_PRICE_INPUT    = 0.07   # $ per 1 000 prompt tokens
-_PRICE_CACHED   = 0.01   # $ per 1 000 cached-input tokens
-_PRICE_OUTPUT   = 0.40   # $ per 1 000 completion tokens
+_PRICE_INPUT    = 0.07   # $ per 1M prompt tokens
+_PRICE_CACHED   = 0.01   # $ per 1M cached-input tokens
+_PRICE_OUTPUT   = 0.40   # $ per 1M completion tokens
 
 
 def _print_token_usage(result, log) -> None:
@@ -23,16 +23,16 @@ def _print_token_usage(result, log) -> None:
     cached  = getattr(usage, "cached_prompt_tokens",  0) or 0
     output  = getattr(usage, "completion_tokens",     0) or 0
     total   = getattr(usage, "total_tokens",           0) or 0
-    cost    = (prompt * _PRICE_INPUT + cached * _PRICE_CACHED + output * _PRICE_OUTPUT) / 1000
+    cost    = (prompt * _PRICE_INPUT + cached * _PRICE_CACHED + output * _PRICE_OUTPUT) / 1_000_000
     log.info("─" * 60)
     log.info("TOKEN USAGE & COST")
-    log.info("  prompt tokens   : %d  ($%.4f)", prompt, prompt  * _PRICE_INPUT  / 1000)
-    log.info("  cached tokens   : %d  ($%.4f)", cached, cached  * _PRICE_CACHED / 1000)
-    log.info("  output tokens   : %d  ($%.4f)", output, output  * _PRICE_OUTPUT / 1000)
+    log.info("  prompt tokens   : %d  ($%.6f)", prompt, prompt  * _PRICE_INPUT  / 1_000_000)
+    log.info("  cached tokens   : %d  ($%.6f)", cached, cached  * _PRICE_CACHED / 1_000_000)
+    log.info("  output tokens   : %d  ($%.6f)", output, output  * _PRICE_OUTPUT / 1_000_000)
     log.info("  total tokens    : %d", total)
     log.info("  estimated cost  : $%.4f", cost)
     print(f"\nToken usage — prompt:{prompt}  cached:{cached}  output:{output}  "
-          f"total:{total}  cost:${cost:.4f}")
+          f"total:{total}  cost:${cost:.6f}")
 
 
 def _graph_step(cfg: PipelineConfig, log) -> None:

@@ -41,6 +41,20 @@ def strip_tex_fences(tex_path: Path) -> None:
     cleaned = fix_bracket_syntax(cleaned)
     cleaned = fix_tikz_reserved_styles(cleaned)
     cleaned = fix_text_mode_math(cleaned)
+    cleaned = fix_tables(cleaned)
+
+    # Ensure bibliography starts on a new page
+    if r'\begin{thebibliography}' in cleaned:
+        cleaned = re.sub(r'(?:\\newpage\s*\n*)+(?=\\begin\{thebibliography\})', '', cleaned)
+        cleaned = cleaned.replace(r'\begin{thebibliography}', '\\newpage\n\\begin{thebibliography}', 1)
+
+    # Ensure \headheight is large enough for fancyhdr (avoids repeated warnings)
+    if r'\usepackage{fancyhdr}' in cleaned and r'\setlength{\headheight}' not in cleaned:
+        cleaned = cleaned.replace(
+            r'\usepackage{fancyhdr}',
+            '\\usepackage{fancyhdr}\n\\setlength{\\headheight}{14pt}',
+            1,
+        )
 
     # Inject minimal fancyhdr setup if the LLM omitted it entirely
     if r"\fancyhead" not in cleaned and r"\begin{document}" in cleaned:
@@ -105,7 +119,11 @@ _PROTECTED = re.compile(
 
 
 # TikZ keys that collide with built-in pgf keys when used as user style names.
-_TIKZ_RESERVED = {"id", "name", "node", "at", "to", "every", "scale", "shift"}
+_TIKZ_RESERVED = {
+    "id", "name", "node", "at", "to", "every", "scale", "shift",
+    "label", "text", "draw", "fill", "color", "shape",
+    "above", "below", "left", "right", "anchor",
+}
 
 
 def fix_tikz_reserved_styles(tex: str) -> str:
@@ -128,6 +146,23 @@ def fix_tikz_reserved_styles(tex: str) -> str:
         r"\\begin\{tikzpicture\}.*?\\end\{tikzpicture\}",
         _fix_pic, tex, flags=re.DOTALL,
     )
+
+
+def fix_tables(tex: str) -> str:
+    """Wrap every tabular in a table float with adjustbox to prevent page-width overflow."""
+    def _wrap(m: re.Match) -> str:
+        block = m.group(0)
+        if r'\adjustbox' in block or r'\resizebox' in block:
+            return block
+        block = re.sub(
+            r'(\\begin\{tabular\})',
+            r'  \\adjustbox{max width=\\textwidth}{\n  \1',
+            block, count=1,
+        )
+        block = re.sub(r'(\\end\{tabular\})', r'\1\n  }', block, count=1)
+        return block
+
+    return re.sub(r'\\begin\{table\}.*?\\end\{table\}', _wrap, tex, flags=re.DOTALL)
 
 
 def _fix_free_segment(seg: str) -> str:

@@ -64,6 +64,29 @@ _FALLBACK: dict = {
 }
 
 
+def _extract_arch_names(brief: str) -> tuple[str, str, str]:
+    """Parse main topic and comparative arch names from a research brief."""
+    # Main topic: first heading "# Research Brief: <Title>"
+    main_m = re.search(r'^#\s+Research Brief:\s*(.+)', brief, re.MULTILINE)
+    if main_m:
+        title = main_m.group(1).strip()
+        main_name = (title.split(':')[0] if ':' in title else title.split()[0])[:15]
+    else:
+        main_name = "Main"
+
+    def _clean(raw: str) -> str:
+        raw = re.sub(r'\s*\([^)]*\)', '', raw)  # strip parentheticals
+        return raw.strip().rstrip('.').strip()[:20]
+
+    a_m = re.search(r'Comparative Architecture A:\s*\*{0,2}([^\n*]+)', brief, re.IGNORECASE)
+    name_a = _clean(a_m.group(1)) if a_m else "Architecture A"
+
+    b_m = re.search(r'Comparative Architecture B:\s*\*{0,2}([^\n*]+)', brief, re.IGNORECASE)
+    name_b = _clean(b_m.group(1)) if b_m else "Architecture B"
+
+    return main_name, name_a, name_b
+
+
 def _llm_params(cfg) -> dict:
     """Extract LiteLLM call kwargs from PipelineConfig."""
     provider = cfg.llm_provider
@@ -136,4 +159,15 @@ def generate_graph_spec(brief_path: Path, cfg, spec_out: Path | None = None) -> 
         return spec
     except Exception as exc:
         log.warning("Graph spec LLM call failed (%s) — using default profiles", exc)
-        return _FALLBACK
+        fallback = {k: dict(v) for k, v in _FALLBACK.items()}
+        try:
+            if brief_path.exists():
+                brief_text = brief_path.read_text(encoding="utf-8")[:5000]
+                main_name, name_a, name_b = _extract_arch_names(brief_text)
+                fallback["main"]["name"]   = main_name
+                fallback["arch_a"]["name"] = name_a
+                fallback["arch_b"]["name"] = name_b
+                log.info("Brief-extracted names: %s | %s | %s", main_name, name_a, name_b)
+        except Exception as e2:
+            log.warning("Could not extract arch names from brief: %s", e2)
+        return fallback

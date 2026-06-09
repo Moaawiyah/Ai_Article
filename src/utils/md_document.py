@@ -11,6 +11,7 @@ _PREAMBLE = r"""
 \usepackage[a4paper, margin=2.5cm]{geometry}
 
 \usepackage{fancyhdr}
+\setlength{\headheight}{14pt}
 
 \usepackage{amsmath}
 \usepackage{amssymb}

@@ -86,8 +86,16 @@ Each section command on its own line with a blank line above it.
 Convert every Markdown pipe table to a booktabs `table` environment:
 - Placement: `[H]`
 - Use `\toprule`, `\midrule`, `\bottomrule`
-- Add `\caption{...}` and `\label{tab:...}`
+- Add `\caption{...}` (never leave it empty) and `\label{tab:...}`
 - Centre the table with `\centering`
+- **Always** wrap the `tabular` environment with `\adjustbox{max width=\textwidth}{...}` to prevent overflow:
+  ```latex
+  \adjustbox{max width=\textwidth}{
+    \begin{tabular}{...}
+      ...
+    \end{tabular}
+  }
+  ```
 
 ### Mathematical formulas
 
@@ -104,6 +112,8 @@ This is the most important conversion rule. When you encounter a comment of the 
 
 Replace it with a complete `\begin{figure}[H]...\end{figure}` containing a hand-written
 `tikzpicture` environment that visually represents the description.
+
+**TikZ reserved key warning**: Never name a style after a pgf built-in key. Forbidden style names: `id`, `name`, `node`, `label`, `text`, `draw`, `fill`, `color`, `at`, `to`, `every`, `scale`, `shift`, `above`, `below`, `left`, `right`, `anchor`. Use descriptive names like `mynode`, `ctrl`, `sw`, `arr`, `probe` instead.
 
 For the fat-tree topology marker, generate a TikZ figure like this (adapt as needed):
 
@@ -158,11 +168,14 @@ Replace the `## References` heading and its numbered list entries with a
 entry becomes a `\bibitem{refN}` item:
 
 ```latex
+\newpage
 \begin{thebibliography}{99}
 \bibitem{ref1} Author(s), ``Title,'' \textit{Venue}, Year.
 \bibitem{ref2} ...
 \end{thebibliography}
 ```
+
+Always put `\newpage` immediately before `\begin{thebibliography}` so the bibliography starts on a fresh page.
 
 Use `\cite{refN}` for inline citation markers `[N]` throughout the article.
 
@@ -184,6 +197,7 @@ Use this exact preamble structure (fill in the title/author/date from the articl
 \setmainfont{Times New Roman}
 \usepackage[a4paper, margin=2.5cm]{geometry}
 \usepackage{fancyhdr}
+\setlength{\headheight}{14pt}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{tikz}

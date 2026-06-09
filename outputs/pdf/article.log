@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.24.0 (TeX Live 2026)  (format=lualatex 2026.6.6)  9 JUN 2026 09:45
+This is LuaHBTeX, Version 1.24.0 (TeX Live 2026)  (format=lualatex 2026.6.6)  9 JUN 2026 12:48
  restricted system commands enabled.
 **/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/latex/article.tex
 (/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/latex/article.tex
@@ -96,20 +96,21 @@ luaotfload | cache : Lookup cache loaded from /Users/moaawiyahhaj/Library/texliv
 e/2026/texmf-var/luatex-cache/generic/names/luaotfload-lookup-cache.luc.
 
 Package fontspec Info: 
-(fontspec)             Font family 'TimesNewRoman(0)' created for font 'Times
-(fontspec)             New Roman' with options [Ligatures=TeX].
+(fontspec)             Font family 'LatinModernRoman(0)' created for font
+(fontspec)             'Latin Modern Roman' with options [Ligatures=TeX].
 (fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
 (fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.: <->"name:Times New
+(fontspec)             - 'normal' (m/n) with NFSS spec.: <->"name:Latin Modern
 (fontspec)             Roman:mode=node;script=latn;language=dflt;+tlig;"
-(fontspec)             - 'bold' (b/n) with NFSS spec.: <->"name:Times New
+(fontspec)             - 'bold' (b/n) with NFSS spec.: <->"name:Latin Modern
 (fontspec)             Roman/B:mode=node;script=latn;language=dflt;+tlig;"
-(fontspec)             - 'italic' (m/it) with NFSS spec.: <->"name:Times New
+(fontspec)             - 'italic' (m/it) with NFSS spec.: <->"name:Latin
+(fontspec)             Modern
 (fontspec)             Roman/I:mode=node;script=latn;language=dflt;+tlig;"
-(fontspec)             - 'bold italic' (b/it) with NFSS spec.: <->"name:Times
-(fontspec)             New
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.: <->"name:Latin
+(fontspec)             Modern
 (fontspec)             Roman/BI:mode=node;script=latn;language=dflt;+tlig;"
 
 
@@ -967,26 +968,26 @@ Package: setspace 2022/12/04 v6.7b set line spacing
 (/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.aux)
 \openout1 = article.aux
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
 
 Package fontspec Info: 
 (fontspec)             Adjusting the maths setup (use [no-math] to avoid
@@ -994,63 +995,63 @@ Package fontspec Info:
 
 \symlegacymaths=\mathgroup6
 LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
-(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 27.
-LaTeX Font Info:    Redeclaring math accent \acute on input line 27.
-LaTeX Font Info:    Redeclaring math accent \grave on input line 27.
-LaTeX Font Info:    Redeclaring math accent \ddot on input line 27.
-LaTeX Font Info:    Redeclaring math accent \tilde on input line 27.
-LaTeX Font Info:    Redeclaring math accent \bar on input line 27.
-LaTeX Font Info:    Redeclaring math accent \breve on input line 27.
-LaTeX Font Info:    Redeclaring math accent \check on input line 27.
-LaTeX Font Info:    Redeclaring math accent \hat on input line 27.
-LaTeX Font Info:    Redeclaring math accent \dot on input line 27.
-LaTeX Font Info:    Redeclaring math accent \mathring on input line 27.
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 27.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 27.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 27.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 27.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 27.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 27.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 27.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 27.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 27.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 27.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 27.
-LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 27.
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 27.
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 28.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 28.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 28.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 28.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 28.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 28.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 28.
+LaTeX Font Info:    Redeclaring math accent \check on input line 28.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 28.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 28.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 28.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 28.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 28.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 28.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 28.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 28.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 28.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 28.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 28.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 28.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 28.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 28.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 28.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 28.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 27.
+(Font)              `operators' in the math version `normal' on input line 28.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> TU/TimesNewRoman(0)/m/n on input line 2
-7.
+(Font)                  OT1/cmr/m/n --> TU/LatinModernRoman(0)/m/n on input lin
+e 28.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 27.
+(Font)              `operators' in the math version `bold' on input line 28.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> TU/TimesNewRoman(0)/m/n on input line 
-27.
+(Font)                  OT1/cmr/bx/n --> TU/LatinModernRoman(0)/m/n on input li
+ne 28.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  TU/TimesNewRoman(0)/m/n --> TU/TimesNewRoman(0)/m/n on 
-input line 27.
+(Font)                  TU/LatinModernRoman(0)/m/n --> TU/LatinModernRoman(0)/m
+/n on input line 28.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> TU/TimesNewRoman(0)/m/it on input line
- 27.
+(Font)                  OT1/cmr/m/it --> TU/LatinModernRoman(0)/m/it on input l
+ine 28.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> TU/TimesNewRoman(0)/b/n on input line 
-27.
+(Font)                  OT1/cmr/bx/n --> TU/LatinModernRoman(0)/b/n on input li
+ne 28.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 27.
+(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 28.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 27.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 28.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  TU/TimesNewRoman(0)/m/n --> TU/TimesNewRoman(0)/b/n on 
-input line 27.
+(Font)                  TU/LatinModernRoman(0)/m/n --> TU/LatinModernRoman(0)/b
+/n on input line 28.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> TU/TimesNewRoman(0)/b/it on input lin
-e 27.
+(Font)                  OT1/cmr/bx/it --> TU/LatinModernRoman(0)/b/it on input 
+line 28.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 27.
+(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 28.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 27.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 28.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: luatex
@@ -1069,7 +1070,7 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 * \oddsidemargin=-1.1381pt
 * \evensidemargin=-1.1381pt
 * \topmargin=-38.1381pt
-* \headheight=12.0pt
+* \headheight=14.0pt
 * \headsep=25.0pt
 * \topskip=12.0pt
 * \footskip=30.0pt
@@ -1115,7 +1116,7 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring OFF on input line 27.
+Package hyperref Info: Link coloring OFF on input line 28.
 (/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.out)
 (/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.out)
 \@outlinefile=\write4
@@ -1124,16 +1125,16 @@ Package hyperref Info: Link coloring OFF on input line 27.
 Package microtype Info: Patching varwidth to enable character protrusion.
 \MT@vwid@leftmargin=\dimen336
 \MT@vwid@rightmargin=\dimen337
-LaTeX Info: Redefining \microtypecontext on input line 27.
-Package microtype Info: Applying patch `item' on input line 27.
-Package microtype Info: Applying patch `toc' on input line 27.
-Package microtype Info: Applying patch `eqnum' on input line 27.
+LaTeX Info: Redefining \microtypecontext on input line 28.
+Package microtype Info: Applying patch `item' on input line 28.
+Package microtype Info: Applying patch `toc' on input line 28.
+Package microtype Info: Applying patch `eqnum' on input line 28.
 
 
-Package microtype Warning: Unable to apply patch `footnote' on input line 27.
+Package microtype Warning: Unable to apply patch `footnote' on input line 28.
 
-Package microtype Info: Applying patch `verbatim' on input line 27.
-LaTeX Info: Redefining \microtypesetup on input line 27.
+Package microtype Info: Applying patch `verbatim' on input line 28.
+LaTeX Info: Redefining \microtypesetup on input line 28.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -1144,19 +1145,20 @@ Package microtype Info: Patching command `\showhyphens'.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of spacing.
 Package microtype Info: No adjustment of kerning.
-Package microtype Info: Loading generic protrusion settings for font family
-(microtype)             `TimesNewRoman' (encoding: TU).
-(microtype)             For optimal results, create family-specific settings.
-(microtype)             See the microtype manual for details.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 35.
 
-(/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/umsa.fd
+(/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-LatinModernRoman.cfg
+File: mt-LatinModernRoman.cfg 2026/02/26 v1.2 microtype config. file: Latin Mod
+ern Roman (RS)
+)
+LaTeX Font Info:    Trying to load font information for U+msa on input line 37.
+
+ (/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 (/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 35.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 37.
 
 
 (/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -1171,227 +1173,177 @@ File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman
 ) [1
 
 {/usr/local/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-(/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.toc)
+(/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.toc
+
+Package fancyhdr Warning: \headheight is too small (14.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
+
+[2])
 \tf@toc=\write5
 
 \openout5 = article.toc
 
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+Package fancyhdr Warning: \headheight is too small (14.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
-
-[2]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
 
 [3]
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+Package fancyhdr Warning: \headheight is too small (14.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
 
 [4]
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+Package fancyhdr Warning: \headheight is too small (14.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
 
 [5]
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+Package fancyhdr Warning: \headheight is too small (14.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
 
 [6]
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+Package fancyhdr Warning: \headheight is too small (14.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
 
 [7]
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+Package fancyhdr Warning: \headheight is too small (14.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
 
 [8]
-<benchmark.png, id=172, 860.4948pt x 295.3434pt>
-File: benchmark.png Graphic file (type png)
-<use benchmark.png>
-Package luatex.def Info: benchmark.png  used on input line 151.
-(luatex.def)             Requested size: 455.24411pt x 156.25183pt.
 
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+Package fancyhdr Warning: \headheight is too small (14.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
 
 [9]
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+Package fancyhdr Warning: \headheight is too small (14.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
 
-[10<./benchmark.png>]
-Underfull \hbox (badness 3396) in paragraph at lines 178--178
-[]\TU/TimesNewRoman(0)/m/n/12 High en-tropy, uni-
- []
+[10]
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 178--178
-\TU/TimesNewRoman(0)/m/n/12 form dis-tri-bu-tion,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 178--179
-[]\TU/TimesNewRoman(0)/m/n/12 Uses multi-
- []
-
-
-Underfull \hbox (badness 7291) in paragraph at lines 178--179
-\TU/TimesNewRoman(0)/m/n/12 level hash-ing
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 178--179
-\TU/TimesNewRoman(0)/m/n/12 to max-i-mize
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 178--179
-\TU/TimesNewRoman(0)/m/n/12 path uni-for-
- []
-
-
-Underfull \hbox (badness 2012) in paragraph at lines 179--179
-[]\TU/TimesNewRoman(0)/m/n/12 Sim-ple, de-ter-min-is-
- []
-
-
-Underfull \hbox (badness 6412) in paragraph at lines 179--179
-\TU/TimesNewRoman(0)/m/n/12 tic, low over-head,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 179--180
-[]\TU/TimesNewRoman(0)/m/n/12 De-ter-min-is-tic
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 179--180
-\TU/TimesNewRoman(0)/m/n/12 single-path
- []
-
-
-Underfull \hbox (badness 2970) in paragraph at lines 180--180
-[]\TU/TimesNewRoman(0)/m/n/12 Flex-i-ble, hardware-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 180--180
-[]\TU/TimesNewRoman(0)/m/n/12 Com-plex syn-chro-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 180--180
-\TU/TimesNewRoman(0)/m/n/12 niza-tion, po-ten-tial
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 180--181
-[]\TU/TimesNewRoman(0)/m/n/12 Syn-chro-nized
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 180--181
-\TU/TimesNewRoman(0)/m/n/12 hash across
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 180--181
-\TU/TimesNewRoman(0)/m/n/12 switches for
- []
-
-
-Overfull \hbox (123.37154pt too wide) in paragraph at lines 174--183
- [][] 
- []
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+Package fancyhdr Warning: \headheight is too small (14.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
 
 [11]
+<benchmark.png, id=278, 860.4948pt x 295.3434pt>
+File: benchmark.png Graphic file (type png)
+<use benchmark.png>
+Package luatex.def Info: benchmark.png  used on input line 212.
+(luatex.def)             Requested size: 455.24411pt x 156.25183pt.
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+
+Package fancyhdr Warning: \headheight is too small (14.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
 
-[12]
+[12<./benchmark.png>]
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+Package fancyhdr Warning: \headheight is too small (14.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
 
-[13] (/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.aux)
+[13]
+
+Package fancyhdr Warning: \headheight is too small (14.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
+
+[14]
+
+Package fancyhdr Warning: \headheight is too small (14.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
+
+[15]
+
+Package fancyhdr Warning: \headheight is too small (14.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
+
+[16] (/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `article.out' has not changed.
-(rerunfilecheck)             Checksum: 39F65EDE65E2B8FA5216DD6176B3E91A;4200.
+(rerunfilecheck)             Checksum: 18AACCDD79C95330906A3CACFAE7526E;7026.
 )
 
 Here is how much of LuaTeX's memory you used:
- 39445 strings out of 476076
+ 39528 strings out of 476076
  125191,1648299 words of node,token memory allocated
- 582 words of node memory still in use:
+ 590 words of node memory still in use:
    7 hlist, 2 vlist, 2 rule, 1 local_par, 4 glue, 4 kern, 1 penalty, 1 margin_ke
-rn, 3 glyph, 11 attribute, 57 glue_spec, 11 attribute_list, 2 write nodes
-   avail lists: 1:1,2:610,3:303,4:92,5:177,6:77,7:7569,8:35,9:397,10:23,11:704
- 60909 multiletter control sequences out of 65536+600000
- 75 fonts using 15129431 bytes
- 102i,11n,115p,1194b,808s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</System/Library/Fonts/Supplemental/Times New Roman Italic.ttf></System/Library/
-Fonts/Supplemental/Times New Roman Bold.ttf></System/Library/Fonts/Supplemental/
-Times New Roman.ttf></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmmi12.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmmi8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmr12.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mr8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy1
-0.pfb>
-Output written on article.pdf (13 pages, 277067 bytes).
+rn, 3 glyph, 13 attribute, 57 glue_spec, 13 attribute_list, 2 write nodes
+   avail lists: 1:2,2:820,3:395,4:105,5:419,6:111,7:7236,8:39,9:563,10:16,11:615
 
-PDF statistics: 250 PDF objects out of 1000 (max. 8388607)
- 216 compressed objects within 3 object streams
- 51 named destinations out of 1000 (max. 1048576)
- 184 words of extra memory for PDF output out of 10000 (max. 100000000)
+ 60970 multiletter control sequences out of 65536+600000
+ 75 fonts using 6119031 bytes
+ 102i,12n,115p,1082b,806s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/lmroman12-italic.ot
+f></usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/lmroman6-regular.
+otf></usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/lmroman8-regula
+r.otf></usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/lmroman12-bol
+d.otf></usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/lmroman12-reg
+ular.otf></usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/lmroman10-
+regular.otf></usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/lmroman
+17-regular.otf></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmex10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmmi12.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+mi8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12
+.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb
+></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on article.pdf (16 pages, 240278 bytes).
+
+PDF statistics: 380 PDF objects out of 1000 (max. 8388607)
+ 329 compressed objects within 4 object streams
+ 68 named destinations out of 1000 (max. 1048576)
+ 304 words of extra memory for PDF output out of 10000 (max. 100000000)
 
