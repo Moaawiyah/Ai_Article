@@ -9,6 +9,51 @@ from utils.pdf_compiler import compile_pdf
 from utils.tex_fixer import strip_tex_fences
 from utils.tex_validator import validate
 
+_PRICE_INPUT    = 0.07   # $ per 1 000 prompt tokens
+_PRICE_CACHED   = 0.01   # $ per 1 000 cached-input tokens
+_PRICE_OUTPUT   = 0.40   # $ per 1 000 completion tokens
+
+
+def _print_token_usage(result, log) -> None:
+    usage = getattr(result, "token_usage", None)
+    if usage is None:
+        log.warning("Token usage not available from provider")
+        return
+    prompt  = getattr(usage, "prompt_tokens",        0) or 0
+    cached  = getattr(usage, "cached_prompt_tokens",  0) or 0
+    output  = getattr(usage, "completion_tokens",     0) or 0
+    total   = getattr(usage, "total_tokens",           0) or 0
+    cost    = (prompt * _PRICE_INPUT + cached * _PRICE_CACHED + output * _PRICE_OUTPUT) / 1000
+    log.info("─" * 60)
+    log.info("TOKEN USAGE & COST")
+    log.info("  prompt tokens   : %d  ($%.4f)", prompt, prompt  * _PRICE_INPUT  / 1000)
+    log.info("  cached tokens   : %d  ($%.4f)", cached, cached  * _PRICE_CACHED / 1000)
+    log.info("  output tokens   : %d  ($%.4f)", output, output  * _PRICE_OUTPUT / 1000)
+    log.info("  total tokens    : %d", total)
+    log.info("  estimated cost  : $%.4f", cost)
+    print(f"\nToken usage — prompt:{prompt}  cached:{cached}  output:{output}  "
+          f"total:{total}  cost:${cost:.4f}")
+
+
+def _graph_step(cfg: PipelineConfig, log) -> None:
+    from utils.graph_generator import generate_performance_graph
+    filename = generate_performance_graph(cfg.topic, cfg.output_latex)
+    if filename is None:
+        return
+    tex_path = cfg.output_latex / "article.tex"
+    figure_block = (
+        "\n\\begin{figure}[H]\n"
+        "  \\centering\n"
+        f"  \\includegraphics[width=0.85\\textwidth]{{{filename}}}\n"
+        "  \\caption{Performance comparison: HULA vs.\\ ECMP under increasing network load.}\n"
+        "  \\label{fig:perf}\n"
+        "\\end{figure}\n"
+    )
+    source = tex_path.read_text(encoding="utf-8")
+    source = source.replace("\\end{document}", figure_block + "\\end{document}")
+    tex_path.write_text(source, encoding="utf-8")
+    log.info("Graph injected → %s", cfg.output_latex / filename)
+
 
 def _compile_step(cfg: PipelineConfig, log) -> bool:
     tex_path = cfg.output_latex / "article.tex"
@@ -82,11 +127,13 @@ def main() -> None:
 
     try:
         with timed_stage(log, "Agent pipeline (all 5 stages)"):
-            crew.kickoff(inputs={"topic": cfg.topic})
+            result = crew.kickoff(inputs={"topic": cfg.topic})
     except Exception as exc:
         log.error("Agent pipeline failed: %s", exc)
         raise
 
+    _print_token_usage(result, log)
+    _graph_step(cfg, log)
     _compile_step(cfg, log)
     _validate_step(cfg, log)
 

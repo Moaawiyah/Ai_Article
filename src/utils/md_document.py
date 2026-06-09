@@ -6,7 +6,7 @@ _PREAMBLE = r"""
 \documentclass[12pt,a4paper]{article}
 
 \usepackage{fontspec}
-\setmainfont{Latin Modern Roman}
+\setmainfont{Times New Roman}
 
 \usepackage[a4paper, margin=2.5cm]{geometry}
 
@@ -21,7 +21,9 @@ _PREAMBLE = r"""
 \pgfplotsset{compat=1.18}
 
 \usepackage{graphicx}
+\graphicspath{{./}}
 \usepackage{booktabs}
+\usepackage{adjustbox}
 \usepackage{caption}
 \usepackage{float}
 

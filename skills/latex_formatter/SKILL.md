@@ -58,6 +58,7 @@ Produce the output in this exact order:
 | `pgfplots` | Data plots within TikZ |
 | `graphicx` | Image inclusion (fallback) |
 | `booktabs` | Professional tables |
+| `adjustbox` | Resize wide tables to fit page width |
 | `caption`, `float` | Figure/table captions and H placement |
 | `hyperref` | Clickable cross-references (hidelinks) |
 | `microtype` | Typographic refinement |
@@ -180,7 +181,7 @@ Use this exact preamble structure (fill in the title/author/date from the articl
 ```latex
 \documentclass[12pt,a4paper]{article}
 \usepackage{fontspec}
-\setmainfont{Latin Modern Roman}
+\setmainfont{Times New Roman}
 \usepackage[a4paper, margin=2.5cm]{geometry}
 \usepackage{fancyhdr}
 \usepackage{amsmath}
@@ -190,7 +191,9 @@ Use this exact preamble structure (fill in the title/author/date from the articl
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
 \usepackage{graphicx}
+\graphicspath{{./}}
 \usepackage{booktabs}
+\usepackage{adjustbox}
 \usepackage{caption}
 \usepackage{float}
 \usepackage[hidelinks]{hyperref}

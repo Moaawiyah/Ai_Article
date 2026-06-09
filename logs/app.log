@@ -500,3 +500,224 @@
 2026-06-07 17:48:38  INFO      [article_pipeline.main]    [PDF]        outputs/pdf/article.pdf
 2026-06-07 17:48:38  INFO      [article_pipeline.main]    [Validation] outputs/pdf/validation_report.md
 2026-06-07 17:48:38  INFO      [article_pipeline.main]  ============================================================
+2026-06-09 07:53:18  INFO      [article_pipeline]  Logger ready — writing to /Users/moaawiyahhaj/Desktop/ai_artcle/logs/app.log
+2026-06-09 07:53:18  INFO      [article_pipeline]  Pipeline config loaded
+2026-06-09 07:53:18  INFO      [article_pipeline]    topic    : HULA: Scalable Load Balancing Using Programmable Data Planes
+2026-06-09 07:53:18  INFO      [article_pipeline]    llm      : zhipuai/glm-4.7-flashx
+2026-06-09 07:53:18  INFO      [article_pipeline]    outputs  : outputs
+2026-06-09 07:54:56  INFO      [article_pipeline]  Logger ready — writing to /Users/moaawiyahhaj/Desktop/ai_artcle/logs/app.log
+2026-06-09 07:54:56  INFO      [article_pipeline]  Pipeline config loaded
+2026-06-09 07:54:56  INFO      [article_pipeline]    topic    : HULA: Scalable Load Balancing Using Programmable Data Planes
+2026-06-09 07:54:56  INFO      [article_pipeline]    llm      : zhipuai/glm-4.7-flashx
+2026-06-09 07:54:56  INFO      [article_pipeline]    outputs  : outputs
+2026-06-09 07:55:04  INFO      [article_pipeline]  Logger ready — writing to /Users/moaawiyahhaj/Desktop/ai_artcle/logs/app.log
+2026-06-09 07:55:04  INFO      [article_pipeline]  Pipeline config loaded
+2026-06-09 07:55:04  INFO      [article_pipeline]    topic    : HULA: Scalable Load Balancing Using Programmable Data Planes
+2026-06-09 07:55:04  INFO      [article_pipeline]    llm      : zhipuai/glm-4.7-flashx
+2026-06-09 07:55:04  INFO      [article_pipeline]    outputs  : outputs
+2026-06-09 07:57:14  INFO      [article_pipeline]  Logger ready — writing to /Users/moaawiyahhaj/Desktop/ai_artcle/logs/app.log
+2026-06-09 07:57:14  INFO      [article_pipeline]  Pipeline config loaded
+2026-06-09 07:57:14  INFO      [article_pipeline]    topic    : HULA: Scalable Load Balancing Using Programmable Data Planes
+2026-06-09 07:57:14  INFO      [article_pipeline]    llm      : zhipuai/glm-4.7-flashx
+2026-06-09 07:57:14  INFO      [article_pipeline]    outputs  : outputs
+2026-06-09 07:57:14  INFO      [article_pipeline]  Crew assembled — 5 agents, 5 tasks, sequential process
+2026-06-09 07:57:14  INFO      [article_pipeline.main]  ============================================================
+2026-06-09 07:57:14  INFO      [article_pipeline.main]  PIPELINE START  — HULA: Scalable Load Balancing Using Programmable Data Planes
+2026-06-09 07:57:14  INFO      [article_pipeline.main]    1. [Researcher] → outputs/research/research_brief.md
+2026-06-09 07:57:14  INFO      [article_pipeline.main]    2. [Writer] → outputs/drafts/draft.md
+2026-06-09 07:57:14  INFO      [article_pipeline.main]    3. [Reviewer] → outputs/reviewed/reviewed.md
+2026-06-09 07:57:14  INFO      [article_pipeline.main]    4. [LaTeX Formatter] → outputs/latex/article.tex
+2026-06-09 07:57:14  INFO      [article_pipeline.main]    5. [PDF Validator] → outputs/pdf/agent_validation.md
+2026-06-09 07:57:14  INFO      [article_pipeline.main]  ▶ STAGE START  — Agent pipeline (all 5 stages)
+2026-06-09 07:58:23  INFO      [article_pipeline]  Logger ready — writing to /Users/moaawiyahhaj/Desktop/ai_artcle/logs/app.log
+2026-06-09 07:58:23  INFO      [article_pipeline]  Pipeline config loaded
+2026-06-09 07:58:23  INFO      [article_pipeline]    topic    : HULA: Scalable Load Balancing Using Programmable Data Planes
+2026-06-09 07:58:23  INFO      [article_pipeline]    llm      : zhipuai/glm-4.7-flashx
+2026-06-09 07:58:23  INFO      [article_pipeline]    outputs  : outputs
+2026-06-09 07:58:23  INFO      [article_pipeline]  Crew assembled — 5 agents, 5 tasks, sequential process
+2026-06-09 07:58:23  INFO      [article_pipeline.main]  ============================================================
+2026-06-09 07:58:23  INFO      [article_pipeline.main]  PIPELINE START  — HULA: Scalable Load Balancing Using Programmable Data Planes
+2026-06-09 07:58:23  INFO      [article_pipeline.main]    1. [Researcher] → outputs/research/research_brief.md
+2026-06-09 07:58:23  INFO      [article_pipeline.main]    2. [Writer] → outputs/drafts/draft.md
+2026-06-09 07:58:23  INFO      [article_pipeline.main]    3. [Reviewer] → outputs/reviewed/reviewed.md
+2026-06-09 07:58:23  INFO      [article_pipeline.main]    4. [LaTeX Formatter] → outputs/latex/article.tex
+2026-06-09 07:58:23  INFO      [article_pipeline.main]    5. [PDF Validator] → outputs/pdf/agent_validation.md
+2026-06-09 07:58:23  INFO      [article_pipeline.main]  ▶ STAGE START  — Agent pipeline (all 5 stages)
+2026-06-09 08:04:44  INFO      [article_pipeline.main]  ■ STAGE END    — Agent pipeline (all 5 stages)  (450.10s)
+2026-06-09 08:04:44  INFO      [article_pipeline.main]  ────────────────────────────────────────────────────────────
+2026-06-09 08:04:44  INFO      [article_pipeline.main]  PDF COMPILATION  — LuaLaTeX
+2026-06-09 08:04:44  INFO      [article_pipeline.main]    input  : outputs/latex/article.tex
+2026-06-09 08:04:44  INFO      [article_pipeline.main]    output : outputs/pdf/article.pdf
+2026-06-09 08:04:44  INFO      [article_pipeline.main]  ▶ STAGE START  — LuaLaTeX compilation
+2026-06-09 08:04:45  INFO      [article_pipeline.main]  ■ STAGE END    — LuaLaTeX compilation  (1.03s)
+2026-06-09 08:04:45  INFO      [article_pipeline.main]    → file: outputs/pdf/article.pdf
+2026-06-09 08:04:45  ERROR     [article_pipeline.main]  ✗ PDF compilation failed — ! LaTeX Error: Not allowed in LR mode.
+2026-06-09 08:04:45  ERROR     [article_pipeline.main]    log: /Users/moaawiyahhaj/Desktop/ai_artcle/logs/latex_compile.log  tex: /Users/moaawiyahhaj/Desktop/ai_artcle/outputs/latex/article.tex
+2026-06-09 08:04:45  INFO      [article_pipeline.main]  ────────────────────────────────────────────────────────────
+2026-06-09 08:04:45  INFO      [article_pipeline.main]  VALIDATION  — 13-item assignment checklist
+2026-06-09 08:04:45  INFO      [article_pipeline.main]  ▶ STAGE START  — Programmatic validation
+2026-06-09 08:04:45  INFO      [article_pipeline.main]  ■ STAGE END    — Programmatic validation  (0.00s)
+2026-06-09 08:04:45  INFO      [article_pipeline.main]    → file: outputs/pdf/validation_report.md
+2026-06-09 08:04:45  INFO      [article_pipeline.main]  Result: 13/13 passed, 0 failed
+2026-06-09 08:04:45  INFO      [article_pipeline.main]    ✓ 1. article.tex exists
+2026-06-09 08:04:45  INFO      [article_pipeline.main]    ✓ 2. article.pdf exists
+2026-06-09 08:04:45  INFO      [article_pipeline.main]    ✓ 3. Title page
+2026-06-09 08:04:45  INFO      [article_pipeline.main]    ✓ 4. Table of contents
+2026-06-09 08:04:45  INFO      [article_pipeline.main]    ✓ 5. Headers/footers
+2026-06-09 08:04:45  INFO      [article_pipeline.main]    ✓ 6. Sections/chapters
+2026-06-09 08:04:45  INFO      [article_pipeline.main]    ✓ 7. Table
+2026-06-09 08:04:45  INFO      [article_pipeline.main]    ✓ 8. Mathematical formula
+2026-06-09 08:04:45  INFO      [article_pipeline.main]    ✓ 9. TikZ figure
+2026-06-09 08:04:45  INFO      [article_pipeline.main]    ✓ 10. Inline citations
+2026-06-09 08:04:45  INFO      [article_pipeline.main]    ✓ 11. English only
+2026-06-09 08:04:45  INFO      [article_pipeline.main]    ✓ 12. Bibliography
+2026-06-09 08:04:45  INFO      [article_pipeline.main]    ✓ 13. LaTeX compilation
+2026-06-09 08:04:45  INFO      [article_pipeline.main]  ============================================================
+2026-06-09 08:04:45  INFO      [article_pipeline.main]  PIPELINE COMPLETE  (451.15s)
+2026-06-09 08:04:45  INFO      [article_pipeline.main]    [PDF]        outputs/pdf/article.pdf
+2026-06-09 08:04:45  INFO      [article_pipeline.main]    [Validation] outputs/pdf/validation_report.md
+2026-06-09 08:04:45  INFO      [article_pipeline.main]  ============================================================
+2026-06-09 08:05:38  INFO      [article_pipeline.main]  ■ STAGE END    — Agent pipeline (all 5 stages)  (434.64s)
+2026-06-09 08:05:38  INFO      [article_pipeline.main]  ────────────────────────────────────────────────────────────
+2026-06-09 08:05:38  INFO      [article_pipeline.main]  PDF COMPILATION  — LuaLaTeX
+2026-06-09 08:05:38  INFO      [article_pipeline.main]    input  : outputs/latex/article.tex
+2026-06-09 08:05:38  INFO      [article_pipeline.main]    output : outputs/pdf/article.pdf
+2026-06-09 08:05:38  INFO      [article_pipeline.main]  ▶ STAGE START  — LuaLaTeX compilation
+2026-06-09 08:05:40  INFO      [article_pipeline.main]  ■ STAGE END    — LuaLaTeX compilation  (2.20s)
+2026-06-09 08:05:40  INFO      [article_pipeline.main]    → file: outputs/pdf/article.pdf
+2026-06-09 08:05:40  INFO      [article_pipeline.main]  ✓ PDF ready: /Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.pdf  (2.2s)
+2026-06-09 08:05:40  INFO      [article_pipeline.main]  ────────────────────────────────────────────────────────────
+2026-06-09 08:05:40  INFO      [article_pipeline.main]  VALIDATION  — 13-item assignment checklist
+2026-06-09 08:05:40  INFO      [article_pipeline.main]  ▶ STAGE START  — Programmatic validation
+2026-06-09 08:05:40  INFO      [article_pipeline.main]  ■ STAGE END    — Programmatic validation  (0.00s)
+2026-06-09 08:05:40  INFO      [article_pipeline.main]    → file: outputs/pdf/validation_report.md
+2026-06-09 08:05:40  INFO      [article_pipeline.main]  Result: 13/13 passed, 0 failed
+2026-06-09 08:05:40  INFO      [article_pipeline.main]    ✓ 1. article.tex exists
+2026-06-09 08:05:40  INFO      [article_pipeline.main]    ✓ 2. article.pdf exists
+2026-06-09 08:05:40  INFO      [article_pipeline.main]    ✓ 3. Title page
+2026-06-09 08:05:40  INFO      [article_pipeline.main]    ✓ 4. Table of contents
+2026-06-09 08:05:40  INFO      [article_pipeline.main]    ✓ 5. Headers/footers
+2026-06-09 08:05:40  INFO      [article_pipeline.main]    ✓ 6. Sections/chapters
+2026-06-09 08:05:40  INFO      [article_pipeline.main]    ✓ 7. Table
+2026-06-09 08:05:40  INFO      [article_pipeline.main]    ✓ 8. Mathematical formula
+2026-06-09 08:05:40  INFO      [article_pipeline.main]    ✓ 9. TikZ figure
+2026-06-09 08:05:40  INFO      [article_pipeline.main]    ✓ 10. Inline citations
+2026-06-09 08:05:40  INFO      [article_pipeline.main]    ✓ 11. English only
+2026-06-09 08:05:40  INFO      [article_pipeline.main]    ✓ 12. Bibliography
+2026-06-09 08:05:40  INFO      [article_pipeline.main]    ✓ 13. LaTeX compilation
+2026-06-09 08:05:40  INFO      [article_pipeline.main]  ============================================================
+2026-06-09 08:05:40  INFO      [article_pipeline.main]  PIPELINE COMPLETE  (436.84s)
+2026-06-09 08:05:40  INFO      [article_pipeline.main]    [PDF]        outputs/pdf/article.pdf
+2026-06-09 08:05:40  INFO      [article_pipeline.main]    [Validation] outputs/pdf/validation_report.md
+2026-06-09 08:05:40  INFO      [article_pipeline.main]  ============================================================
+2026-06-09 08:20:15  INFO      [article_pipeline]  Logger ready — writing to /Users/moaawiyahhaj/Desktop/ai_artcle/logs/app.log
+2026-06-09 08:20:15  INFO      [article_pipeline]  Pipeline config loaded
+2026-06-09 08:20:15  INFO      [article_pipeline]    topic    : HULA: Scalable Load Balancing Using Programmable Data Planes
+2026-06-09 08:20:15  INFO      [article_pipeline]    llm      : zhipuai/glm-4.7-flashx
+2026-06-09 08:20:15  INFO      [article_pipeline]    outputs  : outputs
+2026-06-09 08:20:15  INFO      [article_pipeline]  Crew assembled — 5 agents, 5 tasks, sequential process
+2026-06-09 08:20:15  INFO      [article_pipeline.main]  ============================================================
+2026-06-09 08:20:15  INFO      [article_pipeline.main]  PIPELINE START  — HULA: Scalable Load Balancing Using Programmable Data Planes
+2026-06-09 08:20:15  INFO      [article_pipeline.main]    1. [Researcher] → outputs/research/research_brief.md
+2026-06-09 08:20:15  INFO      [article_pipeline.main]    2. [Writer] → outputs/drafts/draft.md
+2026-06-09 08:20:15  INFO      [article_pipeline.main]    3. [Reviewer] → outputs/reviewed/reviewed.md
+2026-06-09 08:20:15  INFO      [article_pipeline.main]    4. [LaTeX Formatter] → outputs/latex/article.tex
+2026-06-09 08:20:15  INFO      [article_pipeline.main]    5. [PDF Validator] → outputs/pdf/agent_validation.md
+2026-06-09 08:20:15  INFO      [article_pipeline.main]  ▶ STAGE START  — Agent pipeline (all 5 stages)
+2026-06-09 08:27:57  INFO      [article_pipeline.main]  ■ STAGE END    — Agent pipeline (all 5 stages)  (461.45s)
+2026-06-09 08:27:57  INFO      [article_pipeline.main]  ────────────────────────────────────────────────────────────
+2026-06-09 08:27:57  INFO      [article_pipeline.main]  TOKEN USAGE & COST
+2026-06-09 08:27:57  INFO      [article_pipeline.main]    prompt tokens   : 118710  ($8.3097)
+2026-06-09 08:27:57  INFO      [article_pipeline.main]    cached tokens   : 0  ($0.0000)
+2026-06-09 08:27:57  INFO      [article_pipeline.main]    output tokens   : 147190  ($58.8760)
+2026-06-09 08:27:57  INFO      [article_pipeline.main]    total tokens    : 265900
+2026-06-09 08:27:57  INFO      [article_pipeline.main]    estimated cost  : $67.1857
+2026-06-09 08:27:57  INFO      [article_pipeline.main]  Graph injected → outputs/latex/benchmark.png
+2026-06-09 08:27:57  INFO      [article_pipeline.main]  ────────────────────────────────────────────────────────────
+2026-06-09 08:27:57  INFO      [article_pipeline.main]  PDF COMPILATION  — LuaLaTeX
+2026-06-09 08:27:57  INFO      [article_pipeline.main]    input  : outputs/latex/article.tex
+2026-06-09 08:27:57  INFO      [article_pipeline.main]    output : outputs/pdf/article.pdf
+2026-06-09 08:27:57  INFO      [article_pipeline.main]  ▶ STAGE START  — LuaLaTeX compilation
+2026-06-09 08:27:58  INFO      [article_pipeline.main]  ■ STAGE END    — LuaLaTeX compilation  (1.07s)
+2026-06-09 08:27:58  INFO      [article_pipeline.main]    → file: outputs/pdf/article.pdf
+2026-06-09 08:27:58  ERROR     [article_pipeline.main]  ✗ PDF compilation failed — ! Missing $ inserted.
+2026-06-09 08:27:58  ERROR     [article_pipeline.main]    log: /Users/moaawiyahhaj/Desktop/ai_artcle/logs/latex_compile.log  tex: /Users/moaawiyahhaj/Desktop/ai_artcle/outputs/latex/article.tex
+2026-06-09 08:27:58  INFO      [article_pipeline.main]  ────────────────────────────────────────────────────────────
+2026-06-09 08:27:58  INFO      [article_pipeline.main]  VALIDATION  — 13-item assignment checklist
+2026-06-09 08:27:58  INFO      [article_pipeline.main]  ▶ STAGE START  — Programmatic validation
+2026-06-09 08:27:58  INFO      [article_pipeline.main]  ■ STAGE END    — Programmatic validation  (0.00s)
+2026-06-09 08:27:58  INFO      [article_pipeline.main]    → file: outputs/pdf/validation_report.md
+2026-06-09 08:27:58  INFO      [article_pipeline.main]  Result: 13/13 passed, 0 failed
+2026-06-09 08:27:58  INFO      [article_pipeline.main]    ✓ 1. article.tex exists
+2026-06-09 08:27:58  INFO      [article_pipeline.main]    ✓ 2. article.pdf exists
+2026-06-09 08:27:58  INFO      [article_pipeline.main]    ✓ 3. Title page
+2026-06-09 08:27:58  INFO      [article_pipeline.main]    ✓ 4. Table of contents
+2026-06-09 08:27:58  INFO      [article_pipeline.main]    ✓ 5. Headers/footers
+2026-06-09 08:27:58  INFO      [article_pipeline.main]    ✓ 6. Sections/chapters
+2026-06-09 08:27:58  INFO      [article_pipeline.main]    ✓ 7. Table
+2026-06-09 08:27:58  INFO      [article_pipeline.main]    ✓ 8. Mathematical formula
+2026-06-09 08:27:58  INFO      [article_pipeline.main]    ✓ 9. TikZ figure
+2026-06-09 08:27:58  INFO      [article_pipeline.main]    ✓ 10. Inline citations
+2026-06-09 08:27:58  INFO      [article_pipeline.main]    ✓ 11. English only
+2026-06-09 08:27:58  INFO      [article_pipeline.main]    ✓ 12. Bibliography
+2026-06-09 08:27:58  INFO      [article_pipeline.main]    ✓ 13. LaTeX compilation
+2026-06-09 08:27:58  INFO      [article_pipeline.main]  ============================================================
+2026-06-09 08:27:58  INFO      [article_pipeline.main]  PIPELINE COMPLETE  (462.73s)
+2026-06-09 08:27:58  INFO      [article_pipeline.main]    [PDF]        outputs/pdf/article.pdf
+2026-06-09 08:27:58  INFO      [article_pipeline.main]    [Validation] outputs/pdf/validation_report.md
+2026-06-09 08:27:58  INFO      [article_pipeline.main]  ============================================================
+2026-06-09 08:35:54  INFO      [article_pipeline]  Logger ready — writing to /Users/moaawiyahhaj/Desktop/ai_artcle/logs/app.log
+2026-06-09 08:35:54  INFO      [article_pipeline]  Pipeline config loaded
+2026-06-09 08:35:54  INFO      [article_pipeline]    topic    : HULA: Scalable Load Balancing Using Programmable Data Planes
+2026-06-09 08:35:54  INFO      [article_pipeline]    llm      : zhipuai/glm-4.7-flashx
+2026-06-09 08:35:54  INFO      [article_pipeline]    outputs  : outputs
+2026-06-09 08:35:54  INFO      [article_pipeline]  Crew assembled — 5 agents, 5 tasks, sequential process
+2026-06-09 08:35:54  INFO      [article_pipeline.main]  ============================================================
+2026-06-09 08:35:54  INFO      [article_pipeline.main]  PIPELINE START  — HULA: Scalable Load Balancing Using Programmable Data Planes
+2026-06-09 08:35:54  INFO      [article_pipeline.main]    1. [Researcher] → outputs/research/research_brief.md
+2026-06-09 08:35:54  INFO      [article_pipeline.main]    2. [Writer] → outputs/drafts/draft.md
+2026-06-09 08:35:54  INFO      [article_pipeline.main]    3. [Reviewer] → outputs/reviewed/reviewed.md
+2026-06-09 08:35:54  INFO      [article_pipeline.main]    4. [LaTeX Formatter] → outputs/latex/article.tex
+2026-06-09 08:35:54  INFO      [article_pipeline.main]    5. [PDF Validator] → outputs/pdf/agent_validation.md
+2026-06-09 08:35:54  INFO      [article_pipeline.main]  ▶ STAGE START  — Agent pipeline (all 5 stages)
+2026-06-09 08:45:55  INFO      [article_pipeline.main]  ■ STAGE END    — Agent pipeline (all 5 stages)  (601.63s)
+2026-06-09 08:45:55  INFO      [article_pipeline.main]  ────────────────────────────────────────────────────────────
+2026-06-09 08:45:55  INFO      [article_pipeline.main]  TOKEN USAGE & COST
+2026-06-09 08:45:55  INFO      [article_pipeline.main]    prompt tokens   : 128345  ($8.9842)
+2026-06-09 08:45:55  INFO      [article_pipeline.main]    cached tokens   : 0  ($0.0000)
+2026-06-09 08:45:55  INFO      [article_pipeline.main]    output tokens   : 168935  ($67.5740)
+2026-06-09 08:45:55  INFO      [article_pipeline.main]    total tokens    : 297280
+2026-06-09 08:45:55  INFO      [article_pipeline.main]    estimated cost  : $76.5581
+2026-06-09 08:45:56  INFO      [article_pipeline.main]  Graph injected → outputs/latex/benchmark.png
+2026-06-09 08:45:56  INFO      [article_pipeline.main]  ────────────────────────────────────────────────────────────
+2026-06-09 08:45:56  INFO      [article_pipeline.main]  PDF COMPILATION  — LuaLaTeX
+2026-06-09 08:45:56  INFO      [article_pipeline.main]    input  : outputs/latex/article.tex
+2026-06-09 08:45:56  INFO      [article_pipeline.main]    output : outputs/pdf/article.pdf
+2026-06-09 08:45:56  INFO      [article_pipeline.main]  ▶ STAGE START  — LuaLaTeX compilation
+2026-06-09 08:45:58  INFO      [article_pipeline.main]  ■ STAGE END    — LuaLaTeX compilation  (2.30s)
+2026-06-09 08:45:58  INFO      [article_pipeline.main]    → file: outputs/pdf/article.pdf
+2026-06-09 08:45:58  INFO      [article_pipeline.main]  ✓ PDF ready: /Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.pdf  (2.3s)
+2026-06-09 08:45:58  INFO      [article_pipeline.main]  ────────────────────────────────────────────────────────────
+2026-06-09 08:45:58  INFO      [article_pipeline.main]  VALIDATION  — 13-item assignment checklist
+2026-06-09 08:45:58  INFO      [article_pipeline.main]  ▶ STAGE START  — Programmatic validation
+2026-06-09 08:45:58  INFO      [article_pipeline.main]  ■ STAGE END    — Programmatic validation  (0.00s)
+2026-06-09 08:45:58  INFO      [article_pipeline.main]    → file: outputs/pdf/validation_report.md
+2026-06-09 08:45:58  INFO      [article_pipeline.main]  Result: 13/13 passed, 0 failed
+2026-06-09 08:45:58  INFO      [article_pipeline.main]    ✓ 1. article.tex exists
+2026-06-09 08:45:58  INFO      [article_pipeline.main]    ✓ 2. article.pdf exists
+2026-06-09 08:45:58  INFO      [article_pipeline.main]    ✓ 3. Title page
+2026-06-09 08:45:58  INFO      [article_pipeline.main]    ✓ 4. Table of contents
+2026-06-09 08:45:58  INFO      [article_pipeline.main]    ✓ 5. Headers/footers
+2026-06-09 08:45:58  INFO      [article_pipeline.main]    ✓ 6. Sections/chapters
+2026-06-09 08:45:58  INFO      [article_pipeline.main]    ✓ 7. Table
+2026-06-09 08:45:58  INFO      [article_pipeline.main]    ✓ 8. Mathematical formula
+2026-06-09 08:45:58  INFO      [article_pipeline.main]    ✓ 9. TikZ figure
+2026-06-09 08:45:58  INFO      [article_pipeline.main]    ✓ 10. Inline citations
+2026-06-09 08:45:58  INFO      [article_pipeline.main]    ✓ 11. English only
+2026-06-09 08:45:58  INFO      [article_pipeline.main]    ✓ 12. Bibliography
+2026-06-09 08:45:58  INFO      [article_pipeline.main]    ✓ 13. LaTeX compilation
+2026-06-09 08:45:58  INFO      [article_pipeline.main]  ============================================================
+2026-06-09 08:45:58  INFO      [article_pipeline.main]  PIPELINE COMPLETE  (604.14s)
+2026-06-09 08:45:58  INFO      [article_pipeline.main]    [PDF]        outputs/pdf/article.pdf
+2026-06-09 08:45:58  INFO      [article_pipeline.main]    [Validation] outputs/pdf/validation_report.md
+2026-06-09 08:45:58  INFO      [article_pipeline.main]  ============================================================

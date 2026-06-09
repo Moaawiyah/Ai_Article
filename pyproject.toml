@@ -12,9 +12,10 @@ license = { text = "MIT" }
 authors = [{ name = "moaawiyahhaj", email = "moaawiyah.haj@gmail.com" }]
 dependencies = [
     "anthropic>=0.40.0",
-    "crewai>=0.100.0",
+    "crewai[litellm]>=0.100.0",
     "markitdown[pdf]>=0.1.0",
     "python-dotenv>=1.0.0",
+    "matplotlib>=3.8",
 ]
 
 [project.optional-dependencies]

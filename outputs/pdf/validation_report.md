@@ -14,11 +14,11 @@
 
 ### 1. article.tex exists
 **Status:** ✅ PASS
-**Evidence:** Found at `outputs/latex/article.tex` (26,328 bytes)
+**Evidence:** Found at `outputs/latex/article.tex` (28,105 bytes)
 
 ### 2. article.pdf exists
 **Status:** ✅ PASS
-**Evidence:** Found at `outputs/pdf/article.pdf` (95,784 bytes)
+**Evidence:** Found at `outputs/pdf/article.pdf` (129,035 bytes)
 
 ### 3. Title page
 **Status:** ✅ PASS
@@ -34,7 +34,7 @@
 
 ### 6. Sections/chapters
 **Status:** ✅ PASS
-**Evidence:** 8 section(s): "Introduction", "Background and Related Work", "Motivation and Challenges", "System Architecture"…
+**Evidence:** 7 section(s): "Introduction", "HULA Architecture Design", "P4 Implementation Details", "Evaluation"…
 
 ### 7. Table
 **Status:** ✅ PASS
@@ -46,11 +46,11 @@
 
 ### 9. TikZ figure
 **Status:** ✅ PASS
-**Evidence:** `\begin{tikzpicture}[`
+**Evidence:** `\begin{tikzpicture}[node distance=2cm, auto, >=stealth]`
 
 ### 10. Inline citations
 **Status:** ✅ PASS
-**Evidence:** 13 `\cite{}` commands — e.g. `\cite{ref1}`, `\cite{ref5}`
+**Evidence:** 5 `\cite{}` commands — e.g. `\cite{ref2}`, `\cite{ref6}`
 
 ### 11. English only
 **Status:** ✅ PASS
