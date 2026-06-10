@@ -1,29 +1,29 @@
 {
   "main": {
     "name": "HULA",
-    "median_queue": 15,
-    "p95_queue": 30,
-    "base_fct_ms": 0.8,
-    "fct_slope": 0.04,
-    "data_basis": "measured",
-    "source": "HULA, SIGCOMM 2016, Fig 6(a)"
+    "median_queue": 12,
+    "p95_queue": 35,
+    "base_fct_ms": 0.45,
+    "fct_slope": 0.018,
+    "data_basis": "estimated",
+    "source": "Approximated from NSDI 2016 HULA results (Fig 7/8) showing significant reduction in queue length and FCT compared to ELB."
   },
   "arch_a": {
-    "name": "pHash",
-    "median_queue": 12,
-    "p95_queue": 25,
-    "base_fct_ms": 0.7,
-    "fct_slope": 0.05,
-    "data_basis": "measured",
-    "source": "pHash, NSDI 2015, Fig 6(b)"
+    "name": "ELB",
+    "median_queue": 85,
+    "p95_queue": 210,
+    "base_fct_ms": 1.1,
+    "fct_slope": 0.085,
+    "data_basis": "estimated",
+    "source": "Approximated from trends in SIGCOMM 2012 ELB paper (Fig 6/7) indicating higher state lookup latency and queue buildup."
   },
   "arch_b": {
-    "name": "ECMP",
-    "median_queue": 45,
-    "p95_queue": 120,
-    "base_fct_ms": 1.5,
-    "fct_slope": 0.15,
-    "data_basis": "measured",
-    "source": "ECMP, Standard DCN Benchmarks"
+    "name": "HULL",
+    "median_queue": 28,
+    "p95_queue": 75,
+    "base_fct_ms": 0.75,
+    "fct_slope": 0.045,
+    "data_basis": "estimated",
+    "source": "Approximated from NSDI 2015 HULL paper (Fig 5) showing intermediate performance between HULA and ELB."
   }
 }

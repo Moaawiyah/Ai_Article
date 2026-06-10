@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from agent_ai.utils.tex_fixer import strip_tex_fences
+from utils.tex_fixer import strip_tex_fences
 
 
 def test_strip_tex_fences_removes_markdown_fences(tmp_path):

@@ -4,8 +4,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from agent_ai.utils.tex_validator import validate
-from agent_ai.utils.validator_checks import (
+from utils.tex_validator import validate
+from utils.validator_checks import (
     check_formula,
     check_headers_footers,
     check_pdf_exists,
@@ -15,7 +15,7 @@ from agent_ai.utils.validator_checks import (
     check_title_page,
     check_toc,
 )
-from agent_ai.utils.validator_types import CheckResult, ValidationReport
+from utils.validator_types import CheckResult, ValidationReport
 
 
 def test_check_result_as_markdown_pass():

@@ -2,7 +2,7 @@
 
 import pytest
 
-from agent_ai.shared.version import CODE_VERSION, VERSION, validate_config_version
+from shared.version import CODE_VERSION, VERSION, validate_config_version
 
 
 def test_version_format():

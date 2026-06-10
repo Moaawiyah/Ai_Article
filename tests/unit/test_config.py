@@ -4,7 +4,7 @@ import json
 
 import pytest
 
-from agent_ai.shared.config import ConfigManager
+from shared.config import ConfigManager
 
 
 def test_load_setup(config_dir):

@@ -8,11 +8,11 @@ from unittest.mock import patch
 
 import pytest
 
-from agent_ai.utils.compile_result import CompileResult
-from agent_ai.utils.graph_fallback import extract_arch_names, fallback_spec
-from agent_ai.utils.graph_spec import _extract_brief_spec, generate_graph_spec
-from agent_ai.utils.pdf_compiler import _extract_error, compile_pdf
-from agent_ai.utils.skill_loader import (
+from utils.compile_result import CompileResult
+from utils.graph_fallback import extract_arch_names, fallback_spec
+from utils.graph_spec import _extract_brief_spec, generate_graph_spec
+from utils.pdf_compiler import _extract_error, compile_pdf
+from utils.skill_loader import (
     Skill,
     _split_frontmatter,
     load_skill,
@@ -49,7 +49,7 @@ def test_split_frontmatter_unterminated():
 
 
 def test_load_skill_missing_raises(tmp_path):
-    with patch("agent_ai.utils.skill_loader._SKILLS_ROOT", tmp_path), \
+    with patch("utils.skill_loader._SKILLS_ROOT", tmp_path), \
          pytest.raises(FileNotFoundError):
         load_skill("nonexistent")
 
@@ -61,7 +61,7 @@ def test_load_skill_parses_frontmatter(tmp_path):
         "---\nname: my_skill\ndescription: desc\nversion: 1.0\nrole: Custom Role\n---\nbody {var} here",
         encoding="utf-8",
     )
-    with patch("agent_ai.utils.skill_loader._SKILLS_ROOT", tmp_path):
+    with patch("utils.skill_loader._SKILLS_ROOT", tmp_path):
         s = load_skill("my_skill")
     assert isinstance(s, Skill)
     assert s.name == "my_skill"
@@ -206,7 +206,7 @@ def test_generate_graph_spec_prefers_embedded_researcher_block(tmp_path):
     )
     cfg = SimpleNamespace(graph_spec_brief_chars=5000)
 
-    with patch("agent_ai.utils.graph_spec._llm_params", side_effect=AssertionError("LLM path should not run")):
+    with patch("utils.graph_spec._llm_params", side_effect=AssertionError("LLM path should not run")):
         spec = generate_graph_spec(brief_path=brief_path, cfg=cfg, spec_out=spec_out)
 
     assert spec["main"]["name"] == "HULA"
@@ -276,7 +276,7 @@ def test_compile_pdf_missing_source(tmp_path):
 def test_compile_pdf_lualatex_missing(tmp_path):
     tex = tmp_path / "x.tex"
     tex.write_text("\\documentclass{article}\\begin{document}hi\\end{document}", encoding="utf-8")
-    with patch("agent_ai.utils.pdf_compiler.subprocess.run", side_effect=FileNotFoundError):
+    with patch("utils.pdf_compiler.subprocess.run", side_effect=FileNotFoundError):
         result = compile_pdf(
             tex_path=tex,
             output_dir=tmp_path / "out",

@@ -2,9 +2,9 @@
 
 from pathlib import Path
 
-from agent_ai.shared.config import PROJECT_TOPIC, AppConfig, build_llm
-from agent_ai.shared.pipeline_config import PipelineConfig
-from agent_ai.utils.file_utils import ensure_output_dirs
+from shared.config import PROJECT_TOPIC, AppConfig, build_llm
+from shared.pipeline_config import PipelineConfig
+from utils.file_utils import ensure_output_dirs
 
 
 def test_project_topic():

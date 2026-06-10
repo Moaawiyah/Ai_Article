@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from agent_ai.utils.md_converters import (
+from utils.md_converters import (
     convert_bibliography,
     convert_bold_italic,
     convert_citations,
@@ -13,8 +13,8 @@ from agent_ai.utils.md_converters import (
     convert_tables,
     strip_markdown_artifacts,
 )
-from agent_ai.utils.md_document import build_preamble, build_title_block, escape
-from agent_ai.utils.md_to_latex import convert
+from utils.md_document import build_preamble, build_title_block, escape
+from utils.md_to_latex import convert
 
 
 def test_escape_special_chars():

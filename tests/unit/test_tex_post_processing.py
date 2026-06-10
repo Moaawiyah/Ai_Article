@@ -2,20 +2,20 @@
 
 from __future__ import annotations
 
-from agent_ai.utils.tex_hebrew import (
+from utils.tex_hebrew import (
     fix_hebrew_ltr,
     fix_hebrew_runs,
     has_hebrew,
     inject_polyglossia,
 )
-from agent_ai.utils.tex_protected import _PROTECTED, _PROTECTED_HEB
-from agent_ai.utils.tex_syntax import (
+from utils.tex_protected import _PROTECTED, _PROTECTED_HEB
+from utils.tex_syntax import (
     fix_bracket_syntax,
     fix_inline_citations,
     fix_text_mode_math,
 )
-from agent_ai.utils.tex_tables import fix_tables, fix_tabular_colspec
-from agent_ai.utils.tex_tikz import fix_tikz_node_linebreaks, fix_tikz_reserved_styles
+from utils.tex_tables import fix_tables, fix_tabular_colspec
+from utils.tex_tikz import fix_tikz_node_linebreaks, fix_tikz_reserved_styles
 
 
 def test_protected_regex_matches_math():

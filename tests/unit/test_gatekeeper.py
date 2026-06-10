@@ -4,7 +4,7 @@ import contextlib
 
 import pytest
 
-from agent_ai.shared.gatekeeper import ApiGatekeeper, QueueStatus
+from shared.gatekeeper import ApiGatekeeper, QueueStatus
 
 
 def test_execute_success(gatekeeper):
