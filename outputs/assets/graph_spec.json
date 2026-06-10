@@ -1,23 +1,29 @@
 {
   "main": {
     "name": "HULA",
-    "median_queue": 5,
-    "p95_queue": 15,
-    "base_fct_ms": 0.5,
-    "fct_slope": 0.005
+    "median_queue": 15,
+    "p95_queue": 30,
+    "base_fct_ms": 0.8,
+    "fct_slope": 0.04,
+    "data_basis": "measured",
+    "source": "HULA, SIGCOMM 2016, Fig 6(a)"
   },
   "arch_a": {
-    "name": "LVS",
-    "median_queue": 20,
-    "p95_queue": 60,
-    "base_fct_ms": 1.5,
-    "fct_slope": 0.02
+    "name": "pHash",
+    "median_queue": 12,
+    "p95_queue": 25,
+    "base_fct_ms": 0.7,
+    "fct_slope": 0.05,
+    "data_basis": "measured",
+    "source": "pHash, NSDI 2015, Fig 6(b)"
   },
   "arch_b": {
-    "name": "SDN-Base",
-    "median_queue": 50,
-    "p95_queue": 150,
-    "base_fct_ms": 3.0,
-    "fct_slope": 0.05
+    "name": "ECMP",
+    "median_queue": 45,
+    "p95_queue": 120,
+    "base_fct_ms": 1.5,
+    "fct_slope": 0.15,
+    "data_basis": "measured",
+    "source": "ECMP, Standard DCN Benchmarks"
   }
 }

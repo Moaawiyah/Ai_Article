@@ -34,3 +34,18 @@ Thumbs.db
 
 # Notebooks checkpoints
 .ipynb_checkpoints/
+
+# LaTeX build artefacts
+*.aux
+*.bbl
+*.blg
+*.bcf
+*.fdb_latexmk
+*.fls
+*.run.xml
+*.synctex.gz
+*.out
+*.toc
+*.log
+!logs/
+

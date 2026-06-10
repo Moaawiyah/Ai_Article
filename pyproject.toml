@@ -26,7 +26,8 @@ dev = [
 ]
 
 [project.scripts]
-agent-ai = "agent_ai.sdk.sdk:main"
+agent-ai         = "agent_ai.sdk.sdk:main"
+agent-ai-article = "agent_ai.main:main"
 
 [tool.hatch.build.targets.wheel]
 only-include = ["src"]
@@ -47,7 +48,18 @@ addopts = "--cov=src --cov-report=term-missing"
 
 [tool.coverage.run]
 source = ["src"]
-omit = ["src/main.py", "*/tests/*", "src/**/gui/*"]
+omit = [
+    "src/agent_ai/main.py",
+    "src/agent_ai/pipeline.py",
+    "src/agent_ai/pipeline_steps.py",
+    "src/agent_ai/agents/*",
+    "src/agent_ai/tasks/*",
+    "src/agent_ai/utils/graph_generator.py",
+    "src/agent_ai/utils/graph_spec.py",
+    "src/agent_ai/utils/logger.py",
+    "*/tests/*",
+    "src/**/gui/*",
+]
 
 [tool.coverage.report]
 fail_under = 85

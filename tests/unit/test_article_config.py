@@ -3,11 +3,13 @@
 from pathlib import Path
 
 from agent_ai.shared.config import PROJECT_TOPIC, AppConfig, build_llm
-from utils.file_utils import ensure_output_dirs
+from agent_ai.shared.pipeline_config import PipelineConfig
+from agent_ai.utils.file_utils import ensure_output_dirs
 
 
 def test_project_topic():
-    assert PROJECT_TOPIC == "Multi-Agent Collaboration Systems: Designing Teams of AI Agents"
+    assert PipelineConfig.load().topic == PROJECT_TOPIC
+    assert PROJECT_TOPIC.strip()
 
 
 def test_app_config_from_env(monkeypatch, tmp_path):

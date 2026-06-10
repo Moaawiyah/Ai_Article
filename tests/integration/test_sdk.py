@@ -41,9 +41,11 @@ def test_process_document_file_not_found(sdk):
 
 
 def test_missing_api_key_raises(config_dir, monkeypatch):
+    """The Anthropic client is created lazily, so the error surfaces on first use."""
     monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    sdk = AgentAISDK(config_dir=config_dir)
     with pytest.raises(OSError, match="ANTHROPIC_API_KEY"):
-        AgentAISDK(config_dir=config_dir)
+        sdk.query_document("doc", "q?")
 
 
 def test_process_document_success(sdk, tmp_path):

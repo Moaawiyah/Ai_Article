@@ -89,6 +89,39 @@ Markdown table → Section 6 (Evaluation): comparison of related approaches on k
 Bibliography → Section N (References): numbered entries [1]...[N] from list above
 ```
 
+### 6. Performance Data Block (machine-readable)
+
+Emit the quantitative comparison used to plot the evaluation figure as a SINGLE fenced
+`json` code block, exactly once, with exactly this shape. The downstream pipeline parses
+this block directly, so the keys and structure must match precisely:
+
+```json
+{
+  "main":   {"name": "<main architecture, max 15 chars>",
+             "median_queue": <median bottleneck queue length in packets, integer 1-500>,
+             "p95_queue":    <95th-percentile queue length, integer > median>,
+             "base_fct_ms":  <average FCT in ms at low (0-20%) load, float>,
+             "fct_slope":    <FCT increase in ms per 1% extra load, float 0.001-0.5>,
+             "data_basis":   "measured" | "estimated",
+             "source":       "<paper + figure/table, or basis for the estimate>"},
+  "arch_a": {"name": "<Comparative Architecture A, max 15 chars>", "median_queue": ...,
+             "p95_queue": ..., "base_fct_ms": ..., "fct_slope": ...,
+             "data_basis": "measured" | "estimated", "source": "..."},
+  "arch_b": {"name": "<Comparative Architecture B, max 15 chars>", "median_queue": ...,
+             "p95_queue": ..., "base_fct_ms": ..., "fct_slope": ...,
+             "data_basis": "measured" | "estimated", "source": "..."}
+}
+```
+
+Rules for this block:
+- `main`/`arch_a`/`arch_b` must be the same three systems as your Comparative Architecture
+  Analysis (section 3), so the figure agrees with the prose.
+- Set `data_basis` to `"measured"` ONLY when recalling actual numbers reported in a real
+  paper, and name that paper + figure/table in `source` (e.g. `"HULA, SOSR'16, Fig. 8"`).
+  Otherwise set `"estimated"` and describe the basis in `source`. Never invent a citation.
+- Report the real measured ranking. Do NOT force the main topic to be the best on every metric.
+- Make the three meaningfully different so the plotted curves are visually distinct.
+
 ---
 
 ## Rules
@@ -109,5 +142,6 @@ Bibliography → Section N (References): numbered entries [1]...[N] from list ab
 - [ ] Bibliography has ≥8 real references in correct format
 - [ ] Comparative Architecture Analysis contains exactly 2 named architectures with mechanism, strengths, weaknesses, and key difference
 - [ ] Artifact map accounts for every artifact type listed in the task
+- [ ] Exactly one machine-readable `json` Performance Data block with main/arch_a/arch_b, each having data_basis + source
 - [ ] No article prose — only structured notes
 - [ ] No invented citations or statistics

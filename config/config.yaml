@@ -1,0 +1,49 @@
+# ──────────────────────────────────────────────────────────────────────────────
+# Article pipeline configuration
+# All runtime values are loaded from here. Do not hardcode values in source.
+# ──────────────────────────────────────────────────────────────────────────────
+
+article:
+  topic: "HULA: Scalable Load Balancing Using Programmable Data Planes"
+  author_name: "[Author Name]"
+  course_name: "[Course Name]"
+  lecturer_name: "[Lecturer Name]"
+
+assignment:
+  min_pages: 15
+  min_words: 4500
+  max_words: 5000
+  language: "english"
+  artifacts: "tikz_figure,markdown_table,display_formula,bibliography_8"
+
+llm:
+  provider: "zhipuai"          # ollama | zhipuai | anthropic | openai
+  model: "glm-4.7-flashx"
+  base_url: "https://api.z.ai/api/paas/v4/"
+
+logging:
+  level: "INFO"               # DEBUG | INFO | WARNING | ERROR
+  log_dir: "logs"
+  log_file: "app.log"
+
+outputs:
+  root: "outputs"
+  research: "outputs/research"
+  drafts: "outputs/drafts"
+  reviewed: "outputs/reviewed"
+  latex: "outputs/latex"
+  pdf: "outputs/pdf"
+  assets: "outputs/assets"
+
+# Token pricing (USD per 1M tokens) — pulled into the post-run cost report.
+# Override per-provider as needed; defaults reflect the configured LLM above.
+pricing:
+  input_per_1m_usd: 0.07
+  cached_per_1m_usd: 0.01
+  output_per_1m_usd: 0.40
+
+# Parameters for the inline graph-spec LLM call (see graph_spec.py).
+graph_spec:
+  max_tokens: 2000
+  temperature: 0.1
+  brief_chars: 5000

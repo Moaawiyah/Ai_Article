@@ -8,7 +8,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 _PROJECT_ROOT = Path(__file__).resolve().parents[3]
-_CONFIG_YAML  = _PROJECT_ROOT / "config.yaml"
+_CONFIG_YAML  = _PROJECT_ROOT / "config" / "config.yaml"
 
 logger = logging.getLogger(__name__)
 
@@ -75,14 +75,24 @@ class PipelineConfig:
     output_pdf: Path
     output_assets: Path
 
+    price_input_per_1m:  float
+    price_cached_per_1m: float
+    price_output_per_1m: float
+
+    graph_spec_max_tokens:  int
+    graph_spec_temperature: float
+    graph_spec_brief_chars: int
+
     @classmethod
-    def load(cls, yaml_path: Path = _CONFIG_YAML) -> "PipelineConfig":
+    def load(cls, yaml_path: Path = _CONFIG_YAML) -> PipelineConfig:
         raw        = _load_yaml(yaml_path)
         article    = raw.get("article", {})
         assignment = raw.get("assignment", {})
         llm        = raw.get("llm", {})
         logging_   = raw.get("logging", {})
         outputs    = raw.get("outputs", {})
+        pricing    = raw.get("pricing", {})
+        gs         = raw.get("graph_spec", {})
         root       = Path(outputs.get("root", "outputs"))
         return cls(
             topic              = article.get("topic",         "Untitled Article"),
@@ -107,6 +117,12 @@ class PipelineConfig:
             output_latex       = Path(outputs.get("latex",    str(root / "latex"))),
             output_pdf         = Path(outputs.get("pdf",      str(root / "pdf"))),
             output_assets      = Path(outputs.get("assets",   str(root / "assets"))),
+            price_input_per_1m  = float(pricing.get("input_per_1m_usd",  "0.07")),
+            price_cached_per_1m = float(pricing.get("cached_per_1m_usd", "0.01")),
+            price_output_per_1m = float(pricing.get("output_per_1m_usd", "0.40")),
+            graph_spec_max_tokens  = int(gs.get("max_tokens",     "2000")),
+            graph_spec_temperature = float(gs.get("temperature",  "0.1")),
+            graph_spec_brief_chars = int(gs.get("brief_chars",    "5000")),
         )
 
     @property
