@@ -94,7 +94,7 @@ def _graph_step(cfg: PipelineConfig, log) -> None:
 def _compile_step(cfg: PipelineConfig, log) -> bool:
     tex_path = cfg.output_latex / "article.tex"
     log_path = cfg.log_dir / "latex_compile.log"
-    strip_tex_fences(tex_path)
+    strip_tex_fences(tex_path, topic=cfg.topic)
 
     log.info("─" * 60)
     log.info("PDF COMPILATION  — LuaLaTeX")

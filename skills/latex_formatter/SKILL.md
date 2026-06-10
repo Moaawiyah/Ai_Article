@@ -1,7 +1,7 @@
 ---
 name: latex_formatter
-description: Converts a reviewed Markdown article into a complete, valid LuaLaTeX source file ready for compilation into a professional academic PDF. Handles TikZ figures, tables, math, and biblatex references.
-version: 3.0.0
+description: Converts a reviewed Markdown article into a complete, valid LuaLaTeX source file ready for compilation into a professional academic PDF. Handles TikZ figures, tables, math, biblatex references, and Hebrew/English BiDi sections.
+version: 4.0.0
 ---
 
 # LaTeX Formatter
@@ -10,10 +10,10 @@ version: 3.0.0
 
 Use this skill when an agent must transform a reviewed Markdown article into a
 production-ready LuaLaTeX `.tex` file. The output must be syntactically correct,
-fully structured, and include all required academic document elements.
+fully structured, and include all required academic document elements, including
+the Hebrew/English bilingual section.
 
 This skill does NOT compile the PDF. It produces only the `.tex` source.
-The article is English-only — no Hebrew, no polyglossia, no BiDi content.
 
 ---
 
@@ -21,7 +21,7 @@ The article is English-only — no Hebrew, no polyglossia, no BiDi content.
 
 - File: `outputs/reviewed/reviewed.md`
 - Format: Markdown with headings, tables, display math, `<!-- TIKZ: ... -->` markers,
-  citation markers `[N]`, and a Bibliography section.
+  citation markers `[N]`, a bilingual section with Hebrew body text, and a Bibliography section.
 
 ---
 
@@ -38,11 +38,12 @@ Produce the output in this exact order:
 
 1. **Preamble** — packages listed below, in order
 2. `\begin{document}`
-3. Title page: `\maketitle`, `\newpage`
-4. `\tableofcontents` + `\newpage`
-5. All sections (converted from Markdown headings)
-6. `\printbibliography`
-7. `\end{document}` — this MUST be the last line
+3. Header/footer setup (pagestyle, fancyhf — see template below)
+4. Title page: `\maketitle`, `\newpage`
+5. `\tableofcontents` + `\newpage`
+6. All sections (converted from Markdown headings)
+7. `\newpage` then `\begin{thebibliography}` at the end
+8. `\end{document}` — this MUST be the last line
 
 ---
 
@@ -51,6 +52,7 @@ Produce the output in this exact order:
 | Package | Purpose |
 |---|---|
 | `fontspec` | Unicode font selection (LuaLaTeX) |
+| `polyglossia` | Bidirectional text / Hebrew support |
 | `geometry` | Page margins (a4paper, 2.5 cm) |
 | `fancyhdr` | Headers and footers |
 | `amsmath`, `amssymb` | Mathematical environments |
@@ -71,6 +73,57 @@ After `\usepackage{tikz}` add this line:
 
 ---
 
+## Preamble template
+
+Use this exact preamble structure (fill in the title/author/date from the article):
+
+```latex
+\documentclass[12pt,a4paper]{article}
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+\usepackage{polyglossia}
+\setdefaultlanguage{english}
+\setotherlanguage{hebrew}
+\newfontfamily\hebrewfont[Script=Hebrew]{Times New Roman}
+\usepackage[a4paper, margin=2.5cm]{geometry}
+\usepackage{fancyhdr}
+\setlength{\headheight}{15pt}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,calc}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{graphicx}
+\graphicspath{{./}}
+\usepackage{booktabs}
+\usepackage{adjustbox}
+\usepackage{caption}
+\usepackage{float}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+\usepackage{setspace}
+\onehalfspacing
+
+\title{HULA: Scalable Load Balancing\\Using Programmable Data Planes}
+\author{Moa'awiyah \& Mohammed \\ \small{Orchestra Agentic AI}}
+\date{\today}
+```
+
+Place all `\pagestyle{fancy}` and `\fancyhdr` setup **after** `\begin{document}`, using
+this exact block:
+
+```latex
+\begin{document}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small HULA: Scalable Load Balancing Using Programmable Data Planes}
+\fancyhead[R]{}
+\fancyfoot[C]{\thepage}
+```
+
+---
+
 ## Conversion rules
 
 ### Headings
@@ -80,6 +133,7 @@ After `\usepackage{tikz}` add this line:
 - `####` heading → `\subsubsection{...}`
 
 Each section command on its own line with a blank line above it.
+All headings stay in English — even the bilingual section heading.
 
 ### Tables
 
@@ -88,14 +142,22 @@ Convert every Markdown pipe table to a booktabs `table` environment:
 - Use `\toprule`, `\midrule`, `\bottomrule`
 - Add `\caption{...}` (never leave it empty) and `\label{tab:...}`
 - Centre the table with `\centering`
-- **Always** wrap the `tabular` environment with `\adjustbox{max width=\textwidth}{...}` to prevent overflow:
+- **Always** wrap the `tabular` environment with `\adjustbox{max width=\textwidth}{...}`:
   ```latex
   \adjustbox{max width=\textwidth}{
-    \begin{tabular}{...}
+    \begin{tabular}{l p{4cm} p{4cm}}
       ...
     \end{tabular}
   }
   ```
+- **Column spec rules:**
+  - Use `l`, `c`, `r` only for short/numeric columns (IDs, numbers, short labels).
+  - For any column that contains descriptive text or sentences, use `p{Xcm}` so the
+    text wraps and the row grows taller instead of overflowing. Typical widths:
+    - Short description (≤10 words): `p{3cm}`
+    - Medium description (10–20 words): `p{4cm}`
+    - Long description (20+ words): `p{5cm}`
+  - Never use a bare `p` without a width argument.
 
 ### Mathematical formulas
 
@@ -105,17 +167,20 @@ Convert every Markdown pipe table to a booktabs `table` environment:
 
 ### TikZ figure markers
 
-This is the most important conversion rule. When you encounter a comment of the form:
+When you encounter a comment of the form:
 ```
 <!-- TIKZ: <description> -->
 ```
 
 Replace it with a complete `\begin{figure}[H]...\end{figure}` containing a hand-written
-`tikzpicture` environment that visually represents the description.
+`tikzpicture` that visually represents the description.
 
-**TikZ reserved key warning**: Never name a style after a pgf built-in key. Forbidden style names: `id`, `name`, `node`, `label`, `text`, `draw`, `fill`, `color`, `at`, `to`, `every`, `scale`, `shift`, `above`, `below`, `left`, `right`, `anchor`. Use descriptive names like `mynode`, `ctrl`, `sw`, `arr`, `probe` instead.
+**TikZ reserved key warning**: Never name a style after a pgf built-in key. Forbidden style names:
+`id`, `name`, `node`, `label`, `text`, `draw`, `fill`, `color`, `at`, `to`, `every`, `scale`,
+`shift`, `above`, `below`, `left`, `right`, `anchor`. Use descriptive names like `mynode`,
+`ctrl`, `sw`, `arr`, `probe` instead.
 
-For the fat-tree topology marker, generate a TikZ figure like this (adapt as needed):
+For a fat-tree / data-plane topology, use this reference implementation:
 
 ```latex
 \begin{figure}[H]
@@ -158,13 +223,14 @@ For the fat-tree topology marker, generate a TikZ figure like this (adapt as nee
 ### Inline citations
 
 Convert every `[N]` citation marker to `\cite{refN}` — no exceptions, no placeholders.
-Do not add any comment about "future automation". Every `[N]` in the body must become `\cite{refN}` in the output.
+Every major claim in every section **must** have a `\cite{refN}` command.
+Aim for at least one `\cite` per paragraph in the body.
 
 ### Bibliography section
 
-Replace the `## References` heading and its numbered list entries with a
-`\begin{thebibliography}` environment. Each `[N] Author, "Title," Venue, Year.`
-entry becomes a `\bibitem{refN}` item:
+Replace the `## References` heading and its numbered list with a `\begin{thebibliography}`
+environment. Start with `\newpage`. Include **8 to 15 entries maximum** — if the source has
+more than 15 references, include only the 15 most important ones.
 
 ```latex
 \newpage
@@ -174,52 +240,32 @@ entry becomes a `\bibitem{refN}` item:
 \end{thebibliography}
 ```
 
-Always put `\newpage` immediately before `\begin{thebibliography}` so the bibliography starts on a fresh page.
-
-Use `\cite{refN}` for inline citation markers `[N]` throughout the article.
-
 ### Inline formatting
 
 - `**text**` → `\textbf{text}`
 - `*text*` → `\textit{text}`
 - `` `code` `` → `\texttt{code}`
 
----
+### Hebrew text inside the Conclusion section
 
-## Preamble template
+The Conclusion section contains Hebrew prose naturally interspersed with English paragraphs.
+The section heading is `\section{Conclusion}` — a completely plain English heading; do NOT
+add any label, comment, or indicator that it is bilingual.
 
-Use this exact preamble structure (fill in the title/author/date from the article):
-
-```latex
-\documentclass[12pt,a4paper]{article}
-\usepackage{fontspec}
-\setmainfont{Times New Roman}
-\usepackage[a4paper, margin=2.5cm]{geometry}
-\usepackage{fancyhdr}
-\setlength{\headheight}{14pt}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{tikz}
-\usetikzlibrary{arrows.meta,positioning,shapes.geometric,calc}
-\usepackage{pgfplots}
-\pgfplotsset{compat=1.18}
-\usepackage{graphicx}
-\graphicspath{{./}}
-\usepackage{booktabs}
-\usepackage{adjustbox}
-\usepackage{caption}
-\usepackage{float}
-\usepackage[hidelinks]{hyperref}
-\usepackage{microtype}
-\usepackage{setspace}
-\onehalfspacing
-
-\title{HULA: Scalable Load Balancing\\Using Programmable Data Planes}
-\author{[Author Name] \\ \small{[Course Name]}}
-\date{\today}
-```
-
-Place all `\pagestyle{fancy}` and `\fancyhdr` setup lines **after** `\begin{document}`.
+Conversion rules:
+1. Convert `\section{Conclusion}` normally — no change to the heading.
+2. For each paragraph (or block of consecutive lines) that is written in Hebrew, wrap it in
+   a `begin-hebrew` / `end-hebrew` environment:
+   ```latex
+   \begin{hebrew}
+   מערכת \textenglish{HULA} מספקת איזון עומסים...
+   \end{hebrew}
+   ```
+3. Inside every `begin-hebrew` block, wrap every English word, acronym, or technical term in
+   `\textenglish{...}` so it renders left-to-right within the RTL paragraph.
+4. English-only paragraphs in the Conclusion remain as plain LaTeX text — no special wrapping.
+5. Do NOT use `\setRL` or any manual direction commands.
+6. Do NOT add a separate section for the Hebrew content — it lives inside `\section{Conclusion}`.
 
 ---
 
@@ -230,22 +276,23 @@ Place all `\pagestyle{fancy}` and `\fancyhdr` setup lines **after** `\begin{docu
 - Do not include any Markdown syntax or fenced code blocks in the output.
 - Every section command must be on its own line with a blank line above.
 - Do not compile or run the LaTeX compiler. Output `.tex` source only.
-- No Hebrew, no `polyglossia`, no BiDi content of any kind.
 - The TikZ figure is a first-class requirement — never skip or simplify it.
 
 ---
 
 ## Quality checklist
 
-- [ ] Preamble includes all required packages in the correct order
+- [ ] Preamble includes all required packages (fontspec, polyglossia, fancyhdr, amsmath, tikz, booktabs, hyperref)
+- [ ] `polyglossia` block present: setdefaultlanguage english, setotherlanguage hebrew, hebrewfont
 - [ ] `tikz` and `pgfplots` packages present; `\usetikzlibrary` line present
+- [ ] fancyhdr setup is AFTER `\begin{document}`: topic on left, empty right, `\thepage` center footer
 - [ ] Title page and TOC with `\newpage` separators present
-- [ ] All `##` headings converted to `\section{}`; `###` to `\subsection{}`
-- [ ] All pipe tables converted to booktabs `table` environments
+- [ ] All `##` headings converted to `\section{}`; `###` to `\subsection{}`; all headings in English
+- [ ] All pipe tables converted to booktabs `table` environments with adjustbox; column spec uses l/c/r
 - [ ] All `$$...$$` blocks converted to `equation` environments
 - [ ] `<!-- TIKZ: ... -->` marker converted to a full `tikzpicture` figure
-- [ ] All `[N]` citation markers converted to `\cite{refN}`
-- [ ] `\begin{thebibliography}` present at end before `\end{document}` with ≥8 `\bibitem` entries
+- [ ] All `[N]` citation markers converted to `\cite{refN}`; at least one cite per paragraph
+- [ ] Conclusion section's Hebrew paragraphs wrapped in `\begin{hebrew}...\end{hebrew}` with `\textenglish{}` for English terms inside; heading is plain `\section{Conclusion}`
+- [ ] `\begin{thebibliography}` present at end with 8–15 `\bibitem` entries, preceded by `\newpage`
 - [ ] No Markdown syntax remaining in the output
 - [ ] No unclosed `\begin` / `\end` pairs
-- [ ] No `polyglossia` or Hebrew environments anywhere

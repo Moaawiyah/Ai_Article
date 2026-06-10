@@ -2,54 +2,85 @@
 \providecommand\hyper@newdestlabel[2]{}
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
+\ProvideDocumentCommand \xpg@aux {mm}{}
 \providecommand \oddpage@label [2]{}
-\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{3}{section.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {2}Background and Related Work}{3}{section.2}\protected@file@percent }
-\citation{ref1}
+\@writefile{toc}{\xpg@aux {}{english}}
 \citation{ref1}
 \citation{ref2}
+\citation{ref3}
+\citation{ref4}
+\citation{ref5}
 \citation{ref6}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Software Defined Networking}{4}{subsection.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Programmable Data Planes}{4}{subsection.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Traditional Load Balancing Mechanisms}{4}{subsection.2.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.1}Equal-Cost Multi-Path (ECMP)}{4}{subsubsection.2.3.1}\protected@file@percent }
+\citation{ref7}
+\citation{ref1}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Abstract}{3}{section.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Introduction}{3}{section.2}\protected@file@percent }
 \citation{ref8}
-\citation{ref6}
-\citation{ref8}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.2}Software-Based Load Balancers}{5}{subsubsection.2.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Comparative Analysis of Load Balancing Architectures}{5}{subsection.2.4}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Comparison of Load Balancing Architectures}}{5}{table.caption.2}\protected@file@percent }
+\citation{ref9}
+\citation{ref10}
+\citation{ref14}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Background and Motivation}{4}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}HULA System Architecture}{5}{section.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces \xpg@aux {}{english}\ignorespaces HULA Architecture: Orchestrator controls multiple P4 switches, which forward traffic to backend servers.}}{5}{figure.caption.2}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{tab:comparison}{{1}{5}{Comparison of Load Balancing Architectures}{table.caption.2}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {3}System Architecture}{6}{section.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Control Plane}{6}{subsection.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Data Plane}{6}{subsection.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Interaction and Data Flow}{6}{subsection.3.3}\protected@file@percent }
+\newlabel{fig:architecture}{{1}{5}{\texorpdfstring {\xpg@aux {\xpg@current@opts }{\languagename }}{}\ignorespaces HULA Architecture: Orchestrator controls multiple P4 switches, which forward traffic to backend servers}{figure.caption.2}{}}
+\citation{ref15}
+\citation{ref1}
 \citation{ref2}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces HULA System Architecture: Data plane forwarding (solid) vs. Control plane signaling (dashed).}}{7}{figure.caption.3}\protected@file@percent }
-\newlabel{fig:system-arch}{{1}{7}{HULA System Architecture: Data plane forwarding (solid) vs. Control plane signaling (dashed)}{figure.caption.3}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Load Balancing Algorithm Design}{7}{section.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Hash Function Strategy}{7}{subsection.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Mathematical Formulation}{8}{subsection.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Consistency and Collision Handling}{8}{subsection.4.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Granularity Trade-offs}{8}{subsection.4.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5}Implementation Details}{9}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Parser and Header Extraction}{9}{subsection.5.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Hash Computation}{9}{subsection.5.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Output Port Selection}{9}{subsection.5.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Control Plane Interaction}{10}{subsection.5.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6}Evaluation}{10}{section.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Experimental Setup}{10}{subsection.6.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Throughput Analysis}{10}{subsection.6.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Load Fairness}{10}{subsection.6.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}Convergence Time}{11}{subsection.6.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}Control Plane Overhead}{11}{subsection.6.5}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Left: CDF of bottleneck queue length. Right: average FCT vs.\ network load. Comparison of HULA (P4) vs.\ Software LB vs.\ ECMP (Legacy) (illustrative).}}{11}{figure.caption.4}\protected@file@percent }
-\newlabel{fig:perf}{{2}{11}{Left: CDF of bottleneck queue length. Right: average FCT vs.\ network load. Comparison of HULA (P4) vs.\ Software LB vs.\ ECMP (Legacy) (illustrative)}{figure.caption.4}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {7}Discussion and Conclusion}{12}{section.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Security Implications}{12}{subsection.7.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Limitations and Future Directions}{12}{subsection.7.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}Summary}{12}{subsection.7.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}System Components}{6}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Communication Protocols}{6}{subsection.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Data Plane Design}{6}{section.5}\protected@file@percent }
+\citation{ref7}
+\citation{ref11}
+\citation{ref13}
+\citation{ref12}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}P4 Pipeline Stages}{7}{subsection.5.1}\protected@file@percent }
+\citation{ref7}
+\citation{ref1}
+\citation{ref14}
+\citation{ref15}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Hash Function Engineering}{8}{subsection.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Header Manipulation}{8}{subsection.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Control Plane Design}{8}{section.6}\protected@file@percent }
+\citation{ref2}
+\citation{ref8}
+\citation{ref13}
+\citation{ref5}
+\citation{ref14}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Health Monitoring Mechanisms}{9}{subsection.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Configuration Management Protocol}{9}{subsection.6.2}\protected@file@percent }
+\citation{ref15}
+\citation{ref1}
+\citation{ref10}
+\citation{ref6}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Implementation and Evaluation}{10}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Experimental Setup}{10}{subsection.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Testbed Hardware Specifications}{10}{subsection.7.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}Convergence Time}{10}{subsection.7.3}\protected@file@percent }
+\citation{ref1}
+\citation{ref4}
+\citation{ref9}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.4}Throughput Analysis}{11}{subsection.7.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.5}Load Fairness}{11}{subsection.7.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.6}Control Plane Overhead}{11}{subsection.7.6}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces \xpg@aux {}{english}\ignorespaces Performance Comparison of Load Balancing Architectures}}{11}{table.caption.3}\protected@file@percent }
+\newlabel{tab:perf}{{1}{11}{\texorpdfstring {\xpg@aux {\xpg@current@opts }{\languagename }}{}\ignorespaces Performance Comparison of Load Balancing Architectures}{table.caption.3}{}}
+\citation{ref1}
+\citation{ref5}
+\citation{ref2}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces \xpg@aux {}{english}\ignorespaces Left: CDF of bottleneck queue length. Right: average FCT vs.\ network load. Comparison of HULA vs.\ LVS vs.\ SDN-Base (illustrative).}}{12}{figure.caption.4}\protected@file@percent }
+\newlabel{fig:perf}{{2}{12}{\texorpdfstring {\xpg@aux {\xpg@current@opts }{\languagename }}{}\ignorespaces Left: CDF of bottleneck queue length. Right: average FCT vs.\ network load. Comparison of HULA vs.\ LVS vs.\ SDN-Base (illustrative)}{figure.caption.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8}Related Work}{12}{section.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.1}Traditional Load Balancing}{12}{subsection.8.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2}SDN-Based Approaches}{12}{subsection.8.2}\protected@file@percent }
+\citation{ref7}
+\citation{ref3}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.3}Programmable Data Planes}{13}{subsection.8.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces \xpg@aux {}{english}\ignorespaces Comparison of Load Balancing Architectures}}{13}{table.caption.5}\protected@file@percent }
+\newlabel{tab:related}{{2}{13}{\texorpdfstring {\xpg@aux {\xpg@current@opts }{\languagename }}{}\ignorespaces Comparison of Load Balancing Architectures}{table.caption.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {9}Conclusion}{13}{section.9}\protected@file@percent }
+\@writefile{toc}{\xpg@aux {}{hebrew}}
+\@writefile{toc}{\xpg@aux {}{english}}
 \bibcite{ref1}{1}
 \bibcite{ref2}{2}
 \bibcite{ref3}{3}
@@ -60,4 +91,9 @@
 \bibcite{ref8}{8}
 \bibcite{ref9}{9}
 \bibcite{ref10}{10}
-\gdef \@abspage@last{13}
+\bibcite{ref11}{11}
+\bibcite{ref12}{12}
+\bibcite{ref13}{13}
+\bibcite{ref14}{14}
+\bibcite{ref15}{15}
+\gdef \@abspage@last{15}
