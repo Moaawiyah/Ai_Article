@@ -34,3 +34,16 @@ outputs:
   latex: "outputs/latex"
   pdf: "outputs/pdf"
   assets: "outputs/assets"
+
+# Token pricing (USD per 1M tokens) — pulled into the post-run cost report.
+# Override per-provider as needed; defaults reflect the configured LLM above.
+pricing:
+  input_per_1m_usd: 0.07
+  cached_per_1m_usd: 0.01
+  output_per_1m_usd: 0.40
+
+# Parameters for the inline graph-spec LLM call (see graph_spec.py).
+graph_spec:
+  max_tokens: 2000
+  temperature: 0.1
+  brief_chars: 5000

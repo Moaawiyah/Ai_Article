@@ -106,6 +106,9 @@ Write the mathematical formula using `$$` delimiters:
 ```
 $$<LaTeX expression>$$
 ```
+The formula must be substantive, not a trivial one-line placeholder. Prefer a multi-line
+expression using `\begin{aligned}...\end{aligned}` inside the `$$...$$` block, combining
+the core mapping rule with at least one derived quantity, constraint, or objective.
 Follow the formula with a sentence explaining each variable.
 The formula content comes from the Researcher's artifact map.
 
@@ -136,7 +139,7 @@ Before finishing, verify:
 - [ ] Total word count (body only, excluding title block and references) meets the task target
 - [ ] Each major section has ≥3 subsections (`###`) with substantive prose
 - [ ] `<!-- TIKZ: ... -->` marker is present in the designated section
-- [ ] `$$...$$` formula is present in the designated section
+- [ ] `$$...$$` formula is present in the designated section and is mathematically substantive, not a one-line placeholder
 - [ ] Markdown comparison table covers main topic + Comparative Architecture A + B
 - [ ] References section present with 8–15 numbered entries (no more than 15)
 - [ ] Inline citations `[N]` appear throughout — at least one per paragraph in every section

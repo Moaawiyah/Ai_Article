@@ -18,7 +18,7 @@ Use this skill when an agent must review a draft critically before LaTeX formatt
 4. Verify the presence or planned placement of:
    - `<!-- TIKZ: ... -->` figure marker in the designated section
    - Markdown pipe table comparing related approaches
-   - Display math formula inside `$$...$$` delimiters
+   - Display math formula inside `$$...$$` delimiters; reject trivial one-line formulas when the topic calls for a richer model or derivation
    - `## References` section with ≥8 numbered entries
 5. Evaluate whether the article has enough substance and balance for a ~15-page submission.
 6. Identify weak transitions, redundancy, unsupported claims, and missing explanations.

@@ -6,10 +6,10 @@ import os
 from dataclasses import dataclass
 from pathlib import Path
 
-from agent_ai.shared.pipeline_config import PipelineConfig
-from agent_ai.shared.version import validate_config_version
+from shared.pipeline_config import PipelineConfig
+from shared.version import validate_config_version
 
-_CONFIG_DIR = Path(__file__).resolve().parents[3] / "config"
+_CONFIG_DIR = Path(__file__).resolve().parents[2] / "config"
 
 logger = logging.getLogger(__name__)
 

@@ -1,6 +1,6 @@
 """Unit tests for constants module."""
 
-from agent_ai.constants import DEFAULT_BATCH_SIZE, MAX_FILE_SIZE_MB, ProcessingMode, SupportedFormat
+from constants import DEFAULT_BATCH_SIZE, MAX_FILE_SIZE_MB, ProcessingMode, SupportedFormat
 
 
 def test_default_batch_size():

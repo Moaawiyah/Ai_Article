@@ -61,8 +61,8 @@ def generate_performance_graph(
         import matplotlib
         matplotlib.use("Agg")
         import matplotlib.pyplot as plt
-        from matplotlib import font_manager
         import numpy as np
+        from matplotlib import font_manager
     except ImportError:
         log.warning("matplotlib not installed — skipping graph generation")
         return None
@@ -83,7 +83,7 @@ def generate_performance_graph(
     x_max = max(float(s["p95_queue"]) for s in series) * 1.15
     x_cdf = np.linspace(0, x_max, 500)
 
-    for s, color, ls in zip(series, _COLORS, _LINESTYLES):
+    for s, color, ls in zip(series, _COLORS, _LINESTYLES, strict=False):
         mu, sigma = _lognormal_params(float(s["median_queue"]), float(s["p95_queue"]))
         samples   = rng.lognormal(mu, sigma, size=20_000)
         cdf       = np.searchsorted(np.sort(samples), x_cdf, side="right") / len(samples)
@@ -104,7 +104,7 @@ def generate_performance_graph(
     ax1.grid(True, linestyle="--", alpha=0.4)
 
     # ── Panel 2: Average FCT vs Network Load ─────────────────────────────────
-    for s, color, ls in zip(series, _COLORS, _LINESTYLES):
+    for s, color, ls in zip(series, _COLORS, _LINESTYLES, strict=False):
         fct = _fct_curve(load, float(s["base_fct_ms"]), float(s["fct_slope"]))
         ax2.plot(load, fct, label=s["name"], linewidth=2, color=color, linestyle=ls)
 

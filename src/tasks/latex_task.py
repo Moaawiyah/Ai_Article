@@ -2,7 +2,7 @@
 
 from crewai import Agent, Task
 
-from agent_ai.shared.config import AppConfig, PipelineConfig
+from shared.config import AppConfig, PipelineConfig
 
 
 def build_latex_task(agent: Agent, config: AppConfig | PipelineConfig, review_task: Task) -> Task:

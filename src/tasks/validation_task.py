@@ -2,7 +2,7 @@
 
 from crewai import Agent, Task
 
-from agent_ai.shared.config import AppConfig, PipelineConfig
+from shared.config import AppConfig, PipelineConfig
 
 _DESCRIPTION = """
 You are the final validator for the article pipeline. The LaTeX Formatter has

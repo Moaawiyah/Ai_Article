@@ -69,7 +69,7 @@ def _split_frontmatter(text: str) -> tuple[dict, str]:
     if not lines or lines[0].strip() != "---":
         return {}, text
 
-    end = next((i for i, l in enumerate(lines[1:], 1) if l.strip() == "---"), None)
+    end = next((i for i, ln in enumerate(lines[1:], 1) if ln.strip() == "---"), None)
     if end is None:
         return {}, text
 

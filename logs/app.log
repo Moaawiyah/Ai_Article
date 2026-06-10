@@ -1464,3 +1464,226 @@
 2026-06-10 08:32:54  INFO      [article_pipeline.main]    [PDF]        outputs/pdf/article.pdf
 2026-06-10 08:32:54  INFO      [article_pipeline.main]    [Validation] outputs/pdf/validation_report.md
 2026-06-10 08:32:54  INFO      [article_pipeline.main]  ============================================================
+2026-06-10 08:50:48  INFO      [article_pipeline.main]  ■ STAGE END    — Agent pipeline (all 5 stages)  (1782.54s)
+2026-06-10 08:50:48  INFO      [article_pipeline.main]  ────────────────────────────────────────────────────────────
+2026-06-10 08:50:48  INFO      [article_pipeline.main]  TOKEN USAGE & COST
+2026-06-10 08:50:48  INFO      [article_pipeline.main]    prompt tokens   : 153030  ($0.010712)
+2026-06-10 08:50:48  INFO      [article_pipeline.main]    cached tokens   : 0  ($0.000000)
+2026-06-10 08:50:48  INFO      [article_pipeline.main]    output tokens   : 172700  ($0.069080)
+2026-06-10 08:50:48  INFO      [article_pipeline.main]    total tokens    : 325730
+2026-06-10 08:50:48  INFO      [article_pipeline.main]    estimated cost  : $0.0798
+2026-06-10 09:35:10  INFO      [article_pipeline]  Logger ready — writing to /Users/moaawiyahhaj/Desktop/ai_artcle/logs/app.log
+2026-06-10 09:35:10  INFO      [article_pipeline]  Pipeline config loaded
+2026-06-10 09:35:10  INFO      [article_pipeline]    topic    : HULA: Scalable Load Balancing Using Programmable Data Planes
+2026-06-10 09:35:10  INFO      [article_pipeline]    llm      : zhipuai/glm-4.7-flashx
+2026-06-10 09:35:10  INFO      [article_pipeline]    outputs  : outputs
+2026-06-10 09:36:09  INFO      [article_pipeline]  Logger ready — writing to /Users/moaawiyahhaj/Desktop/ai_artcle/logs/app.log
+2026-06-10 09:36:09  INFO      [article_pipeline]  Pipeline config loaded
+2026-06-10 09:36:09  INFO      [article_pipeline]    topic    : HULA: Scalable Load Balancing Using Programmable Data Planes
+2026-06-10 09:36:09  INFO      [article_pipeline]    llm      : zhipuai/glm-4.7-flashx
+2026-06-10 09:36:09  INFO      [article_pipeline]    outputs  : outputs
+2026-06-10 09:36:09  INFO      [article_pipeline]  Crew assembled — 5 agents, 5 tasks, sequential process
+2026-06-10 09:36:09  INFO      [article_pipeline.sdk.generate_article]  ============================================================
+2026-06-10 09:36:09  INFO      [article_pipeline.sdk.generate_article]  ARTICLE GENERATION  — HULA: Scalable Load Balancing Using Programmable Data Planes
+2026-06-10 09:36:09  INFO      [article_pipeline.sdk.generate_article]  ▶ STAGE START  — Agent pipeline (all 5 stages)
+2026-06-10 09:45:13  INFO      [article_pipeline.sdk.generate_article]  ■ STAGE END    — Agent pipeline (all 5 stages)  (543.27s)
+2026-06-10 09:45:13  INFO      [article_pipeline.sdk.generate_article]  ────────────────────────────────────────────────────────────
+2026-06-10 09:45:13  INFO      [article_pipeline.sdk.generate_article]  TOKEN USAGE & COST
+2026-06-10 09:45:13  INFO      [article_pipeline.sdk.generate_article]    prompt tokens   : 137800  ($0.009646)
+2026-06-10 09:45:13  INFO      [article_pipeline.sdk.generate_article]    cached tokens   : 0  ($0.000000)
+2026-06-10 09:45:13  INFO      [article_pipeline.sdk.generate_article]    output tokens   : 154055  ($0.061622)
+2026-06-10 09:45:13  INFO      [article_pipeline.sdk.generate_article]    total tokens    : 291855
+2026-06-10 09:45:13  INFO      [article_pipeline.sdk.generate_article]    estimated cost  : $0.0713
+2026-06-10 09:45:13  INFO      [article_pipeline.sdk.generate_article]  ────────────────────────────────────────────────────────────
+2026-06-10 09:45:13  INFO      [article_pipeline.sdk.generate_article]  GRAPH GENERATION  — LLM spec + matplotlib
+2026-06-10 09:45:43  INFO      [article_pipeline.sdk.generate_article]  Graph injected into Evaluation section → outputs/latex/benchmark.png
+2026-06-10 09:45:43  INFO      [article_pipeline.sdk.generate_article]  ────────────────────────────────────────────────────────────
+2026-06-10 09:45:43  INFO      [article_pipeline.sdk.generate_article]  PDF COMPILATION  — LuaLaTeX
+2026-06-10 09:45:43  INFO      [article_pipeline.sdk.generate_article]    input  : outputs/latex/article.tex
+2026-06-10 09:45:43  INFO      [article_pipeline.sdk.generate_article]    output : outputs/pdf/article.pdf
+2026-06-10 09:45:43  INFO      [article_pipeline.sdk.generate_article]  ▶ STAGE START  — LuaLaTeX compilation
+2026-06-10 09:45:45  INFO      [article_pipeline.sdk.generate_article]  ■ STAGE END    — LuaLaTeX compilation  (1.26s)
+2026-06-10 09:45:45  INFO      [article_pipeline.sdk.generate_article]    → file: outputs/pdf/article.pdf
+2026-06-10 09:45:45  ERROR     [article_pipeline.sdk.generate_article]  ✗ PDF compilation failed — ! Missing $ inserted.
+2026-06-10 09:45:45  ERROR     [article_pipeline.sdk.generate_article]    log: /Users/moaawiyahhaj/Desktop/ai_artcle/logs/latex_compile.log  tex: /Users/moaawiyahhaj/Desktop/ai_artcle/outputs/latex/article.tex
+2026-06-10 09:45:45  INFO      [article_pipeline.sdk.generate_article]  ────────────────────────────────────────────────────────────
+2026-06-10 09:45:45  INFO      [article_pipeline.sdk.generate_article]  VALIDATION  — 13-item assignment checklist
+2026-06-10 09:45:45  INFO      [article_pipeline.sdk.generate_article]  ▶ STAGE START  — Programmatic validation
+2026-06-10 09:45:45  INFO      [article_pipeline.sdk.generate_article]  ■ STAGE END    — Programmatic validation  (0.00s)
+2026-06-10 09:45:45  INFO      [article_pipeline.sdk.generate_article]    → file: outputs/pdf/validation_report.md
+2026-06-10 09:45:45  INFO      [article_pipeline.sdk.generate_article]  Result: 12/13 passed, 1 failed
+2026-06-10 09:45:45  INFO      [article_pipeline.sdk.generate_article]    ✓ 1. article.tex exists
+2026-06-10 09:45:45  INFO      [article_pipeline.sdk.generate_article]    ✓ 2. article.pdf exists
+2026-06-10 09:45:45  INFO      [article_pipeline.sdk.generate_article]    ✓ 3. Title page
+2026-06-10 09:45:45  INFO      [article_pipeline.sdk.generate_article]    ✓ 4. Table of contents
+2026-06-10 09:45:45  INFO      [article_pipeline.sdk.generate_article]    ✓ 5. Headers/footers
+2026-06-10 09:45:45  INFO      [article_pipeline.sdk.generate_article]    ✓ 6. Sections/chapters
+2026-06-10 09:45:45  INFO      [article_pipeline.sdk.generate_article]    ✓ 7. Table
+2026-06-10 09:45:45  INFO      [article_pipeline.sdk.generate_article]    ✓ 8. Mathematical formula
+2026-06-10 09:45:45  INFO      [article_pipeline.sdk.generate_article]    ✓ 9. TikZ figure
+2026-06-10 09:45:45  INFO      [article_pipeline.sdk.generate_article]    ✓ 10. Inline citations
+2026-06-10 09:45:45  INFO      [article_pipeline.sdk.generate_article]    ✗ 11. English only
+2026-06-10 09:45:45  INFO      [article_pipeline.sdk.generate_article]    ✓ 12. Bibliography
+2026-06-10 09:45:45  INFO      [article_pipeline.sdk.generate_article]    ✓ 13. LaTeX compilation
+2026-06-10 09:45:45  INFO      [article_pipeline.sdk.generate_article]  ARTICLE GENERATION DONE  (575.22s)
+2026-06-10 11:31:58  INFO      [article_pipeline]  Logger ready — writing to /Users/moaawiyahhaj/Desktop/ai_artcle/logs/app.log
+2026-06-10 11:31:58  INFO      [article_pipeline]  Pipeline config loaded
+2026-06-10 11:31:58  INFO      [article_pipeline]    topic    : HULA: Scalable Load Balancing Using Programmable Data Planes
+2026-06-10 11:31:58  INFO      [article_pipeline]    llm      : zhipuai/glm-4.7-flashx
+2026-06-10 11:31:58  INFO      [article_pipeline]    outputs  : outputs
+2026-06-10 11:31:58  INFO      [article_pipeline]  Crew assembled — 5 agents, 5 tasks, sequential process
+2026-06-10 11:31:58  INFO      [article_pipeline.sdk.generate_article]  ============================================================
+2026-06-10 11:31:58  INFO      [article_pipeline.sdk.generate_article]  ARTICLE GENERATION  — HULA: Scalable Load Balancing Using Programmable Data Planes
+2026-06-10 11:31:58  INFO      [article_pipeline.sdk.generate_article]  ▶ STAGE START  — Agent pipeline (all 5 stages)
+2026-06-10 11:39:50  INFO      [article_pipeline.sdk.generate_article]  ■ STAGE END    — Agent pipeline (all 5 stages)  (472.16s)
+2026-06-10 11:39:50  INFO      [article_pipeline.sdk.generate_article]  ────────────────────────────────────────────────────────────
+2026-06-10 11:39:50  INFO      [article_pipeline.sdk.generate_article]  TOKEN USAGE & COST
+2026-06-10 11:39:50  INFO      [article_pipeline.sdk.generate_article]    prompt tokens   : 162100  ($0.011347)
+2026-06-10 11:39:50  INFO      [article_pipeline.sdk.generate_article]    cached tokens   : 0  ($0.000000)
+2026-06-10 11:39:50  INFO      [article_pipeline.sdk.generate_article]    output tokens   : 174665  ($0.069866)
+2026-06-10 11:39:50  INFO      [article_pipeline.sdk.generate_article]    total tokens    : 336765
+2026-06-10 11:39:50  INFO      [article_pipeline.sdk.generate_article]    estimated cost  : $0.0812
+2026-06-10 11:39:50  INFO      [article_pipeline.sdk.generate_article]  ────────────────────────────────────────────────────────────
+2026-06-10 11:39:50  INFO      [article_pipeline.sdk.generate_article]  GRAPH GENERATION  — researcher/LLM spec + matplotlib
+2026-06-10 11:39:50  INFO      [article_pipeline.sdk.generate_article]  Graph injected into Evaluation section → outputs/latex/benchmark.png
+2026-06-10 11:39:50  INFO      [article_pipeline.sdk.generate_article]  ────────────────────────────────────────────────────────────
+2026-06-10 11:39:50  INFO      [article_pipeline.sdk.generate_article]  PDF COMPILATION  — LuaLaTeX
+2026-06-10 11:39:50  INFO      [article_pipeline.sdk.generate_article]    input  : outputs/latex/article.tex
+2026-06-10 11:39:50  INFO      [article_pipeline.sdk.generate_article]    output : outputs/pdf/article.pdf
+2026-06-10 11:39:50  INFO      [article_pipeline.sdk.generate_article]  ▶ STAGE START  — LuaLaTeX compilation
+2026-06-10 11:39:55  INFO      [article_pipeline.sdk.generate_article]  ■ STAGE END    — LuaLaTeX compilation  (4.48s)
+2026-06-10 11:39:55  INFO      [article_pipeline.sdk.generate_article]    → file: outputs/pdf/article.pdf
+2026-06-10 11:39:55  INFO      [article_pipeline.sdk.generate_article]  ✓ PDF ready: /Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.pdf  (4.5s)
+2026-06-10 11:39:55  INFO      [article_pipeline.sdk.generate_article]  ────────────────────────────────────────────────────────────
+2026-06-10 11:39:55  INFO      [article_pipeline.sdk.generate_article]  VALIDATION  — 13-item assignment checklist
+2026-06-10 11:39:55  INFO      [article_pipeline.sdk.generate_article]  ▶ STAGE START  — Programmatic validation
+2026-06-10 11:39:55  INFO      [article_pipeline.sdk.generate_article]  ■ STAGE END    — Programmatic validation  (0.00s)
+2026-06-10 11:39:55  INFO      [article_pipeline.sdk.generate_article]    → file: outputs/pdf/validation_report.md
+2026-06-10 11:39:55  INFO      [article_pipeline.sdk.generate_article]  Result: 12/13 passed, 1 failed
+2026-06-10 11:39:55  INFO      [article_pipeline.sdk.generate_article]    ✓ 1. article.tex exists
+2026-06-10 11:39:55  INFO      [article_pipeline.sdk.generate_article]    ✓ 2. article.pdf exists
+2026-06-10 11:39:55  INFO      [article_pipeline.sdk.generate_article]    ✓ 3. Title page
+2026-06-10 11:39:55  INFO      [article_pipeline.sdk.generate_article]    ✓ 4. Table of contents
+2026-06-10 11:39:55  INFO      [article_pipeline.sdk.generate_article]    ✓ 5. Headers/footers
+2026-06-10 11:39:55  INFO      [article_pipeline.sdk.generate_article]    ✓ 6. Sections/chapters
+2026-06-10 11:39:55  INFO      [article_pipeline.sdk.generate_article]    ✓ 7. Table
+2026-06-10 11:39:55  INFO      [article_pipeline.sdk.generate_article]    ✓ 8. Mathematical formula
+2026-06-10 11:39:55  INFO      [article_pipeline.sdk.generate_article]    ✓ 9. TikZ figure
+2026-06-10 11:39:55  INFO      [article_pipeline.sdk.generate_article]    ✓ 10. Inline citations
+2026-06-10 11:39:55  INFO      [article_pipeline.sdk.generate_article]    ✗ 11. English only
+2026-06-10 11:39:55  INFO      [article_pipeline.sdk.generate_article]    ✓ 12. Bibliography
+2026-06-10 11:39:55  INFO      [article_pipeline.sdk.generate_article]    ✓ 13. LaTeX compilation
+2026-06-10 11:39:55  INFO      [article_pipeline.sdk.generate_article]  ARTICLE GENERATION DONE  (476.96s)
+2026-06-10 11:58:23  INFO      [article_pipeline]  Logger ready — writing to /Users/moaawiyahhaj/Desktop/ai_artcle/logs/app.log
+2026-06-10 11:58:23  INFO      [article_pipeline]  Pipeline config loaded
+2026-06-10 11:58:23  INFO      [article_pipeline]    topic    : HULA: Scalable Load Balancing Using Programmable Data Planes
+2026-06-10 11:58:23  INFO      [article_pipeline]    llm      : zhipuai/glm-4.7-flashx
+2026-06-10 11:58:23  INFO      [article_pipeline]    outputs  : outputs
+2026-06-10 11:58:23  INFO      [article_pipeline]  Crew assembled — 5 agents, 5 tasks, sequential process
+2026-06-10 11:58:23  INFO      [article_pipeline.sdk.generate_article]  ============================================================
+2026-06-10 11:58:23  INFO      [article_pipeline.sdk.generate_article]  ARTICLE GENERATION  — HULA: Scalable Load Balancing Using Programmable Data Planes
+2026-06-10 11:58:23  INFO      [article_pipeline.sdk.generate_article]  ▶ STAGE START  — Agent pipeline (all 5 stages)
+2026-06-10 12:07:51  INFO      [article_pipeline.sdk.generate_article]  ■ STAGE END    — Agent pipeline (all 5 stages)  (567.86s)
+2026-06-10 12:07:51  INFO      [article_pipeline.sdk.generate_article]  ────────────────────────────────────────────────────────────
+2026-06-10 12:07:51  INFO      [article_pipeline.sdk.generate_article]  TOKEN USAGE & COST
+2026-06-10 12:07:51  INFO      [article_pipeline.sdk.generate_article]    prompt tokens   : 152295  ($0.010661)
+2026-06-10 12:07:51  INFO      [article_pipeline.sdk.generate_article]    cached tokens   : 0  ($0.000000)
+2026-06-10 12:07:51  INFO      [article_pipeline.sdk.generate_article]    output tokens   : 163035  ($0.065214)
+2026-06-10 12:07:51  INFO      [article_pipeline.sdk.generate_article]    total tokens    : 315330
+2026-06-10 12:07:51  INFO      [article_pipeline.sdk.generate_article]    estimated cost  : $0.0759
+2026-06-10 12:07:51  INFO      [article_pipeline.sdk.generate_article]  ────────────────────────────────────────────────────────────
+2026-06-10 12:07:51  INFO      [article_pipeline.sdk.generate_article]  GRAPH GENERATION  — researcher/LLM spec + matplotlib
+2026-06-10 12:07:51  INFO      [article_pipeline.sdk.generate_article]  Graph injected into Evaluation section → outputs/latex/benchmark.png
+2026-06-10 12:07:51  INFO      [article_pipeline.sdk.generate_article]  ────────────────────────────────────────────────────────────
+2026-06-10 12:07:51  INFO      [article_pipeline.sdk.generate_article]  PDF COMPILATION  — LuaLaTeX
+2026-06-10 12:07:51  INFO      [article_pipeline.sdk.generate_article]    input  : outputs/latex/article.tex
+2026-06-10 12:07:51  INFO      [article_pipeline.sdk.generate_article]    output : outputs/pdf/article.pdf
+2026-06-10 12:07:51  INFO      [article_pipeline.sdk.generate_article]  ▶ STAGE START  — LuaLaTeX compilation
+2026-06-10 12:07:56  INFO      [article_pipeline.sdk.generate_article]  ■ STAGE END    — LuaLaTeX compilation  (4.35s)
+2026-06-10 12:07:56  INFO      [article_pipeline.sdk.generate_article]    → file: outputs/pdf/article.pdf
+2026-06-10 12:07:56  INFO      [article_pipeline.sdk.generate_article]  ✓ PDF ready: /Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.pdf  (4.4s)
+2026-06-10 12:07:56  INFO      [article_pipeline.sdk.generate_article]  ────────────────────────────────────────────────────────────
+2026-06-10 12:07:56  INFO      [article_pipeline.sdk.generate_article]  VALIDATION  — 13-item assignment checklist
+2026-06-10 12:07:56  INFO      [article_pipeline.sdk.generate_article]  ▶ STAGE START  — Programmatic validation
+2026-06-10 12:07:56  INFO      [article_pipeline.sdk.generate_article]  ■ STAGE END    — Programmatic validation  (0.00s)
+2026-06-10 12:07:56  INFO      [article_pipeline.sdk.generate_article]    → file: outputs/pdf/validation_report.md
+2026-06-10 12:07:56  INFO      [article_pipeline.sdk.generate_article]  Result: 12/13 passed, 1 failed
+2026-06-10 12:07:56  INFO      [article_pipeline.sdk.generate_article]    ✓ 1. article.tex exists
+2026-06-10 12:07:56  INFO      [article_pipeline.sdk.generate_article]    ✓ 2. article.pdf exists
+2026-06-10 12:07:56  INFO      [article_pipeline.sdk.generate_article]    ✓ 3. Title page
+2026-06-10 12:07:56  INFO      [article_pipeline.sdk.generate_article]    ✓ 4. Table of contents
+2026-06-10 12:07:56  INFO      [article_pipeline.sdk.generate_article]    ✓ 5. Headers/footers
+2026-06-10 12:07:56  INFO      [article_pipeline.sdk.generate_article]    ✓ 6. Sections/chapters
+2026-06-10 12:07:56  INFO      [article_pipeline.sdk.generate_article]    ✓ 7. Table
+2026-06-10 12:07:56  INFO      [article_pipeline.sdk.generate_article]    ✓ 8. Mathematical formula
+2026-06-10 12:07:56  INFO      [article_pipeline.sdk.generate_article]    ✓ 9. TikZ figure
+2026-06-10 12:07:56  INFO      [article_pipeline.sdk.generate_article]    ✓ 10. Inline citations
+2026-06-10 12:07:56  INFO      [article_pipeline.sdk.generate_article]    ✗ 11. English only
+2026-06-10 12:07:56  INFO      [article_pipeline.sdk.generate_article]    ✓ 12. Bibliography
+2026-06-10 12:07:56  INFO      [article_pipeline.sdk.generate_article]    ✓ 13. LaTeX compilation
+2026-06-10 12:07:56  INFO      [article_pipeline.sdk.generate_article]  ARTICLE GENERATION DONE  (572.52s)
+2026-06-10 15:00:16  INFO      [article_pipeline]  Logger ready — writing to /Users/moaawiyahhaj/Desktop/ai_artcle/logs/app.log
+2026-06-10 15:00:16  INFO      [article_pipeline]  Pipeline config loaded
+2026-06-10 15:00:16  INFO      [article_pipeline]    topic    : HULA: Scalable Load Balancing Using Programmable Data Planes
+2026-06-10 15:00:16  INFO      [article_pipeline]    llm      : zhipuai/glm-4.7-flashx
+2026-06-10 15:00:16  INFO      [article_pipeline]    outputs  : outputs
+2026-06-10 15:00:16  INFO      [article_pipeline]  Crew assembled — 5 agents, 5 tasks, sequential process
+2026-06-10 15:00:16  INFO      [article_pipeline.sdk.generate_article]  ============================================================
+2026-06-10 15:00:16  INFO      [article_pipeline.sdk.generate_article]  ARTICLE GENERATION  — HULA: Scalable Load Balancing Using Programmable Data Planes
+2026-06-10 15:00:16  INFO      [article_pipeline.sdk.generate_article]  ▶ STAGE START  — Agent pipeline (all 5 stages)
+2026-06-10 15:06:38  INFO      [article_pipeline]  Logger ready — writing to /Users/moaawiyahhaj/Desktop/ai_artcle/logs/app.log
+2026-06-10 15:06:38  INFO      [article_pipeline]  Pipeline config loaded
+2026-06-10 15:06:38  INFO      [article_pipeline]    topic    : HULA: Scalable Load Balancing Using Programmable Data Planes
+2026-06-10 15:06:38  INFO      [article_pipeline]    llm      : zhipuai/glm-4.7-flashx
+2026-06-10 15:06:38  INFO      [article_pipeline]    outputs  : outputs
+2026-06-10 15:06:38  INFO      [article_pipeline]  Crew assembled — 5 agents, 5 tasks, sequential process
+2026-06-10 15:06:38  INFO      [article_pipeline.sdk.generate_article]  ============================================================
+2026-06-10 15:06:38  INFO      [article_pipeline.sdk.generate_article]  ARTICLE GENERATION  — HULA: Scalable Load Balancing Using Programmable Data Planes
+2026-06-10 15:06:38  INFO      [article_pipeline.sdk.generate_article]  ▶ STAGE START  — Agent pipeline (all 5 stages)
+2026-06-10 15:20:20  INFO      [article_pipeline.sdk.generate_article]  ■ STAGE END    — Agent pipeline (all 5 stages)  (821.81s)
+2026-06-10 15:20:20  INFO      [article_pipeline.sdk.generate_article]  ────────────────────────────────────────────────────────────
+2026-06-10 15:20:20  INFO      [article_pipeline.sdk.generate_article]  TOKEN USAGE & COST
+2026-06-10 15:20:20  INFO      [article_pipeline.sdk.generate_article]    prompt tokens   : 174060  ($0.012184)
+2026-06-10 15:20:20  INFO      [article_pipeline.sdk.generate_article]    cached tokens   : 0  ($0.000000)
+2026-06-10 15:20:20  INFO      [article_pipeline.sdk.generate_article]    output tokens   : 196130  ($0.078452)
+2026-06-10 15:20:20  INFO      [article_pipeline.sdk.generate_article]    total tokens    : 370190
+2026-06-10 15:20:20  INFO      [article_pipeline.sdk.generate_article]    estimated cost  : $0.0906
+2026-06-10 15:20:20  INFO      [article_pipeline.sdk.generate_article]  ────────────────────────────────────────────────────────────
+2026-06-10 15:20:20  INFO      [article_pipeline.sdk.generate_article]  GRAPH GENERATION  — researcher/LLM spec + matplotlib
+2026-06-10 15:20:20  INFO      [article_pipeline.sdk.generate_article]  Graph injected into Evaluation section → outputs/latex/benchmark.png
+2026-06-10 15:20:20  INFO      [article_pipeline.sdk.generate_article]  ────────────────────────────────────────────────────────────
+2026-06-10 15:20:20  INFO      [article_pipeline.sdk.generate_article]  PDF COMPILATION  — LuaLaTeX
+2026-06-10 15:20:20  INFO      [article_pipeline.sdk.generate_article]    input  : outputs/latex/article.tex
+2026-06-10 15:20:20  INFO      [article_pipeline.sdk.generate_article]    output : outputs/pdf/article.pdf
+2026-06-10 15:20:20  INFO      [article_pipeline.sdk.generate_article]  ▶ STAGE START  — LuaLaTeX compilation
+2026-06-10 15:20:25  INFO      [article_pipeline.sdk.generate_article]  ■ STAGE END    — LuaLaTeX compilation  (4.53s)
+2026-06-10 15:20:25  INFO      [article_pipeline.sdk.generate_article]    → file: outputs/pdf/article.pdf
+2026-06-10 15:20:25  INFO      [article_pipeline.sdk.generate_article]  ✓ PDF ready: /Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.pdf  (4.5s)
+2026-06-10 15:20:25  INFO      [article_pipeline.sdk.generate_article]  ────────────────────────────────────────────────────────────
+2026-06-10 15:20:25  INFO      [article_pipeline.sdk.generate_article]  VALIDATION  — 13-item assignment checklist
+2026-06-10 15:20:25  INFO      [article_pipeline.sdk.generate_article]  ▶ STAGE START  — Programmatic validation
+2026-06-10 15:20:25  INFO      [article_pipeline.sdk.generate_article]  ■ STAGE END    — Programmatic validation  (0.00s)
+2026-06-10 15:20:25  INFO      [article_pipeline.sdk.generate_article]    → file: outputs/pdf/validation_report.md
+2026-06-10 15:20:25  INFO      [article_pipeline.sdk.generate_article]  Result: 12/13 passed, 1 failed
+2026-06-10 15:20:25  INFO      [article_pipeline.sdk.generate_article]    ✓ 1. article.tex exists
+2026-06-10 15:20:25  INFO      [article_pipeline.sdk.generate_article]    ✓ 2. article.pdf exists
+2026-06-10 15:20:25  INFO      [article_pipeline.sdk.generate_article]    ✓ 3. Title page
+2026-06-10 15:20:25  INFO      [article_pipeline.sdk.generate_article]    ✓ 4. Table of contents
+2026-06-10 15:20:25  INFO      [article_pipeline.sdk.generate_article]    ✓ 5. Headers/footers
+2026-06-10 15:20:25  INFO      [article_pipeline.sdk.generate_article]    ✓ 6. Sections/chapters
+2026-06-10 15:20:25  INFO      [article_pipeline.sdk.generate_article]    ✓ 7. Table
+2026-06-10 15:20:25  INFO      [article_pipeline.sdk.generate_article]    ✓ 8. Mathematical formula
+2026-06-10 15:20:25  INFO      [article_pipeline.sdk.generate_article]    ✓ 9. TikZ figure
+2026-06-10 15:20:25  INFO      [article_pipeline.sdk.generate_article]    ✓ 10. Inline citations
+2026-06-10 15:20:25  INFO      [article_pipeline.sdk.generate_article]    ✗ 11. English only
+2026-06-10 15:20:25  INFO      [article_pipeline.sdk.generate_article]    ✓ 12. Bibliography
+2026-06-10 15:20:25  INFO      [article_pipeline.sdk.generate_article]    ✓ 13. LaTeX compilation
+2026-06-10 15:20:25  INFO      [article_pipeline.sdk.generate_article]  ARTICLE GENERATION DONE  (826.65s)
+2026-06-10 15:22:11  INFO      [article_pipeline.sdk.generate_article]  ■ STAGE END    — Agent pipeline (all 5 stages)  (1314.26s)
+2026-06-10 15:22:11  INFO      [article_pipeline.sdk.generate_article]  ────────────────────────────────────────────────────────────
+2026-06-10 15:22:11  INFO      [article_pipeline.sdk.generate_article]  TOKEN USAGE & COST
+2026-06-10 15:22:11  INFO      [article_pipeline.sdk.generate_article]    prompt tokens   : 156550  ($0.010959)
+2026-06-10 15:22:11  INFO      [article_pipeline.sdk.generate_article]    cached tokens   : 0  ($0.000000)
+2026-06-10 15:22:11  INFO      [article_pipeline.sdk.generate_article]    output tokens   : 186145  ($0.074458)
+2026-06-10 15:22:11  INFO      [article_pipeline.sdk.generate_article]    total tokens    : 342695
+2026-06-10 15:22:11  INFO      [article_pipeline.sdk.generate_article]    estimated cost  : $0.0854

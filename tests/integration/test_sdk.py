@@ -4,14 +4,14 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from agent_ai.sdk.sdk import AgentAISDK
+from sdk.sdk import AgentAISDK
 
 
 @pytest.fixture()
 def sdk(config_dir, monkeypatch):
     """AgentAISDK with mocked Anthropic client and valid config."""
     monkeypatch.setenv("ANTHROPIC_API_KEY", "test-key")
-    with patch("agent_ai.sdk.sdk.anthropic.Anthropic") as mock_anthropic:
+    with patch("sdk.sdk.anthropic.Anthropic") as mock_anthropic:
         mock_client = MagicMock()
         mock_anthropic.return_value = mock_client
         instance = AgentAISDK(config_dir=config_dir)
@@ -20,7 +20,7 @@ def sdk(config_dir, monkeypatch):
 
 
 def test_get_version(sdk):
-    from agent_ai.shared.version import VERSION
+    from shared.version import VERSION
 
     assert sdk.get_version() == VERSION
 
@@ -41,9 +41,11 @@ def test_process_document_file_not_found(sdk):
 
 
 def test_missing_api_key_raises(config_dir, monkeypatch):
+    """The Anthropic client is created lazily, so the error surfaces on first use."""
     monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    sdk = AgentAISDK(config_dir=config_dir)
     with pytest.raises(OSError, match="ANTHROPIC_API_KEY"):
-        AgentAISDK(config_dir=config_dir)
+        sdk.query_document("doc", "q?")
 
 
 def test_process_document_success(sdk, tmp_path):

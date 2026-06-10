@@ -6,8 +6,14 @@ import re
 from pathlib import Path
 
 from utils.validator_checks import (
-    check_formula, check_headers_footers, check_pdf_exists,
-    check_sections, check_table, check_tex_exists, check_toc, check_title_page,
+    check_formula,
+    check_headers_footers,
+    check_pdf_exists,
+    check_sections,
+    check_table,
+    check_tex_exists,
+    check_title_page,
+    check_toc,
 )
 from utils.validator_types import CheckResult, ValidationReport
 

@@ -2,7 +2,7 @@
 
 from crewai import Agent, Task
 
-from agent_ai.shared.config import AppConfig, PipelineConfig
+from shared.config import AppConfig, PipelineConfig
 
 
 def build_writing_task(agent: Agent, config: AppConfig | PipelineConfig, research_task: Task) -> Task:
@@ -22,6 +22,10 @@ def build_writing_task(agent: Agent, config: AppConfig | PipelineConfig, researc
         f"TARGETS: {min_w}-{max_w} words total body, ~{pages} pages, language: {lang}.\n\n"
         "REQUIRED ARTIFACTS — embed all of the following in the sections the Researcher designated:\n"
         f"{artifacts}\n\n"
+        "FORMULA REQUIREMENT: the display-math artifact must be a substantive academic formula, "
+        "preferably a multi-line aligned expression that includes the core mapping rule plus at "
+        "least one derived quantity, constraint, or optimization objective. Avoid trivial "
+        "single-line placeholders.\n\n"
         "CITATION DENSITY: Every major claim must have an inline citation marker [N]. "
         "Aim for at least one citation per paragraph throughout the article.\n\n"
         "BIDI REQUIREMENT: The Conclusion section must contain approximately 150-200 words "

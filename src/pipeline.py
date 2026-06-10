@@ -2,12 +2,8 @@
 
 from crewai import Crew, Process
 
-from agent_ai.shared.config import PipelineConfig
-from agents.latex_formatter import build_latex_formatter
-from agents.pdf_validator import build_pdf_validator
-from agents.researcher import build_researcher
-from agents.reviewer import build_reviewer
-from agents.writer import build_writer
+from agents.factory import build_agent
+from shared.config import PipelineConfig
 from tasks.latex_task import build_latex_task
 from tasks.research_task import build_research_task
 from tasks.review_task import build_review_task
@@ -30,11 +26,11 @@ def build_crew(cfg: PipelineConfig | None = None) -> tuple[Crew, PipelineConfig]
 
     llm = cfg.build_llm()
 
-    researcher      = build_researcher(llm)
-    writer          = build_writer(llm)
-    reviewer        = build_reviewer(llm)
-    latex_formatter = build_latex_formatter(llm)
-    pdf_validator   = build_pdf_validator(llm)
+    researcher      = build_agent("researcher",      llm)
+    writer          = build_agent("writer",          llm)
+    reviewer        = build_agent("reviewer",        llm)
+    latex_formatter = build_agent("latex_formatter", llm)
+    pdf_validator   = build_agent("pdf_validator",   llm)
 
     research_task   = build_research_task(researcher, cfg)
     writing_task    = build_writing_task(writer, cfg, research_task)

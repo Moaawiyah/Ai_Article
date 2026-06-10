@@ -14,11 +14,11 @@
 
 ### 1. article.tex exists
 **Status:** ✅ PASS
-**Evidence:** Found at `outputs/latex/article.tex` (36,130 bytes)
+**Evidence:** Found at `outputs/latex/article.tex` (39,854 bytes)
 
 ### 2. article.pdf exists
 **Status:** ✅ PASS
-**Evidence:** Found at `outputs/pdf/article.pdf` (286,150 bytes)
+**Evidence:** Found at `outputs/pdf/article.pdf` (301,286 bytes)
 
 ### 3. Title page
 **Status:** ✅ PASS
@@ -34,11 +34,11 @@
 
 ### 6. Sections/chapters
 **Status:** ✅ PASS
-**Evidence:** 9 section(s): "Abstract", "Introduction", "Background and Motivation", "HULA System Architecture"…
+**Evidence:** 7 section(s): "Introduction", "Background and Motivation", "HULA Design and Algorithm", "P4 Implementation Details"…
 
 ### 7. Table
 **Status:** ✅ PASS
-**Evidence:** 2 `tabular` environment(s) found
+**Evidence:** 1 `tabular` environment(s) found
 
 ### 8. Mathematical formula
 **Status:** ✅ PASS
@@ -50,7 +50,7 @@
 
 ### 10. Inline citations
 **Status:** ✅ PASS
-**Evidence:** 40 `\cite{}` commands — e.g. `\cite{ref1}`, `\cite{ref2}`
+**Evidence:** 41 `\cite{}` commands — e.g. `\cite{ref2}`, `\cite{ref7}`
 
 ### 11. English only
 **Status:** ❌ FAIL

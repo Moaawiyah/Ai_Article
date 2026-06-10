@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pytest
 
-from agent_ai.shared.gatekeeper import ApiGatekeeper, RateLimitConfig
+from shared.gatekeeper import ApiGatekeeper, RateLimitConfig
 
 
 @pytest.fixture()

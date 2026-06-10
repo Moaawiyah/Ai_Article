@@ -290,7 +290,7 @@ ty (/usr/local/texlive/2026/texmf-dist/tex/latex/kvoptions/kvoptions.sty)))
 (/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/microtype-luatex.def)
 (/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/microtype.cfg))
 (/usr/local/texlive/2026/texmf-dist/tex/latex/setspace/setspace.sty)
-(/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.aux)
+(./article.aux)
 *geometry* driver: auto-detecting
 *geometry* detected driver: luatex
 (/usr/local/texlive/2026/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -300,8 +300,7 @@ ty (/usr/local/texlive/2026/texmf-dist/tex/latex/kvoptions/kvoptions.sty)))
 Package pgfplots notification 'compat/show suggested version=true': document ha
 s been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
 
-(/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.out)
-(/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.out)
+(./article.out) (./article.out)
 
 Package microtype Warning: Unable to apply patch `footnote' on input line 32.
 
@@ -310,98 +309,12 @@ Package microtype Warning: Unable to apply patch `footnote' on input line 32.
 (/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/umsb.fd)
 (/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-msb.cfg)
 (/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-cmr.cfg) [1{/usr/loc
-al/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-(/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.toc) [2] [3]
-
-LaTeX Warning: Citation `ref10' on page 4 undefined on input line 64.
-
-
-LaTeX Warning: Citation `ref14' on page 4 undefined on input line 64.
-
-[4] [5]
-
-LaTeX Warning: Citation `ref15' on page 6 undefined on input line 105.
-
-[6]
-
-LaTeX Warning: Citation `ref11' on page 7 undefined on input line 124.
-
-
-LaTeX Warning: Citation `ref13' on page 7 undefined on input line 127.
-
-
-LaTeX Warning: Citation `ref12' on page 7 undefined on input line 129.
-
-[7]
-
-LaTeX Warning: Citation `ref14' on page 8 undefined on input line 137.
-
-
-LaTeX Warning: Citation `ref15' on page 8 undefined on input line 140.
-
-[8]
-
-LaTeX Warning: Citation `ref13' on page 9 undefined on input line 147.
-
-
-LaTeX Warning: Citation `ref14' on page 9 undefined on input line 152.
-
-[9]
-
-LaTeX Warning: Citation `ref15' on page 10 undefined on input line 155.
-
-
-LaTeX Warning: Citation `ref10' on page 10 undefined on input line 161.
-
-[10]
-Underfull \hbox (badness 3281) in paragraph at lines 184--184
-[]\TU/TimesNewRoman(0)/m/n/12 1-2 Gbps (CPU
-
-Underfull \hbox (badness 10000) in paragraph at lines 184--185
-[]\TU/TimesNewRoman(0)/m/n/12 40 Gbps (Line
-
-Underfull \hbox (badness 10000) in paragraph at lines 185--185
-[]\TU/TimesNewRoman(0)/m/n/12 High (Ker-nel
-
-Underfull \hbox (badness 10000) in paragraph at lines 185--185
-[]\TU/TimesNewRoman(0)/m/n/12 Vari-able (Con-
-
-Underfull \hbox (badness 10000) in paragraph at lines 185--186
-[]\TU/TimesNewRoman(0)/m/n/12 Low (Hard-ware
-
-Underfull \hbox (badness 10000) in paragraph at lines 187--187
-[]\TU/TimesNewRoman(0)/m/n/12 Medium (Con-
-[11] [12<./benchmark.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 220--221
-[]\TU/TimesNewRoman(0)/m/n/12 Dif-fer-en-ti-at-ing
-
-Underfull \hbox (badness 10000) in paragraph at lines 222--222
-[]\TU/TimesNewRoman(0)/m/n/12 P4-based De-ter-
-
-Underfull \hbox (badness 10000) in paragraph at lines 222--223
-[]\TU/TimesNewRoman(0)/m/n/12 **Through-put:**
-
-Underfull \hbox (badness 10000) in paragraph at lines 223--223
-[]\TU/TimesNewRoman(0)/m/n/12 Kernel-space
-
-Underfull \hbox (badness 10000) in paragraph at lines 223--223
-[]\TU/TimesNewRoman(0)/m/n/12 Sim-ple, no ex-
-
-Underfull \hbox (badness 10000) in paragraph at lines 223--223
-\TU/TimesNewRoman(0)/m/n/12 ter-nal hard-ware
-
-Underfull \hbox (badness 10000) in paragraph at lines 224--224
-[]\TU/TimesNewRoman(0)/m/n/12 Cen-tral-ized
-
-Underfull \hbox (badness 10000) in paragraph at lines 224--224
-[]\TU/TimesNewRoman(0)/m/n/12 High vis-i-bil-ity,
-
-Underfull \hbox (badness 10000) in paragraph at lines 224--225
-[]\TU/TimesNewRoman(0)/m/n/12 **Con-trol Traf-
-[13] [14] [15] (/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.aux)
-
-LaTeX Warning: There were undefined references.
-
+al/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./article.toc)
+[2] [3] [4] [5] [6] [7] [8] [9] [10] [11]
+Underfull \hbox (badness 10000) in paragraph at lines 197--197
+[]\TU/TimesNewRoman(0)/m/n/12 Low (Ta-ble up-dates
+[12<./benchmark.png>] [13] [14] [15] [16]
+(/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.aux)
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
@@ -415,26 +328,20 @@ Package rerunfilecheck Warning: File `article.out' has changed.
  587 words of node memory still in use:
    7 hlist, 2 vlist, 2 rule, 1 local_par, 4 glue, 4 kern, 1 penalty, 1 margin_k
 ern, 3 glyph, 11 attribute, 58 glue_spec, 11 attribute_list, 2 write nodes
-   avail lists: 1:1,2:998,3:542,4:114,5:304,6:89,7:8263,8:56,9:493,10:20,11:727
+   avail lists: 1:1,2:734,3:382,4:111,5:322,6:89,7:8327,8:34,9:473,10:23,11:731
 
 
-warning  (pdf backend): unreferenced destination with name 'section.10'
+warning  (pdf backend): unreferenced destination with name 'subsection.5.5'
 
-warning  (pdf backend): unreferenced destination with name 'subsection.9.3'
-
-warning  (pdf backend): unreferenced destination with name 'subsection.9.2'
-
-warning  (pdf backend): unreferenced destination with name 'subsection.9.1'
-
-warning  (pdf backend): unreferenced destination with name 'subsection.6.3'
+warning  (pdf backend): unreferenced destination with name 'subsection.1.3'
 </System/Library/Fonts/Supplemental/Times New Roman Italic.ttf></System/Library
-/Fonts/Supplemental/Times New Roman.ttf></usr/local/texlive/2026/texmf-dist/fon
-ts/opentype/public/lm/lmmono12-regular.otf></System/Library/Fonts/Supplemental/
-Times New Roman Bold.ttf></System/Library/Fonts/Supplemental/Times New Roman.tt
-f></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb
-></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><
-/usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on article.pdf (15 pages, 286121 bytes).
+/Fonts/Supplemental/Times New Roman.ttf></System/Library/Fonts/Supplemental/Tim
+es New Roman Bold.ttf></System/Library/Fonts/Supplemental/Times New Roman.ttf><
+/usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
+usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></u
+sr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr
+/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on article.pdf (16 pages, 301173 bytes).
 Transcript written on article.log.
 
 ============================================================
@@ -748,66 +655,25 @@ Package microtype Warning: Unable to apply patch `footnote' on input line 32.
 (/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-cmr.cfg) [1{/usr/loc
 al/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 (/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.toc) [2] [3]
-[4] [5] [6] [7] [8] [9] [10]
-Underfull \hbox (badness 3281) in paragraph at lines 184--184
-[]\TU/TimesNewRoman(0)/m/n/12 1-2 Gbps (CPU
-
-Underfull \hbox (badness 10000) in paragraph at lines 184--185
-[]\TU/TimesNewRoman(0)/m/n/12 40 Gbps (Line
-
-Underfull \hbox (badness 10000) in paragraph at lines 185--185
-[]\TU/TimesNewRoman(0)/m/n/12 High (Ker-nel
-
-Underfull \hbox (badness 10000) in paragraph at lines 185--185
-[]\TU/TimesNewRoman(0)/m/n/12 Vari-able (Con-
-
-Underfull \hbox (badness 10000) in paragraph at lines 185--186
-[]\TU/TimesNewRoman(0)/m/n/12 Low (Hard-ware
-
-Underfull \hbox (badness 10000) in paragraph at lines 187--187
-[]\TU/TimesNewRoman(0)/m/n/12 Medium (Con-
-[11] [12<./benchmark.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 220--221
-[]\TU/TimesNewRoman(0)/m/n/12 Dif-fer-en-ti-at-ing
-
-Underfull \hbox (badness 10000) in paragraph at lines 222--222
-[]\TU/TimesNewRoman(0)/m/n/12 P4-based De-ter-
-
-Underfull \hbox (badness 10000) in paragraph at lines 222--223
-[]\TU/TimesNewRoman(0)/m/n/12 **Through-put:**
-
-Underfull \hbox (badness 10000) in paragraph at lines 223--223
-[]\TU/TimesNewRoman(0)/m/n/12 Kernel-space
-
-Underfull \hbox (badness 10000) in paragraph at lines 223--223
-[]\TU/TimesNewRoman(0)/m/n/12 Sim-ple, no ex-
-
-Underfull \hbox (badness 10000) in paragraph at lines 223--223
-\TU/TimesNewRoman(0)/m/n/12 ter-nal hard-ware
-
-Underfull \hbox (badness 10000) in paragraph at lines 224--224
-[]\TU/TimesNewRoman(0)/m/n/12 Cen-tral-ized
-
-Underfull \hbox (badness 10000) in paragraph at lines 224--224
-[]\TU/TimesNewRoman(0)/m/n/12 High vis-i-bil-ity,
-
-Underfull \hbox (badness 10000) in paragraph at lines 224--225
-[]\TU/TimesNewRoman(0)/m/n/12 **Con-trol Traf-
-[13] [14] [15] (/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.aux))
+[4] [5] [6] [7] [8] [9] [10] [11]
+Underfull \hbox (badness 10000) in paragraph at lines 197--197
+[]\TU/TimesNewRoman(0)/m/n/12 Low (Ta-ble up-dates
+[12<./benchmark.png>] [13] [14] [15] [16]
+(/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.aux))
 (see the transcript file for additional information)
  587 words of node memory still in use:
    7 hlist, 2 vlist, 2 rule, 1 local_par, 4 glue, 4 kern, 1 penalty, 1 margin_k
 ern, 3 glyph, 11 attribute, 58 glue_spec, 11 attribute_list, 2 write nodes
-   avail lists: 1:1,2:1002,3:547,4:114,5:308,6:89,7:8265,8:56,9:493,10:20,11:72
-7
+   avail lists: 1:1,2:734,3:382,4:111,5:336,6:95,7:8327,8:34,9:499,10:23,11:731
+
 </System/Library/Fonts/Supplemental/Times New Roman Italic.ttf></System/Library
-/Fonts/Supplemental/Times New Roman.ttf></usr/local/texlive/2026/texmf-dist/fon
-ts/opentype/public/lm/lmmono12-regular.otf></System/Library/Fonts/Supplemental/
-Times New Roman Bold.ttf></System/Library/Fonts/Supplemental/Times New Roman.tt
-f></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb
-></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><
-/usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on article.pdf (15 pages, 286150 bytes).
+/Fonts/Supplemental/Times New Roman.ttf></System/Library/Fonts/Supplemental/Tim
+es New Roman Bold.ttf></System/Library/Fonts/Supplemental/Times New Roman.ttf><
+/usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
+usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></u
+sr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr
+/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on article.pdf (16 pages, 301286 bytes).
 Transcript written on article.log.
 
 ============================================================
@@ -1121,64 +987,23 @@ Package microtype Warning: Unable to apply patch `footnote' on input line 32.
 (/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-cmr.cfg) [1{/usr/loc
 al/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 (/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.toc) [2] [3]
-[4] [5] [6] [7] [8] [9] [10]
-Underfull \hbox (badness 3281) in paragraph at lines 184--184
-[]\TU/TimesNewRoman(0)/m/n/12 1-2 Gbps (CPU
-
-Underfull \hbox (badness 10000) in paragraph at lines 184--185
-[]\TU/TimesNewRoman(0)/m/n/12 40 Gbps (Line
-
-Underfull \hbox (badness 10000) in paragraph at lines 185--185
-[]\TU/TimesNewRoman(0)/m/n/12 High (Ker-nel
-
-Underfull \hbox (badness 10000) in paragraph at lines 185--185
-[]\TU/TimesNewRoman(0)/m/n/12 Vari-able (Con-
-
-Underfull \hbox (badness 10000) in paragraph at lines 185--186
-[]\TU/TimesNewRoman(0)/m/n/12 Low (Hard-ware
-
-Underfull \hbox (badness 10000) in paragraph at lines 187--187
-[]\TU/TimesNewRoman(0)/m/n/12 Medium (Con-
-[11] [12<./benchmark.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 220--221
-[]\TU/TimesNewRoman(0)/m/n/12 Dif-fer-en-ti-at-ing
-
-Underfull \hbox (badness 10000) in paragraph at lines 222--222
-[]\TU/TimesNewRoman(0)/m/n/12 P4-based De-ter-
-
-Underfull \hbox (badness 10000) in paragraph at lines 222--223
-[]\TU/TimesNewRoman(0)/m/n/12 **Through-put:**
-
-Underfull \hbox (badness 10000) in paragraph at lines 223--223
-[]\TU/TimesNewRoman(0)/m/n/12 Kernel-space
-
-Underfull \hbox (badness 10000) in paragraph at lines 223--223
-[]\TU/TimesNewRoman(0)/m/n/12 Sim-ple, no ex-
-
-Underfull \hbox (badness 10000) in paragraph at lines 223--223
-\TU/TimesNewRoman(0)/m/n/12 ter-nal hard-ware
-
-Underfull \hbox (badness 10000) in paragraph at lines 224--224
-[]\TU/TimesNewRoman(0)/m/n/12 Cen-tral-ized
-
-Underfull \hbox (badness 10000) in paragraph at lines 224--224
-[]\TU/TimesNewRoman(0)/m/n/12 High vis-i-bil-ity,
-
-Underfull \hbox (badness 10000) in paragraph at lines 224--225
-[]\TU/TimesNewRoman(0)/m/n/12 **Con-trol Traf-
-[13] [14] [15] (/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.aux))
+[4] [5] [6] [7] [8] [9] [10] [11]
+Underfull \hbox (badness 10000) in paragraph at lines 197--197
+[]\TU/TimesNewRoman(0)/m/n/12 Low (Ta-ble up-dates
+[12<./benchmark.png>] [13] [14] [15] [16]
+(/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.aux))
 (see the transcript file for additional information)
  587 words of node memory still in use:
    7 hlist, 2 vlist, 2 rule, 1 local_par, 4 glue, 4 kern, 1 penalty, 1 margin_k
 ern, 3 glyph, 11 attribute, 58 glue_spec, 11 attribute_list, 2 write nodes
-   avail lists: 1:1,2:1002,3:547,4:114,5:308,6:89,7:8265,8:56,9:493,10:20,11:72
-7
+   avail lists: 1:1,2:734,3:382,4:111,5:336,6:95,7:8327,8:34,9:499,10:23,11:731
+
 </System/Library/Fonts/Supplemental/Times New Roman Italic.ttf></System/Library
-/Fonts/Supplemental/Times New Roman.ttf></usr/local/texlive/2026/texmf-dist/fon
-ts/opentype/public/lm/lmmono12-regular.otf></System/Library/Fonts/Supplemental/
-Times New Roman Bold.ttf></System/Library/Fonts/Supplemental/Times New Roman.tt
-f></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb
-></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><
-/usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on article.pdf (15 pages, 286150 bytes).
+/Fonts/Supplemental/Times New Roman.ttf></System/Library/Fonts/Supplemental/Tim
+es New Roman Bold.ttf></System/Library/Fonts/Supplemental/Times New Roman.ttf><
+/usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
+usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></u
+sr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr
+/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on article.pdf (16 pages, 301286 bytes).
 Transcript written on article.log.

@@ -2,7 +2,7 @@
 
 from crewai import Agent, Task
 
-from agent_ai.shared.config import AppConfig, PipelineConfig
+from shared.config import AppConfig, PipelineConfig
 
 
 def build_research_task(agent: Agent, config: AppConfig | PipelineConfig) -> Task:
@@ -26,7 +26,13 @@ def build_research_task(agent: Agent, config: AppConfig | PipelineConfig) -> Tas
         "   to the main topic. Research each in depth: core mechanism, strengths, weaknesses,\n"
         "   and at least one concrete metric or design decision where they differ from the\n"
         "   main topic. Label them 'Comparative Architecture A' and 'Comparative Architecture B'.\n"
-        "   These will be used by the Writer for a dedicated side-by-side comparison.\n\n"
+        "   These will be used by the Writer for a dedicated side-by-side comparison.\n"
+        "7. Emit exactly one fenced `json` code block for downstream graph generation with the\n"
+        "   exact keys `main`, `arch_a`, and `arch_b`. Each object MUST contain `name`,\n"
+        "   `median_queue`, `p95_queue`, `base_fct_ms`, `fct_slope`, `data_basis`, and `source`.\n"
+        "   Use the same three systems named in your comparative analysis so the graph matches\n"
+        "   the prose. If a number is not traceable to a real paper figure/table, mark\n"
+        "   `data_basis` as `estimated` and explain the basis in `source`.\n\n"
         "Follow your skill for output format and quality rules.\n"
         "Do not draft full article prose — notes only."
     )
@@ -37,7 +43,8 @@ def build_research_task(agent: Agent, config: AppConfig | PipelineConfig) -> Tas
             "A Markdown research brief with: (1) proposed section structure, "
             "(2) research notes per section with [CITE: N] markers, "
             "(3) bibliography candidates [N] Author, Title, Venue, Year, "
-            "(4) artifact map specifying where each required artifact fits and what it shows."
+            "(4) artifact map specifying where each required artifact fits and what it shows, "
+            "(5) exactly one fenced JSON Performance Data block with main/arch_a/arch_b for graph generation."
         ),
         agent=agent,
         output_file=str(out / "research_brief.md"),

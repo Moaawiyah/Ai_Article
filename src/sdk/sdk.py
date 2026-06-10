@@ -1,19 +1,20 @@
 """AgentAISDK — single entry point for all external consumers."""
 
 import logging
+import time
 from pathlib import Path
 
 import anthropic
 
-from agent_ai.shared.config import ConfigManager
-from agent_ai.shared.gatekeeper import ApiGatekeeper, RateLimitConfig
-from agent_ai.shared.version import VERSION
+from shared.config import ConfigManager
+from shared.gatekeeper import ApiGatekeeper, RateLimitConfig
+from shared.version import VERSION
 
 logger = logging.getLogger(__name__)
 
 
 class AgentAISDK:
-    """Public SDK: converts documents to Markdown and queries them with Claude.
+    """Public SDK: converts documents to Markdown, queries them, generates articles.
 
     All GUI, CLI, and third-party consumers must use this class. No business
     logic is allowed outside the SDK layer.
@@ -21,13 +22,14 @@ class AgentAISDK:
     Input:
         config_dir (Path): optional override for the config directory.
     Output:
-        Exposes process_document() and query_document() methods.
+        Exposes process_document(), query_document(), generate_article(), get_version().
     Setup:
-        Requires ANTHROPIC_API_KEY environment variable.
+        process_document/query_document require ANTHROPIC_API_KEY.
+        generate_article requires the provider key configured in config.yaml.
     """
 
     def __init__(self, config_dir: Path | None = None) -> None:
-        """Bootstrap configuration, gatekeeper, and Anthropic client."""
+        """Bootstrap configuration, gatekeeper, and Anthropic client (lazy)."""
         kwargs = {"config_dir": config_dir} if config_dir else {}
         self._config = ConfigManager(**kwargs)
         rl = self._config.get_rate_limit("anthropic")
@@ -40,11 +42,17 @@ class AgentAISDK:
                 max_retries=rl["max_retries"],
             )
         )
-        api_key = ConfigManager.get_env("ANTHROPIC_API_KEY")
-        if not api_key:
-            raise OSError("ANTHROPIC_API_KEY environment variable is not set")
-        self._client = anthropic.Anthropic(api_key=api_key)
+        self._client: anthropic.Anthropic | None = None
         logger.info("AgentAISDK v%s initialised", VERSION)
+
+    def _anthropic(self) -> anthropic.Anthropic:
+        """Lazy-create the Anthropic client only when document Q&A is invoked."""
+        if self._client is None:
+            api_key = ConfigManager.get_env("ANTHROPIC_API_KEY")
+            if not api_key:
+                raise OSError("ANTHROPIC_API_KEY environment variable is not set")
+            self._client = anthropic.Anthropic(api_key=api_key)
+        return self._client
 
     # ------------------------------------------------------------------
     # Public methods
@@ -76,8 +84,10 @@ class AgentAISDK:
         model = self._config.get_agent_model()
         max_tokens = self._config.get_max_tokens()
 
+        client = self._anthropic()
+
         def _call() -> str:
-            response = self._client.messages.create(
+            response = client.messages.create(
                 model=model,
                 max_tokens=max_tokens,
                 messages=[
@@ -90,6 +100,39 @@ class AgentAISDK:
             return response.content[0].text
 
         return self._gatekeeper.execute(_call)
+
+    def generate_article(self, topic: str | None = None) -> Path:
+        """Run the five-agent CrewAI pipeline → benchmark figure → LuaLaTeX → validation.
+
+        Input:  topic — optional override; falls back to ``config.yaml::article.topic``.
+        Output: path to the generated ``article.pdf``.
+        """
+        from pipeline import build_crew
+        from pipeline_steps import (
+            compile_step,
+            graph_step,
+            print_token_usage,
+            validate_step,
+        )
+        from utils.logger import get_logger, timed_stage
+
+        crew, cfg = build_crew()
+        log = get_logger("sdk.generate_article")
+        run_topic = topic or cfg.topic
+        t0 = time.perf_counter()
+
+        log.info("=" * 60)
+        log.info("ARTICLE GENERATION  — %s", run_topic)
+        with timed_stage(log, "Agent pipeline (all 5 stages)"):
+            result = crew.kickoff(inputs={"topic": run_topic})
+
+        print_token_usage(result, cfg, log)
+        graph_step(cfg, log)
+        compile_step(cfg, log)
+        validate_step(cfg, log)
+
+        log.info("ARTICLE GENERATION DONE  (%.2fs)", time.perf_counter() - t0)
+        return cfg.output_pdf / "article.pdf"
 
     def get_version(self) -> str:
         """Return the current SDK version string."""
