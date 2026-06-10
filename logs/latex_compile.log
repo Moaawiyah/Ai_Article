@@ -19,10 +19,20 @@ Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
  (/usr/local/texlive/2026/texmf-dist/tex/latex/fontspec/fontspec-luatex.sty
 (/usr/local/texlive/2026/texmf-dist/tex/latex/base/fontenc.sty)
 (/usr/local/texlive/2026/texmf-dist/tex/latex/fontspec/fontspec.cfg)))
-(/usr/local/texlive/2026/texmf-dist/tex/latex/geometry/geometry.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/polyglossia/polyglossia.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/etoolbox/etoolbox.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/iftex/iftex.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/polyglossia/gloss-latex.ldf))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/polyglossia/gloss-english.ldf)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/polyglossia/gloss-hebrew.ldf
+(/usr/local/texlive/2026/texmf-dist/tex/lualatex/luabidi/luabidi.sty
+(/usr/local/texlive/2026/texmf-dist/tex/lualatex/luabidi/luabidi-footnotes.def)
+) (/usr/local/texlive/2026/texmf-dist/tex/latex/polyglossia/hebrewcal.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/polyglossia/cal-util.def))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/polyglossia/babel-hebrewalph.def)
+) (/usr/local/texlive/2026/texmf-dist/tex/latex/geometry/geometry.sty
 (/usr/local/texlive/2026/texmf-dist/tex/latex/graphics/keyval.sty)
-(/usr/local/texlive/2026/texmf-dist/tex/generic/iftex/ifvtex.sty
-(/usr/local/texlive/2026/texmf-dist/tex/generic/iftex/iftex.sty)))
+(/usr/local/texlive/2026/texmf-dist/tex/generic/iftex/ifvtex.sty))
 (/usr/local/texlive/2026/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty)
 (/usr/local/texlive/2026/texmf-dist/tex/latex/amsmath/amsmath.sty
 For additional information on amsmath, use the `?' option.
@@ -265,7 +275,6 @@ ks.code.tex)))
 (/usr/local/texlive/2026/texmf-dist/tex/latex/refcount/refcount.sty)
 (/usr/local/texlive/2026/texmf-dist/tex/generic/gettitlestring/gettitlestring.s
 ty (/usr/local/texlive/2026/texmf-dist/tex/latex/kvoptions/kvoptions.sty)))
-(/usr/local/texlive/2026/texmf-dist/tex/latex/etoolbox/etoolbox.sty)
 (/usr/local/texlive/2026/texmf-dist/tex/generic/stringenc/stringenc.sty)
 (/usr/local/texlive/2026/texmf-dist/tex/latex/hyperref/pd1enc.def)
 (/usr/local/texlive/2026/texmf-dist/tex/generic/intcalc/intcalc.sty)
@@ -294,129 +303,105 @@ s been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
 (/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.out)
 (/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.out)
 
-Package microtype Warning: Unable to apply patch `footnote' on input line 28.
+Package microtype Warning: Unable to apply patch `footnote' on input line 32.
 
-
-(/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-LatinModernRoman.cfg
-) (/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-msa.cfg)
 (/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/umsb.fd)
 (/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-msb.cfg)
 (/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-cmr.cfg) [1{/usr/loc
 al/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-(/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.toc)
+(/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.toc) [2] [3]
 
-Package fancyhdr Warning: \headheight is too small (14.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
+LaTeX Warning: Citation `ref10' on page 4 undefined on input line 64.
 
-[2]
 
-Package fancyhdr Warning: \headheight is too small (14.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
+LaTeX Warning: Citation `ref14' on page 4 undefined on input line 64.
 
-[3]
+[4] [5]
 
-Package fancyhdr Warning: \headheight is too small (14.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
-
-[4]
-
-Package fancyhdr Warning: \headheight is too small (14.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
-
-[5]
-
-Package fancyhdr Warning: \headheight is too small (14.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
+LaTeX Warning: Citation `ref15' on page 6 undefined on input line 105.
 
 [6]
 
-Package fancyhdr Warning: \headheight is too small (14.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
+LaTeX Warning: Citation `ref11' on page 7 undefined on input line 124.
+
+
+LaTeX Warning: Citation `ref13' on page 7 undefined on input line 127.
+
+
+LaTeX Warning: Citation `ref12' on page 7 undefined on input line 129.
 
 [7]
 
-Package fancyhdr Warning: \headheight is too small (14.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
+LaTeX Warning: Citation `ref14' on page 8 undefined on input line 137.
+
+
+LaTeX Warning: Citation `ref15' on page 8 undefined on input line 140.
 
 [8]
 
-Package fancyhdr Warning: \headheight is too small (14.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
+LaTeX Warning: Citation `ref13' on page 9 undefined on input line 147.
+
+
+LaTeX Warning: Citation `ref14' on page 9 undefined on input line 152.
 
 [9]
 
-Package fancyhdr Warning: \headheight is too small (14.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
+LaTeX Warning: Citation `ref15' on page 10 undefined on input line 155.
+
+
+LaTeX Warning: Citation `ref10' on page 10 undefined on input line 161.
 
 [10]
+Underfull \hbox (badness 3281) in paragraph at lines 184--184
+[]\TU/TimesNewRoman(0)/m/n/12 1-2 Gbps (CPU
 
-Package fancyhdr Warning: \headheight is too small (14.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
+Underfull \hbox (badness 10000) in paragraph at lines 184--185
+[]\TU/TimesNewRoman(0)/m/n/12 40 Gbps (Line
 
-[11<./benchmark.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 185--185
+[]\TU/TimesNewRoman(0)/m/n/12 High (Ker-nel
 
-Package fancyhdr Warning: \headheight is too small (14.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
+Underfull \hbox (badness 10000) in paragraph at lines 185--185
+[]\TU/TimesNewRoman(0)/m/n/12 Vari-able (Con-
 
-[12]
+Underfull \hbox (badness 10000) in paragraph at lines 185--186
+[]\TU/TimesNewRoman(0)/m/n/12 Low (Hard-ware
 
-Package fancyhdr Warning: \headheight is too small (14.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
+Underfull \hbox (badness 10000) in paragraph at lines 187--187
+[]\TU/TimesNewRoman(0)/m/n/12 Medium (Con-
+[11] [12<./benchmark.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 220--221
+[]\TU/TimesNewRoman(0)/m/n/12 Dif-fer-en-ti-at-ing
 
-[13]
+Underfull \hbox (badness 10000) in paragraph at lines 222--222
+[]\TU/TimesNewRoman(0)/m/n/12 P4-based De-ter-
 
-Package fancyhdr Warning: \headheight is too small (14.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
+Underfull \hbox (badness 10000) in paragraph at lines 222--223
+[]\TU/TimesNewRoman(0)/m/n/12 **Through-put:**
 
-[14]
+Underfull \hbox (badness 10000) in paragraph at lines 223--223
+[]\TU/TimesNewRoman(0)/m/n/12 Kernel-space
 
-Package fancyhdr Warning: \headheight is too small (14.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
+Underfull \hbox (badness 10000) in paragraph at lines 223--223
+[]\TU/TimesNewRoman(0)/m/n/12 Sim-ple, no ex-
 
-[15] (/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.aux)
+Underfull \hbox (badness 10000) in paragraph at lines 223--223
+\TU/TimesNewRoman(0)/m/n/12 ter-nal hard-ware
+
+Underfull \hbox (badness 10000) in paragraph at lines 224--224
+[]\TU/TimesNewRoman(0)/m/n/12 Cen-tral-ized
+
+Underfull \hbox (badness 10000) in paragraph at lines 224--224
+[]\TU/TimesNewRoman(0)/m/n/12 High vis-i-bil-ity,
+
+Underfull \hbox (badness 10000) in paragraph at lines 224--225
+[]\TU/TimesNewRoman(0)/m/n/12 **Con-trol Traf-
+[13] [14] [15] (/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.aux)
+
+LaTeX Warning: There were undefined references.
+
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
@@ -426,36 +411,34 @@ Package rerunfilecheck Warning: File `article.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
 )
- 590 words of node memory still in use:
+(see the transcript file for additional information)
+ 587 words of node memory still in use:
    7 hlist, 2 vlist, 2 rule, 1 local_par, 4 glue, 4 kern, 1 penalty, 1 margin_k
-ern, 3 glyph, 13 attribute, 57 glue_spec, 13 attribute_list, 2 write nodes
-   avail lists: 1:1,2:774,3:395,4:101,5:418,6:107,7:7238,8:39,9:551,10:16,11:61
-5
+ern, 3 glyph, 11 attribute, 58 glue_spec, 11 attribute_list, 2 write nodes
+   avail lists: 1:1,2:998,3:542,4:114,5:304,6:89,7:8263,8:56,9:493,10:20,11:727
 
-warning  (pdf backend): unreferenced destination with name 'subsection.7.4'
 
-warning  (pdf backend): unreferenced destination with name 'subsection.7.3'
+warning  (pdf backend): unreferenced destination with name 'section.10'
 
-warning  (pdf backend): unreferenced destination with name 'subsection.6.4'
-</usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/lmroman12-italic.o
-tf></usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/lmroman6-regula
-r.otf></usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/lmroman8-reg
-ular.otf></usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/lmroman12
--bold.otf></usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/lmroman1
-2-regular.otf></usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/lmro
-man10-regular.otf></usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/
-lmroman17-regular.otf></usr/local/texlive/2026/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmex10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmmi12.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmmi8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmr12.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmr8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmsy10.pfb>
-Output written on article.pdf (15 pages, 239036 bytes).
+warning  (pdf backend): unreferenced destination with name 'subsection.9.3'
+
+warning  (pdf backend): unreferenced destination with name 'subsection.9.2'
+
+warning  (pdf backend): unreferenced destination with name 'subsection.9.1'
+
+warning  (pdf backend): unreferenced destination with name 'subsection.6.3'
+</System/Library/Fonts/Supplemental/Times New Roman Italic.ttf></System/Library
+/Fonts/Supplemental/Times New Roman.ttf></usr/local/texlive/2026/texmf-dist/fon
+ts/opentype/public/lm/lmmono12-regular.otf></System/Library/Fonts/Supplemental/
+Times New Roman Bold.ttf></System/Library/Fonts/Supplemental/Times New Roman.tt
+f></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb
+></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><
+/usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on article.pdf (15 pages, 286121 bytes).
 Transcript written on article.log.
 
 ============================================================
-Pass 2/2
+Pass 2/3
 ============================================================
 This is LuaHBTeX, Version 1.24.0 (TeX Live 2026) 
  restricted system commands enabled.
@@ -472,10 +455,20 @@ Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
  (/usr/local/texlive/2026/texmf-dist/tex/latex/fontspec/fontspec-luatex.sty
 (/usr/local/texlive/2026/texmf-dist/tex/latex/base/fontenc.sty)
 (/usr/local/texlive/2026/texmf-dist/tex/latex/fontspec/fontspec.cfg)))
-(/usr/local/texlive/2026/texmf-dist/tex/latex/geometry/geometry.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/polyglossia/polyglossia.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/etoolbox/etoolbox.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/iftex/iftex.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/polyglossia/gloss-latex.ldf))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/polyglossia/gloss-english.ldf)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/polyglossia/gloss-hebrew.ldf
+(/usr/local/texlive/2026/texmf-dist/tex/lualatex/luabidi/luabidi.sty
+(/usr/local/texlive/2026/texmf-dist/tex/lualatex/luabidi/luabidi-footnotes.def)
+) (/usr/local/texlive/2026/texmf-dist/tex/latex/polyglossia/hebrewcal.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/polyglossia/cal-util.def))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/polyglossia/babel-hebrewalph.def)
+) (/usr/local/texlive/2026/texmf-dist/tex/latex/geometry/geometry.sty
 (/usr/local/texlive/2026/texmf-dist/tex/latex/graphics/keyval.sty)
-(/usr/local/texlive/2026/texmf-dist/tex/generic/iftex/ifvtex.sty
-(/usr/local/texlive/2026/texmf-dist/tex/generic/iftex/iftex.sty)))
+(/usr/local/texlive/2026/texmf-dist/tex/generic/iftex/ifvtex.sty))
 (/usr/local/texlive/2026/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty)
 (/usr/local/texlive/2026/texmf-dist/tex/latex/amsmath/amsmath.sty
 For additional information on amsmath, use the `?' option.
@@ -718,7 +711,6 @@ ks.code.tex)))
 (/usr/local/texlive/2026/texmf-dist/tex/latex/refcount/refcount.sty)
 (/usr/local/texlive/2026/texmf-dist/tex/generic/gettitlestring/gettitlestring.s
 ty (/usr/local/texlive/2026/texmf-dist/tex/latex/kvoptions/kvoptions.sty)))
-(/usr/local/texlive/2026/texmf-dist/tex/latex/etoolbox/etoolbox.sty)
 (/usr/local/texlive/2026/texmf-dist/tex/generic/stringenc/stringenc.sty)
 (/usr/local/texlive/2026/texmf-dist/tex/latex/hyperref/pd1enc.def)
 (/usr/local/texlive/2026/texmf-dist/tex/generic/intcalc/intcalc.sty)
@@ -747,159 +739,446 @@ s been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
 (/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.out)
 (/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.out)
 
-Package microtype Warning: Unable to apply patch `footnote' on input line 28.
+Package microtype Warning: Unable to apply patch `footnote' on input line 32.
 
-
-(/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-LatinModernRoman.cfg
-) (/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-msa.cfg)
 (/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/umsb.fd)
 (/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-msb.cfg)
 (/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-cmr.cfg) [1{/usr/loc
 al/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-(/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.toc
+(/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.toc) [2] [3]
+[4] [5] [6] [7] [8] [9] [10]
+Underfull \hbox (badness 3281) in paragraph at lines 184--184
+[]\TU/TimesNewRoman(0)/m/n/12 1-2 Gbps (CPU
 
-Package fancyhdr Warning: \headheight is too small (14.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
+Underfull \hbox (badness 10000) in paragraph at lines 184--185
+[]\TU/TimesNewRoman(0)/m/n/12 40 Gbps (Line
 
-[2])
+Underfull \hbox (badness 10000) in paragraph at lines 185--185
+[]\TU/TimesNewRoman(0)/m/n/12 High (Ker-nel
 
-Package fancyhdr Warning: \headheight is too small (14.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
+Underfull \hbox (badness 10000) in paragraph at lines 185--185
+[]\TU/TimesNewRoman(0)/m/n/12 Vari-able (Con-
 
-[3]
+Underfull \hbox (badness 10000) in paragraph at lines 185--186
+[]\TU/TimesNewRoman(0)/m/n/12 Low (Hard-ware
 
-Package fancyhdr Warning: \headheight is too small (14.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
+Underfull \hbox (badness 10000) in paragraph at lines 187--187
+[]\TU/TimesNewRoman(0)/m/n/12 Medium (Con-
+[11] [12<./benchmark.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 220--221
+[]\TU/TimesNewRoman(0)/m/n/12 Dif-fer-en-ti-at-ing
 
-[4]
+Underfull \hbox (badness 10000) in paragraph at lines 222--222
+[]\TU/TimesNewRoman(0)/m/n/12 P4-based De-ter-
 
-Package fancyhdr Warning: \headheight is too small (14.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
+Underfull \hbox (badness 10000) in paragraph at lines 222--223
+[]\TU/TimesNewRoman(0)/m/n/12 **Through-put:**
 
-[5]
+Underfull \hbox (badness 10000) in paragraph at lines 223--223
+[]\TU/TimesNewRoman(0)/m/n/12 Kernel-space
 
-Package fancyhdr Warning: \headheight is too small (14.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
+Underfull \hbox (badness 10000) in paragraph at lines 223--223
+[]\TU/TimesNewRoman(0)/m/n/12 Sim-ple, no ex-
 
-[6]
+Underfull \hbox (badness 10000) in paragraph at lines 223--223
+\TU/TimesNewRoman(0)/m/n/12 ter-nal hard-ware
 
-Package fancyhdr Warning: \headheight is too small (14.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
+Underfull \hbox (badness 10000) in paragraph at lines 224--224
+[]\TU/TimesNewRoman(0)/m/n/12 Cen-tral-ized
 
-[7]
+Underfull \hbox (badness 10000) in paragraph at lines 224--224
+[]\TU/TimesNewRoman(0)/m/n/12 High vis-i-bil-ity,
 
-Package fancyhdr Warning: \headheight is too small (14.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
-
-[8]
-
-Package fancyhdr Warning: \headheight is too small (14.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
-
-[9]
-
-Package fancyhdr Warning: \headheight is too small (14.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
-
-[10]
-
-Package fancyhdr Warning: \headheight is too small (14.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
-
-[11]
-
-Package fancyhdr Warning: \headheight is too small (14.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
-
-[12<./benchmark.png>]
-
-Package fancyhdr Warning: \headheight is too small (14.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
-
-[13]
-
-Package fancyhdr Warning: \headheight is too small (14.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
-
-[14]
-
-Package fancyhdr Warning: \headheight is too small (14.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
-
-[15]
-
-Package fancyhdr Warning: \headheight is too small (14.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.49998pt}.
-
-[16] (/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-)
- 590 words of node memory still in use:
+Underfull \hbox (badness 10000) in paragraph at lines 224--225
+[]\TU/TimesNewRoman(0)/m/n/12 **Con-trol Traf-
+[13] [14] [15] (/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.aux))
+(see the transcript file for additional information)
+ 587 words of node memory still in use:
    7 hlist, 2 vlist, 2 rule, 1 local_par, 4 glue, 4 kern, 1 penalty, 1 margin_k
-ern, 3 glyph, 13 attribute, 57 glue_spec, 13 attribute_list, 2 write nodes
-   avail lists: 1:2,2:820,3:395,4:105,5:419,6:111,7:7236,8:39,9:563,10:16,11:61
-5
-</usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/lmroman12-italic.o
-tf></usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/lmroman6-regula
-r.otf></usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/lmroman8-reg
-ular.otf></usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/lmroman12
--bold.otf></usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/lmroman1
-2-regular.otf></usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/lmro
-man10-regular.otf></usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/
-lmroman17-regular.otf></usr/local/texlive/2026/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmex10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmmi12.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmmi8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmr12.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmr8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmsy10.pfb>
-Output written on article.pdf (16 pages, 240278 bytes).
+ern, 3 glyph, 11 attribute, 58 glue_spec, 11 attribute_list, 2 write nodes
+   avail lists: 1:1,2:1002,3:547,4:114,5:308,6:89,7:8265,8:56,9:493,10:20,11:72
+7
+</System/Library/Fonts/Supplemental/Times New Roman Italic.ttf></System/Library
+/Fonts/Supplemental/Times New Roman.ttf></usr/local/texlive/2026/texmf-dist/fon
+ts/opentype/public/lm/lmmono12-regular.otf></System/Library/Fonts/Supplemental/
+Times New Roman Bold.ttf></System/Library/Fonts/Supplemental/Times New Roman.tt
+f></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb
+></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><
+/usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on article.pdf (15 pages, 286150 bytes).
+Transcript written on article.log.
+
+============================================================
+Pass 3/3
+============================================================
+This is LuaHBTeX, Version 1.24.0 (TeX Live 2026) 
+ restricted system commands enabled.
+(/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/latex/article.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-01-19>
+ (/usr/local/texlive/2026/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+(/usr/local/texlive/2026/texmf-dist/tex/latex/base/size12.clo))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/fontspec/fontspec.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/l3kernel/expl3.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/l3backend/l3backend-luatex.def)))
+ (/usr/local/texlive/2026/texmf-dist/tex/latex/fontspec/fontspec-luatex.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/base/fontenc.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/fontspec/fontspec.cfg)))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/polyglossia/polyglossia.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/etoolbox/etoolbox.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/iftex/iftex.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/polyglossia/gloss-latex.ldf))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/polyglossia/gloss-english.ldf)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/polyglossia/gloss-hebrew.ldf
+(/usr/local/texlive/2026/texmf-dist/tex/lualatex/luabidi/luabidi.sty
+(/usr/local/texlive/2026/texmf-dist/tex/lualatex/luabidi/luabidi-footnotes.def)
+) (/usr/local/texlive/2026/texmf-dist/tex/latex/polyglossia/hebrewcal.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/polyglossia/cal-util.def))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/polyglossia/babel-hebrewalph.def)
+) (/usr/local/texlive/2026/texmf-dist/tex/latex/geometry/geometry.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/iftex/ifvtex.sty))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.te
+x)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+) (/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/pgf.revision.tex)))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics-def/luatex.def)))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfil
+tered.code.tex))
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-luatex.d
+ef
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-p
+df.def)))
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.
+code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.
+code.tex)) (/usr/local/texlive/2026/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics/mathcolor.ltx))
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.
+tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic
+.code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigo
+nometric.code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.rando
+m.code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.compa
+rison.code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.
+code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round
+.code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.
+code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integ
+erarithmetics.code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex)
+) (/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.co
+de.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconst
+ruct.code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage
+.code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.co
+de.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicst
+ate.code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransform
+ations.code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.cod
+e.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.c
+ode.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathproce
+ssing.code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.co
+de.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.cod
+e.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.cod
+e.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.
+code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.co
+de.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretranspare
+ncy.code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.
+code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.
+tex)))
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.cod
+e.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.
+tex)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
+-0-65.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
+-1-18.sty))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)
+) (/usr/local/texlive/2026/texmf-dist/tex/latex/pgf/math/pgfmath.sty
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex))
+
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.cod
+e.tex
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothan
+dlers.code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.cod
+e.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarytopaths.code.tex)))
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.
+meta.code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarypositioning.code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibraryshapes.geometric.code.tex
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibrary
+shapes.geometric.code.tex))
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarycalc.code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/pgfplots/pgfplots.sty
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgfplots/pgfplots.revision.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgfplots/pgfplots.code.tex
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgfplots/pgfplotscore.code.tex
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgfplots/sys/pgfplotssysgeneric
+.code.tex))
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgfplots/libs/pgfplotslibrary.c
+ode.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplot
+soldpgfsupp_loader.code.tex
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/libraries/pgflibraryfpu.cod
+e.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplot
+soldpgfsupp_pgfutil-common-lists.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/libraries/luamath/pgflibrar
+yluamath.code.tex))
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.code
+.tex
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgfplots/liststructure/pgfplots
+liststructure.code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgfplots/liststructure/pgfplots
+liststructureext.code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgfplots/liststructure/pgfplots
+array.code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgfplots/liststructure/pgfplots
+matrix.code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgfplots/numtable/pgfplotstable
+shared.code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgfplots/liststructure/pgfplots
+deque.code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.co
+de.tex
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.da
+ta.code.tex))
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.verb
+.code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgfplots/libs/pgflibrarypgfplot
+s.surfshading.code.tex
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgfplots/sys/pgflibrarypgfplots
+.surfshading.pgfsys-luatex.def)))
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgfplots/util/pgfplotscolormap.
+code.tex
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgfplots/util/pgfplotscolor.cod
+e.tex))
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgfplots/pgfplotsstackedplots.c
+ode.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgfplots/pgfplotsplothandlers.c
+ode.tex
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplothandle
+r.code.tex
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplotimage.
+code.tex)))
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgfplots/pgfplots.scaling.code.
+tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgfplots/pgfplotscoordprocessin
+g.code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgfplots/pgfplots.errorbars.cod
+e.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgfplots/pgfplots.markers.code.
+tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgfplots/pgfplotsticks.code.tex
+)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgfplots/pgfplots.paths.code.te
+x)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarydecorations.code.tex
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/modules/pgfmoduledecoration
+s.code.tex))
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarydecorations.pathmorphing.code.tex
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/libraries/decorations/pgfli
+brarydecorations.pathmorphing.code.tex))
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarydecorations.pathreplacing.code.tex
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/libraries/decorations/pgfli
+brarydecorations.pathreplacing.code.tex))
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgfplots/libs/tikzlibrarypgfplo
+ts.contourlua.code.tex))
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibraryplotmarks.code.tex
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/libraries/pgflibraryplotmar
+ks.code.tex)))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/booktabs/booktabs.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/adjustbox/adjustbox.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(/usr/local/texlive/2026/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/local/texlive/2026/texmf-dist/tex/generic/xkeyval/xkvutils.tex)))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/adjustbox/adjcalc.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/adjustbox/trimclip.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/collectbox/collectbox.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/adjustbox/tc-luatex.def
+(/usr/local/texlive/2026/texmf-dist/tex/latex/adjustbox/tc-pdftex.def)))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/varwidth/varwidth.sty)
+==> First Aid for varwidth.sty applied!
+) (/usr/local/texlive/2026/texmf-dist/tex/latex/caption/caption.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/caption/caption3.sty))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/float/float.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+(/usr/local/texlive/2026/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+(/usr/local/texlive/2026/texmf-dist/tex/generic/infwarerr/infwarerr.sty)))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/refcount/refcount.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/gettitlestring/gettitlestring.s
+ty (/usr/local/texlive/2026/texmf-dist/tex/latex/kvoptions/kvoptions.sty)))
+(/usr/local/texlive/2026/texmf-dist/tex/generic/stringenc/stringenc.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/hyperref/puenc.def)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/url/url.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/bitset/bitset.sty
+(/usr/local/texlive/2026/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty)))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/hyperref/hluatex.def
+(/usr/local/texlive/2026/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+
+(/usr/local/texlive/2026/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+))) (/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/microtype.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/microtype-luatex.def)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/microtype.cfg))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/setspace/setspace.sty)
+(/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.aux)
+*geometry* driver: auto-detecting
+*geometry* detected driver: luatex
+(/usr/local/texlive/2026/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/local/texlive/2026/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
+Package pgfplots notification 'compat/show suggested version=true': document ha
+s been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
+
+(/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.out)
+(/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.out)
+
+Package microtype Warning: Unable to apply patch `footnote' on input line 32.
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-msa.cfg)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/umsb.fd)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-msb.cfg)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-cmr.cfg) [1{/usr/loc
+al/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+(/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.toc) [2] [3]
+[4] [5] [6] [7] [8] [9] [10]
+Underfull \hbox (badness 3281) in paragraph at lines 184--184
+[]\TU/TimesNewRoman(0)/m/n/12 1-2 Gbps (CPU
+
+Underfull \hbox (badness 10000) in paragraph at lines 184--185
+[]\TU/TimesNewRoman(0)/m/n/12 40 Gbps (Line
+
+Underfull \hbox (badness 10000) in paragraph at lines 185--185
+[]\TU/TimesNewRoman(0)/m/n/12 High (Ker-nel
+
+Underfull \hbox (badness 10000) in paragraph at lines 185--185
+[]\TU/TimesNewRoman(0)/m/n/12 Vari-able (Con-
+
+Underfull \hbox (badness 10000) in paragraph at lines 185--186
+[]\TU/TimesNewRoman(0)/m/n/12 Low (Hard-ware
+
+Underfull \hbox (badness 10000) in paragraph at lines 187--187
+[]\TU/TimesNewRoman(0)/m/n/12 Medium (Con-
+[11] [12<./benchmark.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 220--221
+[]\TU/TimesNewRoman(0)/m/n/12 Dif-fer-en-ti-at-ing
+
+Underfull \hbox (badness 10000) in paragraph at lines 222--222
+[]\TU/TimesNewRoman(0)/m/n/12 P4-based De-ter-
+
+Underfull \hbox (badness 10000) in paragraph at lines 222--223
+[]\TU/TimesNewRoman(0)/m/n/12 **Through-put:**
+
+Underfull \hbox (badness 10000) in paragraph at lines 223--223
+[]\TU/TimesNewRoman(0)/m/n/12 Kernel-space
+
+Underfull \hbox (badness 10000) in paragraph at lines 223--223
+[]\TU/TimesNewRoman(0)/m/n/12 Sim-ple, no ex-
+
+Underfull \hbox (badness 10000) in paragraph at lines 223--223
+\TU/TimesNewRoman(0)/m/n/12 ter-nal hard-ware
+
+Underfull \hbox (badness 10000) in paragraph at lines 224--224
+[]\TU/TimesNewRoman(0)/m/n/12 Cen-tral-ized
+
+Underfull \hbox (badness 10000) in paragraph at lines 224--224
+[]\TU/TimesNewRoman(0)/m/n/12 High vis-i-bil-ity,
+
+Underfull \hbox (badness 10000) in paragraph at lines 224--225
+[]\TU/TimesNewRoman(0)/m/n/12 **Con-trol Traf-
+[13] [14] [15] (/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.aux))
+(see the transcript file for additional information)
+ 587 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 1 local_par, 4 glue, 4 kern, 1 penalty, 1 margin_k
+ern, 3 glyph, 11 attribute, 58 glue_spec, 11 attribute_list, 2 write nodes
+   avail lists: 1:1,2:1002,3:547,4:114,5:308,6:89,7:8265,8:56,9:493,10:20,11:72
+7
+</System/Library/Fonts/Supplemental/Times New Roman Italic.ttf></System/Library
+/Fonts/Supplemental/Times New Roman.ttf></usr/local/texlive/2026/texmf-dist/fon
+ts/opentype/public/lm/lmmono12-regular.otf></System/Library/Fonts/Supplemental/
+Times New Roman Bold.ttf></System/Library/Fonts/Supplemental/Times New Roman.tt
+f></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb
+></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><
+/usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on article.pdf (15 pages, 286150 bytes).
 Transcript written on article.log.

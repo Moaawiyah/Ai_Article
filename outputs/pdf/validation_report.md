@@ -6,19 +6,19 @@
 | article.pdf | `outputs/pdf/article.pdf` |
 | compile log | `logs/latex_compile.log` |
 
-**Result: 13/13 checks passed**
+**Result: 12/13 checks passed**
 
-🟢 **All requirements satisfied. Ready for submission.**
+🔴 **1 requirement(s) failed. See details below.**
 
 ---
 
 ### 1. article.tex exists
 **Status:** ✅ PASS
-**Evidence:** Found at `outputs/latex/article.tex` (32,710 bytes)
+**Evidence:** Found at `outputs/latex/article.tex` (36,130 bytes)
 
 ### 2. article.pdf exists
 **Status:** ✅ PASS
-**Evidence:** Found at `outputs/pdf/article.pdf` (240,278 bytes)
+**Evidence:** Found at `outputs/pdf/article.pdf` (286,150 bytes)
 
 ### 3. Title page
 **Status:** ✅ PASS
@@ -34,15 +34,15 @@
 
 ### 6. Sections/chapters
 **Status:** ✅ PASS
-**Evidence:** 10 section(s): "Introduction", "Background and Challenges", "HULA Architecture Overview", "Data Plane Implementation"…
+**Evidence:** 9 section(s): "Abstract", "Introduction", "Background and Motivation", "HULA System Architecture"…
 
 ### 7. Table
 **Status:** ✅ PASS
-**Evidence:** 1 `tabular` environment(s) found
+**Evidence:** 2 `tabular` environment(s) found
 
 ### 8. Mathematical formula
 **Status:** ✅ PASS
-**Evidence:** 2 `equation` + 0 `align` environment(s)
+**Evidence:** 1 `equation` + 0 `align` environment(s)
 
 ### 9. TikZ figure
 **Status:** ✅ PASS
@@ -50,15 +50,16 @@
 
 ### 10. Inline citations
 **Status:** ✅ PASS
-**Evidence:** 15 `\cite{}` commands — e.g. `\cite{ref1}`, `\cite{ref2}`
+**Evidence:** 40 `\cite{}` commands — e.g. `\cite{ref1}`, `\cite{ref2}`
 
 ### 11. English only
-**Status:** ✅ PASS
-**Evidence:** No Hebrew environments, polyglossia, or BiDi content found
+**Status:** ❌ FAIL
+**Evidence:** Found: `\begin{hebrew}`, `polyglossia`, Hebrew Unicode chars
+**Fix:** Remove all Hebrew/BiDi content — article must be English only
 
 ### 12. Bibliography
 **Status:** ✅ PASS
-**Evidence:** `\begin{thebibliography}` with 8 `\bibitem` entries
+**Evidence:** `\begin{thebibliography}` with 15 `\bibitem` entries
 
 ### 13. LaTeX compilation
 **Status:** ✅ PASS

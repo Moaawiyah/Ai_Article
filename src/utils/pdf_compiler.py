@@ -107,7 +107,16 @@ def compile_pdf(
             result = subprocess.run(
                 cmd, capture_output=True, text=True, cwd=tex_path.parent,
             )
-            all_output.append(f"\n{'='*60}\nPass 2/2\n{'='*60}\n" + result.stdout + result.stderr)
+            all_output.append(f"\n{'='*60}\nPass 2/3\n{'='*60}\n" + result.stdout + result.stderr)
+            if result.returncode != 0:
+                error_summary = _extract_error(result.stdout + result.stderr)
+
+        # Pass 3 — stabilise labels that changed during pass 2 (TOC page shifts etc.)
+        if not error_summary:
+            result = subprocess.run(
+                cmd, capture_output=True, text=True, cwd=tex_path.parent,
+            )
+            all_output.append(f"\n{'='*60}\nPass 3/3\n{'='*60}\n" + result.stdout + result.stderr)
             if result.returncode != 0:
                 error_summary = _extract_error(result.stdout + result.stderr)
 
