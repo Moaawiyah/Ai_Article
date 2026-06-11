@@ -124,7 +124,12 @@ class AgentAISDK:
         log.info("=" * 60)
         log.info("ARTICLE GENERATION  — %s", run_topic)
         with timed_stage(log, "Agent pipeline (all 5 stages)"):
-            result = crew.kickoff(inputs={"topic": run_topic})
+            # Route the crew run through the central gatekeeper (§5.1) so the
+            # external LLM work is rate-limit-aware, retried on transient
+            # failure, and logged like every other API call. CrewAI manages its
+            # own per-call LLM traffic internally, so this gates the run as a
+            # single unit.
+            result = self._gatekeeper.execute(crew.kickoff, inputs={"topic": run_topic})
 
         print_token_usage(result, cfg, log)
         graph_step(cfg, log)

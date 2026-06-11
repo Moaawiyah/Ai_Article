@@ -39,8 +39,11 @@ The 13 requirements:
 
 10. Inline citations — look for cite commands throughout the body. PASS requires at least 3.
 
-11. English only — confirm no begin-hebrew, no setRL, no polyglossia, no Hebrew Unicode characters.
-    PASS if none of these are found.
+11. English and Hebrew — the article MUST contain a Hebrew↔English BiDi section.
+    Confirm at least one begin-hebrew environment exists and that all Hebrew
+    characters stay inside begin-hebrew/end-hebrew blocks. PASS if a hebrew block
+    is present with no Hebrew leaking outside it and no setRL is used. FAIL if
+    Hebrew is entirely absent or appears outside its environment.
 
 12. Bibliography — look for begin-thebibliography with 8 or more bibitem entries.
 
