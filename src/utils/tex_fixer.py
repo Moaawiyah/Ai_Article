@@ -17,7 +17,11 @@ from utils.tex_syntax import (
     fix_text_mode_math,
 )
 from utils.tex_tables import fix_table_math, fix_tables, fix_tabular_colspec
-from utils.tex_tikz import fix_tikz_node_linebreaks, fix_tikz_reserved_styles
+from utils.tex_tikz import (
+    ensure_tikz_bounded,
+    fix_tikz_node_linebreaks,
+    fix_tikz_reserved_styles,
+)
 
 
 def strip_tex_fences(tex_path: Path, topic: str = "Article") -> None:
@@ -26,6 +30,12 @@ def strip_tex_fences(tex_path: Path, topic: str = "Article") -> None:
 
     cleaned = re.sub(r"^```[a-zA-Z]*\n?", "", text.strip())
     cleaned = re.sub(r"\n?```\s*$", "", cleaned.strip())
+
+    # Restore brace placeholders mangled by the skill loader's CrewAI-safety
+    # substitution ({id} -> <<id>>, see skill_loader.py). The LLM copies the
+    # <<id>> form verbatim from its backstory examples (e.g. \cite<<ref1>>),
+    # which breaks the \cite{}/\bibitem{} validator checks. Restore to braces.
+    cleaned = re.sub(r"<<([A-Za-z_][A-Za-z0-9_\-]*)>>", r"{\1}", cleaned)
 
     cleaned = re.sub(r"\\thispagestyle\s*\{\s*\}", r"\\thispagestyle{empty}", cleaned)
     cleaned = re.sub(r"\\pagestyle\s*\{\s*\}", r"\\pagestyle{fancy}", cleaned)
@@ -54,6 +64,7 @@ def strip_tex_fences(tex_path: Path, topic: str = "Article") -> None:
     cleaned = fix_bracket_syntax(cleaned)
     cleaned = fix_tikz_node_linebreaks(cleaned)
     cleaned = fix_tikz_reserved_styles(cleaned)
+    cleaned = ensure_tikz_bounded(cleaned)
     cleaned = fix_text_mode_math(cleaned)
     cleaned = fix_table_math(cleaned)
     cleaned = fix_tables(cleaned)
@@ -83,6 +94,16 @@ def strip_tex_fences(tex_path: Path, topic: str = "Article") -> None:
                 r'\\setlength{\\headheight}{15pt}',
                 cleaned,
             )
+
+    # Give floats (incl. [H] figures) breathing room from surrounding text.
+    if r'\usepackage{float}' in cleaned and r'\setlength{\intextsep}' not in cleaned:
+        cleaned = cleaned.replace(
+            r'\usepackage{float}',
+            '\\usepackage{float}\n'
+            '\\setlength{\\intextsep}{12pt plus 3pt minus 2pt}\n'
+            '\\setlength{\\textfloatsep}{12pt plus 3pt minus 2pt}',
+            1,
+        )
 
     _topic_tex = (topic
                   .replace("\\", "")

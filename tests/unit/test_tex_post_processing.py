@@ -15,7 +15,27 @@ from utils.tex_syntax import (
     fix_text_mode_math,
 )
 from utils.tex_tables import fix_tables, fix_tabular_colspec
-from utils.tex_tikz import fix_tikz_node_linebreaks, fix_tikz_reserved_styles
+from utils.tex_tikz import (
+    ensure_tikz_bounded,
+    fix_tikz_node_linebreaks,
+    fix_tikz_reserved_styles,
+)
+
+
+def test_ensure_tikz_bounded_wraps_unbounded_picture():
+    src = "\\begin{tikzpicture}\n\\node {a};\n\\end{tikzpicture}"
+    out = ensure_tikz_bounded(src)
+    assert r"\adjustbox{max width=\textwidth, max totalheight=0.9\textheight}" in out
+    assert out.count("tikzpicture") == 2  # begin + end preserved
+
+
+def test_ensure_tikz_bounded_skips_already_wrapped():
+    src = (
+        "\\adjustbox{max width=\\textwidth}{%\n"
+        "\\begin{tikzpicture}\n\\node {a};\n\\end{tikzpicture}\n}"
+    )
+    out = ensure_tikz_bounded(src)
+    assert out.count("adjustbox") == 1  # not double-wrapped
 
 
 def test_protected_regex_matches_math():
@@ -127,6 +147,20 @@ def test_fix_tikz_reserved_styles_renames_collision():
     out = fix_tikz_reserved_styles(src)
     assert "nodenode/.style" in out
     assert "[nodenode]" in out
+    assert "\\node[" in out  # the \node command itself must NOT be renamed
+
+
+def test_fix_tikz_reserved_styles_preserves_builtin_node_usages():
+    # 'every node/.style' and 'node distance' are built-ins, not user styles.
+    src = (
+        "\\begin{tikzpicture}[node distance=2cm, every node/.style={draw}]\n"
+        "\\node (a) {x};\n"
+        "\\end{tikzpicture}"
+    )
+    out = fix_tikz_reserved_styles(src)
+    assert "node distance=2cm" in out          # key not mangled
+    assert "every node/.style" in out          # built-in not renamed
+    assert "nodenode" not in out               # no corruption at all
 
 
 def test_has_hebrew_true_false():

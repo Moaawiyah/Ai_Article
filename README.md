@@ -1,103 +1,81 @@
-# agent_ai_HW2 — Document Processing Pipeline with LLM Agents
+# agent_ai_HW2 — Academic Article Generator (CrewAI + LuaLaTeX)
 
-AI Agents Homework 2 — converts documents to Markdown via `markitdown` and answers
-natural-language questions using the Anthropic Claude API.
+A 5-agent [CrewAI](https://docs.crewai.com) pipeline that writes a complete
+academic article on a configured topic and produces a polished PDF. The crew
+runs **researcher → writer → reviewer → LaTeX formatter → validator**; after the
+crew finishes, deterministic post-passes inject a Python-generated benchmark
+figure, compile with **LuaLaTeX**, and run a 13-item programmatic checklist
+against the assignment requirements.
+
+Final output: `outputs/pdf/article.pdf` plus a `validation_report.md`.
 
 ## System Requirements
 
-- Python ≥ 3.10
+- Python **3.12** (pinned via `.python-version`)
 - [`uv`](https://docs.astral.sh/uv/) package manager
+- A **LuaLaTeX** toolchain (e.g. TeX Live / MiKTeX) on `PATH`, with Hebrew
+  font support for the bilingual section
+- An LLM provider key — by default `ZHIPUAI_API_KEY` (see `config/config.yaml`)
 
 ## Installation
 
 ```bash
-# 1. Clone the repository
-git clone <repo-url>
-cd agent_ai_HW2
-
-# 2. Copy environment template and fill in your API key
-cp .env-example .env
-# Edit .env: set ANTHROPIC_API_KEY=<your-key>
-
-# 3. Install dependencies (uv only — never use pip directly)
-uv sync --extra dev
+uv sync --extra dev          # installs runtime + test/lint tooling into .venv
+export ZHIPUAI_API_KEY=<your-key>   # provider configured in config/config.yaml
 ```
 
 ## Usage
 
-### CLI
-
 ```bash
-uv run agent-ai path/to/document.pdf "What are the main conclusions?"
+# Generate the article for the topic in config/config.yaml
+uv run agent-ai-article
+
+# …or override the topic
+uv run agent-ai-article --topic "Your topic here"
 ```
 
-### Python API
+The pipeline writes intermediate artifacts under `outputs/` (research brief →
+draft → reviewed → `article.tex` → `article.pdf`) and the validation report to
+`outputs/pdf/validation_report.md`.
 
-```python
-from sdk import AgentAISDK
-
-sdk = AgentAISDK()
-markdown = sdk.process_document("report.pdf")
-answer   = sdk.query_document(markdown, "Summarise in 3 bullet points.")
-print(answer)
-```
+> A secondary document-Q&A entry point (`agent-ai <file> "<question>"`, using
+> `markitdown` + the Anthropic API) also lives in the SDK and requires
+> `ANTHROPIC_API_KEY`.
 
 ## Configuration
 
+Everything is driven from config — no values are hard-coded in source.
+
 | File | Purpose |
 |------|---------|
-| `config/setup.json` | App settings, LLM model, markitdown options |
-| `config/rate_limits.json` | Per-service API rate limits |
+| `config/config.yaml` | Topic, LLM provider/model, page/word targets, required artifacts, output paths, pricing |
 | `config/logging_config.json` | Log format and levels |
-| `.env` | Secrets (git-ignored — copy from `.env-example`) |
-
-All configuration values are read from these files. **No values are hard-coded.**
+| `config/rate_limits.json` | Per-service API rate limits (document-Q&A path) |
 
 ## Running Tests
 
 ```bash
-uv run pytest                         # run all tests with coverage
-uv run pytest tests/unit/             # unit tests only
-uv run pytest tests/integration/      # integration tests only
-uv run ruff check src tests           # lint (must be 0 violations)
+uv run pytest                  # full suite with coverage (threshold 85%)
+uv run ruff check src tests    # lint
 ```
-
-Coverage threshold is set to **85 %** in `pyproject.toml`.
 
 ## Project Structure
 
 ```
-agent_ai_HW2/
-├── src/
-│   ├── sdk.py              # Public document Q&A entry point (AgentAISDK)
-│   ├── config.py           # ConfigManager + article pipeline config
-│   ├── gatekeeper.py       # ApiGatekeeper (rate limiting)
-│   ├── version.py          # Version tracking (v1.00)
-│   ├── constants.py
-│   ├── agents/             # CrewAI article agents
-│   ├── tasks/              # CrewAI article tasks
-│   └── utils/              # Shared article pipeline helpers
-├── tests/
-│   ├── unit/               # Unit tests (mirrors src/)
-│   └── integration/        # Integration tests
-├── docs/
-│   ├── PRD.md              # Product requirements
-│   ├── PLAN.md             # Architecture & planning
-│   └── TODO.md             # Task tracker
-├── config/                 # JSON configuration files
-├── data/                   # Input documents
-├── results/                # Experiment outputs
-├── notebooks/              # Jupyter analysis notebooks
-└── assets/                 # Images and graphs
+src/
+├── main.py            # CLI entry → AgentAISDK.generate_article
+├── sdk/sdk.py         # Public SDK (article generation + document Q&A)
+├── pipeline.py        # Builds the 5-agent sequential Crew
+├── pipeline_steps.py  # Post-crew passes: graph → compile → validate
+├── agents/factory.py  # Single parametrised agent factory (skill → Agent)
+├── tasks/             # research / writing / review / latex / validation tasks
+├── shared/            # config, gatekeeper, pipeline_config, version
+└── utils/             # tex_fixer & friends, validators, graph + PDF tooling
+skills/                # SKILL.md per agent (researcher, writer, reviewer, …)
+config/                # configuration files
+outputs/               # generated artifacts (research → drafts → latex → pdf)
+tests/                 # unit + integration tests
 ```
-
-## Contribution Guidelines
-
-- Follow the SDK architecture — all business logic goes through `AgentAISDK`.
-- Keep every source file ≤ 150 lines of code.
-- Write tests before implementation (TDD: red → green → refactor).
-- Use `uv add <pkg>` to add dependencies; never `pip install`.
-- No secrets or hard-coded config values in source code.
 
 ## License
 

@@ -16,7 +16,6 @@ from utils.pdf_compiler import compile_pdf
 from utils.tex_fixer import strip_tex_fences
 from utils.tex_validator import validate
 
-
 _TEX_SPECIALS = {
     "\\": r"\textbackslash{}", "&": r"\&", "%": r"\%", "$": r"\$",
     "#": r"\#", "_": r"\_", "{": r"\{", "}": r"\}",

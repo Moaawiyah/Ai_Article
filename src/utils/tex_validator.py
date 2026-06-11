@@ -40,21 +40,28 @@ def _check_citations(tex: str) -> CheckResult:
                        "Ensure `[N]` markers were converted to `\\cite{refN}`")
 
 
-def _check_english_only(tex: str) -> CheckResult:
-    has_hebrew_env  = bool(re.search(r"\\begin\s*\{hebrew\}", tex))
-    has_setrl       = r"\setRL" in tex
-    has_polyglossia = "polyglossia" in tex
-    has_heb_chars   = bool(re.search(r"[֐-׿]", tex))
-    violations = (
-        (["`\\begin{hebrew}`"] if has_hebrew_env else [])
-        + (["`\\setRL`"] if has_setrl else [])
-        + (["`polyglossia`"] if has_polyglossia else [])
-        + (["Hebrew Unicode chars"] if has_heb_chars else [])
-    )
-    if violations:
-        return CheckResult("11. English only", False, f"Found: {', '.join(violations)}",
-                           "Remove all Hebrew/BiDi content — article must be English only")
-    return CheckResult("11. English only", True, "No Hebrew environments, polyglossia, or BiDi content found")
+def _check_english_and_hebrew(tex: str) -> CheckResult:
+    """The assignment requires a Hebrew↔English BiDi section. PASS when at least
+    one hebrew environment exists and no Hebrew leaks outside it; FAIL if Hebrew
+    is absent (BiDi requirement unmet) or leaks (or `\\setRL` is used)."""
+    has_hebrew_env = bool(re.search(r"\\begin\s*\{hebrew\}", tex))
+    has_setrl      = r"\setRL" in tex
+    tex_no_heb     = re.sub(r"\\begin\s*\{hebrew\}.*?\\end\s*\{hebrew\}", "", tex, flags=re.DOTALL)
+    stray_hebrew   = bool(re.search(r"[֐-׿]", tex_no_heb))
+
+    if not has_hebrew_env:
+        return CheckResult("11. English and Hebrew", False,
+                           "No `\\begin{hebrew}` environment found",
+                           "Add the required Hebrew↔English BiDi section inside a "
+                           "`\\begin{hebrew}...\\end{hebrew}` block")
+    problems = (["`\\setRL` used"] if has_setrl else []) + \
+               (["Hebrew chars outside `hebrew` env"] if stray_hebrew else [])
+    if problems:
+        return CheckResult("11. English and Hebrew", False, f"Found: {', '.join(problems)}",
+                           "Keep all Hebrew inside `\\begin{hebrew}...\\end{hebrew}`; "
+                           "do not use `\\setRL` or leave stray Hebrew in English prose")
+    return CheckResult("11. English and Hebrew", True,
+                       "`\\begin{hebrew}` block present with no Hebrew leaking outside it")
 
 
 def _check_bibliography(tex: str) -> CheckResult:
@@ -100,7 +107,7 @@ def validate(tex_path: Path, pdf_path: Path, log_path: Path, report_path: Path) 
         check_formula(tex),
         _check_tikz(tex),
         _check_citations(tex),
-        _check_english_only(tex),
+        _check_english_and_hebrew(tex),
         _check_bibliography(tex),
         _check_compilation(pdf_path, log_path),
     ])

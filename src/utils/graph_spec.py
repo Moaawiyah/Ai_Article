@@ -3,17 +3,26 @@
 Reads the research brief and asks the configured LLM for a small JSON block
 describing relative performance characteristics of the main topic and the two
 comparative architectures found by the Researcher agent.
+
+Parsing/validation/IO helpers live in ``graph_spec_parse.py``.
 """
 
 from __future__ import annotations
 
 import json
 import logging
-import os
 import re
 from pathlib import Path
 
-from utils.graph_fallback import extract_arch_names, fallback_spec
+from utils.graph_fallback import fallback_spec
+from utils.graph_spec_parse import (
+    brief_fallback,
+    extract_brief_spec,
+    llm_params,
+    log_spec,
+    validate_and_normalize,
+    write_spec,
+)
 
 log = logging.getLogger(__name__)
 
@@ -69,106 +78,6 @@ Research brief (truncated):
 """
 
 
-def _llm_params(cfg) -> dict:
-    """Extract LiteLLM call kwargs from PipelineConfig."""
-    provider = cfg.llm_provider
-    model    = cfg.llm_model
-    base_url = cfg.llm_base_url
-
-    if provider == "zhipuai":
-        return {"model": f"openai/{model}", "api_base": base_url,
-                "api_key": os.environ.get("ZHIPUAI_API_KEY", "")}
-    if provider == "ollama":
-        return {"model": f"ollama_chat/{model}", "api_base": base_url}
-    if provider == "anthropic":
-        return {"model": model, "api_key": os.environ.get("ANTHROPIC_API_KEY", "")}
-    if provider == "openai":
-        return {"model": model, "api_key": os.environ.get("OPENAI_API_KEY", "")}
-    return {"model": model}
-
-
-def _brief_fallback(brief_path: Path, brief_chars: int) -> dict:
-    """Return the static fallback with arch names taken from the brief when possible."""
-    spec = fallback_spec()
-    try:
-        if brief_path.exists():
-            brief_text = brief_path.read_text(encoding="utf-8")[:brief_chars]
-            main_name, name_a, name_b = extract_arch_names(brief_text)
-            spec["main"]["name"]   = main_name
-            spec["arch_a"]["name"] = name_a
-            spec["arch_b"]["name"] = name_b
-            log.info("Brief-extracted names: %s | %s | %s", main_name, name_a, name_b)
-    except Exception as e2:
-        log.warning("Could not extract arch names from brief: %s", e2)
-    return spec
-
-
-_REQUIRED_FIELDS = ("name", "median_queue", "p95_queue", "base_fct_ms", "fct_slope")
-
-
-def _validate_and_normalize(spec: dict) -> dict:
-    """Validate the three-arch structure and normalize provenance fields in place.
-
-    Raises ValueError if a required key/field is missing. ``data_basis`` and
-    ``source`` are optional in the source data and default to "estimated"/"".
-    """
-    for key in ("main", "arch_a", "arch_b"):
-        if key not in spec:
-            raise ValueError(f"Missing key: {key}")
-        for field in _REQUIRED_FIELDS:
-            if field not in spec[key]:
-                raise ValueError(f"Missing field {field} in {key}")
-        basis = str(spec[key].get("data_basis", "estimated")).strip().lower()
-        spec[key]["data_basis"] = "measured" if basis == "measured" else "estimated"
-        spec[key]["source"] = str(spec[key].get("source", "")).strip()
-    return spec
-
-
-def _log_spec(spec: dict, origin: str) -> None:
-    """Log the chosen architectures and the provenance of each series."""
-    log.info(
-        "Graph spec (%s) — %s vs %s vs %s",
-        origin, spec["main"]["name"], spec["arch_a"]["name"], spec["arch_b"]["name"],
-    )
-    for key in ("main", "arch_a", "arch_b"):
-        log.info(
-            "  %-7s %-15s [%s] %s",
-            key + ":", spec[key]["name"], spec[key]["data_basis"],
-            spec[key]["source"] or "(no source given)",
-        )
-
-
-def _extract_brief_spec(brief: str) -> dict | None:
-    """Parse the researcher's machine-readable Performance Data JSON block.
-
-    Scans fenced ```json blocks (and bare {...} objects as a fallback) and
-    returns the first one that validates as a three-arch spec, or None.
-    """
-    candidates = re.findall(r"```(?:json)?\s*(\{.*?\})\s*```", brief, re.DOTALL)
-    # Greedy bare-object fallback for when the model omits the code fence.
-    bare = re.search(r"\{.*\}", brief, re.DOTALL)
-    if bare:
-        candidates.append(bare.group(0))
-    for raw in candidates:
-        try:
-            spec = json.loads(raw)
-        except (json.JSONDecodeError, TypeError):
-            continue
-        if not (isinstance(spec, dict) and {"main", "arch_a", "arch_b"} <= spec.keys()):
-            continue
-        try:
-            return _validate_and_normalize(spec)
-        except ValueError:
-            continue
-    return None
-
-
-def _write_spec(spec: dict, spec_out: Path | None) -> None:
-    if spec_out:
-        spec_out.parent.mkdir(parents=True, exist_ok=True)
-        spec_out.write_text(json.dumps(spec, indent=2), encoding="utf-8")
-
-
 def generate_graph_spec(brief_path: Path, cfg, spec_out: Path | None = None) -> dict:
     """Produce the graph spec, preferring the researcher's embedded data block.
 
@@ -185,10 +94,10 @@ def generate_graph_spec(brief_path: Path, cfg, spec_out: Path | None = None) -> 
     brief = brief_path.read_text(encoding="utf-8")
     brief_chars = cfg.graph_spec_brief_chars
 
-    embedded = _extract_brief_spec(brief)
+    embedded = extract_brief_spec(brief)
     if embedded is not None:
-        _log_spec(embedded, "from researcher brief")
-        _write_spec(embedded, spec_out)
+        log_spec(embedded, "from researcher brief")
+        write_spec(embedded, spec_out)
         return embedded
 
     log.info("No Performance Data block in brief — falling back to LLM recall")
@@ -197,10 +106,10 @@ def generate_graph_spec(brief_path: Path, cfg, spec_out: Path | None = None) -> 
         litellm.suppress_debug_info = True
     except ImportError:
         log.warning("litellm not available — using default graph profiles")
-        return _brief_fallback(brief_path, brief_chars)
+        return brief_fallback(brief_path, brief_chars)
 
     prompt = _PROMPT.format(brief=brief[:brief_chars])
-    params = _llm_params(cfg)
+    params = llm_params(cfg)
 
     try:
         response = litellm.completion(
@@ -217,10 +126,10 @@ def generate_graph_spec(brief_path: Path, cfg, spec_out: Path | None = None) -> 
         json_match = re.search(r"\{.*\}", raw, re.DOTALL)
         if json_match:
             raw = json_match.group(0)
-        spec = _validate_and_normalize(json.loads(raw))
-        _log_spec(spec, "LLM recall")
-        _write_spec(spec, spec_out)
+        spec = validate_and_normalize(json.loads(raw))
+        log_spec(spec, "LLM recall")
+        write_spec(spec, spec_out)
         return spec
     except Exception as exc:
         log.warning("Graph spec LLM call failed (%s) — using default profiles", exc)
-        return _brief_fallback(brief_path, brief_chars)
+        return brief_fallback(brief_path, brief_chars)
