@@ -78,5 +78,15 @@ tests/                 # unit + integration tests
 ```
 
 ## License
+<img width="1512" height="982" alt="Screenshot 2026-06-11 at 16 17 24" src="https://github.com/user-attachments/assets/8731fd90-c873-4272-ac0b-5094955b1236" />
+<img width="1512" height="982" alt="Screenshot 2026-06-11 at 16 20 49" src="https://github.com/user-attachments/assets/8e78e369-bd48-4586-ace4-c9f31cbe79a0" />
+<img width="1512" height="982" alt="Screenshot 2026-06-11 at 16 20 53" src="https://github.com/user-attachments/assets/f94ddf66-bccb-4fe2-9da4-430aa6da8ca2" /><img width="1512" height="982" alt="Screenshot 2026-06-11 at 16 17 20" src="https://github.com/user-attachments/assets/a580fa76-cc10-48f3-b316-7e817c55d08e" /><img width="1512" height="982" alt="Screenshot 2026-06-11 at 16 15 32" src="https://github.com/user-attachments/assets/502d832c-8b9c-483a-b982-68075620ca14" />
+<img width="1512" height="982" alt="Screenshot 2026-06-11 at 16 15 37" src="https://github.com/user-attachments/assets/f7d82eb0-290e-45d6-8f74-7ef335b8e938" />
+<img width="1512" height="982" alt="Screenshot 2026-06-11 at 16 08 59" src="https://github.com/user-attachments/assets/ce1537d5-7cea-4370-8f91-1af2e6779e02" />
+<img width="1512" height="982" alt="Screenshot 2026-06-11 at 16 09 16" src="https://github.com/user-attachments/assets/dbc350f1-6089-40bc-8b4d-500fc08b3595" />
+<img width="1512" height="982" alt="Screenshot 2026-06-11 at 16 09 23" src="https://github.com/user-attachments/assets/3a024041-7a76-4644-8f2e-9f9e568265f6" />
+<img width="1512" height="982" alt="Screenshot 2026-06-11 at 16 11 39" src="https://github.com/user-attachments/assets/755f0d24-fa91-4310-85f2-70107f60e154" />
+<img width="1512" height="982" alt="Screenshot 2026-06-11 at 16 15 14" src="https://github.com/user-attachments/assets/1a288ca9-c54b-4935-a3f7-1d721f26c7f2" />
+
 
 MIT © moaawiyahhaj
