@@ -14,6 +14,7 @@ import logging
 import re
 from pathlib import Path
 
+from shared.gatekeeper import ApiGatekeeper
 from utils.graph_fallback import fallback_spec
 from utils.graph_spec_parse import (
     brief_fallback,
@@ -78,7 +79,12 @@ Research brief (truncated):
 """
 
 
-def generate_graph_spec(brief_path: Path, cfg, spec_out: Path | None = None) -> dict:
+def generate_graph_spec(
+    brief_path: Path,
+    cfg,
+    spec_out: Path | None = None,
+    gatekeeper: ApiGatekeeper | None = None,
+) -> dict:
     """Produce the graph spec, preferring the researcher's embedded data block.
 
     Resolution order:
@@ -112,12 +118,15 @@ def generate_graph_spec(brief_path: Path, cfg, spec_out: Path | None = None) -> 
     params = llm_params(cfg)
 
     try:
-        response = litellm.completion(
-            **params,
-            messages=[{"role": "user", "content": prompt}],
-            max_tokens=cfg.graph_spec_max_tokens,
-            temperature=cfg.graph_spec_temperature,
-        )
+        def call():
+            return litellm.completion(
+                **params,
+                messages=[{"role": "user", "content": prompt}],
+                max_tokens=cfg.graph_spec_max_tokens,
+                temperature=cfg.graph_spec_temperature,
+            )
+
+        response = gatekeeper.execute(call) if gatekeeper else call()
         raw = response.choices[0].message.content.strip()
         log.debug("Graph spec raw response: %s", raw[:500])
         if not raw:

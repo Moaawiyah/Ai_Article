@@ -1,7 +1,7 @@
 # PRD — PDF Compilation Mechanism
 
 **Version:** 1.00
-**Owner:** `src/agent_ai/utils/pdf_compiler.py`
+**Owner:** `src/utils/pdf_compiler.py`
 
 ## 1. Goal
 
@@ -68,7 +68,7 @@ robust Hebrew/Unicode support through `polyglossia` + `fontspec`.
 ## 8. Constraints
 
 - File ≤ 150 LoC (per guideline §3.2). `CompileResult` is split into
-  `src/agent_ai/utils/compile_result.py` to honour the limit.
+  `src/utils/compile_result.py` to honour the limit.
 - No business logic outside this module — callers go through the SDK.
 - Subprocess calls capture output explicitly; no terminal noise leaks.
 

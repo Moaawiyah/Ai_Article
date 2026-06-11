@@ -17,6 +17,9 @@ def rate_limit_config() -> RateLimitConfig:
         concurrent_max=5,
         retry_after_seconds=0,
         max_retries=2,
+        queue_max_depth=10,
+        minute_window_seconds=60,
+        hour_window_seconds=3600,
     )
 
 
@@ -51,6 +54,9 @@ def config_dir(tmp_path: Path) -> Path:
                             "concurrent_max": 5,
                             "retry_after_seconds": 0,
                             "max_retries": 2,
+                            "queue_max_depth": 10,
+                            "minute_window_seconds": 60,
+                            "hour_window_seconds": 3600,
                         }
                     },
                 }

@@ -2,10 +2,10 @@
 
 **Version:** 1.00
 **Owners:**
-- `src/agent_ai/pipeline.py` — Crew assembly
-- `src/agent_ai/main.py` — orchestrator entry point
-- `src/agent_ai/agents/` — five thin agent factories
-- `src/agent_ai/tasks/` — five linked CrewAI tasks
+- `src/pipeline.py` — Crew assembly
+- `src/main.py` — CLI entry point
+- `src/agents/` — shared agent factory
+- `src/tasks/` — five linked CrewAI tasks
 - `skills/<agent>/SKILL.md` — agent prompts
 
 ## 1. Goal
@@ -86,7 +86,7 @@ These constants live in `pipeline_steps.py`. A full run typically uses
 
 ## 9. Acceptance Criteria
 
-- A fresh `outputs/` directory is produced after one `uv run python -m agent_ai.main`.
+- A fresh `outputs/` directory is produced after one `uv run agent-ai-article`.
 - `outputs/pdf/article.pdf` is ≥ 200 KB and ≥ 10 pages.
 - `validation_report.md` reports ≥ 11/13 checks passing on a clean run.
 - Token usage line appears in `logs/app.log` with input/output/total counts.

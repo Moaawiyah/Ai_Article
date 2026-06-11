@@ -14,13 +14,13 @@ It satisfies §8.3 of the submission guidelines (Prompt Engineering Log).
 
 **Prompt (paraphrased):**
 > Create a Python project layout following §2.4 of the guidelines. Use `uv` as
-> the package manager. Add an SDK layer under `src/agent_ai/sdk/`, a shared
-> layer with config, gatekeeper, and version under `src/agent_ai/shared/`, and
+> the package manager. Add an SDK layer under `src/sdk/`, a shared
+> layer with config, gatekeeper, and version under `src/shared/`, and
 > an empty `services/` package. Generate `pyproject.toml` with `ruff` selecting
 > `["E","F","W","I","N","UP","B","C4","SIM"]`, `pytest`, `pytest-cov` with
 > `fail_under = 85`.
 
-**Outcome:** Initial project skeleton — `pyproject.toml`, `src/agent_ai/`,
+**Outcome:** Initial project skeleton — `pyproject.toml`, `src/`,
 `tests/conftest.py`, `.env-example`, `.gitignore`.
 
 **Lesson:** Asking for the *full layout in one prompt* avoided three rounds of
@@ -48,7 +48,7 @@ config-only iteration.
 **Goal:** Implement a centralised API gatekeeper per §5.1.
 
 **Prompt:**
-> Write `src/agent_ai/shared/gatekeeper.py` exposing `ApiGatekeeper.execute()`
+> Write `src/shared/gatekeeper.py` exposing `ApiGatekeeper.execute()`
 > that wraps any callable, enforces a `RateLimitConfig` (requests/minute,
 > requests/hour, concurrent_max, retry_after_seconds, max_retries), queues
 > overflow requests in FIFO order, and logs every call. Never raise on
@@ -89,8 +89,8 @@ Formatter → PDF Validator) per F-05.
 **Prompt:**
 > Design a `Crew(process=Process.sequential)` with five agents, each loaded from
 > a `skills/<agent>/SKILL.md` file. Each agent must be a thin factory in
-> `src/agent_ai/agents/<name>.py` that calls `load_skill()`. Each task lives in
-> `src/agent_ai/tasks/<name>_task.py` and links to its predecessor via
+> `src/agents/factory.py` that calls `load_skill()`. Each task lives in
+> `src/tasks/<name>_task.py` and links to its predecessor via
 > `context=[prev_task]`.
 
 **Lesson:** Forcing the "Skill-file backed" pattern from the start meant we
@@ -141,7 +141,7 @@ tokens, but a 30-line regex pass is deterministic.
 ## 4. Inline LLM Prompts (Graph Spec)
 
 ### 4.1 Graph spec extraction
-**File:** `src/agent_ai/utils/graph_spec.py`
+**File:** `src/utils/graph_spec.py`
 
 **Prompt template:**
 > You are a data extraction assistant. Read the research brief below and provide
@@ -204,7 +204,7 @@ gatekeeper") produced four focused tests, each <30 lines, instead of one
 | Reviewer agent | `skills/reviewer/SKILL.md` |
 | LaTeX Formatter | `skills/latex_formatter/SKILL.md` |
 | PDF Validator | `skills/pdf_validator/SKILL.md` |
-| Graph spec extraction | `src/agent_ai/utils/graph_spec.py::_PROMPT` |
+| Graph spec extraction | `src/utils/graph_spec.py::_PROMPT` |
 
 All inline prompts in source are reviewed under
 `ruff check` and pinned to `model = config.llm.model` from `config.yaml` — no

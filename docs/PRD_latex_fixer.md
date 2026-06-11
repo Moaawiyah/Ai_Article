@@ -2,11 +2,11 @@
 
 **Version:** 1.00
 **Owners:**
-- `src/agent_ai/utils/tex_fixer.py` — top-level `strip_tex_fences()` driver
-- `src/agent_ai/utils/tex_syntax.py` — bracket/citation/text-mode fixes
-- `src/agent_ai/utils/tex_tikz.py` — TikZ node + reserved-key fixes
-- `src/agent_ai/utils/tex_tables.py` — table float wrapping + column specs
-- `src/agent_ai/utils/tex_hebrew.py` — Hebrew/Latin LTR–RTL bridging
+- `src/utils/tex_fixer.py` — top-level `strip_tex_fences()` driver
+- `src/utils/tex_syntax.py` — bracket/citation/text-mode fixes
+- `src/utils/tex_tikz.py` — TikZ node + reserved-key fixes
+- `src/utils/tex_tables.py` — table float wrapping + column specs
+- `src/utils/tex_hebrew.py` — Hebrew/Latin LTR–RTL bridging
 
 ## 1. Goal
 

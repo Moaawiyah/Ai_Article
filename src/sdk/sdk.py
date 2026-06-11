@@ -32,18 +32,29 @@ class AgentAISDK:
         """Bootstrap configuration, gatekeeper, and Anthropic client (lazy)."""
         kwargs = {"config_dir": config_dir} if config_dir else {}
         self._config = ConfigManager(**kwargs)
-        rl = self._config.get_rate_limit("anthropic")
-        self._gatekeeper = ApiGatekeeper(
+        self._gatekeepers: dict[str, ApiGatekeeper] = {}
+        self._client: anthropic.Anthropic | None = None
+        logger.info("AgentAISDK v%s initialised", VERSION)
+
+    def _gatekeeper(self, service: str) -> ApiGatekeeper:
+        """Return a cached gatekeeper configured for *service*."""
+        if service in self._gatekeepers:
+            return self._gatekeepers[service]
+        rl = self._config.get_rate_limit(service)
+        gatekeeper = ApiGatekeeper(
             RateLimitConfig(
                 requests_per_minute=rl["requests_per_minute"],
                 requests_per_hour=rl["requests_per_hour"],
                 concurrent_max=rl["concurrent_max"],
                 retry_after_seconds=rl["retry_after_seconds"],
                 max_retries=rl["max_retries"],
+                queue_max_depth=rl["queue_max_depth"],
+                minute_window_seconds=rl["minute_window_seconds"],
+                hour_window_seconds=rl["hour_window_seconds"],
             )
         )
-        self._client: anthropic.Anthropic | None = None
-        logger.info("AgentAISDK v%s initialised", VERSION)
+        self._gatekeepers[service] = gatekeeper
+        return gatekeeper
 
     def _anthropic(self) -> anthropic.Anthropic:
         """Lazy-create the Anthropic client only when document Q&A is invoked."""
@@ -99,7 +110,7 @@ class AgentAISDK:
             )
             return response.content[0].text
 
-        return self._gatekeeper.execute(_call)
+        return self._gatekeeper("anthropic").execute(_call)
 
     def generate_article(self, topic: str | None = None) -> Path:
         """Run the five-agent CrewAI pipeline → benchmark figure → LuaLaTeX → validation.
@@ -129,10 +140,11 @@ class AgentAISDK:
             # failure, and logged like every other API call. CrewAI manages its
             # own per-call LLM traffic internally, so this gates the run as a
             # single unit.
-            result = self._gatekeeper.execute(crew.kickoff, inputs={"topic": run_topic})
+            gatekeeper = self._gatekeeper(cfg.llm_provider)
+            result = gatekeeper.execute(crew.kickoff, inputs={"topic": run_topic})
 
         print_token_usage(result, cfg, log)
-        graph_step(cfg, log)
+        graph_step(cfg, log, gatekeeper)
         compile_step(cfg, log)
         validate_step(cfg, log)
 

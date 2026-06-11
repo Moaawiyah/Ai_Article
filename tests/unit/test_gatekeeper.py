@@ -1,6 +1,8 @@
 """Unit tests for ApiGatekeeper."""
 
 import contextlib
+import threading
+import time
 
 import pytest
 
@@ -87,3 +89,34 @@ def test_purge_window_keeps_recent_entries(rate_limit_config):
     window = deque([now - 5, now - 2, now])
     ApiGatekeeper._purge_window(window, now=now, span=60)
     assert len(window) == 3
+
+
+def test_requests_execute_in_fifo_order(rate_limit_config):
+    rate_limit_config.concurrent_max = 1
+    gate = ApiGatekeeper(rate_limit_config)
+    release = threading.Event()
+    started = threading.Event()
+    order = []
+
+    def first():
+        started.set()
+        release.wait(timeout=2)
+        order.append("first")
+
+    def run(name):
+        gate.execute(lambda: order.append(name))
+
+    threads = [threading.Thread(target=lambda: gate.execute(first))]
+    threads[0].start()
+    assert started.wait(timeout=2)
+    for name in ("second", "third"):
+        thread = threading.Thread(target=run, args=(name,))
+        threads.append(thread)
+        thread.start()
+        time.sleep(0.02)
+    assert gate.get_queue_status().depth == 2
+    release.set()
+    for thread in threads:
+        thread.join(timeout=2)
+    assert order == ["first", "second", "third"]
+    assert gate.get_queue_status().depth == 0

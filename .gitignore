@@ -49,3 +49,6 @@ Thumbs.db
 *.log
 !logs/
 
+# Local notes
+/improvement to keep in mind.txt
+

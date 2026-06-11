@@ -2,9 +2,9 @@
 
 **Version:** 1.00
 **Owners:**
-- `src/agent_ai/utils/graph_spec.py` — LLM call that produces the JSON spec
-- `src/agent_ai/utils/graph_fallback.py` — deterministic fallback profiles
-- `src/agent_ai/utils/graph_generator.py` — matplotlib rendering
+- `src/utils/graph_spec.py` — gated LLM call that produces the JSON spec
+- `src/utils/graph_fallback.py` — deterministic fallback profiles
+- `src/utils/graph_generator.py` — matplotlib rendering
 
 ## 1. Goal
 
