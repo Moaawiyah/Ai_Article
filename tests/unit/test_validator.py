@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from utils.tex_validator import validate
+from utils.tex_validator import _check_english_and_hebrew, validate
 from utils.validator_checks import (
     check_formula,
     check_headers_footers,
@@ -96,6 +96,27 @@ def test_check_formula_inline():
 
 def test_check_formula_none():
     assert not check_formula("plain text").passed
+
+
+def test_english_and_hebrew_pass():
+    tex = r"\begin{hebrew}שלום \textenglish{P4}\end{hebrew} English body."
+    assert _check_english_and_hebrew(tex).passed
+
+
+def test_english_and_hebrew_fail_when_hebrew_absent():
+    res = _check_english_and_hebrew(r"\section{Intro} English only, no bidi.")
+    assert not res.passed
+    assert "begin{hebrew}" in res.evidence
+
+
+def test_english_and_hebrew_fail_on_stray_hebrew_outside_env():
+    tex = r"\begin{hebrew}שלום\end{hebrew} then leaked שלום outside."
+    assert not _check_english_and_hebrew(tex).passed
+
+
+def test_english_and_hebrew_fail_on_setrl():
+    tex = r"\begin{hebrew}שלום\end{hebrew} \setRL here"
+    assert not _check_english_and_hebrew(tex).passed
 
 
 def test_validate_full_report(tmp_path):

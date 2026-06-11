@@ -1,5 +1,6 @@
 """Integration tests for AgentAISDK (no real API calls)."""
 
+from types import SimpleNamespace
 from unittest.mock import MagicMock, patch
 
 import pytest
@@ -46,6 +47,23 @@ def test_missing_api_key_raises(config_dir, monkeypatch):
     sdk = AgentAISDK(config_dir=config_dir)
     with pytest.raises(OSError, match="ANTHROPIC_API_KEY"):
         sdk.query_document("doc", "q?")
+
+
+def test_generate_article_routes_crew_through_gatekeeper(sdk, tmp_path):
+    """generate_article runs the crew via the gatekeeper and returns the PDF path."""
+    mock_crew = MagicMock()
+    mock_cfg = SimpleNamespace(topic="Default Topic", output_pdf=tmp_path)
+    with patch("pipeline.build_crew", return_value=(mock_crew, mock_cfg)), \
+         patch("pipeline_steps.print_token_usage"), \
+         patch("pipeline_steps.graph_step"), \
+         patch("pipeline_steps.compile_step"), \
+         patch("pipeline_steps.validate_step"), \
+         patch.object(sdk._gatekeeper, "execute", wraps=sdk._gatekeeper.execute) as spy:
+        pdf = sdk.generate_article(topic="My Topic")
+
+    assert pdf == tmp_path / "article.pdf"
+    mock_crew.kickoff.assert_called_once_with(inputs={"topic": "My Topic"})
+    spy.assert_called_once()  # the crew run is routed through the gatekeeper (§5.1)
 
 
 def test_process_document_success(sdk, tmp_path):
