@@ -1,8 +1,21 @@
 # Prompt Engineering Log
 
-This log documents the prompts used to build the `agent_ai_HW2` project with the
-help of AI agents, including context, goals, iterations, and lessons learned.
-It satisfies §8.3 of the submission guidelines (Prompt Engineering Log).
+This document explains how we used prompt engineering while building the
+`agent_ai_HW2` project. It records representative prompts for project
+scaffolding, the SDK and API gatekeeper, the CrewAI article pipeline, LaTeX
+generation, graph specification, and automated tests. For each example, we
+include the goal, important corrections, the resulting behavior, and the lesson
+we learned.
+
+The prompts below are a curated selection of the **fundamental prompts that
+shaped the project**, not a complete transcript of every instruction, follow-up,
+debugging message, or experimental variation used during development. We chose
+the examples that best explain the main design decisions and prompt-engineering
+techniques. The current full agent instructions are stored in
+`skills/*/SKILL.md`, while smaller runtime prompts can be found in the relevant
+source modules.
+
+This log satisfies §8.3 of the submission guidelines (Prompt Engineering Log).
 
 ---
 
