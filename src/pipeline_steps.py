@@ -6,26 +6,14 @@ stays under the 150-LoC budget.
 
 from __future__ import annotations
 
-import re
-
 from shared.config import PipelineConfig
+from utils.figure_inject import inject_figure
 from utils.graph_generator import generate_performance_graph
 from utils.graph_spec import generate_graph_spec
 from utils.logger import timed_stage
 from utils.pdf_compiler import compile_pdf
 from utils.tex_fixer import strip_tex_fences
 from utils.tex_validator import validate
-
-_TEX_SPECIALS = {
-    "\\": r"\textbackslash{}", "&": r"\&", "%": r"\%", "$": r"\$",
-    "#": r"\#", "_": r"\_", "{": r"\{", "}": r"\}",
-    "~": r"\textasciitilde{}", "^": r"\textasciicircum{}",
-}
-
-
-def _tex_escape(text: str) -> str:
-    """Escape LaTeX special characters in free text (e.g. LLM-supplied sources)."""
-    return "".join(_TEX_SPECIALS.get(ch, ch) for ch in text)
 
 
 def print_token_usage(result, cfg: PipelineConfig, log) -> None:
@@ -54,73 +42,20 @@ def print_token_usage(result, cfg: PipelineConfig, log) -> None:
           f"total:{total}  cost:${cost:.6f}")
 
 
-def graph_step(cfg: PipelineConfig, log) -> None:
-    """Generate the benchmark figure and inject it into the Evaluation section."""
+def graph_step(cfg: PipelineConfig, log, gatekeeper=None) -> None:
+    """Generate the benchmark figure and inject it (gatekeeper gates the spec call)."""
     log.info("─" * 60)
     log.info("GRAPH GENERATION  — researcher/LLM spec + matplotlib")
     spec = generate_graph_spec(
         brief_path=cfg.output_research / "research_brief.md",
         cfg=cfg,
         spec_out=cfg.output_assets / "graph_spec.json",
+        gatekeeper=gatekeeper,
     )
     filename = generate_performance_graph(cfg.topic, cfg.output_latex, spec=spec)
     if filename is None:
         return
-    tex_path = cfg.output_latex / "article.tex"
-    name_a = spec["arch_a"]["name"]
-    name_b = spec["arch_b"]["name"]
-    series = (spec["main"], spec["arch_a"], spec["arch_b"])
-    all_measured = all(s.get("data_basis") == "measured" for s in series)
-    sources = ", ".join(
-        dict.fromkeys(  # de-dupe, preserve order
-            s["source"] for s in series if s.get("source")
-        )
-    )
-    if all_measured and sources:
-        basis_note = f"Based on published measurements ({_tex_escape(sources)})."
-    elif sources:
-        basis_note = (
-            f"Curves combine published measurements and literature-informed "
-            f"estimates ({_tex_escape(sources)})."
-        )
-    else:
-        basis_note = "Curves are illustrative, literature-informed estimates."
-    caption = (
-        f"Left: CDF of bottleneck queue length. "
-        f"Right: average FCT vs.\\ network load. "
-        f"Comparison of {spec['main']['name']} vs.\\ {name_a} vs.\\ {name_b}. "
-        f"{basis_note}"
-    )
-    figure_block = (
-        "\n\\begin{figure}[H]\n"
-        "  \\centering\n"
-        f"  \\includegraphics[width=\\textwidth]{{{filename}}}\n"
-        f"  \\caption{{{caption}}}\n"
-        "  \\label{fig:perf}\n"
-        "\\end{figure}\n"
-    )
-    source = tex_path.read_text(encoding="utf-8")
-
-    eval_m = re.search(r'\\section\{[^}]*[Ee]valuation[^}]*\}', source)
-    if eval_m:
-        rest = source[eval_m.end():]
-        next_m = re.search(r'\n\\section\{', rest)
-        if next_m:
-            pos = eval_m.end() + next_m.start()
-            source = source[:pos] + "\n" + figure_block + source[pos:]
-        else:
-            bib = source.find("\\begin{thebibliography}")
-            pos = bib if bib != -1 else source.rfind("\\end{document}")
-            source = source[:pos] + figure_block + "\n" + source[pos:]
-    else:
-        bib = source.find("\\begin{thebibliography}")
-        if bib != -1:
-            source = source[:bib] + figure_block + "\n" + source[bib:]
-        else:
-            source = source.replace("\\end{document}", figure_block + "\\end{document}")
-
-    tex_path.write_text(source, encoding="utf-8")
-    log.info("Graph injected into Evaluation section → %s", cfg.output_latex / filename)
+    inject_figure(cfg.output_latex / "article.tex", filename, spec, log)
 
 
 def compile_step(cfg: PipelineConfig, log) -> bool:

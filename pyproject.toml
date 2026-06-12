@@ -49,14 +49,6 @@ addopts = "--cov=src --cov-report=term-missing"
 [tool.coverage.run]
 source = ["src"]
 omit = [
-    "src/main.py",
-    "src/pipeline.py",
-    "src/pipeline_steps.py",
-    "src/agents/*",
-    "src/tasks/*",
-    "src/utils/graph_generator.py",
-    "src/utils/graph_spec.py",
-    "src/utils/logger.py",
     "*/tests/*",
     "src/**/gui/*",
 ]

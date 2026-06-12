@@ -14,9 +14,11 @@ _TIKZ_RESERVED = {
 def fix_tikz_node_linebreaks(tex: str) -> str:
     """Add align=center to TikZ nodes whose label contains \\\\ (not allowed in LR mode)."""
     def _fix_pic(m: re.Match) -> str:
+        """Process one tikzpicture, fixing every node label inside it."""
         block = m.group(0)
 
         def _fix_node(nm: re.Match) -> str:
+            """Add align=center to a node whose label contains a `\\\\` line break."""
             full  = nm.group(0)
             opts  = nm.group(1)
             label = nm.group(2)
@@ -51,6 +53,7 @@ def ensure_tikz_bounded(tex: str) -> str:
     (preceded by adjustbox/resizebox) are skipped to avoid double wrapping.
     """
     def _wrap(m: re.Match) -> str:
+        """Wrap a tikzpicture in adjustbox unless it is already bounded."""
         block  = m.group(0)
         prefix = tex[max(0, m.start() - 40):m.start()]
         if "adjustbox" in prefix or "resizebox" in prefix:
@@ -76,6 +79,7 @@ def fix_tikz_reserved_styles(tex: str) -> str:
     style) are never rewritten.
     """
     def _fix_pic(m: re.Match) -> str:
+        """Rename reserved-key style names within one tikzpicture block."""
         block = m.group(0)
         # User style names only — exclude built-in "every X/.style" definitions.
         defined = set(re.findall(r"(?<!every )(?<![\w])([A-Za-z]\w*)/\.style", block))

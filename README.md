@@ -9,6 +9,8 @@ against the assignment requirements.
 
 Final output: `outputs/pdf/article.pdf` plus a `validation_report.md`.
 
+See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for C4 diagrams, ADRs, and interface contracts.
+
 ## System Requirements
 
 - Python **3.12** (pinned via `.python-version`)

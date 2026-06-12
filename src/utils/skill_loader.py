@@ -32,6 +32,8 @@ def skill_name_to_role(name: str) -> str:
 
 @dataclass(frozen=True)
 class Skill:
+    """A loaded agent skill: identity, role, and prompt body from a skill file."""
+
     name: str
     role: str
     description: str

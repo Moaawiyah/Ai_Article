@@ -85,6 +85,7 @@ class PipelineConfig:
 
     @classmethod
     def load(cls, yaml_path: Path = _CONFIG_YAML) -> PipelineConfig:
+        """Build a PipelineConfig from config.yaml, applying defaults for missing keys."""
         raw        = _load_yaml(yaml_path)
         article    = raw.get("article", {})
         assignment = raw.get("assignment", {})
@@ -127,6 +128,7 @@ class PipelineConfig:
 
     @property
     def output_dirs(self) -> list[Path]:
+        """All output/log directories that must exist before a pipeline run."""
         return [
             self.output_research, self.output_drafts, self.output_reviewed,
             self.output_latex, self.output_pdf, self.output_assets, self.log_dir,
@@ -134,6 +136,7 @@ class PipelineConfig:
 
     @property
     def artifact_instructions(self) -> str:
+        """Render the required-artifact list as agent prompt instructions."""
         lines = [
             _ARTIFACT_MAP[t.strip()]
             for t in self.required_artifacts.split(",")
@@ -142,6 +145,7 @@ class PipelineConfig:
         return "\n".join(lines) if lines else "- No specific artifact requirements configured"
 
     def build_llm(self):
+        """Construct a CrewAI LLM for the configured provider (ollama/zhipuai)."""
         from crewai import LLM
         if self.llm_provider == "ollama":
             model = self.llm_model if self.llm_model.startswith("ollama/") else f"ollama/{self.llm_model}"

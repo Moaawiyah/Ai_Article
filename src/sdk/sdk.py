@@ -40,6 +40,9 @@ class AgentAISDK:
                 concurrent_max=rl["concurrent_max"],
                 retry_after_seconds=rl["retry_after_seconds"],
                 max_retries=rl["max_retries"],
+                queue_maxsize=rl.get("queue_maxsize", 500),
+                minute_window_seconds=rl.get("minute_window_seconds", 60),
+                hour_window_seconds=rl.get("hour_window_seconds", 3600),
             )
         )
         self._client: anthropic.Anthropic | None = None
@@ -87,6 +90,7 @@ class AgentAISDK:
         client = self._anthropic()
 
         def _call() -> str:
+            """Issue the Claude messages request (run inside the gatekeeper)."""
             response = client.messages.create(
                 model=model,
                 max_tokens=max_tokens,
@@ -132,7 +136,7 @@ class AgentAISDK:
             result = self._gatekeeper.execute(crew.kickoff, inputs={"topic": run_topic})
 
         print_token_usage(result, cfg, log)
-        graph_step(cfg, log)
+        graph_step(cfg, log, self._gatekeeper)
         compile_step(cfg, log)
         validate_step(cfg, log)
 

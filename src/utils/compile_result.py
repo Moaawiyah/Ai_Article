@@ -18,6 +18,7 @@ class CompileResult:
     error_summary: str
 
     def __str__(self) -> str:
+        """One-line human summary of the compile outcome."""
         if self.success:
             return f"[PDF OK]  {self.pdf_path}  ({self.elapsed:.1f}s)"
         return (

@@ -21,7 +21,7 @@ It satisfies §8.3 of the submission guidelines (Prompt Engineering Log).
 > `fail_under = 85`.
 
 **Outcome:** Initial project skeleton — `pyproject.toml`, `src/agent_ai/`,
-`tests/conftest.py`, `.env-example`, `.gitignore`.
+`tests/conftest.py`, `.env.example`, `.gitignore`.
 
 **Lesson:** Asking for the *full layout in one prompt* avoided three rounds of
 back-and-forth. Including the exact ruff rule set up-front saved a later

@@ -311,122 +311,9 @@ Package microtype Warning: Unable to apply patch `footnote' on input line 34.
 (/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-msb.cfg)
 (/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-cmr.cfg) [1{/usr/loc
 al/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-(/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.toc) [2]
-
-LaTeX Warning: Citation `ref3' on page 3 undefined on input line 54.
-
-
-LaTeX Warning: Citation `ref4' on page 3 undefined on input line 54.
-
-
-LaTeX Warning: Citation `ref5' on page 3 undefined on input line 56.
-
-
-LaTeX Warning: Citation `ref6' on page 3 undefined on input line 56.
-
-
-LaTeX Warning: Citation `ref7' on page 3 undefined on input line 58.
-
-
-LaTeX Warning: Citation `ref8' on page 3 undefined on input line 62.
-
-
-LaTeX Warning: Citation `ref9' on page 3 undefined on input line 62.
-
-[3]
-
-LaTeX Warning: Citation `ref10' on page 4 undefined on input line 64.
-
-
-LaTeX Warning: Citation `ref4' on page 4 undefined on input line 66.
-
-
-LaTeX Warning: Citation `ref6' on page 4 undefined on input line 66.
-
-
-LaTeX Warning: Citation `ref13' on page 4 undefined on input line 70.
-
-
-LaTeX Warning: Citation `ref14' on page 4 undefined on input line 74.
-
-[4]
-
-LaTeX Warning: Citation `ref15' on page 5 undefined on input line 80.
-
-
-LaTeX Warning: Citation `ref16' on page 5 undefined on input line 86.
-
-[5]
-
-LaTeX Warning: Citation `ref17' on page 6 undefined on input line 128.
-
-
-LaTeX Warning: Citation `ref6' on page 6 undefined on input line 132.
-
-
-LaTeX Warning: Citation `ref19' on page 6 undefined on input line 138.
-
-[6]
-
-LaTeX Warning: Citation `ref12' on page 7 undefined on input line 148.
-
-
-LaTeX Warning: Citation `ref15' on page 7 undefined on input line 154.
-
-[7]
-
-LaTeX Warning: Citation `ref16' on page 8 undefined on input line 160.
-
-[8]
-
-LaTeX Warning: Citation `ref13' on page 9 undefined on input line 182.
-
-
-LaTeX Warning: Citation `ref24' on page 9 undefined on input line 188.
-
-[9] [10]
-
-LaTeX Warning: Citation `ref15' on page 11 undefined on input line 224.
-
-
-LaTeX Warning: Citation `ref16' on page 11 undefined on input line 228.
-
-[11<./benchmark.png>]
-
-LaTeX Warning: Citation `ref17' on page 12 undefined on input line 236.
-
-
-LaTeX Warning: Citation `ref4' on page 12 undefined on input line 244.
-
-
-LaTeX Warning: Citation `ref5' on page 12 undefined on input line 248.
-
-[12]
-
-LaTeX Warning: Citation `ref10' on page 13 undefined on input line 252.
-
-
-LaTeX Warning: Citation `ref8' on page 13 undefined on input line 252.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 264--264
-[]\TU/TimesNewRoman(0)/m/n/12 Dis-tributed state in P4
-
-Underfull \hbox (badness 2050) in paragraph at lines 264--264
-[]\TU/TimesNewRoman(0)/m/n/12 Thou-sands of con-nec-
-
-Underfull \hbox (badness 10000) in paragraph at lines 264--264
-[]\TU/TimesNewRoman(0)/m/n/12 Min-i-mal (lo-cal de-ci-
-
-Underfull \hbox (badness 2229) in paragraph at lines 265--265
-[]\TU/TimesNewRoman(0)/m/n/12 Kernel-space state syn-chro-
-
-Underfull \hbox (badness 10000) in paragraph at lines 265--265
-[]\TU/TimesNewRoman(0)/m/n/12 Hun-dreds of con-nec-
-[13] [14] [15] (/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.aux)
-
-LaTeX Warning: There were undefined references.
-
+(/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.toc) [2] [3]
+[4] [5] [6] [7] [8] [9] [10] [11] [12<./benchmark.png>] [13] [14] [15] [16]
+(/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.aux)
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
@@ -436,32 +323,38 @@ Package rerunfilecheck Warning: File `article.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
 )
-(see the transcript file for additional information)
  587 words of node memory still in use:
    7 hlist, 2 vlist, 2 rule, 1 local_par, 4 glue, 4 kern, 1 penalty, 1 margin_k
 ern, 3 glyph, 11 attribute, 58 glue_spec, 11 attribute_list, 2 write nodes
-   avail lists: 1:1,2:1154,3:775,4:136,5:135,6:53,7:7719,8:49,9:411,10:13,11:68
-0
+   avail lists: 1:1,2:1060,3:715,4:108,5:396,6:109,7:8069,8:38,9:556,10:25,11:7
+57
 
-warning  (pdf backend): unreferenced destination with name 'subsection.2.2'
+warning  (pdf backend): unreferenced destination with name 'section.10'
 
-warning  (pdf backend): unreferenced destination with name 'subsection.2.1'
+warning  (pdf backend): unreferenced destination with name 'subsection.9.4'
 
-warning  (pdf backend): unreferenced destination with name 'subsection.1.3'
+warning  (pdf backend): unreferenced destination with name 'subsection.9.3'
 
-warning  (pdf backend): unreferenced destination with name 'subsection.1.2'
+warning  (pdf backend): unreferenced destination with name 'subsection.9.2'
 
-warning  (pdf backend): unreferenced destination with name 'subsection.1.1'
+warning  (pdf backend): unreferenced destination with name 'subsection.9.1'
+
+warning  (pdf backend): unreferenced destination with name 'subsection.7.6'
+
+warning  (pdf backend): unreferenced destination with name 'subsection.7.5'
+
+warning  (pdf backend): unreferenced destination with name 'subsection.7.4'
 </System/Library/Fonts/Supplemental/Times New Roman Italic.ttf></System/Library
 /Fonts/Supplemental/Times New Roman.ttf></System/Library/Fonts/Supplemental/Tim
 es New Roman Bold.ttf></System/Library/Fonts/Supplemental/Times New Roman.ttf><
-/usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></
-usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></us
-r/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/
-local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loc
-al/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loca
-l/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on article.pdf (15 pages, 297294 bytes).
+/usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></
+usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></u
+sr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr
+/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/l
+ocal/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loca
+l/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local
+/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on article.pdf (16 pages, 326910 bytes).
 Transcript written on article.log.
 
 ============================================================
@@ -775,38 +668,28 @@ Package microtype Warning: Unable to apply patch `footnote' on input line 34.
 (/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-cmr.cfg) [1{/usr/loc
 al/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 (/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.toc) [2] [3]
-[4] [5] [6] [7] [8] [9] [10] [11<./benchmark.png>] [12]
-Underfull \hbox (badness 10000) in paragraph at lines 264--264
-[]\TU/TimesNewRoman(0)/m/n/12 Dis-tributed state in P4
+[4] [5] [6] [7] [8] [9] [10] [11<./benchmark.png>] [12] [13] [14] [15]
+(/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.aux)
 
-Underfull \hbox (badness 2050) in paragraph at lines 264--264
-[]\TU/TimesNewRoman(0)/m/n/12 Thou-sands of con-nec-
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-Underfull \hbox (badness 10000) in paragraph at lines 264--264
-[]\TU/TimesNewRoman(0)/m/n/12 Min-i-mal (lo-cal de-ci-
-
-Underfull \hbox (badness 2229) in paragraph at lines 265--265
-[]\TU/TimesNewRoman(0)/m/n/12 Kernel-space state syn-chro-
-
-Underfull \hbox (badness 10000) in paragraph at lines 265--265
-[]\TU/TimesNewRoman(0)/m/n/12 Hun-dreds of con-nec-
-[13] [14] [15] (/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.aux))
-(see the transcript file for additional information)
+)
  587 words of node memory still in use:
    7 hlist, 2 vlist, 2 rule, 1 local_par, 4 glue, 4 kern, 1 penalty, 1 margin_k
 ern, 3 glyph, 11 attribute, 58 glue_spec, 11 attribute_list, 2 write nodes
-   avail lists: 1:1,2:1158,3:778,4:136,5:352,6:101,7:7720,8:49,9:519,10:13,11:6
-80
+   avail lists: 1:1,2:1060,3:715,4:108,5:380,6:107,7:8070,8:38,9:551,10:25,11:7
+57
 </System/Library/Fonts/Supplemental/Times New Roman Italic.ttf></System/Library
 /Fonts/Supplemental/Times New Roman.ttf></System/Library/Fonts/Supplemental/Tim
 es New Roman Bold.ttf></System/Library/Fonts/Supplemental/Times New Roman.ttf><
-/usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></
-usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></us
-r/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/
-local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loc
-al/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loca
-l/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on article.pdf (15 pages, 301276 bytes).
+/usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></
+usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></u
+sr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr
+/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/l
+ocal/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loca
+l/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local
+/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on article.pdf (15 pages, 326154 bytes).
 Transcript written on article.log.
 
 ============================================================
@@ -1120,36 +1003,22 @@ Package microtype Warning: Unable to apply patch `footnote' on input line 34.
 (/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-cmr.cfg) [1{/usr/loc
 al/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 (/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.toc) [2] [3]
-[4] [5] [6] [7] [8] [9] [10] [11<./benchmark.png>] [12]
-Underfull \hbox (badness 10000) in paragraph at lines 264--264
-[]\TU/TimesNewRoman(0)/m/n/12 Dis-tributed state in P4
-
-Underfull \hbox (badness 2050) in paragraph at lines 264--264
-[]\TU/TimesNewRoman(0)/m/n/12 Thou-sands of con-nec-
-
-Underfull \hbox (badness 10000) in paragraph at lines 264--264
-[]\TU/TimesNewRoman(0)/m/n/12 Min-i-mal (lo-cal de-ci-
-
-Underfull \hbox (badness 2229) in paragraph at lines 265--265
-[]\TU/TimesNewRoman(0)/m/n/12 Kernel-space state syn-chro-
-
-Underfull \hbox (badness 10000) in paragraph at lines 265--265
-[]\TU/TimesNewRoman(0)/m/n/12 Hun-dreds of con-nec-
-[13] [14] [15] (/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.aux))
-(see the transcript file for additional information)
+[4] [5] [6] [7] [8] [9] [10] [11<./benchmark.png>] [12] [13] [14] [15]
+(/Users/moaawiyahhaj/Desktop/ai_artcle/outputs/pdf/article.aux))
  587 words of node memory still in use:
    7 hlist, 2 vlist, 2 rule, 1 local_par, 4 glue, 4 kern, 1 penalty, 1 margin_k
 ern, 3 glyph, 11 attribute, 58 glue_spec, 11 attribute_list, 2 write nodes
-   avail lists: 1:1,2:1158,3:778,4:136,5:352,6:101,7:7720,8:49,9:519,10:13,11:6
-80
+   avail lists: 1:1,2:1060,3:715,4:108,5:380,6:107,7:8070,8:38,9:551,10:25,11:7
+57
 </System/Library/Fonts/Supplemental/Times New Roman Italic.ttf></System/Library
 /Fonts/Supplemental/Times New Roman.ttf></System/Library/Fonts/Supplemental/Tim
 es New Roman Bold.ttf></System/Library/Fonts/Supplemental/Times New Roman.ttf><
-/usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></
-usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></us
-r/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/
-local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loc
-al/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loca
-l/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on article.pdf (15 pages, 301276 bytes).
+/usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></
+usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></u
+sr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr
+/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/l
+ocal/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loca
+l/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local
+/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on article.pdf (15 pages, 325800 bytes).
 Transcript written on article.log.

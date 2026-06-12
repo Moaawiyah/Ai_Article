@@ -35,7 +35,7 @@
 | 7 | shared/gatekeeper.py (ApiGatekeeper) | High | ✅ Done | moaawiyahhaj |
 | 8 | src/sdk.py (AgentAISDK) | High | ✅ Done | moaawiyahhaj |
 | 9 | constants.py | Medium | ✅ Done | moaawiyahhaj |
-| 10 | .env-example | High | ✅ Done | moaawiyahhaj |
+| 10 | .env.example | High | ✅ Done | moaawiyahhaj |
 | 11 | .gitignore | High | ✅ Done | moaawiyahhaj |
 
 ## Phase 3 — Services ⬜

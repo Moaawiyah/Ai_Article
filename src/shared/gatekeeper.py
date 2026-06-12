@@ -21,6 +21,9 @@ class RateLimitConfig:
     concurrent_max: int
     retry_after_seconds: int
     max_retries: int
+    queue_maxsize: int = 500
+    minute_window_seconds: int = 60
+    hour_window_seconds: int = 3600
 
 
 @dataclass
@@ -46,10 +49,13 @@ class ApiGatekeeper:
         self._minute_window: deque = deque()
         self._hour_window: deque = deque()
         self._semaphore = threading.Semaphore(config.concurrent_max)
-        self._request_queue: queue.Queue = queue.Queue(maxsize=500)
+        self._request_queue: queue.Queue = queue.Queue(maxsize=config.queue_maxsize)
         self._processed = 0
         self._failed = 0
         self._lock = threading.Lock()
+        self._cond = threading.Condition()
+        self._next_ticket = 0
+        self._head = 0
 
     # ------------------------------------------------------------------
     # Public interface
@@ -58,14 +64,28 @@ class ApiGatekeeper:
     def execute(self, api_call: Callable, *args: Any, **kwargs: Any) -> Any:
         """Execute *api_call* through the gatekeeper.
 
-        - Checks rate limits before execution
-        - Queues request if limit is reached (backpressure)
+        - Admits requests in strict FIFO order via a monotonic ticket
+        - Bounds load via a maxsize queue (put() blocks under overload)
+        - Checks rate limits and concurrency before execution
         - Retries on transient failures up to max_retries times
-        - Logs every call
         """
+        with self._lock:
+            ticket = self._next_ticket
+            self._next_ticket += 1
+        self._request_queue.put(ticket)  # backpressure when full; never drops
+        with self._cond:
+            while self._head != ticket:
+                self._cond.wait()
         self._wait_for_rate_limit()
-        with self._semaphore:
+        self._semaphore.acquire()
+        with self._cond:
+            self._head += 1
+            self._cond.notify_all()
+        try:
             return self._execute_with_retry(api_call, *args, **kwargs)
+        finally:
+            self._semaphore.release()
+            self._request_queue.get()
 
     def get_queue_status(self) -> QueueStatus:
         """Return current queue depth and cumulative stats."""
@@ -84,8 +104,8 @@ class ApiGatekeeper:
         while True:
             now = time.monotonic()
             with self._lock:
-                self._purge_window(self._minute_window, now, 60)
-                self._purge_window(self._hour_window, now, 3600)
+                self._purge_window(self._minute_window, now, self._cfg.minute_window_seconds)
+                self._purge_window(self._hour_window, now, self._cfg.hour_window_seconds)
                 if (
                     len(self._minute_window) < self._cfg.requests_per_minute
                     and len(self._hour_window) < self._cfg.requests_per_hour

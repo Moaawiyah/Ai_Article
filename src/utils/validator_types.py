@@ -15,6 +15,7 @@ class CheckResult:
     fix: str = ""
 
     def as_markdown(self) -> str:
+        """Render this single check as a Markdown block (status + evidence + fix)."""
         status = "✅ PASS" if self.passed else "❌ FAIL"
         lines = [f"### {self.name}", f"**Status:** {status}", f"**Evidence:** {self.evidence}"]
         if not self.passed and self.fix:
@@ -29,17 +30,21 @@ class ValidationReport:
 
     @property
     def passed(self) -> int:
+        """Number of checks that passed."""
         return sum(1 for c in self.checks if c.passed)
 
     @property
     def failed(self) -> int:
+        """Number of checks that failed."""
         return len(self.checks) - self.passed
 
     @property
     def all_passed(self) -> bool:
+        """True when every check passed (submission-ready)."""
         return self.failed == 0
 
     def as_markdown(self, tex_path: Path, pdf_path: Path, log_path: Path) -> str:
+        """Render the full validation report as a Markdown document."""
         lines = [
             "# Validation Report", "",
             "| File | Path |", "|---|---|",
