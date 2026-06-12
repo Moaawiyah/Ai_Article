@@ -78,7 +78,9 @@ Research brief (truncated):
 """
 
 
-def generate_graph_spec(brief_path: Path, cfg, spec_out: Path | None = None) -> dict:
+def generate_graph_spec(
+    brief_path: Path, cfg, spec_out: Path | None = None, gatekeeper=None
+) -> dict:
     """Produce the graph spec, preferring the researcher's embedded data block.
 
     Resolution order:
@@ -111,13 +113,19 @@ def generate_graph_spec(brief_path: Path, cfg, spec_out: Path | None = None) -> 
     prompt = _PROMPT.format(brief=brief[:brief_chars])
     params = llm_params(cfg)
 
-    try:
-        response = litellm.completion(
+    def _call():
+        """Invoke the configured LLM for the graph spec (gated when available)."""
+        return litellm.completion(
             **params,
             messages=[{"role": "user", "content": prompt}],
             max_tokens=cfg.graph_spec_max_tokens,
             temperature=cfg.graph_spec_temperature,
         )
+
+    try:
+        # Route through the central gatekeeper so this fallback LLM call is
+        # rate-limited, retried, and logged like every other external call (§5.1).
+        response = gatekeeper.execute(_call) if gatekeeper else _call()
         raw = response.choices[0].message.content.strip()
         log.debug("Graph spec raw response: %s", raw[:500])
         if not raw:

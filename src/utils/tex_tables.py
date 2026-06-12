@@ -12,6 +12,7 @@ def fix_tables(tex: str) -> str:
     - Wrap tabular blocks in adjustbox unless they are already width-limited.
     """
     def _retag_figure(m: re.Match) -> str:
+        """Retag a figure float that holds only a tabular as a table float."""
         block = m.group(0)
         if r"\begin{tabular}" not in block:
             return block
@@ -24,6 +25,7 @@ def fix_tables(tex: str) -> str:
     tex = re.sub(r'\\begin\{figure\}.*?\\end\{figure\}', _retag_figure, tex, flags=re.DOTALL)
 
     def _wrap(m: re.Match) -> str:
+        """Wrap a table float's tabular in adjustbox unless already width-limited."""
         block = m.group(0)
         if r'\adjustbox' in block or r'\resizebox' in block:
             return block
@@ -47,11 +49,13 @@ def fix_table_math(tex: str) -> str:
     leave & / \\ column and row separators untouched.
     """
     def _wrap_super(body: str) -> str:
+        """Wrap bare `x^y` / `x^{y}` superscripts in a cell body in math mode."""
         body = re.sub(r"(?<!\$)(\w+)\^\{([^}]*)\}(?!\$)", r"$\1^{\2}$", body)
         body = re.sub(r"(?<!\$)(\w+)\^(\w+)(?!\$)",       r"$\1^{\2}$", body)
         return body
 
     def _fix(m: re.Match) -> str:
+        """Apply superscript wrapping to the body between tabular begin/end."""
         return m.group(1) + _wrap_super(m.group(2)) + m.group(3)
 
     return re.sub(
@@ -66,6 +70,7 @@ def fix_tabular_colspec(tex: str) -> str:
     Leaves p{3cm} and similar already-sized specs untouched.
     """
     def _fix(m: re.Match) -> str:
+        """Rewrite a tabular column spec, sizing bare p/m/b columns to p{3.5cm}."""
         spec = m.group(1)
         out: list[str] = []
         i = 0

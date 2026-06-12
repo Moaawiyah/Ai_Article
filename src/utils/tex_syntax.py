@@ -20,6 +20,7 @@ def fix_bracket_syntax(tex: str) -> str:
     )
 
     def _fix_usepackage(m: re.Match) -> str:
+        """Repair `\\usepackage[opt]{pkg}` where opt was a mistaken package name."""
         opt, pkg = m.group(1), m.group(2)
         if opt == pkg:
             return f"\\usepackage{{{pkg}}}"

@@ -9,6 +9,7 @@ from utils.validator_types import CheckResult
 
 
 def check_tex_exists(tex_path: Path) -> CheckResult:
+    """Check 1: the generated article.tex source file exists."""
     if tex_path.exists():
         return CheckResult("1. article.tex exists", True, f"Found at `{tex_path}` ({tex_path.stat().st_size:,} bytes)")
     return CheckResult("1. article.tex exists", False, f"Not found at `{tex_path}`",
@@ -16,6 +17,7 @@ def check_tex_exists(tex_path: Path) -> CheckResult:
 
 
 def check_pdf_exists(pdf_path: Path) -> CheckResult:
+    """Check 2: the compiled article.pdf output file exists."""
     if pdf_path.exists():
         return CheckResult("2. article.pdf exists", True, f"Found at `{pdf_path}` ({pdf_path.stat().st_size:,} bytes)")
     return CheckResult("2. article.pdf exists", False, f"Not found at `{pdf_path}`",
@@ -23,6 +25,7 @@ def check_pdf_exists(pdf_path: Path) -> CheckResult:
 
 
 def check_title_page(tex: str) -> CheckResult:
+    """Check 3: a title page is declared via \\title and \\maketitle."""
     has_title = bool(re.search(r"\\title\s*\{", tex))
     has_make  = r"\maketitle" in tex
     if has_title and has_make:
@@ -35,6 +38,7 @@ def check_title_page(tex: str) -> CheckResult:
 
 
 def check_toc(tex: str) -> CheckResult:
+    """Check 4: a table of contents is requested via \\tableofcontents."""
     if r"\tableofcontents" in tex:
         return CheckResult("4. Table of contents", True, "`\\tableofcontents` command present")
     return CheckResult("4. Table of contents", False, "`\\tableofcontents` not found",
@@ -42,6 +46,7 @@ def check_toc(tex: str) -> CheckResult:
 
 
 def check_headers_footers(tex: str) -> CheckResult:
+    """Check 5: page headers/footers are configured via fancyhdr."""
     has_fancy = r"\pagestyle{fancy}" in tex or r"\usepackage{fancyhdr}" in tex
     has_head  = bool(re.search(r"\\fancyhead", tex))
     has_foot  = bool(re.search(r"\\fancyfoot", tex))
@@ -54,6 +59,7 @@ def check_headers_footers(tex: str) -> CheckResult:
 
 
 def check_sections(tex: str) -> CheckResult:
+    """Check 6: the document contains at least one \\section heading."""
     sections = re.findall(r"\\section\s*\{([^}]{0,50})", tex)
     if sections:
         preview = ", ".join(f'"{s.strip()}"' for s in sections[:4])
@@ -64,6 +70,7 @@ def check_sections(tex: str) -> CheckResult:
 
 
 def check_table(tex: str) -> CheckResult:
+    """Check 7: at least one tabular environment (a table) is present."""
     n = len(re.findall(r"\\begin\s*\{tabular\}", tex))
     if n:
         return CheckResult("7. Table", True, f"{n} `tabular` environment(s) found")
@@ -72,6 +79,7 @@ def check_table(tex: str) -> CheckResult:
 
 
 def check_formula(tex: str) -> CheckResult:
+    """Check 8: at least one mathematical formula (display or inline) is present."""
     eq  = len(re.findall(r"\\begin\s*\{equation\}", tex))
     aln = len(re.findall(r"\\begin\s*\{align\}", tex))
     inl = len(re.findall(r"(?<!\$)\$(?!\$)[^$]+\$(?!\$)", tex))

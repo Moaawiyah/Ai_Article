@@ -26,11 +26,13 @@ def has_hebrew(tex: str) -> bool:
 def fix_hebrew_ltr(tex: str) -> str:
     """Inside every begin-hebrew/end-hebrew block, wrap Latin runs in textenglish."""
     def _wrap_run(m: re.Match) -> str:
+        """Leave LaTeX commands untouched; wrap Latin text runs in \\textenglish."""
         if m.group(1) is not None:
             return m.group(1)
         return f"\\textenglish{{{m.group(2)}}}"
 
     def _fix_block(m: re.Match) -> str:
+        """Apply the Latin-run wrapping inside one hebrew environment block."""
         return _CMD_OR_LATIN.sub(_wrap_run, m.group(0))
 
     return re.sub(
@@ -42,6 +44,7 @@ def fix_hebrew_ltr(tex: str) -> str:
 def fix_hebrew_runs(tex: str) -> str:
     """Wrap bare Hebrew character runs in texthebrew outside all protected regions."""
     def _wrap(seg: str) -> str:
+        """Wrap bare Hebrew character runs in *seg* with \\texthebrew."""
         return _HEBREW_RUN.sub(lambda r: f"\\texthebrew{{{r.group(0)}}}", seg)
 
     out: list[str] = []

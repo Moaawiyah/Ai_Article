@@ -19,6 +19,7 @@ from utils.validator_types import CheckResult, ValidationReport
 
 
 def _check_tikz(tex: str) -> CheckResult:
+    """Check 9: at least one tikzpicture figure is present."""
     has_tikz = bool(re.search(r"\\begin\s*\{tikzpicture\}", tex))
     if has_tikz:
         m = re.search(r"(\\begin\s*\{tikzpicture\}[^\n]*)", tex)
@@ -28,6 +29,7 @@ def _check_tikz(tex: str) -> CheckResult:
 
 
 def _check_citations(tex: str) -> CheckResult:
+    """Check 10: at least three inline \\cite commands are present."""
     cites = re.findall(r"\\cite\{[^}]+\}", tex)
     if len(cites) >= 3:
         preview = ", ".join(f"`{c}`" for c in cites[:2])
@@ -65,6 +67,7 @@ def _check_english_and_hebrew(tex: str) -> CheckResult:
 
 
 def _check_bibliography(tex: str) -> CheckResult:
+    """Check 12: a thebibliography with at least eight \\bibitem entries exists."""
     has_thebib = bool(re.search(r"\\begin\s*\{thebibliography\}", tex))
     bibitems   = len(re.findall(r"\\bibitem\{", tex))
     if has_thebib and bibitems >= 8:
@@ -79,6 +82,7 @@ def _check_bibliography(tex: str) -> CheckResult:
 
 
 def _check_compilation(pdf_path: Path, log_path: Path) -> CheckResult:
+    """Check 13: the document compiled (PDF exists, or surface the first log error)."""
     if pdf_path.exists():
         return CheckResult("13. LaTeX compilation", True, f"PDF present at `{pdf_path}`")
     if log_path.exists():

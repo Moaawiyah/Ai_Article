@@ -14,11 +14,11 @@
 
 ### 1. article.tex exists
 **Status:** ✅ PASS
-**Evidence:** Found at `outputs/latex/article.tex` (36,574 bytes)
+**Evidence:** Found at `outputs/latex/article.tex` (36,472 bytes)
 
 ### 2. article.pdf exists
 **Status:** ✅ PASS
-**Evidence:** Found at `outputs/pdf/article.pdf` (301,276 bytes)
+**Evidence:** Found at `outputs/pdf/article.pdf` (326,977 bytes)
 
 ### 3. Title page
 **Status:** ✅ PASS
@@ -34,7 +34,7 @@
 
 ### 6. Sections/chapters
 **Status:** ✅ PASS
-**Evidence:** 9 section(s): "Introduction", "Background and Motivation", "HULA Architecture Overview", "Distributed State Management"…
+**Evidence:** 10 section(s): "Abstract", "1. Introduction", "2. Background and Motivation", "3. System Architecture"…
 
 ### 7. Table
 **Status:** ✅ PASS
@@ -50,7 +50,7 @@
 
 ### 10. Inline citations
 **Status:** ✅ PASS
-**Evidence:** 29 `\cite{}` commands — e.g. `\cite{ref3}`, `\cite{ref4}`
+**Evidence:** 24 `\cite{}` commands — e.g. `\cite{ref1}`, `\cite{ref2}`
 
 ### 11. English and Hebrew
 **Status:** ✅ PASS
@@ -58,7 +58,7 @@
 
 ### 12. Bibliography
 **Status:** ✅ PASS
-**Evidence:** `\begin{thebibliography}` with 31 `\bibitem` entries
+**Evidence:** `\begin{thebibliography}` with 24 `\bibitem` entries
 
 ### 13. LaTeX compilation
 **Status:** ✅ PASS

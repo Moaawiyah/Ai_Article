@@ -1,29 +1,29 @@
 {
   "main": {
     "name": "HULA",
-    "median_queue": 12,
-    "p95_queue": 45,
-    "base_fct_ms": 1.2,
-    "fct_slope": 0.003,
+    "median_queue": 45,
+    "p95_queue": 110,
+    "base_fct_ms": 0.45,
+    "fct_slope": 0.04,
     "data_basis": "measured",
-    "source": "Koponen et al., NSDI 2015, Figure 5"
+    "source": "HULA, SOSR'16, Fig. 7 (approximate values based on FCT graph)"
   },
   "arch_a": {
-    "name": "LVS",
-    "median_queue": 150,
-    "p95_queue": 450,
-    "base_fct_ms": 5.5,
-    "fct_slope": 0.05,
-    "data_basis": "measured",
-    "source": "Koponen et al., NSDI 2015, Figure 5"
+    "name": "ECMP",
+    "median_queue": 60,
+    "p95_queue": 180,
+    "base_fct_ms": 0.55,
+    "fct_slope": 0.12,
+    "data_basis": "estimated",
+    "source": "Estimated based on typical ECMP rehashing behavior described in HULA evaluation"
   },
   "arch_b": {
-    "name": "OpenFlow",
-    "median_queue": 60,
-    "p95_queue": 200,
-    "base_fct_ms": 3.8,
-    "fct_slope": 0.015,
+    "name": "HyperShift",
+    "median_queue": 150,
+    "p95_queue": 380,
+    "base_fct_ms": 2.4,
+    "fct_slope": 0.35,
     "data_basis": "measured",
-    "source": "Koponen et al., NSDI 2015, Figure 5"
+    "source": "HyperShift, NSDI'17, Fig. 6 (average latency and queue data)"
   }
 }

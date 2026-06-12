@@ -1,6 +1,10 @@
-"""Unit tests for ApiGatekeeper."""
+"""Unit tests for ApiGatekeeper (core execute/retry/window behavior).
+
+Concurrency and FIFO-queue tests live in ``test_gatekeeper_queue.py``.
+"""
 
 import contextlib
+import time
 
 import pytest
 
@@ -80,7 +84,6 @@ def test_purge_window_removes_old_entries(rate_limit_config):
 
 
 def test_purge_window_keeps_recent_entries(rate_limit_config):
-    import time
     from collections import deque
 
     now = time.monotonic()

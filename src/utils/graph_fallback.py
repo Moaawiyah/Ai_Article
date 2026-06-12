@@ -36,6 +36,7 @@ def extract_arch_names(brief: str) -> tuple[str, str, str]:
         main_name = "Main"
 
     def _clean(raw: str) -> str:
+        """Strip parentheticals/trailing punctuation and cap an arch name at 20 chars."""
         raw = re.sub(r'\s*\([^)]*\)', '', raw)
         return raw.strip().rstrip('.').strip()[:20]
 

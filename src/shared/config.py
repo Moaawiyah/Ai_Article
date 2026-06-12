@@ -31,6 +31,7 @@ class AppConfig:
 
     @classmethod
     def from_env(cls) -> "AppConfig":
+        """Build an AppConfig from environment variables, with sensible defaults."""
         return cls(
             output_root     = Path(os.getenv("ARTICLE_OUTPUT_ROOT", "outputs")),
             ollama_model    = os.getenv("OLLAMA_MODEL", "qwen3:14b"),
@@ -41,6 +42,7 @@ class AppConfig:
 
     @property
     def output_dirs(self) -> list[Path]:
+        """Absolute paths of the per-stage output subdirectories."""
         return [self.output_root / d for d in ("research", "drafts", "reviewed", "latex", "pdf", "assets")]
 
 
@@ -59,6 +61,7 @@ class ConfigManager:
     """Loads setup.json and rate_limits.json; exposes typed accessors."""
 
     def __init__(self, config_dir: Path = _CONFIG_DIR) -> None:
+        """Load and version-validate setup.json and rate_limits.json from *config_dir*."""
         self._dir = config_dir
         self._setup = self._load("setup.json")
         self._rate_limits = self._load("rate_limits.json")
@@ -66,19 +69,24 @@ class ConfigManager:
         validate_config_version(self._rate_limits.get("rate_limits", {}))
 
     def get(self, key: str, default=None):
+        """Return a top-level setup.json value by *key*."""
         return self._setup.get(key, default)
 
     def get_rate_limit(self, service: str = "default") -> dict:
+        """Return the rate-limit block for *service*, falling back to 'default'."""
         services = self._rate_limits["rate_limits"]["services"]
         return services.get(service, services["default"])
 
     def get_agent_model(self) -> str:
+        """Return the configured agent model id."""
         return self._setup["agent"]["model"]
 
     def get_max_tokens(self) -> int:
+        """Return the configured per-call max-tokens limit."""
         return int(self._setup["agent"]["max_tokens"])
 
     def _load(self, filename: str) -> dict:
+        """Read and parse a JSON config file from the config directory."""
         path = self._dir / filename
         with open(path, encoding="utf-8") as fh:
             data = json.load(fh)
@@ -87,4 +95,5 @@ class ConfigManager:
 
     @staticmethod
     def get_env(key: str, default: str = "") -> str:
+        """Return environment variable *key*, or *default* if unset."""
         return os.environ.get(key, default)
