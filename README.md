@@ -3,7 +3,9 @@
 We built a multi-agent system that researches, writes, reviews, formats, compiles, and
 validates an academic article. Our generated article is titled **“HULA: Scalable Load
 Balancing Using Programmable Data Planes.”** We use CrewAI to coordinate five specialized
-agents, Matplotlib to generate a benchmark plot, and LuaLaTeX to produce the final PDF.
+agents, Matplotlib to generate a benchmark plot, and LuaLaTeX to produce the final PDF. We
+also implemented a document Q&A feature that lets us ask natural-language questions about
+the generated article or another supported document.
 
 | Project information | Details |
 |---|---|
@@ -16,6 +18,8 @@ agents, Matplotlib to generate a benchmark plot, and LuaLaTeX to produce the fin
 
 ## Quick Links
 
+- [Installation and Usage](#13-installation-and-usage)
+- [Article Q&A Feature](#ask-a-question-about-a-document)
 - [Final article PDF](outputs/pdf/article.pdf)
 - [Generated LaTeX source](outputs/latex/article.tex)
 - [Python-generated benchmark plot](outputs/latex/benchmark.png)
@@ -80,6 +84,12 @@ SDK, while `ApiGatekeeper` provides centralized queueing, rate limiting, retries
 for external API work. Runtime values such as the topic, provider, model, output paths, and
 word targets come from configuration rather than being embedded in the pipeline code.
 
+During development, we used local Ollama models such as Qwen 3 for repeated testing without
+paying for every experimental run. For the final article runs, we switched through the same
+configuration interface to Z.AI’s hosted `glm-4.7-flashx` model. This gave us more consistent
+final generation while keeping hosted inference costs low; the pipeline records token usage
+and an estimated cost after each run.
+
 ## 4. Agent Design
 
 | Agent | Role | Input | Output | Why We Use It |
@@ -102,7 +112,9 @@ We configure the default article topic as "HULA: Scalable Load Balancing
 Using Programmable Data Planes" in `config/config.yaml`. The same file stores
 the LLM provider and model, article length targets, output directories, pricing values, and
 graph-spec parameters. We can override the topic from the command line without editing the
-source code.
+source code. Because provider selection is also configuration-driven, we could use local
+Ollama/Qwen models while developing and switch to Z.AI with `ZHIPUAI_API_KEY` for the final
+runs without changing the pipeline implementation.
 
 ### 5.2 Research, Writing, and Review
 
@@ -157,7 +169,8 @@ and `hyperref` makes the citation navigation available in the compiled document.
 | Deterministic post-processing | We repair recurring syntax patterns predictably instead of relying only on prompts. | Repeated LLM correction loops |
 | Separate Matplotlib generator | We make the required graph reproducible and independently testable. | A manually created static image |
 | Inline `thebibliography` | We keep citations and bibliography entries in one generated LaTeX artifact. | Separate `.bib` file with Biber |
-| Config-driven provider | We can switch provider or model without changing pipeline logic. | Hard-coded model configuration |
+| Local testing and low-cost final runs | We used local Ollama/Qwen models for iterative testing, then Z.AI’s `glm-4.7-flashx` for consistent final runs at a low hosted-model cost. | Use one paid cloud model for every run |
+| Config-driven provider | We can switch between local and hosted models without changing pipeline logic. | Hard-coded model configuration |
 | Central API gatekeeper | We apply queueing, rate limits, retries, and logs consistently. | Per-call retry logic |
 
 ## 7. Challenges and Solutions
@@ -209,6 +222,11 @@ Our final output is a 15-page article about HULA and programmable data-plane loa
 It contains a cover, table of contents, headers and footers, technical sections, a TikZ
 architecture diagram, a Python-generated performance plot, a comparison table, a
 mathematical formula, a Hebrew-English conclusion, citations, and a bibliography.
+
+In addition to generating the article, our SDK can convert the final PDF or another supported
+document into Markdown and answer questions about its content. This makes the result useful
+after generation: for example, we can ask for the article’s main conclusions, compare the
+architectures it discusses, or retrieve a concise explanation of a technical section.
 
 The completed run produced the following artifact chain:
 
@@ -298,11 +316,18 @@ The command writes intermediate artifacts under `outputs/` and returns the path 
 ### Ask a Question About a Document
 
 ```bash
-uv run agent-ai path/to/document.pdf "What are the main conclusions?"
+# Ask a question about our generated article
+uv run agent-ai outputs/pdf/article.pdf "What are the main conclusions?"
+
+# The same feature also accepts another supported document
+uv run agent-ai path/to/document.pdf "Summarize the main technical argument."
 ```
 
-This secondary SDK path converts a supported document to Markdown with MarkItDown and asks
-the configured Anthropic model a question about the extracted text.
+This secondary feature uses `AgentAISDK.process_document()` to convert supported files to
+Markdown with MarkItDown, then sends the extracted content and question through
+`AgentAISDK.query_document()`. The Anthropic request passes through our central
+`ApiGatekeeper`, so it uses the same retry, queueing, rate-limit, and logging controls as the
+article workflow.
 
 ### Configuration
 
