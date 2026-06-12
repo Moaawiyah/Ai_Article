@@ -80,7 +80,10 @@ would have invited misuse.
 
 ---
 
-## 3. CrewAI Article Pipeline Prompts
+## 3. Original CrewAI Article Pipeline Prompts
+
+This section records the original five-agent implementation for development history.
+The current implementation is the six-agent section workflow described in section 8.
 
 ### 3.1 Crew topology
 **Goal:** Build the five-agent crew (Researcher → Writer → Reviewer → LaTeX
@@ -201,11 +204,26 @@ gatekeeper") produced four focused tests, each <30 lines, instead of one
 |-----------|---------------|
 | Researcher agent | `skills/researcher/SKILL.md` |
 | Writer agent | `skills/writer/SKILL.md` |
-| Reviewer agent | `skills/reviewer/SKILL.md` |
+| Source Verifier | `skills/source_verifier/SKILL.md` |
+| Article Editor | `skills/article_editor/SKILL.md` |
 | LaTeX Formatter | `skills/latex_formatter/SKILL.md` |
-| PDF Validator | `skills/pdf_validator/SKILL.md` |
+| Submission Validator | `skills/submission_validator/SKILL.md` |
 | Graph spec extraction | `src/utils/graph_spec.py::_PROMPT` |
 
 All inline prompts in source are reviewed under
 `ruff check` and pinned to `model = config.llm.model` from `config.yaml` — no
 model name is hard-coded in source.
+
+---
+
+## 8. Six-Agent Section Workflow
+
+The current workflow uses small one-agent CrewAI calls controlled by a Python state machine.
+Researcher and Source Verifier exchange structured JSON with at most two returns. Section
+Writer and Article Editor process one section at a time, with one return per section and an
+article-wide `ceil(33%)` rejection budget. LaTeX Formatter consumes approved sections only,
+and Submission Validator emits a scored advisory evaluation that cannot block delivery.
+
+The prompts require verifier-approved visual provenance and a dedicated
+`Hebrew and English in AI Systems` section. Workflow state and approved outputs are persisted
+so retries resume rather than regenerate completed work.

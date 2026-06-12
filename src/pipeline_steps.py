@@ -97,7 +97,9 @@ def validate_step(cfg: PipelineConfig, log) -> None:
 
     with timed_stage(log, "Programmatic validation", str(report_path)):
         report = validate(tex_path=tex_path, pdf_path=pdf_path,
-                          log_path=log_path, report_path=report_path)
+                          log_path=log_path, report_path=report_path,
+                          min_pages=cfg.min_pages,
+                          min_visuals=cfg.min_visuals)
 
     log.info("Result: %d/13 passed, %d failed", report.passed, report.failed)
     for check in report.checks:

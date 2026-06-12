@@ -11,15 +11,19 @@ article:
 
 assignment:
   min_pages: 15
+  min_visuals: 3
   min_words: 4500
   max_words: 5000
   language: "english"
-  artifacts: "tikz_figure,markdown_table,display_formula,bibliography_8"
+  artifacts: "tikz_figure,markdown_table,display_formula,bibliography_8,bibliography"
 
 llm:
-  provider: "zhipuai"          # ollama | zhipuai | anthropic | openai
-  model: "glm-4.7-flashx"
-  base_url: "https://api.z.ai/api/paas/v4/"
+  provider: "ollama"           # ollama | zhipuai | anthropic | openai
+  model: "llama3"
+  base_url: "http://localhost:11434"
+  temperature: 0.2
+  seed: 42
+  timeout_seconds: 1800
 
 logging:
   level: "INFO"               # DEBUG | INFO | WARNING | ERROR
@@ -47,3 +51,8 @@ graph_spec:
   max_tokens: 2000
   temperature: 0.1
   brief_chars: 5000
+
+workflow:
+  max_research_returns: 2
+  editor_rejection_ratio: 0.33
+  resume_enabled: true

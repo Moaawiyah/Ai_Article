@@ -4,8 +4,9 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from utils.tex_validator import _check_english_and_hebrew, validate
+from utils.tex_validator import _check_compilation, _check_english_and_hebrew, validate
 from utils.validator_checks import (
+    check_academic_visuals,
     check_formula,
     check_headers_footers,
     check_pdf_exists,
@@ -86,6 +87,16 @@ def test_check_table():
     assert not check_table("plain").passed
 
 
+def test_check_academic_visuals_requires_three_distinct_containers():
+    tex = (
+        r"\begin{figure}\begin{tikzpicture}\end{tikzpicture}\end{figure}"
+        r"\begin{table}\begin{tabular}{ll}\end{tabular}\end{table}"
+        r"\begin{figure}\includegraphics{x.png}\end{figure}"
+    )
+    assert check_academic_visuals(tex, 3).passed
+    assert not check_academic_visuals(r"\begin{figure}\end{figure}", 3).passed
+
+
 def test_check_formula_equation():
     assert check_formula(r"\begin{equation}x\end{equation}").passed
 
@@ -119,6 +130,37 @@ def test_english_and_hebrew_fail_on_setrl():
     assert not _check_english_and_hebrew(tex).passed
 
 
+def test_english_and_hebrew_requires_wrapped_technical_terms():
+    tex = r"\begin{hebrew}מערכת CrewAI בעברית\end{hebrew}"
+    result = _check_english_and_hebrew(tex)
+    assert not result.passed
+    assert "textenglish" in result.evidence
+
+
+def test_english_and_hebrew_rejects_unicode_direction_controls():
+    tex = "\\begin{hebrew}שלום\\end{hebrew}\u200f"
+    assert not _check_english_and_hebrew(tex).passed
+
+
+def test_compilation_check_requires_minimum_pages(tmp_path, monkeypatch):
+    pdf_path = tmp_path / "article.pdf"
+    pdf_path.write_bytes(b"%PDF")
+
+    class FakePdf:
+        pages = [object()] * 14
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *_args):
+            return None
+
+    monkeypatch.setattr("pdfplumber.open", lambda _path: FakePdf())
+    result = _check_compilation(pdf_path, tmp_path / "compile.log", 15)
+    assert not result.passed
+    assert "14 pages" in result.evidence
+
+
 def test_validate_full_report(tmp_path):
     tex_path = tmp_path / "article.tex"
     pdf_path = tmp_path / "article.pdf"
@@ -131,6 +173,7 @@ def test_validate_full_report(tmp_path):
         + r"\usepackage{fancyhdr}\fancyhead[L]{h}"
         + r"\section{A}"
         + r"\begin{tabular}{ll}\end{tabular}"
+        + r"\begin{figure}\includegraphics{x.png}\end{figure}"
         + r"\begin{equation}x\end{equation}"
         + r"\begin{tikzpicture}\end{tikzpicture}"
         + r"\cite{r1}\cite{r2}\cite{r3}"

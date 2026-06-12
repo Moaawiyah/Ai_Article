@@ -9,7 +9,7 @@
 The project exposes one SDK for two workflows:
 
 1. Convert a supported document to Markdown and ask an Anthropic-backed question.
-2. Generate a researched academic article with a five-agent CrewAI pipeline, render a benchmark graph, compile LuaLaTeX, and validate the PDF.
+2. Generate a researched academic article with a resumable six-agent, section-by-section workflow, render academic visuals, compile LuaLaTeX, and validate the PDF.
 
 ## 2. Goals and KPIs
 
@@ -38,7 +38,11 @@ The project exposes one SDK for two workflows:
 ### F-03 Article Generation
 
 - `AgentAISDK.generate_article()` is the public entry point.
-- CrewAI runs Researcher, Writer, Reviewer, LaTeX Formatter, and PDF Validator tasks sequentially.
+- CrewAI runs Researcher, Source Verifier, Section Writer, Article Editor,
+  LaTeX Formatter, and Submission Validator stages.
+- Research may be returned twice; each section may be returned once.
+- Total section returns are limited to `ceil(section_count * 0.33)`.
+- Approved sections are persisted and reused when a run resumes.
 - Provider, model, endpoint, topic, output paths, and pricing come from `config/config.yaml`.
 - The current default provider is ZhipuAI using `glm-4.7-flashx`; Ollama remains a supported configuration option.
 
@@ -55,10 +59,13 @@ The project exposes one SDK for two workflows:
 - If that block is unavailable, the graph-spec service requests structured data through the configured LLM and gatekeeper.
 - A deterministic fallback keeps graph generation operational when the LLM path fails.
 - Matplotlib generates `outputs/latex/benchmark.png`, which is injected into the Evaluation section.
+- Visual data and placement must be approved by the Source Verifier before writing.
 
 ### F-06 LaTeX and PDF
 
 - The formatter produces LuaLaTeX source with title, contents, sections, headers/footers, table, formula, TikZ, citations, bibliography, and Hebrew-English content.
+- The outline must contain `Hebrew and English in AI Systems`, with substantive Hebrew
+  and embedded English terms rendered through `hebrew` and `\textenglish`.
 - The compiler writes `outputs/pdf/article.pdf`.
 - Programmatic validation writes `outputs/pdf/validation_report.md`.
 
@@ -99,7 +106,7 @@ The project exposes one SDK for two workflows:
 |---|---|
 | Documentation and package scaffold | Done |
 | SDK, configuration, and gatekeeper | Done |
-| Five-agent article pipeline | Done |
+| Six-agent resumable section pipeline | Done |
 | Graph generation and LuaLaTeX validation | Done |
 | Full-source tests, branch coverage, and Ruff enforcement | Done |
 | CI, license, and submission documentation | Done |

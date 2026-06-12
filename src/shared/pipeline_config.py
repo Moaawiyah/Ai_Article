@@ -54,6 +54,7 @@ class PipelineConfig:
     lecturer_name: str
 
     min_pages: int
+    min_visuals: int
     min_words: int
     max_words: int
     language: str
@@ -62,6 +63,9 @@ class PipelineConfig:
     llm_provider: str
     llm_model: str
     llm_base_url: str
+    llm_temperature: float
+    llm_seed: int
+    llm_timeout_seconds: int
 
     log_level: str
     log_dir: Path
@@ -82,6 +86,9 @@ class PipelineConfig:
     graph_spec_max_tokens:  int
     graph_spec_temperature: float
     graph_spec_brief_chars: int
+    max_research_returns: int
+    editor_rejection_ratio: float
+    resume_enabled: bool
 
     @classmethod
     def load(cls, yaml_path: Path = _CONFIG_YAML) -> PipelineConfig:
@@ -93,6 +100,7 @@ class PipelineConfig:
         outputs    = raw.get("outputs", {})
         pricing    = raw.get("pricing", {})
         gs         = raw.get("graph_spec", {})
+        workflow   = raw.get("workflow", {})
         root       = Path(outputs.get("root", "outputs"))
         return cls(
             topic              = article.get("topic",         "Untitled Article"),
@@ -100,13 +108,17 @@ class PipelineConfig:
             course_name        = article.get("course_name",   "[Course Name]"),
             lecturer_name      = article.get("lecturer_name", "[Lecturer Name]"),
             min_pages          = int(assignment.get("min_pages",  "15")),
+            min_visuals        = int(assignment.get("min_visuals", "3")),
             min_words          = int(assignment.get("min_words",  "4500")),
             max_words          = int(assignment.get("max_words",  "5000")),
             language           = assignment.get("language",  "english"),
             required_artifacts = assignment.get("artifacts", "tikz_figure,markdown_table,display_formula,bibliography_8"),
-            llm_provider       = llm.get("provider", "ollama"),
-            llm_model          = llm.get("model",    "qwen3:14b"),
-            llm_base_url       = llm.get("base_url", "http://localhost:11434"),
+            llm_provider       = os.environ.get("AGENT_LLM_PROVIDER", llm.get("provider", "ollama")),
+            llm_model          = os.environ.get("AGENT_LLM_MODEL", llm.get("model",    "qwen3:14b")),
+            llm_base_url       = os.environ.get("AGENT_LLM_BASE_URL", llm.get("base_url", "http://localhost:11434")),
+            llm_temperature    = float(llm.get("temperature", "0.2")),
+            llm_seed           = int(llm.get("seed", "42")),
+            llm_timeout_seconds = int(llm.get("timeout_seconds", "1800")),
             log_level          = logging_.get("level",    "INFO"),
             log_dir            = Path(logging_.get("log_dir",  "logs")),
             log_file           = logging_.get("log_file", "app.log"),
@@ -123,13 +135,18 @@ class PipelineConfig:
             graph_spec_max_tokens  = int(gs.get("max_tokens",     "2000")),
             graph_spec_temperature = float(gs.get("temperature",  "0.1")),
             graph_spec_brief_chars = int(gs.get("brief_chars",    "5000")),
+            max_research_returns   = int(workflow.get("max_research_returns", "2")),
+            editor_rejection_ratio = float(workflow.get("editor_rejection_ratio", "0.33")),
+            resume_enabled         = workflow.get("resume_enabled", "true").lower() == "true",
         )
 
     @property
     def output_dirs(self) -> list[Path]:
         return [
             self.output_research, self.output_drafts, self.output_reviewed,
-            self.output_latex, self.output_pdf, self.output_assets, self.log_dir,
+            self.output_latex, self.output_pdf, self.output_assets,
+            self.output_root / "planning", self.output_root / "sections",
+            self.output_root / "assembled", self.log_dir,
         ]
 
     @property
@@ -145,11 +162,25 @@ class PipelineConfig:
         from crewai import LLM
         if self.llm_provider == "ollama":
             model = self.llm_model if self.llm_model.startswith("ollama/") else f"ollama/{self.llm_model}"
-            return LLM(model=model, base_url=self.llm_base_url)
+            return LLM(
+                model=model,
+                base_url=self.llm_base_url,
+                temperature=self.llm_temperature,
+                seed=self.llm_seed,
+                timeout=self.llm_timeout_seconds,
+            )
         if self.llm_provider == "zhipuai":
             return LLM(
                 model=f"openai/{self.llm_model}",
                 api_base=self.llm_base_url,
                 api_key=os.environ.get("ZHIPUAI_API_KEY", ""),
             )
+        if self.llm_provider == "openai":
+            return LLM(model=self.llm_model, api_key=os.environ.get("OPENAI_API_KEY", ""))
+        if self.llm_provider == "gemini":
+            model = self.llm_model if self.llm_model.startswith("gemini/") else f"gemini/{self.llm_model}"
+            return LLM(model=model, api_key=os.environ.get("GEMINI_API_KEY", ""))
+        if self.llm_provider == "groq":
+            model = self.llm_model if self.llm_model.startswith("groq/") else f"groq/{self.llm_model}"
+            return LLM(model=model, api_key=os.environ.get("GROQ_API_KEY", ""))
         return None

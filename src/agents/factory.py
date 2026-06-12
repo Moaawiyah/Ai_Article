@@ -9,6 +9,7 @@ from __future__ import annotations
 
 from crewai import Agent
 
+from agents.search_tool import DuckDuckGoSearchTool
 from utils.skill_loader import load_skill
 
 
@@ -22,11 +23,18 @@ def build_agent(skill_name: str, llm=None) -> Agent:
         A configured ``crewai.Agent``.
     """
     skill = load_skill(skill_name)
+
+    # Define which agents get internet access
+    tools = []
+    if skill_name not in ["latex_formatter", "submission_validator"]:
+        tools = [DuckDuckGoSearchTool()]
+
     return Agent(
         role=skill.role,
         goal=skill.description,
         backstory=skill.body,
         llm=llm,
+        tools=tools,
         allow_delegation=False,
         verbose=True,
     )

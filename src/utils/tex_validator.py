@@ -6,11 +6,11 @@ import re
 from pathlib import Path
 
 from utils.validator_checks import (
+    check_academic_visuals,
     check_formula,
     check_headers_footers,
     check_pdf_exists,
     check_sections,
-    check_table,
     check_tex_exists,
     check_title_page,
     check_toc,
@@ -46,22 +46,40 @@ def _check_english_and_hebrew(tex: str) -> CheckResult:
     is absent (BiDi requirement unmet) or leaks (or `\\setRL` is used)."""
     has_hebrew_env = bool(re.search(r"\\begin\s*\{hebrew\}", tex))
     has_setrl      = r"\setRL" in tex
+    controls       = bool(re.search(r"[\u200e\u200f\u202a-\u202e\u2066-\u2069]", tex))
     tex_no_heb     = re.sub(r"\\begin\s*\{hebrew\}.*?\\end\s*\{hebrew\}", "", tex, flags=re.DOTALL)
     stray_hebrew   = bool(re.search(r"[֐-׿]", tex_no_heb))
+    blocks = re.findall(
+        r"\\begin\s*\{hebrew\}(.*?)\\end\s*\{hebrew\}",
+        tex,
+        flags=re.DOTALL,
+    )
+    unwrapped_latin = any(
+        re.search(
+            r"(?<!\\textenglish\{)\b(?:CrewAI|LaTeX|LLM|RAG|Python|API)\b",
+            block,
+        )
+        for block in blocks
+    )
 
     if not has_hebrew_env:
         return CheckResult("11. English and Hebrew", False,
                            "No `\\begin{hebrew}` environment found",
                            "Add the required Hebrew↔English BiDi section inside a "
                            "`\\begin{hebrew}...\\end{hebrew}` block")
-    problems = (["`\\setRL` used"] if has_setrl else []) + \
-               (["Hebrew chars outside `hebrew` env"] if stray_hebrew else [])
+    problems = (
+        (["`\\setRL` used"] if has_setrl else [])
+        + (["Unicode BiDi control used"] if controls else [])
+        + (["Hebrew chars outside `hebrew` env"] if stray_hebrew else [])
+        + (["English technical terms not wrapped with `\\textenglish`"] if unwrapped_latin else [])
+    )
     if problems:
         return CheckResult("11. English and Hebrew", False, f"Found: {', '.join(problems)}",
                            "Keep all Hebrew inside `\\begin{hebrew}...\\end{hebrew}`; "
-                           "do not use `\\setRL` or leave stray Hebrew in English prose")
+                           "wrap embedded English with `\\textenglish`; do not use "
+                           "`\\setRL`, controls, or stray Hebrew in English prose")
     return CheckResult("11. English and Hebrew", True,
-                       "`\\begin{hebrew}` block present with no Hebrew leaking outside it")
+                       "Hebrew block present with wrapped English terms and no direction leaks")
 
 
 def _check_bibliography(tex: str) -> CheckResult:
@@ -78,9 +96,32 @@ def _check_bibliography(tex: str) -> CheckResult:
                        "Convert ## References section to `\\begin{thebibliography}{99}...\\end{thebibliography}`")
 
 
-def _check_compilation(pdf_path: Path, log_path: Path) -> CheckResult:
+def _check_compilation(pdf_path: Path, log_path: Path, min_pages: int) -> CheckResult:
     if pdf_path.exists():
-        return CheckResult("13. LaTeX compilation", True, f"PDF present at `{pdf_path}`")
+        try:
+            import pdfplumber
+
+            with pdfplumber.open(pdf_path) as pdf:
+                page_count = len(pdf.pages)
+        except Exception as exc:
+            return CheckResult(
+                "13. LaTeX compilation and length",
+                False,
+                f"PDF exists but page count could not be read: {exc}",
+                "Recompile a valid PDF and verify its page count",
+            )
+        if page_count < min_pages:
+            return CheckResult(
+                "13. LaTeX compilation and length",
+                False,
+                f"PDF compiled with {page_count} pages; minimum is {min_pages}",
+                "Expand substantive article content until the compiled PDF meets the minimum",
+            )
+        return CheckResult(
+            "13. LaTeX compilation and length",
+            True,
+            f"PDF present at `{pdf_path}` with {page_count} pages",
+        )
     if log_path.exists():
         for line in log_path.read_text(encoding="utf-8", errors="replace").splitlines():
             if line.strip().startswith("!"):
@@ -93,7 +134,14 @@ def _check_compilation(pdf_path: Path, log_path: Path) -> CheckResult:
                        "Run `python src/main.py`")
 
 
-def validate(tex_path: Path, pdf_path: Path, log_path: Path, report_path: Path) -> ValidationReport:
+def validate(
+    tex_path: Path,
+    pdf_path: Path,
+    log_path: Path,
+    report_path: Path,
+    min_pages: int = 15,
+    min_visuals: int = 3,
+) -> ValidationReport:
     """Run all 13 checks and write the validation report. Never raises."""
     tex = tex_path.read_text(encoding="utf-8", errors="replace") if tex_path.exists() else ""
     report = ValidationReport(checks=[
@@ -103,13 +151,13 @@ def validate(tex_path: Path, pdf_path: Path, log_path: Path, report_path: Path) 
         check_toc(tex),
         check_headers_footers(tex),
         check_sections(tex),
-        check_table(tex),
+        check_academic_visuals(tex, min_visuals),
         check_formula(tex),
         _check_tikz(tex),
         _check_citations(tex),
         _check_english_and_hebrew(tex),
         _check_bibliography(tex),
-        _check_compilation(pdf_path, log_path),
+        _check_compilation(pdf_path, log_path, min_pages),
     ])
     report_path.parent.mkdir(parents=True, exist_ok=True)
     report_path.write_text(report.as_markdown(tex_path, pdf_path, log_path), encoding="utf-8")

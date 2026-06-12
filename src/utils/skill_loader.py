@@ -24,7 +24,7 @@ _EXACT_CASE: dict[str, str] = {
 def skill_name_to_role(name: str) -> str:
     """Convert a snake_case skill name to a human-readable role string.
 
-    Preserves known acronyms/special words (e.g. 'pdf_validator' → 'PDF Validator',
+    Preserves known acronyms/special words (e.g. 'api_reviewer' → 'API Reviewer',
     'latex_formatter' → 'LaTeX Formatter').
     """
     return " ".join(_EXACT_CASE.get(w.lower(), w.title()) for w in name.split("_"))

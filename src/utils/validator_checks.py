@@ -71,6 +71,33 @@ def check_table(tex: str) -> CheckResult:
                        "Ensure Markdown pipe tables were converted to booktabs environments")
 
 
+def check_academic_visuals(tex: str, minimum: int) -> CheckResult:
+    """Count rendered charts, tables, and diagrams without nested double-counting."""
+    figures = len(re.findall(r"\\begin\s*\{figure\}", tex))
+    tables = len(re.findall(r"\\begin\s*\{table\}", tex))
+    outside = re.sub(
+        r"\\begin\s*\{figure\}.*?\\end\s*\{figure\}", "", tex, flags=re.DOTALL
+    )
+    outside = re.sub(
+        r"\\begin\s*\{table\}.*?\\end\s*\{table\}", "", outside, flags=re.DOTALL
+    )
+    standalone_tables = len(re.findall(r"\\begin\s*\{tabular\}", outside))
+    standalone_tikz = len(re.findall(r"\\begin\s*\{tikzpicture\}", outside))
+    total = figures + tables + standalone_tables + standalone_tikz
+    evidence = (
+        f"{total} visual(s): {figures} figure, {tables + standalone_tables} table, "
+        f"{standalone_tikz} standalone TikZ"
+    )
+    if total >= minimum:
+        return CheckResult("7. Academic visuals", True, evidence)
+    return CheckResult(
+        "7. Academic visuals",
+        False,
+        f"{evidence}; minimum is {minimum}",
+        "Add relevant charts, tables, or diagrams with captions and source provenance",
+    )
+
+
 def check_formula(tex: str) -> CheckResult:
     eq  = len(re.findall(r"\\begin\s*\{equation\}", tex))
     aln = len(re.findall(r"\\begin\s*\{align\}", tex))

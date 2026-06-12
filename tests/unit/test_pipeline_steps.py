@@ -16,6 +16,8 @@ def _cfg(tmp_path: Path):
         output_latex=tmp_path / "latex",
         output_pdf=tmp_path / "pdf",
         log_dir=tmp_path / "logs",
+        min_pages=15,
+        min_visuals=3,
         price_input_per_1m=1.0,
         price_cached_per_1m=0.5,
         price_output_per_1m=2.0,

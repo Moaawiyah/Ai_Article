@@ -8,7 +8,9 @@
 | SDK boundary for document Q&A and article generation | High | Project | CLI delegates to `AgentAISDK` |
 | Configured providers and environment-only keys | High | Project | No provider/model source edits required |
 | FIFO API gatekeeper with backpressure and retries | High | Project | Queue, limits, concurrency, and metrics tested |
-| Five-agent CrewAI pipeline | High | Project | Sequential tasks produce configured artifacts |
+| Six-agent resumable section pipeline | High | Project | Both bounded loops and six roles are tested |
+| Dedicated Hebrew-English BiDi section | High | Project | Writer, formatter, agent validator, and deterministic validator enforce it |
+| Approved academic visual workflow | High | Project | Provenance, placement, rendering, and final checks are assigned |
 | Graph data resolution, rendering, and LaTeX injection | High | Project | PNG and graph specification are generated |
 | LuaLaTeX compilation and 13-check validation | High | Project | PDF and validation report exist |
 | Full-source tests and branch coverage | High | Project | `uv run pytest` passes at >= 85% |

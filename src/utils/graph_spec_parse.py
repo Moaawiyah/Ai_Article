@@ -35,6 +35,12 @@ def llm_params(cfg) -> dict:
         return {"model": model, "api_key": os.environ.get("ANTHROPIC_API_KEY", "")}
     if provider == "openai":
         return {"model": model, "api_key": os.environ.get("OPENAI_API_KEY", "")}
+    if provider == "gemini":
+        model_name = model if model.startswith("gemini/") else f"gemini/{model}"
+        return {"model": model_name, "api_key": os.environ.get("GEMINI_API_KEY", "")}
+    if provider == "groq":
+        model_name = model if model.startswith("groq/") else f"groq/{model}"
+        return {"model": model_name, "api_key": os.environ.get("GROQ_API_KEY", "")}
     return {"model": model}
 
 

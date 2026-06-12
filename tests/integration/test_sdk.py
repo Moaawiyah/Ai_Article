@@ -50,24 +50,22 @@ def test_missing_api_key_raises(config_dir, monkeypatch):
 
 
 def test_generate_article_routes_crew_through_gatekeeper(sdk, tmp_path):
-    """generate_article runs the crew via the gatekeeper and returns the PDF path."""
-    mock_crew = MagicMock()
-    mock_cfg = SimpleNamespace(
-        topic="Default Topic",
-        output_pdf=tmp_path,
-        llm_provider="default",
-    )
-    with patch("pipeline.build_crew", return_value=(mock_crew, mock_cfg)), \
+    """generate_article runs the workflow then deterministic post-processing."""
+    workflow = MagicMock()
+    workflow.token_usage = None
+    mock_cfg = SimpleNamespace(topic="Default Topic", output_pdf=tmp_path, llm_provider="default")
+    with patch("shared.pipeline_config.PipelineConfig.load", return_value=mock_cfg), \
+         patch("pipeline.build_workflow", return_value=(workflow, mock_cfg)), \
          patch("pipeline_steps.print_token_usage"), \
-         patch("pipeline_steps.graph_step"), \
+         patch("pipeline_steps.graph_step") as graph_step, \
          patch("pipeline_steps.compile_step"), \
-         patch("pipeline_steps.validate_step"), \
-         patch.object(sdk._gatekeeper("default"), "execute", wraps=sdk._gatekeeper("default").execute) as spy:
+         patch("pipeline_steps.validate_step"):
+        workflow.run.side_effect = lambda topic, after_format: after_format()
         pdf = sdk.generate_article(topic="My Topic")
 
     assert pdf == tmp_path / "article.pdf"
-    mock_crew.kickoff.assert_called_once_with(inputs={"topic": "My Topic"})
-    spy.assert_called_once()  # the crew run is routed through the gatekeeper (§5.1)
+    assert workflow.run.call_args.args[0] == "My Topic"
+    graph_step.assert_called_once()
 
 
 def test_process_document_success(sdk, tmp_path):

@@ -8,8 +8,17 @@ from utils.file_utils import ensure_output_dirs
 
 
 def test_project_topic():
-    assert PipelineConfig.load().topic == PROJECT_TOPIC
+    config = PipelineConfig.load()
+    assert config.topic == PROJECT_TOPIC
     assert PROJECT_TOPIC.strip()
+    assert config.max_research_returns == 2
+    assert config.min_visuals == 3
+    assert config.llm_temperature == 0.2
+    assert config.llm_seed == 42
+    assert config.llm_timeout_seconds == 1800
+    assert config.editor_rejection_ratio == 0.33
+    assert config.resume_enabled is True
+    assert Path("outputs/planning") in config.output_dirs
 
 
 def test_app_config_from_env(monkeypatch, tmp_path):

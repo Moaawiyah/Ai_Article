@@ -1,6 +1,8 @@
 # agent-ai
 
-Python SDK and CLI for document Q&A and five-agent academic article generation. The article workflow produces research, reviewed Markdown, LuaLaTeX, a benchmark graph, a compiled PDF, and a 13-check validation report.
+Python SDK and CLI for document Q&A and resumable six-agent academic article generation.
+The article is researched, written, and approved section by section before LuaLaTeX,
+graph rendering, PDF compilation, and validation.
 
 ## Requirements
 
@@ -49,7 +51,10 @@ Ask a question about a document:
 uv run agent-ai path/to/document.pdf "What are the main findings?"
 ```
 
-The final PDF is written to `outputs/pdf/article.pdf`. Intermediate files are under `outputs/research`, `outputs/drafts`, `outputs/reviewed`, `outputs/latex`, and `outputs/assets`.
+The final PDF is written to `outputs/pdf/article.pdf`. Planning lives under
+`outputs/planning/`; every section has its own folder under `outputs/sections/`;
+the approved assembly is `outputs/assembled/article.md`; workflow progress is
+persisted in `outputs/run_state.json`.
 
 ## Configuration
 
@@ -65,11 +70,27 @@ To use Ollama, set `llm.provider`, `llm.model`, and `llm.base_url` in `config/co
 
 ## Architecture
 
-`AgentAISDK` is the public boundary. Both CLIs delegate to it. Article generation builds five CrewAI agents, passes external work through `ApiGatekeeper`, generates and injects a graph, compiles LuaLaTeX, and validates the result.
+`AgentAISDK` is the public boundary. Both CLIs delegate to it. The workflow uses:
+
+1. Researcher
+2. Source Verifier
+3. Section Writer
+4. Article Editor
+5. LaTeX Formatter
+6. Submission Validator (advisory evaluation)
+
+The Researcher and Source Verifier may loop with at most two returns. Each section may be
+returned by the Article Editor once, with an article-wide budget of
+`ceil(section_count * 0.33)`. Approved work is reused when a run resumes.
 
 ```text
-CLI -> AgentAISDK -> ApiGatekeeper -> CrewAI/provider
-               \-> graph -> TeX repair -> LuaLaTeX -> validator
+Researcher <-> Source Verifier
+                    |
+Section Writer <-> Article Editor
+                    |
+LaTeX Formatter -> graph insertion -> Submission Validator
+                    |
+LuaLaTeX -> deterministic 13-check validator
 ```
 
 Detailed C4, sequence, deployment, contracts, ADRs, and extension points are in `docs/PLAN.md`.
@@ -100,7 +121,7 @@ src/
   sdk/              public SDK
   shared/           configuration, versioning, gatekeeper
   agents/           CrewAI agent factory
-  tasks/            stage task contracts
+  workflow/         schemas, persistence, prompts, loops, orchestration
   utils/            graph, LaTeX, logging, compilation, validation
 tests/
   unit/
@@ -110,6 +131,24 @@ config/             versioned runtime configuration
 skills/             agent skill instructions
 outputs/            generated artifacts
 ```
+
+Academic visuals are shared responsibilities: the Researcher specifies data and placement,
+the Source Verifier checks provenance, the Writer places the artifact in its section, the
+Editor checks relevance, Python renders quantitative charts, LaTeX formats the artifacts,
+and the Submission Validator scores the final result without blocking delivery.
+
+The outline must include a dedicated `Hebrew and English in AI Systems` section. It contains
+substantive Hebrew prose with English technical terms and is rendered with `polyglossia`,
+`hebrew` environments, and `\textenglish{...}`.
+
+The approved outline must end with `References` or `Bibliography`, include every verified
+source in that final section, and allocate the configured minimum word count across body
+sections. Deterministic PDF validation also requires at least `assignment.min_pages`
+compiled pages (15 by default).
+
+Planning must also include at least `assignment.min_visuals` useful charts, tables, or
+diagrams (3 by default). Each visual needs a unique ID, body-section placement, caption,
+purpose, and source basis; formulas do not count toward this minimum.
 
 ## Contributing
 

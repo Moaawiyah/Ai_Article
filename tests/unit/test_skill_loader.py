@@ -15,7 +15,7 @@ from utils.skill_loader import (
 
 
 def test_skill_name_to_role_acronyms():
-    assert skill_name_to_role("pdf_validator") == "PDF Validator"
+    assert skill_name_to_role("submission_validator") == "Submission Validator"
     assert skill_name_to_role("latex_formatter") == "LaTeX Formatter"
     assert skill_name_to_role("simple_writer") == "Simple Writer"
 
@@ -59,3 +59,15 @@ def test_load_skill_parses_frontmatter(tmp_path):
     assert s.role == "Custom Role"
     assert s.version == "1.0"
     assert "<<var>>" in s.body
+
+
+def test_all_six_workflow_skills_load():
+    names = {
+        "researcher",
+        "source_verifier",
+        "writer",
+        "article_editor",
+        "latex_formatter",
+        "submission_validator",
+    }
+    assert {load_skill(name).name for name in names} == names

@@ -1,163 +1,107 @@
 # Architecture and Planning - agent_ai_HW2
 
-## 1. Architecture Goals
+## Architecture Goals
 
-- Keep `AgentAISDK` as the only public business-logic entry point.
-- Keep external LLM traffic behind one configured gatekeeper abstraction.
-- Separate agent orchestration, deterministic post-processing, and infrastructure.
-- Make every component testable without real network or LaTeX dependencies.
+- Keep `AgentAISDK` as the public boundary.
+- Gate every provider call through `ApiGatekeeper`.
+- Persist planning, approvals, counters, and failure reasons.
+- Separate agent judgment from deterministic rendering, compilation, and validation.
 
-## 2. C4 Context
+## Context
 
 ```mermaid
 flowchart LR
-    User["Student or Researcher"] --> CLI["CLI Consumers"]
-    User --> SDK["AgentAISDK"]
-    CLI --> SDK
-    SDK --> Providers["Anthropic / ZhipuAI / Ollama"]
+    User["Student or Researcher"] --> CLI["agent-ai-article CLI"]
+    CLI --> SDK["AgentAISDK"]
+    SDK --> Workflow["Section Workflow"]
+    Workflow --> Provider["Configured LLM Provider"]
+    Workflow --> Files["Resumable Outputs"]
     SDK --> Latex["LuaLaTeX"]
-    SDK --> Files["Documents and Generated Artifacts"]
 ```
 
-## 3. C4 Containers
+## Six-Agent Workflow
 
 ```mermaid
 flowchart TB
-    subgraph Application["agent-ai Python Package"]
-        CLI["main.py and sdk/sdk.py CLI"]
-        SDK["AgentAISDK"]
-        Gatekeeper["ApiGatekeeper"]
-        Crew["CrewAI Pipeline"]
-        Post["Graph, TeX Fixing, Compilation, Validation"]
-        Config["ConfigManager and PipelineConfig"]
-    end
-    CLI --> SDK
-    SDK --> Gatekeeper
-    SDK --> Crew
-    SDK --> Post
-    Crew --> Gatekeeper
-    Post --> Gatekeeper
-    Config --> SDK
-    Config --> Crew
-    Config --> Gatekeeper
+    R["Researcher"] --> V["Source Verifier"]
+    V -->|REVISE, max 2| R
+    V -->|APPROVE| W["Section Writer"]
+    W --> E["Article Editor"]
+    E -->|REWRITE, once per section| W
+    E -->|APPROVE / next section| W
+    E -->|all sections approved| L["LaTeX Formatter"]
+    L --> G["Deterministic Graph Insertion"]
+    G --> S["Submission Validator"]
+    S --> C["LuaLaTeX Compilation"]
+    C --> D["13-Check Deterministic Validator"]
 ```
 
-## 4. Component Model
+The total Article Editor rejection budget is `ceil(section_count * 0.33)`.
+Submission Validator findings are advisory and never stop the workflow or create a third
+feedback loop. Compilation and deterministic processing errors remain execution failures.
 
-| Component | Responsibility | Main Interface |
-|---|---|---|
-| `sdk/sdk.py` | Public workflows and CLI delegation | `AgentAISDK` |
-| `shared/gatekeeper.py` | FIFO queue, limits, concurrency, retries, metrics | `execute()`, `get_queue_status()` |
-| `pipeline.py` | Build five agents and five sequential tasks | `build_crew()` |
-| `agents/factory.py` | Construct agents from `skills/*/SKILL.md` | `build_agent()` |
-| `tasks/*.py` | Define stage prompts, context, and output contracts | `build_*_task()` |
-| `pipeline_steps.py` | Orchestrate graph, compilation, and validation | `graph_step()`, `compile_step()`, `validate_step()` |
-| `utils/graph_*` | Resolve graph data, render PNG, inject LaTeX | `generate_graph_spec()`, `generate_performance_graph()` |
-| `utils/pdf_compiler.py` | Execute LuaLaTeX and return structured status | `compile_pdf()` |
-| `utils/tex_validator.py` | Produce the 13-check validation report | `validate()` |
+## Components
 
-## 5. Article Sequence
+| Component | Responsibility |
+|---|---|
+| `pipeline.py` | Build configured workflow and stage runner |
+| `workflow/orchestrator.py` | State transitions, resume, formatting, advisory evaluation |
+| `workflow/research_loop.py` | Researcher-Verifier bounded loop |
+| `workflow/section_loop.py` | Writer-Editor bounded loop |
+| `workflow/models.py` | Section and run-state contracts |
+| `workflow/storage.py` | Planning, section, assembly, and state persistence |
+| `workflow/parsing.py` | JSON, visual provenance, and BiDi validation |
+| `pipeline_steps.py` | Graph insertion, compilation, deterministic validation |
 
-```mermaid
-sequenceDiagram
-    actor User
-    participant SDK as AgentAISDK
-    participant GK as ApiGatekeeper
-    participant Crew as CrewAI
-    participant Graph as Graph Services
-    participant TeX as LuaLaTeX
-    participant Check as Validator
-    User->>SDK: generate_article(topic)
-    SDK->>GK: execute(crew.kickoff)
-    GK->>Crew: admitted provider work
-    Crew-->>SDK: article artifacts and token usage
-    SDK->>Graph: generate graph spec
-    Graph->>GK: execute(litellm.completion) when needed
-    SDK->>Graph: render and inject benchmark.png
-    SDK->>TeX: compile article.tex
-    SDK->>Check: validate TeX, PDF, and log
-    SDK-->>User: outputs/pdf/article.pdf
+## Persistence
+
+```text
+outputs/
+  planning/          research, outline, sources, verification
+  sections/          specification, draft, review, approved section
+  assets/            approved visual specs and generated assets
+  assembled/         approved Markdown article
+  latex/             article.tex and benchmark.png
+  pdf/               article.pdf and validation reports
+  run_state.json
 ```
 
-## 6. Deployment
+The topic, phase, research return count, approved sections, per-section returns,
+article-wide rejection usage, current section, and failure reason are persisted.
 
-```mermaid
-flowchart LR
-    Workstation["Python 3.12 + uv Workstation"]
-    Workstation --> Provider["Configured LLM Provider"]
-    Workstation --> TeXLive["LuaLaTeX Distribution"]
-    Workstation --> Repo["Local Repository"]
-    Repo --> Outputs["outputs/ and logs/"]
-    GitHub["GitHub Actions"] --> Checks["Ruff + pytest + coverage"]
-```
+Approved plans must end with a complete References/Bibliography section and meet the
+configured body-word target. The final deterministic compilation check also verifies the
+configured minimum PDF page count.
 
-Production deployment is a local CLI/package installation. There is no server process. Provider credentials are environment variables and generated files stay under configured output directories.
+At least three sourced academic visuals are required by default. Planning links each chart,
+table, or diagram to a body section, and deterministic validation counts rendered visual
+containers in the final LaTeX.
 
-## 7. Interface Contracts
+## Academic Visuals
 
-### `AgentAISDK.generate_article(topic)`
+Researcher defines purpose, data, placement, and sources. Source Verifier approves
+provenance. Writer places the artifact in the assigned section. Article Editor checks
+relevance. Python renders quantitative charts. LaTeX Formatter handles tables, formulas,
+TikZ, captions, and labels. Submission Validator inspects the final result.
 
-- Input: optional topic string.
-- Output: `Path` to `article.pdf`.
-- Failure: provider, graph, or compilation exceptions are logged; compilation returns structured status.
+## Hebrew-English BiDi
 
-### `ApiGatekeeper.execute(callable, *args, **kwargs)`
+The outline must include `Hebrew and English in AI Systems`. The Writer supplies substantive
+Hebrew with natural English technical terms. The Formatter uses `polyglossia`,
+`hebrew` environments, and `\textenglish`. Deterministic validation rejects leaked Hebrew,
+unwrapped core technical terms, `\setRL`, and Unicode direction controls.
 
-- Input: callable and arguments.
-- Behavior: bounded FIFO admission, configured rate windows, semaphore concurrency, configured retry count.
-- Output: callable result.
-- Failure: raises `RuntimeError` after configured retries.
+## Decisions
 
-### `generate_graph_spec(brief_path, cfg, spec_out, gatekeeper)`
+- **Explicit orchestration over hierarchical CrewAI:** loop budgets and resume behavior are
+  deterministic and testable.
+- **One-agent Crew stages:** each provider call is independently rate-limited and retried.
+- **Approved sections are immutable inputs to formatting:** the Formatter may format but not
+  invent or factually rewrite content.
+- **Advisory submission evaluation:** the agent reports quality without changing workflow
+  status; compilation and structural checks remain deterministic execution stages.
 
-- Input: research brief and pipeline configuration.
-- Output: normalized `main`, `arch_a`, and `arch_b` mapping.
-- Fallback: embedded JSON, gated LLM request, then deterministic defaults.
+## Quality
 
-## 8. Architecture Decision Records
-
-### ADR-001: SDK as the public boundary
-
-**Decision:** CLI consumers call `AgentAISDK`; internal modules are implementation details.
-**Rationale:** one stable contract prevents business logic from spreading across interfaces.
-**Trade-off:** the SDK coordinates several services and must remain thin.
-
-### ADR-002: Configured provider abstraction
-
-**Decision:** provider/model/base URL live in `config/config.yaml`.
-**Rationale:** ZhipuAI, Anthropic, OpenAI-compatible providers, and Ollama can be selected without source edits.
-**Trade-off:** provider capability differences require small adapter branches.
-
-### ADR-003: Central FIFO API gatekeeper
-
-**Decision:** network-producing workflows use a bounded FIFO gatekeeper.
-**Rationale:** enforce rate limits, retries, backpressure, concurrency, and monitoring consistently.
-**Trade-off:** synchronous admission can increase latency under load.
-
-### ADR-004: Deterministic post-processing
-
-**Decision:** graph rendering, TeX repair, compilation, and validation are Python utilities after the agent stages.
-**Rationale:** deterministic operations are easier to test and more reliable than prompt-only formatting.
-**Trade-off:** generated agent output must satisfy utility input contracts.
-
-### ADR-005: Full-tree coverage enforcement
-
-**Decision:** coverage includes all modules under `src/` and branch coverage.
-**Rationale:** orchestration and infrastructure are critical behavior, not acceptable exclusions.
-**Trade-off:** tests use dependency isolation and mocks to avoid paid APIs and local toolchain dependence.
-
-## 9. Extension Points
-
-- Add a provider branch in `PipelineConfig.build_llm()` and `graph_spec_parse.llm_params()`.
-- Add a new agent skill and task builder, then wire it in `pipeline.build_crew()`.
-- Add validator checks as independent `CheckResult` producers.
-- Replace the graph renderer while preserving the normalized graph-spec contract.
-- Add new CLI or REST consumers by calling `AgentAISDK`, not internal modules.
-
-## 10. Quality and Security
-
-- CI runs Ruff and pytest with an 85% full-source branch-coverage threshold.
-- Secrets are environment-only and `.env` is ignored.
-- Rate limits and queue settings are versioned configuration.
-- Tests mock external services and do not require network access.
-- Design targets ISO/IEC 25010 maintainability, reliability, security, portability, and usability characteristics.
+CI runs Ruff and full-source branch coverage with an 85% threshold. Tests mock provider
+calls, exercise both loops, validate resume behavior, and verify visual and BiDi contracts.

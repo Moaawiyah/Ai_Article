@@ -64,3 +64,85 @@ def config_dir(tmp_path: Path) -> Path:
         )
     )
     return tmp_path
+
+
+@pytest.fixture()
+def research_package():
+    """Valid eight-section package for workflow tests."""
+    source_ids = [f"ref{index}" for index in range(1, 9)]
+    sections = []
+    for index in range(1, 9):
+        sections.append(
+            {
+                "section_id": f"section-{index}",
+                "title": (
+                    "Hebrew and English in AI Systems"
+                    if index == 7
+                    else "References"
+                    if index == 8
+                    else f"Section {index}"
+                ),
+                "order": index,
+                "target_words": 650 if index < 8 else 0,
+                "required_topics": ["complete approved source registry"]
+                if index == 8
+                else ["topic"],
+                "source_ids": source_ids if index == 8 else ["ref1"],
+                "artifact_ids": (
+                    ["visual1"]
+                    if index == 5
+                    else ["visual2"]
+                    if index == 2
+                    else ["visual3"]
+                    if index == 4
+                    else []
+                ),
+                "acceptance_criteria": ["complete"],
+                "bidi_required": index == 7,
+            }
+        )
+    return {
+        "research_markdown": "# Research\nGrounded notes.",
+        "sources": [
+            {
+                "id": f"ref{index}",
+                "authors": f"Author {index}",
+                "title": f"Real Work {index}",
+                "venue": "Venue",
+                "year": 2020 + index,
+                "url_or_doi": f"https://example.org/{index}",
+                "verified_confidence": "high",
+            }
+            for index in range(1, 9)
+        ],
+        "sections": sections,
+        "visuals": [
+            {
+                "id": "visual1",
+                "type": "python_chart",
+                "section_id": "section-5",
+                "purpose": "Comparison",
+                "data_basis": "estimated",
+                "sources": ["ref1"],
+                "caption": "Comparison chart",
+            },
+            {
+                "id": "visual2",
+                "type": "table",
+                "section_id": "section-2",
+                "purpose": "Compare related approaches",
+                "data_basis": "measured",
+                "sources": ["ref1", "ref2"],
+                "caption": "Comparison of related approaches",
+            },
+            {
+                "id": "visual3",
+                "type": "tikz",
+                "section_id": "section-4",
+                "purpose": "Explain the system architecture",
+                "data_basis": "conceptual",
+                "sources": ["ref3"],
+                "caption": "System architecture",
+            },
+        ],
+    }

@@ -45,7 +45,7 @@ def test_timed_stage_logs_success_and_error(monkeypatch):
 
 def test_article_cli_delegates_to_sdk(monkeypatch, capsys):
     monkeypatch.setattr("sys.argv", ["agent-ai-article", "--topic", "T"])
-    with patch("main.AgentAISDK") as sdk_cls:
+    with patch("main.AgentAISDK") as sdk_cls, patch("builtins.input", return_value="1"):
         sdk_cls.return_value.generate_article.return_value = "article.pdf"
         article_main.main()
     sdk_cls.return_value.generate_article.assert_called_once_with(topic="T")

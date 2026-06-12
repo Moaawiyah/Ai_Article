@@ -3,6 +3,7 @@
 import logging
 import time
 from pathlib import Path
+from types import SimpleNamespace
 
 import anthropic
 
@@ -113,38 +114,36 @@ class AgentAISDK:
         return self._gatekeeper("anthropic").execute(_call)
 
     def generate_article(self, topic: str | None = None) -> Path:
-        """Run the five-agent CrewAI pipeline → benchmark figure → LuaLaTeX → validation.
+        """Run the six-agent section pipeline → graph → LuaLaTeX → validation.
 
         Input:  topic — optional override; falls back to ``config.yaml::article.topic``.
         Output: path to the generated ``article.pdf``.
         """
-        from pipeline import build_crew
+        from pipeline import build_workflow
         from pipeline_steps import (
             compile_step,
             graph_step,
             print_token_usage,
             validate_step,
         )
+        from shared.pipeline_config import PipelineConfig
         from utils.logger import get_logger, timed_stage
 
-        crew, cfg = build_crew()
+        cfg = PipelineConfig.load()
+        gatekeeper = self._gatekeeper(cfg.llm_provider)
+        workflow, cfg = build_workflow(gatekeeper, cfg)
         log = get_logger("sdk.generate_article")
         run_topic = topic or cfg.topic
         t0 = time.perf_counter()
 
         log.info("=" * 60)
         log.info("ARTICLE GENERATION  — %s", run_topic)
-        with timed_stage(log, "Agent pipeline (all 5 stages)"):
-            # Route the crew run through the central gatekeeper (§5.1) so the
-            # external LLM work is rate-limit-aware, retried on transient
-            # failure, and logged like every other API call. CrewAI manages its
-            # own per-call LLM traffic internally, so this gates the run as a
-            # single unit.
-            gatekeeper = self._gatekeeper(cfg.llm_provider)
-            result = gatekeeper.execute(crew.kickoff, inputs={"topic": run_topic})
-
-        print_token_usage(result, cfg, log)
-        graph_step(cfg, log, gatekeeper)
+        with timed_stage(log, "Six-agent section workflow"):
+            workflow.run(
+                run_topic,
+                after_format=lambda: graph_step(cfg, log, gatekeeper),
+            )
+        print_token_usage(SimpleNamespace(token_usage=workflow.token_usage), cfg, log)
         compile_step(cfg, log)
         validate_step(cfg, log)
 

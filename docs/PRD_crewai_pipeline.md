@@ -1,99 +1,72 @@
-# PRD — CrewAI Article Generation Pipeline
+# PRD - Six-Agent Section Workflow
 
-**Version:** 1.00
-**Owners:**
-- `src/pipeline.py` — Crew assembly
-- `src/main.py` — CLI entry point
-- `src/agents/` — shared agent factory
-- `src/tasks/` — five linked CrewAI tasks
-- `skills/<agent>/SKILL.md` — agent prompts
+## Goal
 
-## 1. Goal
+Generate a validated academic PDF by approving research once and writing the article one
+section at a time. Persist every transition so interrupted runs resume without regenerating
+approved work.
 
-Generate a ~15-page bilingual academic article from a single topic string,
-using a five-agent sequential CrewAI crew, ending with a validated PDF and a
-13-item assignment-readiness report.
+## Agents and Control Flow
 
-## 2. Background
+| Agent | Responsibility |
+|---|---|
+| Researcher | Research package, sources, outline, section contracts, visual specifications |
+| Source Verifier | Source, outline, visual-provenance, and BiDi approval |
+| Section Writer | One section or one requested rewrite |
+| Article Editor | Section approval and progression control |
+| LaTeX Formatter | Assemble approved sections into LuaLaTeX |
+| Submission Validator | Final evidence-based readiness report |
 
-This pipeline satisfies F-05 of the parent PRD and §13 of the assignment.
-Each agent has a single responsibility, a SKILL.md prompt, and is wired into a
-`Crew(process=Process.sequential)` so the output of agent *n* becomes the
-context of agent *n+1*.
+```text
+Researcher <-> Source Verifier
+                    |
+Section Writer <-> Article Editor
+                    |
+LaTeX Formatter -> graph insertion -> Submission Validator
+                    |
+LuaLaTeX compilation -> deterministic validation
+```
 
-## 3. Agent Topology
+## Bounded Loops
 
-| Order | Agent | Input | Output |
-|-------|-------|-------|--------|
-| 1 | Researcher | `topic` | `outputs/research/research_brief.md` |
-| 2 | Writer | research brief | `outputs/drafts/draft.md` |
-| 3 | Reviewer | draft | `outputs/reviewed/reviewed.md` |
-| 4 | LaTeX Formatter | reviewed markdown | `outputs/latex/article.tex` |
-| 5 | PDF Validator | article.tex | `outputs/pdf/agent_validation.md` |
+- Source Verifier can return research at most twice.
+- Each section can be returned once.
+- Total section returns are limited to `ceil(section_count * 0.33)`.
+- A repeated rejection or exhausted total budget stops the run and records the reason.
+- Submission Validator does not create another feedback loop.
 
-After the crew finishes, three deterministic post-passes run:
+## Contracts
 
-1. **Graph step** — LLM-derived spec + matplotlib rendering → inject
-   `\includegraphics` into the Evaluation section.
-2. **Compile step** — `strip_tex_fences` then 3-pass LuaLaTeX +
-   biber → `outputs/pdf/article.pdf`.
-3. **Validate step** — 13 programmatic checks → `outputs/pdf/validation_report.md`.
+The research package is JSON containing research Markdown, source registry, at least eight
+ordered section specifications, and approved visual specifications. One section must be
+named `Hebrew and English in AI Systems` and set `bidi_required=true`.
 
-## 4. Functional Requirements
+Section review decisions use `APPROVE` or `REWRITE`. Research decisions use `APPROVE` or
+`REVISE`. Submission reports end with an explicit readiness `YES` or `NO`.
 
-| ID | Requirement |
-|----|-------------|
-| F-01 | Each agent reads its prompt from `skills/<name>/SKILL.md`, never inline. |
-| F-02 | Tasks link via `context=[prev_task]` (Sequential process). |
-| F-03 | All paths come from `config.yaml::outputs` — no hard-coded paths. |
-| F-04 | Provider/model selectable via `config.yaml::llm.{provider,model,base_url}`. |
-| F-05 | Token usage from the crew result is logged with per-token cost. |
-| F-06 | Pipeline never crashes on a single agent failure — log and continue. |
-| F-07 | Final 13-item validation report exits 0 if all checks pass. |
+## Visuals
 
-## 5. Inputs / Outputs / Setup
+Supported academic artifacts are Python charts, tables, formulas, and TikZ diagrams.
+Measured data requires source IDs. Unsupported data must be marked estimated. Python charts
+are rendered deterministically after formatting and before submission-agent validation.
 
-- **Input:** `config.yaml`, `skills/*/SKILL.md`, an LLM provider that is live.
-- **Output:** `outputs/pdf/article.pdf` + `outputs/pdf/validation_report.md`.
-- **Setup:** Provider API key in env (`ZHIPUAI_API_KEY`, `ANTHROPIC_API_KEY`,
-  `OPENAI_API_KEY`, or `OLLAMA_BASE_URL`).
+## BiDi
 
-## 6. Cost Model
+The dedicated bilingual section contains substantive Hebrew prose with embedded English
+technical terms. The formatter uses `polyglossia`, `hebrew` environments, and
+`\textenglish{...}`. Manual direction commands and Unicode BiDi controls are forbidden.
 
-| Token Class | Price (`$/1M`) |
-|-------------|---------------|
-| Prompt input | 0.07 |
-| Cached prompt | 0.01 |
-| Completion | 0.40 |
+## Persistence
 
-These constants live in `pipeline_steps.py`. A full run typically uses
-~120 K prompt + ~40 K completion tokens (~$0.025/run).
+Planning, section drafts/reviews/approvals, approved visuals, assembled Markdown, LaTeX,
+agent validation, PDF validation, and `run_state.json` are stored below `outputs/`.
 
-## 7. Constraints
+## Acceptance Criteria
 
-- Each agent / task module ≤ 150 LoC.
-- No business logic in `main.py` — only orchestration of pipeline steps.
-- Crew assembly is testable in isolation via `build_crew(cfg)` returning
-  `(Crew, PipelineConfig)` without invoking `kickoff`.
-
-## 8. Failure Modes
-
-| Failure | Handling |
-|---------|----------|
-| LLM provider down | Each step logs error; subsequent steps still attempt. Graph step uses fallback profile. |
-| LaTeX compile error | `_compile_step` logs `error_summary`, returns `False`; validation step still runs and reports missing PDF. |
-| Validation finds <13 / 13 | Exit code 0 (warnings only); failed checks printed with fix hints. |
-
-## 9. Acceptance Criteria
-
-- A fresh `outputs/` directory is produced after one `uv run agent-ai-article`.
-- `outputs/pdf/article.pdf` is ≥ 200 KB and ≥ 10 pages.
-- `validation_report.md` reports ≥ 11/13 checks passing on a clean run.
-- Token usage line appears in `logs/app.log` with input/output/total counts.
-
-## 10. Tests
-
-- Unit: `build_crew(cfg)` returns a `Crew` with exactly 5 agents and 5 tasks.
-- Unit: cost-calc helper produces correct cents for fixed token inputs.
-- Integration: tiny topic + Ollama mock → end-to-end produces all artefacts in
-  a tmpdir.
+- `uv run agent-ai-article` preserves the existing CLI.
+- Exactly six agent roles are invoked.
+- Both feedback loops obey their limits.
+- Approved sections are reused on resume.
+- Only approved sections and visuals reach LaTeX.
+- Submission `NO` stops before compilation.
+- Ruff passes and full-source branch coverage remains at least 85%.
